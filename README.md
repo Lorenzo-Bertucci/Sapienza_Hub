@@ -1,4 +1,4 @@
-# Sapienza_Hub
+# Sapienza Hub
 
 Sapienza Hub è una community online dedicata agli studenti dell’Università Sapienza. Il sito permette di esplorare tutti i corsi di laurea , visualizzare gli esami associati e ottenere informazioni sui professori. Gli utenti possono interagire tra loro, lasciare recensioni sui corsi e caricare materiale didattico, creando così uno spazio collaborativo per migliorare l’esperienza universitaria.
 
