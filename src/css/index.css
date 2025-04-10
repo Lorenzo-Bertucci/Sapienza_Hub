@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+header {
+    background: none; /* Rimuove lo sfondo dal solo header */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between; /* Sposta i pulsanti a destra */
+    align-items: center;
+}
+.header-left {
+    display: flex;
+    align-items: center;
+}
+.header-left h1 {
+    margin: 0;
+    font-size: 24px;
+    margin-right: 20px; /* Spazio tra il titolo e la nav */
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+nav ul li {
+    margin: 0 10px;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+.auth-buttons {
+    display: flex;
+    gap: 10px; /* Spazio tra i pulsanti */
+}
+.auth-buttons button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.login-btn {
+    background-color: white;
+    color: #a83232; /* Rosso più profondo */
+}
+.register-btn {
+    background-color: #992222; /* Rosso ancora più profondo */
+    color: white;
+}
+.auth-buttons button:hover {
+    opacity: 0.9;
+}
+.hero-container {
+    background-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(127,16,16,1) 30%);
+    color: white;
+    padding-bottom: 20px; /* Spazio sotto la barra di ricerca */
+}
+.hero {
+    background: none; /* Rimuove lo sfondo dalla hero */
+    text-align: center;
+    padding: 50px 20px;
+}
+.hero h2 {
+    font-size: 36px;
+    margin: 0 0 10px;
+}
+.hero p {
+    font-size: 18px;
+    margin: 0 0 20px;
+}
+.search-bar {
+    margin: 20px auto;
+    max-width: 800px;
+    display: flex;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: none; /* Rimuove lo sfondo dalla barra di ricerca */
+    padding: 10px;
+    border-radius: 5px;
+}
+.search-bar input {
+    flex: 1;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+}
+.search-bar button {
+    padding: 15px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: white;
+    color: rgba(192,54,57,1);
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+.content {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.card h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+.card p {
+    margin: 0;
+    color: #555;
+}
