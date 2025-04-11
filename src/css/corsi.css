@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 html, body {
-    height: 100%;
+    height: 100%; /* Assicura che il corpo occupi l'intera altezza */
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -16,11 +16,12 @@ body {
     background-color: #f9f9f9;
 }
 header {
-    background: none;
-    padding: 20px 20px;
+    background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
+    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 .header-left {
     display: flex;
@@ -37,7 +38,7 @@ header {
 }
 .header-left a {
     text-decoration: none;
-    color: inherit;
+    color: white;
     cursor: default;
 }
 nav ul {
@@ -51,14 +52,14 @@ nav ul li {
     margin: 0 15px;
 }
 nav ul li a {
-    color: #333;
+    color: white; /* Imposta il colore del testo su bianco */
     text-decoration: none;
     font-size: 16px;
     font-weight: 400;
     transition: color 0.3s ease;
 }
 nav ul li a:hover {
-    color: #e60000;
+    color: #e60000; /* Cambia colore al passaggio del mouse */
 }
 .auth-buttons {
     display: flex;
@@ -94,48 +95,41 @@ nav ul li a:hover {
 .auth-buttons button:hover {
     opacity: 0.9;
 }
-.hero-container {
-    position: relative;
-    background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
-    color: white;
-    padding-top: 0;
-    flex: 1;
-    overflow: hidden;
-}
 
-.hero {
+.corsi {
     background: none;
-    text-align: center;
-    padding: 0px; /* Riduce il padding inferiore per avvicinare la barra */
+    text-align: left; /* Allinea il testo a sinistra */
+    padding: 0px; /* Riduce il padding per allineare meglio con la barra */
+    margin-top: 0; /* Rimuove il margine superiore */
+    display: flex;
+    align-items: center; /* Allinea verticalmente il testo con la barra */
+    gap: 20px; /* Aggiunge spazio tra il testo e la barra */
 }
 .hero h2 {
-    font-size: 36px;
-    font-weight: 600;
-    margin: 0 0 10px;
-}
-.hero p {
-    font-size: 18px;
-    font-weight: 300;
-    margin: 0 0 20px;
+    font-size: 25px; /* Riduce leggermente la dimensione del testo */
+    font-weight: 700; /* Rende il testo più bold */
+    margin: 0; /* Rimuove margini extra */
+    color: black;
+    display: flex; /* Mantiene il colore nero */
+    padding-left: 100px; /* Allinea il testo con la barra di ricerca */
 }
 .search-bar {
-    margin-top: 0px; /* Riduce lo spazio tra la barra e la classe hero */
-    margin-bottom: 0px; /* Mantiene un piccolo margine inferiore */
-    max-width: 800px;
-    margin: 0 auto; /* Centra la barra di ricerca */
+    margin: 0 auto; /* Centra la barra orizzontalmente */
+    width: 85%; /* La barra occupa il 95% della larghezza della pagina */
+    max-width: none; /* Rimuove eventuali limiti di larghezza massima */
     display: flex;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     background: white;
-    padding: 15px; 
-    border-radius: 50px;
+    padding: 10px; /* Mantiene un design pulito */
+    border-radius: 30px; /* Mantiene un aspetto tondeggiante */
 }
 
 .search-bar input {
     flex: 1;
-    padding: 15px 20px;
+    padding: 20px;
     font-size: 16px;
     border: none;
-    border-radius: 50px 0 0 50px;
+    border-radius: 30px 0 0 30px; /* Arrotonda i bordi sinistri */
     outline: none;
 }
 
@@ -145,27 +139,28 @@ nav ul li a:hover {
     border: none;
     background-color: white;
     color: rgba(192,54,57,1);
-    border-radius: 50px ;
+    border-radius:  30px ; /* Arrotonda i bordi destri */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .search-bar button:hover {
-    background-color: rgb(170, 33, 33);
+    background-color: rgba(192,54,57,1);
     color: white;
     transform: scale(1.05);
 }
 .content {
-    background-color: rgb(149, 30, 30);
-    padding: 0px; /* Aumenta il padding per dare più spazio */
-    margin-bottom: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Aumenta la larghezza minima delle colonne */
-    gap: 30px; /* Aumenta lo spazio tra gli elementi */
+    flex: 1; /* Fa sì che il contenuto occupi lo spazio disponibile sopra il footer */
+    background-color: white;
+    padding: 20px; /* Mantiene un padding uniforme */
+    margin-top: 10px; /* Riduce lo spazio tra la barra di ricerca e il contenuto */
+    display: flex; /* Imposta il layout Flexbox */
+    flex-direction: column; /* Dispone gli elementi in verticale */
+    gap: 20px; /* Aggiunge spazio tra gli elementi */
 }
 .card {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     background-color: white;
     border: 1px solid #ddd;
@@ -173,17 +168,18 @@ nav ul li a:hover {
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 60%; /* Mantiene la larghezza della card */
-    margin: 0; /* Rimuove il centraggio */
-    margin-left: 2%; /* Sposta la card molto più a sinistra */
+    margin: 0 auto; /* Rimuove il centraggio */
+    margin-left: 1; /* Sposta la card molto più a sinistra */
 }
 .card:hover {
-    transform: none; /* Rimuove l'effetto di movimento */
+    transform: translate(-5px); /* Rimuove l'effetto di movimento */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Mantiene l'ombra invariata */
 }
+
 .card h3 {
     margin: 0 0 0px;
-    font-size: 24px; /* Aumenta la dimensione del titolo */
-    font-weight: 600;
+    font-size: 20px; /* Aumenta la dimensione del titolo */
+    font-weight: 500;
 }
 .card p {
     margin: 0 0 0;
@@ -191,7 +187,6 @@ nav ul li a:hover {
     font-size: 20px;
     font-weight: 400;
     line-height: 1.5;
-    text-align: justify;
 }
 .card img {
     width: 100%; /* L'immagine occupa tutta la larghezza disponibile */
@@ -199,13 +194,16 @@ nav ul li a:hover {
     border-radius: 10px; /* Arrotonda i bordi dell'immagine */
     margin-top: 20px;
 }
+
+
 footer {
-    background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149,30,30,1) 40%);
-    color: white;
+    background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
+    color: white ; /* Forza il testo nero */
     text-align: center;
     padding: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border-top: 1px solid #ddd; /* Linea sottile sopra il footer */
 }
