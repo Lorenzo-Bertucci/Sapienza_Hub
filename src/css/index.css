@@ -11,21 +11,22 @@ html, body {
     overflow-y: auto; /* Abilita lo scrolling verticale */
 }
 
-.container{
-    display:grid;
+.container {
+    display: grid;
     width: 100%;
-    height: 100%;
-    grid-template-rows: 1fr 2fr 3fr 1fr;
+    min-height: 100vh; /* Usa min-height per permettere l'espansione se necessario */
+    grid-template-rows: auto auto auto auto auto; /* Righe che si adattano automaticamente al contenuto */
     grid-template-columns: 1fr;
     grid-template-areas:
-        'header'
-        'main'
-        'aside'
-        'footer';
+        "header"
+        "main"
+        "aside"
+        "content"
+        "footer";
     background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
     color: white;
-    padding-top: 0;
-    overflow: hidden;
+    padding-top: 0px;
+    overflow-y: auto; /* Abilita lo scrolling verticale */
 }
 
 body {
@@ -75,14 +76,16 @@ nav ul li {
     margin-right: 20px;
 }
 nav ul li a {
-    color: #333;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 400;
-    transition: color 0.3s ease;
+    display: inline-block;           /* Permette di applicare padding e dimensioni */
+    padding: 12px 20px;              /* Ingrandisce il padding per un aspetto più robusto */
+    font-size: 16px;                 /* Aumenta la dimensione del testo */
+    border-radius: 25px;             /* Arrotonda i bordi */
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 nav ul li a:hover {
-    color: #e60000;
+    background-color: rgb(170, 33, 33); /* Stesso rosso del pulsante della barra di ricerca */
+    color: white;
+    transform: scale(1.05);
 }
 
 .auth-buttons {
@@ -90,8 +93,8 @@ nav ul li a:hover {
     gap: 10px;
 }
 .auth-buttons button {
-    padding: 10px 20px;
-    font-size: 14px;
+    padding: 12px 24px;              /* Ingrandisce i pulsanti con più padding */
+    font-size: 16px;                 /* Aumenta la dimensione del testo */
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -100,21 +103,35 @@ nav ul li a:hover {
 }
 .login-btn {
     background-color: white;
-    color: #e60000;
-    border: 1px solid #e60000;
+    color: rgb(170, 33, 33);
+    border: 1px solid rgb(170, 33, 33);
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .login-btn:hover {
-    background-color: #e60000;
+    background-color: rgb(170, 33, 33);
     color: white;
     transform: scale(1.05);
     opacity: 0.9;
 }
 .register-btn {
-    background-color: #e60000;
+    background-color: rgb(170, 33, 33);
     color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .register-btn:hover {
-    background-color: #cc0000;
+    /* Se preferisci una variazione (più scura) al passaggio del mouse, usa ad esempio: */
+    background-color: rgb(150, 30, 30);
     transform: scale(1.05);
     opacity: 0.9;
 }
@@ -128,7 +145,7 @@ nav ul li a:hover {
 }
 
 .main h2 {
-    font-size: 36px;
+    font-size: 50px;
     font-weight: 600;
     margin: 0 0 10px;
 }
@@ -175,40 +192,85 @@ nav ul li a:hover {
 }
 
 .aside {
-    grid-area: aside;
+    align-items: center;
+    display: flex;
     margin-top: 40px;
     margin-left: 40px;
-
-    text-align: center;
+    padding: 30px;
 
 }
 
-.card {
+.benvenuto {
+    margin: 0 auto 20px; /* Aggiungiamo un margine inferiore per evitare che la card tocchi il footer */
     justify-content: center;
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 80%; /* Mantiene la larghezza della card */
+    width: 85%;
+    /* Rimosso: height: 100%; */
 }
-.card:hover {
+.benvenuto:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Mantiene l'ombra invariata */
 }
-.card h3 {
+.benvenuto h3 {
     margin: 0 0 0px;
-    font-size: 24px; /* Aumenta la dimensione del titolo */
+    font-size: 30px; /* Aumenta la dimensione del titolo */
     font-weight: 600;
     color: black;
 }
-.card p {
+.benvenuto p {
     margin: 0;
     color: #555;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 400;
     line-height: 1.5;
     text-align: justify;
 }
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;           /* Spazio tra le carte */
+    padding: 20px;
+}
+
+.card {
+    margin: 0 auto 20px; /* Margine inferiore per separare la card dal footer */
+    justify-content: center;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Bordo leggermente meno arrotondato */
+    padding: 20px; /* Padding ridotto */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 60%; /* Dimensione più piccola rispetto al 85% della classe benvenuto */
+    text-align: center; /* Testo centrato */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transizione per il movimento e l'ombra */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Sposta la card verso l'alto */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Mantiene l'ombra invariata */
+}
+
+.card h3 {
+    margin: 0 0 10px;
+    font-size: 24px; /* Titolo leggermente più piccolo */
+    font-weight: 600;
+    color: black;
+}
+
+.card p {
+    margin: 0;
+    color: #555;
+    font-size: 18px; /* Testo ridotto */
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+
 
 .footer {
     background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149,30,30,1) 40%);
