@@ -2,6 +2,7 @@
 
 html, body {
     height: 100%;
+    width: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -10,24 +11,45 @@ html, body {
     overflow-y: auto; /* Abilita lo scrolling verticale */
 }
 
+.container{
+    display:grid;
+    width: 100%;
+    height: 100%;
+    grid-template-rows: 1fr 2fr 3fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        'header'
+        'main'
+        'aside'
+        'footer';
+    background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
+    color: white;
+    padding-top: 0;
+    overflow: hidden;
+}
+
 body {
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
 }
-header {
+
+.header{
+    grid-area: header;
     background: none;
-    padding: 20px 20px;
     display: flex;
+    padding: 20px 20px;
     justify-content: space-between;
     align-items: center;
 }
-.header-left {
+
+.h-left{
     display: flex;
     align-items: center;
+    margin-right: 20px;
 }
 
-.header-left h1 {
+.h-left h1 {
     margin: 0;
     font-size: 28px;
     margin-right: 20px;
@@ -35,20 +57,22 @@ header {
     font-weight: 600;
     color: white;
 }
-.header-left a {
+.h-left a {
     text-decoration: none;
     color: inherit;
     cursor: default;
 }
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+
+nav ul{
     display: flex;
     align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 20px;
 }
+
 nav ul li {
-    margin: 0 15px;
+    margin-right: 20px;
 }
 nav ul li a {
     color: #333;
@@ -60,6 +84,7 @@ nav ul li a {
 nav ul li a:hover {
     color: #e60000;
 }
+
 .auth-buttons {
     display: flex;
     gap: 10px;
@@ -82,6 +107,7 @@ nav ul li a:hover {
     background-color: #e60000;
     color: white;
     transform: scale(1.05);
+    opacity: 0.9;
 }
 .register-btn {
     background-color: #e60000;
@@ -90,37 +116,29 @@ nav ul li a:hover {
 .register-btn:hover {
     background-color: #cc0000;
     transform: scale(1.05);
-}
-.auth-buttons button:hover {
     opacity: 0.9;
 }
-.hero-container {
-    position: relative;
-    background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
-    color: white;
-    padding-top: 0;
-    flex: 1;
-    overflow: hidden;
+
+
+.main{
+    grid-area: main;
+    text-align: center;
+    padding: 0;
+    
 }
 
-.hero {
-    background: none;
-    text-align: center;
-    padding: 0px; /* Riduce il padding inferiore per avvicinare la barra */
-}
-.hero h2 {
+.main h2 {
     font-size: 36px;
     font-weight: 600;
     margin: 0 0 10px;
 }
-.hero p {
+.main p {
     font-size: 18px;
     font-weight: 300;
     margin: 0 0 20px;
 }
+
 .search-bar {
-    margin-top: 0px; /* Riduce lo spazio tra la barra e la classe hero */
-    margin-bottom: 0px; /* Mantiene un piccolo margine inferiore */
     max-width: 800px;
     margin: 0 auto; /* Centra la barra di ricerca */
     display: flex;
@@ -155,57 +173,47 @@ nav ul li a:hover {
     color: white;
     transform: scale(1.05);
 }
-.content {
-    background-color: rgb(149, 30, 30);
-    padding: 0px; /* Aumenta il padding per dare più spazio */
-    margin-bottom: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Aumenta la larghezza minima delle colonne */
-    gap: 30px; /* Aumenta lo spazio tra gli elementi */
+
+.aside {
+    grid-area: aside;
+    margin-top: 40px;
+    margin-left: 40px;
+
+    text-align: center;
+
 }
+
 .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 15px;
-    padding: 20px;
+    padding: 30px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 60%; /* Mantiene la larghezza della card */
-    margin: 0; /* Rimuove il centraggio */
-    margin-left: 2%; /* Sposta la card molto più a sinistra */
+    width: 80%; /* Mantiene la larghezza della card */
 }
 .card:hover {
-    transform: none; /* Rimuove l'effetto di movimento */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Mantiene l'ombra invariata */
 }
 .card h3 {
     margin: 0 0 0px;
     font-size: 24px; /* Aumenta la dimensione del titolo */
     font-weight: 600;
+    color: black;
 }
 .card p {
-    margin: 0 0 0;
+    margin: 0;
     color: #555;
     font-size: 20px;
     font-weight: 400;
     line-height: 1.5;
     text-align: justify;
 }
-.card img {
-    width: 100%; /* L'immagine occupa tutta la larghezza disponibile */
-    height: auto; /* Mantiene le proporzioni */
-    border-radius: 10px; /* Arrotonda i bordi dell'immagine */
-    margin-top: 20px;
-}
-footer {
+
+.footer {
     background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149,30,30,1) 40%);
     color: white;
     text-align: center;
     padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    
 }
