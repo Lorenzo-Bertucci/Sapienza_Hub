@@ -52,15 +52,18 @@ nav ul li {
     margin: 0 15px;
 }
 nav ul li a {
-    color: white; /* Imposta il colore del testo su bianco */
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 400;
-    transition: color 0.3s ease;
+    display: inline-block;           /* Permette di applicare padding e dimensioni */
+    padding: 12px 20px;              /* Ingrandisce il padding per un aspetto più robusto */
+    font-size: 16px;                 /* Aumenta la dimensione del testo */
+    border-radius: 25px;             /* Arrotonda i bordi */
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 nav ul li a:hover {
-    color: #e60000; /* Cambia colore al passaggio del mouse */
+    background-color: rgb(170, 33, 33); /* Stesso rosso del pulsante della barra di ricerca */
+    color: white;
+    transform: scale(1.05);
 }
+
 .auth-buttons {
     display: flex;
     gap: 10px;
