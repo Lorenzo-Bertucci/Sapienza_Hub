@@ -145,7 +145,7 @@ nav ul li a:hover {
     grid-template-rows: auto auto;
     grid-template-areas: 
     'image desc desc'
-    'esami matdid chat';
+    'barra barra barra';
     justify-self: center;
     
 }
@@ -191,8 +191,10 @@ nav ul li a:hover {
     object-fit: contain; 
 }
 
-.esami{
-    grid-area:esami;
+.barra{
+    grid-area:barra;
+    display: flex;
+    justify-content: space-between;
 }
 
 .bottone{
@@ -213,15 +215,6 @@ nav ul li a:hover {
     opacity: 0.9;
 }
 
-.matdid{
-    grid-area: matdid;
-    justify-self: right;
-}
-
-.chat{
-    grid-area: chat;
-    justify-self: right;
-}
 
 .footer {
     background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149,30,30,1) 40%);
