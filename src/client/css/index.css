@@ -111,6 +111,7 @@ nav ul li a:hover {
     cursor: pointer;
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    
 }
 .login-btn:hover {
     background-color: rgb(170, 33, 33);
@@ -278,4 +279,116 @@ nav ul li a:hover {
     text-align: center;
     padding: 20px 0;
     
+}
+
+/* Al di sotto di 768px, adatta la larghezza delle card e della benvenuto, e semplifica il layout della navbar */
+@media (max-width: 768px) {
+    /* Nascondi la nav se già non visibile */
+    nav {
+        display: none;
+    }
+
+    /* Adatta il layout per le sezioni */
+    .benvenuto,
+    .card {
+        width: 90%;
+        padding: 15px;
+    }
+
+    /* Riduci la dimensione della search-bar */
+    .search-bar {
+        max-width: 100%;
+        border-radius: 20px;
+    }
+
+    /* Modifica dei pulsanti di autenticazione */
+    /* Nascondo il bottone per la registrazione */
+    .register-btn {
+        display: none;
+    }
+
+    /* Rendo il bottone per il login tondo e più piccolo */
+    .login-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        padding: 0;
+        line-height: 40px;
+        text-align: center;
+        background-color: rgb(170, 33, 33);
+        color: white;
+        border: none;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        text-indent: -9999px; /* DA SISTEMARE */
+    }
+
+    .login-btn:hover {
+        transform: scale(1.1);
+        background-color: rgb(150, 30, 30);
+    }
+
+    /* Eventuale centramento dei pulsanti in mobile */
+    .auth-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    /* Se hai altre regole per nav in mobile le mantieni, ad esempio: */
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    /* Adatta il layout dei contenitori centrali */
+    .benvenuto,
+    .card {
+        width: 90%;
+        padding: 15px;
+    }
+
+    /* Navbar in colonna */
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    /* Riduci la dimensione del search-bar e aumenta la rotondità */
+    .search-bar {
+        max-width: 100%;
+        border-radius: 20px;
+    }
+
+    /* Adatta i bottoni della navbar se necessario */
+    .auth-buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* Per schermi molto piccoli (es. sotto i 480px) */
+@media (max-width: 480px) {
+    .main h2 {
+        font-size: 36px;
+    }
+
+    .main p,
+    .benvenuto p,
+    .card p {
+        font-size: 16px;
+    }
+
+    nav ul li a {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
 }

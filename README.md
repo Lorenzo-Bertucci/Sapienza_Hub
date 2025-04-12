@@ -23,8 +23,4 @@ Funzionalità principali:
 	•	Sistema di tag e categorie per trovare velocemente i materiali
 	•	Opzione per segnalare contenuti inappropriati
 
-5. Notifiche e aggiornamenti
-	•	Possibilità di seguire specifici corsi per ricevere aggiornamenti in tempo reale
 
-6. Dashboard personalizzata
-	•	Home con aggiornamenti sui corsi seguiti e contenuti consigliati
