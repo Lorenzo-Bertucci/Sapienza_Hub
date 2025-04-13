@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+/* 
+    Questa regola applica la proprietà `box-sizing: border-box` a tutti gli elementi, 
+    così come ai loro pseudo-elementi `::before` e `::after`. 
+    Garantisce che larghezza e altezza degli elementi includano padding e bordo, 
+    rendendo i calcoli del layout più prevedibili.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 html, body {
     height: 100%;
     width: 100%;
@@ -7,13 +17,12 @@ html, body {
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', Arial, sans-serif;
-    background-color: #f9f9f9;
-    overflow-y: auto; /* Abilita lo scrolling verticale */
+    background-color: #f9f9f9; 
 }
 
 .container {
     display: grid;
-    width: 100%;
+    max-width: 100%;
     min-height: 100vh; /* Usa min-height per permettere l'espansione se necessario */
     grid-template-rows: auto auto auto auto auto; /* Righe che si adattano automaticamente al contenuto */
     grid-template-columns: 1fr;
@@ -26,7 +35,14 @@ html, body {
     background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
     color: white;
     padding-top: 0px;
+    overflow-x: hidden;
     overflow-y: auto; /* Abilita lo scrolling verticale */
+    -ms-overflow-style: none;  /* IE e Edge */
+    scrollbar-width: none;     /* Firefox */
+}
+
+.container::-webkit-scrollbar {
+    display: none;
 }
 
 body {
@@ -42,6 +58,7 @@ body {
     padding: 20px 20px;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .h-left{
@@ -142,22 +159,24 @@ nav ul li a:hover {
     grid-area: main;
     text-align: center;
     padding: 0;
-    
+    margin-bottom: 40px;    
 }
 
 .main h2 {
-    font-size: 50px;
+    font-family: 'Comic Sans MS', cursive, sans-serif; 
+    font-style: italic;
+    font-size: 70px;
     font-weight: 600;
     margin: 0 0 10px;
 }
 .main p {
     font-size: 18px;
     font-weight: 300;
-    margin: 0 0 20px;
+    margin-bottom: 50px
 }
 
 .search-bar {
-    max-width: 800px;
+    max-width: 1100px;
     margin: 0 auto; /* Centra la barra di ricerca */
     display: flex;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -193,23 +212,22 @@ nav ul li a:hover {
 }
 
 .aside {
-    align-items: center;
     display: flex;
-    margin-top: 40px;
-    margin-left: 40px;
+    justify-content: center;  /* Centra gli elementi all'interno in orizzontale */
+    align-items: center;
+    margin-top: 60px;
+    margin-left: 0; /* Rimuovi il margin-left che sposta l'elemento verso sinistra */
     padding: 30px;
-
 }
 
 .benvenuto {
-    margin: 0 auto 20px; /* Aggiungiamo un margine inferiore per evitare che la card tocchi il footer */
-    justify-content: center;
+    margin:0 auto 30px; /* Aggiungiamo un margine inferiore per evitare che la card tocchi il footer */
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 15px;
+    width: 80%; /* Larghezza della card */
     padding: 30px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 85%;
     /* Rimosso: height: 100%; */
 }
 .benvenuto:hover {
@@ -220,10 +238,12 @@ nav ul li a:hover {
     font-size: 30px; /* Aumenta la dimensione del titolo */
     font-weight: 600;
     color: black;
+    text-align: center;
 }
+
 .benvenuto p {
     margin: 0;
-    color: #555;
+    color: black;
     font-size: 25px;
     font-weight: 400;
     line-height: 1.5;
@@ -233,52 +253,71 @@ nav ul li a:hover {
 .content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;           /* Spazio tra le carte */
-    padding: 20px;
+    gap: 30px;           /* Spazio tra le carte */
+    padding: 30px;
+    width: 100%;
+    margin: 0 auto ;
+    margin-top: 50px;
+    flex-wrap: wrap;
 }
 
 .card {
-    margin: 0 auto 20px; /* Margine inferiore per separare la card dal footer */
-    justify-content: center;
+    margin: auto; /* Margine inferiore per separare la card dal footer */
     background-color: white;
     border: 1px solid #ddd;
+    width: 630px; /* Larghezza della card */
+    height: 500px;
     border-radius: 10px; /* Bordo leggermente meno arrotondato */
     padding: 20px; /* Padding ridotto */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 60%; /* Dimensione più piccola rispetto al 85% della classe benvenuto */
-    text-align: center; /* Testo centrato */
+    text-align: justify; /* Testo centrato */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transizione per il movimento e l'ombra */
 }
 
+
+
 .card:hover {
-    transform: translateY(-5px); /* Sposta la card verso l'alto */
+    transform: translateY(-10px); /* Sposta la card verso l'alto */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Mantiene l'ombra invariata */
 }
 
 .card h3 {
-    margin: 0 0 10px;
+    margin: 0 ;
+    width: 100%;
     font-size: 24px; /* Titolo leggermente più piccolo */
     font-weight: 600;
     color: black;
+    text-align: center;
 }
 
 .card p {
     margin: 0;
-    color: #555;
+    width: 100%;
+    color: black;
     font-size: 18px; /* Testo ridotto */
     font-weight: 400;
     line-height: 1.5;
     text-align: justify;
 }
 
-
+.card ul {
+    color: black;
+    list-style: disc inside;
+    margin: 20px 0;
+    padding-left: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+.card ul li {
+    margin-bottom: 10px;
+}
 
 .footer {
     background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149,30,30,1) 40%);
     color: white;
     text-align: center;
     padding: 20px 0;
-    
+    width: 100%;
 }
 
 /* Al di sotto di 768px, adatta la larghezza delle card e della benvenuto, e semplifica il layout della navbar */
@@ -372,6 +411,11 @@ nav ul li a:hover {
     .auth-buttons {
         flex-direction: column;
         gap: 5px;
+    }
+
+    .card{
+        width: auto;
+        height: auto;
     }
 }
 

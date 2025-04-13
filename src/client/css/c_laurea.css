@@ -1,0 +1,527 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* 
+    Questa regola applica la proprietà `box-sizing: border-box` a tutti gli elementi, 
+    così come ai loro pseudo-elementi `::before` e `::after`. 
+    Garantisce che larghezza e altezza degli elementi includano padding e bordo, 
+    rendendo i calcoli del layout più prevedibili.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #f9f9f9; 
+}
+
+.container {
+    display: grid;
+    max-width: 100%;
+    min-height: 100vh; /* Usa min-height per permettere l'espansione se necessario */
+    grid-template-rows: auto 1fr 1fr auto ; /* Righe che si adattano automaticamente al contenuto */
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "header"
+        "main"
+        "content"
+        "footer";
+    background-color: white; 
+    color: black;
+    padding-top: 0px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Abilita lo scrolling verticale */
+    -ms-overflow-style: none;  /* IE e Edge */
+    scrollbar-width: none;     /* Firefox */
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.header{
+    grid-area: "header";
+    background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
+    color: white;
+    display: flex;
+    padding: 20px 20px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.h-left{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.h-left h1 {
+    margin: 0;
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 600;
+
+}
+.h-left a {
+    text-decoration: none;
+    color: inherit;
+    cursor: default;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    display: inline-block;           /* Permette di applicare padding e dimensioni */
+    padding: 12px 20px;              /* Ingrandisce il padding per un aspetto più robusto */
+    font-size: 16px;                 /* Aumenta la dimensione del testo */
+    border-radius: 25px;             /* Arrotonda i bordi */
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: rgb(170, 33, 33); /* Stesso rosso del pulsante della barra di ricerca */
+    color: white;
+    transform: scale(1.05);
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons button {
+    padding: 12px 24px;              /* Ingrandisce i pulsanti con più padding */
+    font-size: 16px;                 /* Aumenta la dimensione del testo */
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn {
+    background-color: white;
+    color: rgb(170, 33, 33);
+    border: 1px solid rgb(170, 33, 33);
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    
+}
+
+.login-btn:hover {
+    background-color: rgb(170, 33, 33);
+    color: white;
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+.register-btn {
+    background-color: rgb(170, 33, 33);
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.register-btn:hover {
+    background-color: rgb(150, 30, 30);
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.main {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: auto auto ;  /* Colonna sinistra adatta al contenuto (foto e info) e colonna destra espandibile per desc */
+    grid-template-rows: auto auto auto;     /* Due righe: una per foto e una per info */
+    grid-template-areas:
+        "aside desc"
+        "aside desc"
+        "nav-bar nav-bar";
+    column-gap: 50px;
+    row-gap: 20px;
+    justify-content: center;
+    align-items: start;
+    padding: 0px;
+    margin: 0 auto 30px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    width: 85%;
+    height: fit-content;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.aside{
+    grid-area: aside;
+    display: grid;
+    grid-template-areas:
+        "foto"
+        "info";
+    grid-template-rows: auto auto; /* Due righe: una per foto e una per info */
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px 0px 30px ;
+    width: 100%;
+    height: 100%;
+}
+
+.foto {
+    grid-area: foto;
+    width: 150px;
+    height: 150px;
+    margin:0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foto img {
+    width: 100%;
+    height: 100%;
+}
+
+.info {
+    grid-area: info;
+    margin: 0 auto;
+    /* Eventuali altri stili per la sezione info */
+}
+
+.desc {
+    grid-area: desc;
+    color: black;
+    text-align: justify;
+    margin: 0px;
+    padding:30px;
+    width: 100%;
+    margin: 0 auto;
+    /* Eventuali altri stili per la descrizione */
+}
+
+.desc h1 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 600;
+}
+.desc p {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+.nav-bar {
+    grid-area: nav-bar;             
+    padding: 0px;
+    border-top: 2px solid #ddd;
+    display: flex;
+    width: 100%;
+    position: relative;
+    align-items: center; /* Centra verticalmente il contenuto */
+    z-index: 1000;
+    margin-bottom: 0px;
+    height: 60px; /* Imposta un'altezza fissa se necessario */
+}
+
+.nav-bar .bottone {
+    flex: 1;
+    padding: 0 15px; /* Rimuovo il padding verticale */
+    height: 100%;   /* Fa sì che il bottone prenda tutta l'altezza della nav-bar */
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    border-radius: 15px; /* Arrotonda solo gli angoli inferiori */
+    display: flex;            
+    align-items: center;      /* Centra verticalmente */
+    justify-content: center;  /* Centra orizzontalmente */
+}
+
+.nav-bar .bottone:hover {
+    background-color: rgb(150, 30, 30);
+    color: white;
+ 
+}
+
+.nav-bar .bottone.active {
+    background-color: rgb(150, 30, 30);
+    color: white;
+   
+}
+
+.esami {
+    flex: 1; /* Fa sì che il contenuto occupi lo spazio disponibile sopra il footer */
+    background-color: white;
+    padding: 50px; /* Mantiene un padding uniforme */
+    margin-top: 0px; /* Riduce lo spazio tra la barra di ricerca e il contenuto */
+    display: flex; /* Imposta il layout Flexbox */
+    flex-direction: column; /* Dispone gli elementi in verticale */
+    justify-content: center;
+    align-items:left;
+    padding: 0px;
+    margin: 0 auto 10px; /* Riduci il margine inferiore */
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    width: 85%;
+    height:fit-content;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Aggiunge spazio tra gli elementi */
+}
+
+.esami h1 {
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px; /* Riduci questo valore per diminuire la separazione */
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 600;
+}
+
+.esami h2 {
+    margin-left: 50px;
+    margin-top: 0; /* Rimuovi o riduci il margine superiore */
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 60%; /* Mantiene la larghezza della card */
+    margin: 0 auto;
+    margin-bottom: 10px; 
+}
+.card:hover {
+    transform: translate(-5px); /* Rimuove l'effetto di movimento */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Mantiene l'ombra invariata */
+}
+
+.card h3 {
+    margin: 0 0 0px;
+    font-size: 20px; /* Aumenta la dimensione del titolo */
+    font-weight: 500;
+}
+.card p {
+    margin: 0 0 0;
+    color: #555;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.button-row{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 50px;
+    margin-bottom: 10px;
+    gap:10px
+}
+
+.button-row button {
+    background-color: white;
+    color: rgb(170, 33, 33);
+    border: 1px solid rgb(170, 33, 33);
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button-row button:hover {
+    background-color: rgb(170, 33, 33);
+    color: white;
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.button-row .bottone.active {
+    background-color: rgb(170, 33, 33);
+    color: white;
+    transform: scale(0.98);
+}
+
+.mat_did, .chat {
+    display: flex; /* Layout Flexbox */
+    flex-direction: column; /* Elementi in verticale */
+    background-color: white;
+    /* Imposta padding se necessario */
+    padding: 20px; 
+    /* Imposta margini con una distanza ridotta, ad esempio top 10px */
+    margin: 10px auto 20px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    width: 85%;
+    height: fit-content;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    grid-area: footer;
+    background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    height: fit-content;
+}
+
+/* Al di sotto di 768px, adatta la larghezza delle card e della benvenuto, e semplifica il layout della navbar */
+@media (max-width: 768px) {
+    /* Nascondi la nav se già non visibile */
+    nav {
+        display: none;
+    }
+
+    /* Adatta il layout per le sezioni */
+    .benvenuto,
+    .card {
+        width: 90%;
+        padding: 15px;
+    }
+
+    /* Riduci la dimensione della search-bar */
+    .search-bar {
+        max-width: 100%;
+        border-radius: 20px;
+    }
+
+    /* Modifica dei pulsanti di autenticazione */
+    /* Nascondo il bottone per la registrazione */
+    .register-btn {
+        display: none;
+    }
+
+    /* Rendo il bottone per il login tondo e più piccolo */
+    .login-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        padding: 0;
+        line-height: 40px;
+        text-align: center;
+        background-color: rgb(170, 33, 33);
+        color: white;
+        border: none;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        text-indent: -9999px; /* DA SISTEMARE */
+    }
+
+    .login-btn:hover {
+        transform: scale(1.1);
+        background-color: rgb(150, 30, 30);
+    }
+
+    /* Eventuale centramento dei pulsanti in mobile */
+    .auth-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    /* Se hai altre regole per nav in mobile le mantieni, ad esempio: */
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    /* Adatta il layout dei contenitori centrali */
+    .benvenuto,
+    .card {
+        width: 90%;
+        padding: 15px;
+    }
+
+    /* Navbar in colonna */
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    /* Riduci la dimensione del search-bar e aumenta la rotondità */
+    .search-bar {
+        max-width: 100%;
+        border-radius: 20px;
+    }
+
+    /* Adatta i bottoni della navbar se necessario */
+    .auth-buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .card{
+        width: auto;
+        height: auto;
+    }
+}
+
+/* Per schermi molto piccoli (es. sotto i 480px) */
+@media (max-width: 480px) {
+    .main h2 {
+        font-size: 36px;
+    }
+
+    .main p,
+    .benvenuto p,
+    .card p {
+        font-size: 16px;
+    }
+
+    nav ul li a {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
