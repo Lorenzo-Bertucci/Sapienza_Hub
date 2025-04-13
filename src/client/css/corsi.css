@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
 html, body {
     height: 100%; /* Assicura che il corpo occupi l'intera altezza */
     margin: 0;
@@ -15,42 +20,75 @@ body {
     padding: 0;
     background-color: #f9f9f9;
 }
-header {
-    background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-.header-left {
-    display: flex;
-    align-items: center;
+
+.container {
+    display: grid;
+    max-width: 100%;
+    min-height: 100vh; /* Usa min-height per permettere l'espansione se necessario */
+    grid-template-rows: auto 1fr auto ; /* Righe che si adattano automaticamente al contenuto */
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "header"
+        "content"
+        "footer";
+    background-color: white; 
+    color: black;
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Abilita lo scrolling verticale */
+    -ms-overflow-style: none;  /* IE e Edge */
+    scrollbar-width: none;     /* Firefox */
 }
 
-.header-left h1 {
-    margin: 0;
-    font-size: 28px;
-    margin-right: 20px;
-    line-height: 1;
-    font-weight: 600;
-    color: white;
+.container::-webkit-scrollbar {
+    display: none;
 }
-.header-left a {
-    text-decoration: none;
+
+.header{
+    grid-area: "header";
+    background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
     color: white;
-    cursor: default;
+    display: flex;
+    padding: 20px 20px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
 }
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+
+.h-left{
     display: flex;
     align-items: center;
+    margin-right: 20px;
 }
+
+.h-left h1 {
+    margin: 0;
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 600;
+
+}
+.h-left a {
+    text-decoration: none;
+    color: inherit;
+    cursor: default;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+}
+
 nav ul li {
-    margin: 0 15px;
+    margin-right: 20px;
 }
+
 nav ul li a {
     display: inline-block;           /* Permette di applicare padding e dimensioni */
     padding: 12px 20px;              /* Ingrandisce il padding per un aspetto più robusto */
@@ -58,6 +96,7 @@ nav ul li a {
     border-radius: 25px;             /* Arrotonda i bordi */
     transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
+
 nav ul li a:hover {
     background-color: rgb(170, 33, 33); /* Stesso rosso del pulsante della barra di ricerca */
     color: white;
@@ -68,7 +107,39 @@ nav ul li a:hover {
     display: flex;
     gap: 10px;
 }
+
 .auth-buttons button {
+    padding: 12px 24px;              /* Ingrandisce i pulsanti con più padding */
+    font-size: 16px;                 /* Aumenta la dimensione del testo */
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn {
+    background-color: white;
+    color: rgb(170, 33, 33);
+    border: 1px solid rgb(170, 33, 33);
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    
+}
+
+.login-btn:hover {
+    background-color: rgb(170, 33, 33);
+    color: white;
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+.register-btn {
+    background-color: rgb(170, 33, 33);
+    color: white;
     padding: 10px 20px;
     font-size: 14px;
     border: none;
@@ -77,25 +148,9 @@ nav ul li a:hover {
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
-.login-btn {
-    background-color: white;
-    color: #e60000;
-    border: 1px solid #e60000;
-}
-.login-btn:hover {
-    background-color: #e60000;
-    color: white;
-    transform: scale(1.05);
-}
-.register-btn {
-    background-color: #e60000;
-    color: white;
-}
 .register-btn:hover {
-    background-color: #cc0000;
+    background-color: rgb(150, 30, 30);
     transform: scale(1.05);
-}
-.auth-buttons button:hover {
     opacity: 0.9;
 }
 
@@ -113,7 +168,7 @@ nav ul li a:hover {
     width: 90%;
     display: flex;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: whitesmoke;
+    background-color: white;
     padding: 10px; 
     border-radius: 30px; 
 }
@@ -125,16 +180,16 @@ nav ul li a:hover {
     border: none;
     border-radius: 30px 0 0 30px; /* Arrotonda i bordi sinistri */
     outline: none;
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 .search-bar button {
     padding: 15px 20px;
     font-size: 16px;
     border: none;
-    background-color: whitesmoke;
+    background-color: white;
     color: rgba(192,54,57,1);
-    border-radius:  30px ; /* Arrotonda i bordi destri */
+    border-radius:  30px ; /* Arrotonda i bordi  */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -143,6 +198,13 @@ nav ul li a:hover {
     background-color: rgba(192,54,57,1);
     color: white;
     transform: scale(1.05);
+}
+
+.search{
+    width: 48px; 
+    height: 48px;
+    margin: 5px;
+    display: block; 
 }
 .content {
     flex: 1; /* Fa sì che il contenuto occupi lo spazio disponibile sopra il footer */
@@ -153,24 +215,32 @@ nav ul li a:hover {
     flex-direction: column; /* Dispone gli elementi in verticale */
     gap: 20px; /* Aggiunge spazio tra gli elementi */
 }
+
+.content h1 {
+    font-size: 30px; /* Aumenta la dimensione del titolo */
+    font-weight: 600; /* Rende il titolo più bold */
+    margin-left: 100px; /* Rimuove margini extra */
+    color: black;
+    text-align: left; /* Centra il titolo */
+}
 .card {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: whitesmoke;
+    background-color: white;
     border: 1px solid #ddd;
     border-radius: 15px;
-    padding: 20px;
+    padding: 0px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 60%;
     margin: 0 auto;
     
 }
 .card:hover {
-    transform: scale(1.07);
+    transform: translate(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); 
     background-color:rgb(170, 33, 33);
-    color: whitesmoke;
+    color: white;
 }
 
 .card h3 {
@@ -185,11 +255,24 @@ nav ul li a:hover {
 }
 
 .card:hover p{
-    color: whitesmoke;
+    color: white;
+}
+
+.card a {
+    display: flex; /* Imposta il layout Flexbox per il contenuto */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start; /* Allinea il contenuto a sinistra */
+    text-decoration: none; /* Rimuove la sottolineatura del link */
+    color: inherit; /* Mantiene il colore del testo */
+    width: 100%; /* Occupa tutta la larghezza della card */
+    height: 100%;
+    padding: 20px; /* Occupa tutta l'altezza della card */ /* Mantiene il padding interno */
+    border-radius: 15px; /* Mantiene gli angoli arrotondati */
 }
 
 
-footer {
+.footer {
     background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
     color: white ; /* Forza il testo nero */
     text-align: center;

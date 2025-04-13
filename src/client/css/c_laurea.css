@@ -33,7 +33,8 @@ html, body {
         "footer";
     background-color: white; 
     color: black;
-    padding-top: 0px;
+    padding: 0px;
+    margin: 0px ;
     overflow-x: hidden;
     overflow-y: auto; /* Abilita lo scrolling verticale */
     -ms-overflow-style: none;  /* IE e Edge */
@@ -287,8 +288,7 @@ nav ul li a:hover {
 .esami {
     flex: 1; /* Fa sì che il contenuto occupi lo spazio disponibile sopra il footer */
     background-color: white;
-    padding: 50px; /* Mantiene un padding uniforme */
-    margin-top: 0px; /* Riduce lo spazio tra la barra di ricerca e il contenuto */
+    padding: 50px; /* Mantiene un padding uniforme */   
     display: flex; /* Imposta il layout Flexbox */
     flex-direction: column; /* Dispone gli elementi in verticale */
     justify-content: center;
@@ -326,15 +326,28 @@ nav ul li a:hover {
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 15px;
-    padding: 20px;
+    padding: 0px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 60%; /* Mantiene la larghezza della card */
     margin: 0 auto;
     margin-bottom: 10px; 
 }
 .card:hover {
-    transform: translate(-5px); /* Rimuove l'effetto di movimento */
+    transform: translate(-5px); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Mantiene l'ombra invariata */
+}
+
+.card a {
+    display: flex; /* Imposta il layout Flexbox per il contenuto */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start; /* Allinea il contenuto a sinistra */
+    text-decoration: none; /* Rimuove la sottolineatura del link */
+    color: inherit; /* Mantiene il colore del testo */
+    width: 100%; /* Occupa tutta la larghezza della card */
+    height: 100%;
+    padding: 20px; /* Occupa tutta l'altezza della card */ /* Mantiene il padding interno */
+    border-radius: 15px; /* Mantiene gli angoli arrotondati */
 }
 
 .card h3 {
@@ -389,9 +402,9 @@ nav ul li a:hover {
     flex-direction: column; /* Elementi in verticale */
     background-color: white;
     /* Imposta padding se necessario */
-    padding: 20px; 
+    padding: 20px;
     /* Imposta margini con una distanza ridotta, ad esempio top 10px */
-    margin: 10px auto 20px;
+    margin: 0 auto 10px;
     border: 1px solid #ddd;
     border-radius: 15px;
     width: 85%;

@@ -4,96 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Corsi di Laurea - Sapienza Hub</title>
-    <link rel="stylesheet" href="../css/corsi.css">
-    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
+    <base href="/src/client/">
+    <link rel="stylesheet" href="css/corsi.css">
+    <link rel="icon" href="assets/favicon.png" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <div class="header-left">
-            <a href="index.html">
-                <h1>SapienzHub</h1>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="corsi.html">Corsi</a></li>
-                    <li><a href="#">Professori</a></li>
-                    <li><a href="#">Contatti</a></li>
-                </ul>
-            </nav>
+    <div class="container">
+        <div class="header">
+            <div class="h-left">
+                <a href="html/index.html">
+                    <h1>SapienzHub</h1>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="html/corsi.html">Corsi</a></li>
+                        <li><a href="#">Professori</a></li>
+                        <li><a href="#">Contatti</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="auth-buttons">
+                <a href="html/login.html"><button class="login-btn">Accedi</button></a>
+                <a href="html/register.html"><button class="register-btn">Registrati</button></a>
+            </div>
         </div>
-        <div class="auth-buttons">
-            <a href="login.html"><button class="login-btn">Accedi</button></a>
-            <a href="register.html"><button class="register-btn">Registrati</button></a>
+        <div class="content">
+            <div class="search-bar">
+                <img src="assets/lente.png" alt="search" class="search" >
+                <input type="text" id="search-input" placeholder="Cerca il tuo corso di laurea">
+                <button>Cerca</button>
+            </div>
+                <h1>Lista dei Corsi di Laurea</h1>
+                <div class="card">
+                    <a href="html/corsi/ing_inf/ing_inf.html">
+                        <h3>💻 Ingegneria Informatica</h3>
+                        <p>~Corso Triennale</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a>
+                        <h3>🩺 Medicina e Chirurgia</h3>
+                        <p>~Corso Unico</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a>
+                        <h3>⚖️ Giurisprudenza</h3>
+                        <p>~Corso Unico</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a >
+                        <h3>🏛️ Scienze Politiche</h3>
+                        <p>~Corso Triennale</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a >
+                        <h3>⚙️ Ingegneria Meccanica</h3>
+                        <p>~Corso Triennale</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a >
+                        <h3>🧠 Psicologia</h3>
+                        <p>~Corso Triennale</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a >
+                        <h3>🏗️ Architettura</h3>
+                        <p>~Corso Triennale</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a >
+                        <h3>🧬 Biotecnologie</h3>
+                        <p>~Corso Triennale</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a >
+                        <h3>⚗️ Chimica Industriale</h3>
+                        <p>~Corso Triennale</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a >
+                        <h3>➗ Matematica</h3>
+                        <p>~Corso Triennale</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a >
+                        <h3>🔭 Fisica</h3>
+                        <p>~Corso Triennale</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a >
+                        <h3>📚 Lettere Moderne</h3>
+                        <p>~Corso Triennale</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a >
+                        <h3>🤖 Informatica</h3>
+                        <p>~Corso Triennale</p>
+                    </a>
+                </div>
         </div>
-    </header>
-    <div class="content">
-        <div class="search-bar">
-            <img src="../assets/lente.png" alt="search" class="search">
-            <input type="text" id="search-input" placeholder="Cerca il tuo corso di laurea">
-            <button>Cerca</button>
-        </div>
-        <div>
-            <h1>Lista dei Corsi di Laurea</h1>
-        </div>
-            <a href="../html/corsi/ing_inf/ing_inf.html" style="text-decoration: none; color: inherit;">
-            <div class="card">
-                <h3>💻 Ingegneria Informatica</h3>
-                <p>~Corso Triennale</p>
-            </div>
-            </a>
-            <div class="card">
-                <h3>🩺 Medicina e Chirurgia</h3>
-                <p>~Corso Unico</p>
-            </div>
-            <div class="card">
-                <h3>⚖️ Giurisprudenza</h3>
-                <p>~Corso Unico</p>
-            </div>
-            <div class="card">
-                <h3>🏛️ Scienze Politiche</h3>
-                <p>~Corso Triennale</p>
-            </div>
-            <div class="card">
-                <h3>⚙️ Ingegneria Meccanica</h3>
-                <p>~Corso Triennale</p>
-            </div>
-            <div class="card">
-                <h3>🧠 Psicologia</h3>
-                <p>~Corso Triennale</p>
-            </div>
-            <div class="card">
-                <h3>🏗️ Architettura</h3>
-                <p>~Corso Triennale</p>
-            </div>
-            <div class="card">
-                <h3>🧬 Biotecnologie</h3>
-                <p>~Corso Triennale</p>
-            </div>
-            <div class="card">
-                <h3>⚗️ Chimica Industriale</h3>
-                <p>~Corso Triennale</p>
-            </div>
-            <div class="card">
-                <h3>➗ Matematica</h3>
-                <p>~Corso Triennale</p>
-            </div>
-            <div class="card">
-                <h3>🔭 Fisica</h3>
-                <p>~Corso Triennale</p>
-            </div>
-            <div class="card">
-                <h3>📚 Lettere Moderne</h3>
-                <p>~Corso Triennale</p>
-            </div>
-            <div class="card">
-                <h3>🤖 Informatica</h3>
-                <p>~Corso Triennale</p>
-            </div>
-    </div>
-    <footer>
         <div class="footer">
             <p>&copy; 2025 Sapienza Hub. Tutti i diritti riservati.</p>
         </div>
-    </footer>
+    </div>
 </body>
 </html>
