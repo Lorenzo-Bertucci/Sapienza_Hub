@@ -99,15 +99,6 @@ nav ul li a:hover {
     opacity: 0.9;
 }
 
-.corsi {
-    background: none;
-    text-align: left; /* Allinea il testo a sinistra */
-    padding: 0px; /* Riduce il padding per allineare meglio con la barra */
-    margin-top: 0; /* Rimuove il margine superiore */
-    display: flex;
-    align-items: center; /* Allinea verticalmente il testo con la barra */
-    gap: 20px; /* Aggiunge spazio tra il testo e la barra */
-}
 .hero h2 {
     font-size: 25px; /* Riduce leggermente la dimensione del testo */
     font-weight: 700; /* Rende il testo più bold */
@@ -118,13 +109,13 @@ nav ul li a:hover {
 }
 .search-bar {
     margin: 0 auto; /* Centra la barra orizzontalmente */
-    width: 85%; /* La barra occupa il 95% della larghezza della pagina */
-    max-width: none; /* Rimuove eventuali limiti di larghezza massima */
+    border: 3px solid rgba(192,54,57,1);
+    width: 90%;
     display: flex;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    background: white;
-    padding: 10px; /* Mantiene un design pulito */
-    border-radius: 30px; /* Mantiene un aspetto tondeggiante */
+    background-color: whitesmoke;
+    padding: 10px; 
+    border-radius: 30px; 
 }
 
 .search-bar input {
@@ -134,13 +125,14 @@ nav ul li a:hover {
     border: none;
     border-radius: 30px 0 0 30px; /* Arrotonda i bordi sinistri */
     outline: none;
+    background-color: whitesmoke;
 }
 
 .search-bar button {
     padding: 15px 20px;
     font-size: 16px;
     border: none;
-    background-color: white;
+    background-color: whitesmoke;
     color: rgba(192,54,57,1);
     border-radius:  30px ; /* Arrotonda i bordi destri */
     cursor: pointer;
@@ -165,37 +157,35 @@ nav ul li a:hover {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: white;
+    background-color: whitesmoke;
     border: 1px solid #ddd;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 60%; /* Mantiene la larghezza della card */
-    margin: 0 auto; /* Rimuove il centraggio */
-    margin-left: 1; /* Sposta la card molto più a sinistra */
+    width: 60%;
+    margin: 0 auto;
+    
 }
 .card:hover {
-    transform: translate(-5px); /* Rimuove l'effetto di movimento */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Mantiene l'ombra invariata */
+    transform: scale(1.07);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); 
+    background-color:rgb(170, 33, 33);
+    color: whitesmoke;
 }
 
 .card h3 {
     margin: 0 0 0px;
-    font-size: 20px; /* Aumenta la dimensione del titolo */
+    font-size: 20px; 
     font-weight: 500;
 }
 .card p {
     margin: 0 0 0;
-    color: #555;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1.5;
+    color: #999;
+    font-size: 15px;
 }
-.card img {
-    width: 100%; /* L'immagine occupa tutta la larghezza disponibile */
-    height: auto; /* Mantiene le proporzioni */
-    border-radius: 10px; /* Arrotonda i bordi dell'immagine */
-    margin-top: 20px;
+
+.card:hover p{
+    color: whitesmoke;
 }
 
 

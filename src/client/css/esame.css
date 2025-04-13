@@ -32,20 +32,17 @@ body {
     background-color: #f9f9f9;
 }
 
-.header{
-    grid-area: header;
-    background: none;
+.header {
+    background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
+    padding: 15px 20px;
     display: flex;
-    padding: 20px 20px;
     justify-content: space-between;
     align-items: center;
-    background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-
-.h-left{
+.h-left {
     display: flex;
     align-items: center;
-    margin-right: 20px;
 }
 
 .h-left h1 {
@@ -58,30 +55,28 @@ body {
 }
 .h-left a {
     text-decoration: none;
-    color: inherit;
+    color: white;
     cursor: default;
 }
-
-nav ul{
-    display: flex;
-    align-items: center;
+nav ul {
     list-style: none;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
-
 nav ul li {
-    margin-right: 20px;
+    margin: 0 15px;
 }
 nav ul li a {
-    display: inline-block;           
-    padding: 12px 20px;              
-    font-size: 16px;                
-    border-radius: 25px;            
+    display: inline-block;           /* Permette di applicare padding e dimensioni */
+    padding: 12px 20px;              /* Ingrandisce il padding per un aspetto più robusto */
+    font-size: 16px;                 /* Aumenta la dimensione del testo */
+    border-radius: 25px;             /* Arrotonda i bordi */
     transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 nav ul li a:hover {
-    background-color: rgb(170, 33, 33); 
+    background-color: rgb(170, 33, 33); /* Stesso rosso del pulsante della barra di ricerca */
     color: white;
     transform: scale(1.05);
 }
@@ -91,8 +86,8 @@ nav ul li a:hover {
     gap: 10px;
 }
 .auth-buttons button {
-    padding: 12px 24px;              
-    font-size: 16px;              
+    padding: 10px 20px;
+    font-size: 14px;
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -101,36 +96,23 @@ nav ul li a:hover {
 }
 .login-btn {
     background-color: white;
-    color: rgb(170, 33, 33);
-    border: 1px solid rgb(170, 33, 33);
-    padding: 10px 20px;
-    font-size: 14px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    
+    color: #e60000;
+    border: 1px solid #e60000;
 }
 .login-btn:hover {
-    background-color: rgb(170, 33, 33);
+    background-color: #e60000;
     color: white;
     transform: scale(1.05);
-    opacity: 0.9;
 }
 .register-btn {
-    background-color: rgb(170, 33, 33);
+    background-color: #e60000;
     color: white;
-    padding: 10px 20px;
-    font-size: 14px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .register-btn:hover {
-    background-color: rgb(150, 30, 30);
+    background-color: #cc0000;
     transform: scale(1.05);
+}
+.auth-buttons button:hover {
     opacity: 0.9;
 }
 
