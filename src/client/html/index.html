@@ -32,8 +32,8 @@
             <h2>"Meno sbatti più sapienza"</h2>
             <p>Trova il tuo corso di laurea e inizia la tua esperienza universitaria insieme a noi</p>
             <div class="search-bar">
-                <input type="text" placeholder="Cerca il tuo corso di laurea">
-                <button>Cerca</button>
+                <input type="text" id="search-input" placeholder="Cerca il tuo corso di laurea">
+                <button id="search-button">Cerca</button>
             </div>
         </div>
         <div class="aside">
@@ -97,5 +97,24 @@
         </div>
     </footer>
     </div>
+    <script>
+        document.getElementById("search-button").addEventListener("click", function () {
+            const searchInput = document.getElementById("search-input").value.trim();
+            if (searchInput) {
+                // Reindirizza alla pagina corsi.html con il termine di ricerca come parametro
+                window.location.href = `html/corsi.html?search=${encodeURIComponent(searchInput)}`;
+            }
+        });
+
+        // Permetti la ricerca anche premendo "Invio"
+        document.getElementById("search-input").addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                const searchInput = document.getElementById("search-input").value.trim();
+                if (searchInput) {
+                    window.location.href = `html/corsi.html?search=${encodeURIComponent(searchInput)}`;
+                }
+            }
+        });
+    </script>
 </body>
 </html>

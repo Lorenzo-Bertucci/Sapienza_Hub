@@ -118,5 +118,49 @@
             <p>&copy; 2025 Sapienza Hub. Tutti i diritti riservati.</p>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get("search")?.toLowerCase() || "";
+            const cards = document.querySelectorAll(".card");
+            const searchInput = document.getElementById("search-input");
+            const searchButton = document.querySelector(".search-bar button");
+
+            // Imposta il valore della barra di ricerca con il testo della query
+            if (searchQuery) {
+                searchInput.value = searchQuery; // Mostra il testo nella barra di ricerca
+            }
+
+            // Funzione per filtrare i corsi
+            function filterCourses(query) {
+                cards.forEach(card => {
+                    const courseName = card.querySelector("h3").textContent.toLowerCase();
+                    if (courseName.includes(query)) {
+                        card.style.display = "flex"; // Mostra la card
+                    } else {
+                        card.style.display = "none"; // Nascondi la card
+                    }
+                });
+            }
+
+            // Filtra i corsi se c'è un termine di ricerca
+            if (searchQuery) {
+                filterCourses(searchQuery);
+            }
+
+            // Aggiungi un evento per la barra di ricerca nella pagina corsi.html
+            searchButton.addEventListener("click", function () {
+                const query = searchInput.value.toLowerCase();
+                filterCourses(query);
+            });
+
+            searchInput.addEventListener("keydown", function (event) {
+                if (event.key === "Enter") {
+                    const query = searchInput.value.toLowerCase();
+                    filterCourses(query);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
