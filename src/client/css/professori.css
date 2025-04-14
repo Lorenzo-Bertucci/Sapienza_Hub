@@ -163,7 +163,7 @@ nav ul li a:hover {
     padding-left: 100px; /* Allinea il testo con la barra di ricerca */
 }
 .search-bar {
-    margin: 0 auto; /* Centra la barra orizzontalmente */
+     /* Centra la barra orizzontalmente */
     border: 3px solid rgba(192,54,57,1);
     width: 90%;
     display: flex;
@@ -171,6 +171,7 @@ nav ul li a:hover {
     background-color: white;
     padding: 10px; 
     border-radius: 30px; 
+    align-self: center;
 }
 
 .search-bar input {
