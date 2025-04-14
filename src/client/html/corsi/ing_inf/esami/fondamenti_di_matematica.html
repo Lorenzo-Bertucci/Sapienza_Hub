@@ -30,11 +30,13 @@
         </div>
         
         <div class="main">
-            <div class="image">
-                <img src="assets/analisi.jpg" alt="Studente di Analisi I">
+            <div class="dati">
+                <p><b>CFU: </b>9</p>
+                <p><b>SSD: </b>MAT/09</p>
+                <p><b>Lingua: </b>Italiano</p>
             </div>
             <div class="desc">
-                <h1>ANALISI I</h1><BR>
+                <h1>Fondamenti di Matematica</h1><BR>
                 <p>
                     -Obiettivi generali:<br>
                     Apprendimento delle nozioni di base del calcolo differenziale e integrale.
@@ -50,7 +52,6 @@
                     <br>-Capacità di apprendere:
                     <br>Imparare ad approcciare lo studio di una materia scientifica e in particolare matematica, riconoscendo i propri dubbi e cercandone una spiegazione, sia in maniera indipendente che con l’aiuto di docenti e altri studenti.
                 </p>
-                
             </div>
             <div class="barra">
                 <button class="bottone">Professori</button>
@@ -59,6 +60,32 @@
                 <button class="bottone">Recensioni</button>
             </div>
         </div>
+
+        <div class="content">
+
+            <div class="professori">
+                <h2>Primo Canale</h2>
+                <div class="prof">
+                    <h3>Saverio Salzo</h3>
+                </div>
+                <br><br>
+                <h2>Secondo Canale</h2>
+                <div class="prof">
+                    <h3>Saverio Salzo</h3>
+                </div>
+            </div>
+            <div class="mat-did">
+                <h3>Materiale didattico</h3>
+            </div>
+            <div class="community">
+                <h3>Community</h3>
+            </div>
+            <div class="recensioni">
+                <h3>Recensioni</h3>
+            </div>
+
+
+        </div>
         
         <footer>
             <div class="footer">
@@ -66,5 +93,57 @@
             </div>
         </footer>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        
+          /**
+           * Imposta un gruppo di bottoni con:
+           * - Un bottone "default" (che contiene defaultString nel testo) attivo all'avvio
+           * - Gestione del click per mostrare la sezione corrispondente
+           *
+           * @param {NodeList} buttons - I bottoni del gruppo
+           * @param {string} defaultString - Stringa (in minuscolo) da cercare per impostare il default
+           * @param {Object} sections - Un oggetto in cui le chiavi sono stringhe da cercare (in minuscolo)
+           *                            e i valori sono gli elementi da mostrare/nascondere
+           */
+          function setupButtonGroup(buttons, defaultString, sections) {
+            // Imposta il bottone di default
+            buttons.forEach(btn => {
+              if (btn.textContent.trim().toLowerCase().includes(defaultString)) {
+                btn.classList.add('active');
+              } else {
+                btn.classList.remove('active');
+              }
+            });
+            // Imposta la visualizzazione di default: mostra la sezione del bottone default
+            for (const condition in sections) {
+              sections[condition].style.display = condition === defaultString ? 'block' : 'none';
+            }
+            // Gestione del click: mostra la sezione corrispondente e rende attivo il bottone cliccato
+            buttons.forEach(btn => {
+              btn.addEventListener('click', () => {
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const btnText = btn.textContent.trim().toLowerCase();
+                for (const condition in sections) {
+                  sections[condition].style.display = btnText.includes(condition) ? 'block' : 'none';
+                }
+              });
+            });
+          }
+          
+          // Imposta per i bottoni della barra
+          const navButtons = document.querySelectorAll('.barra .bottone');
+          const navSections = {
+            "professori": document.querySelector(".professori"),
+            "materiale": document.querySelector(".mat-did"),
+            "community": document.querySelector(".community"),
+            "recensioni": document.querySelector(".recensioni")
+          };
+          // Imposta "professori" come default
+          setupButtonGroup(navButtons, "professori", navSections);
+
+        });
+    </script>
 </body>
 </html>

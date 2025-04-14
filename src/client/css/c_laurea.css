@@ -288,12 +288,11 @@ nav ul li a:hover {
 .esami {
     flex: 1; /* Fa sì che il contenuto occupi lo spazio disponibile sopra il footer */
     background-color: white;
-    padding: 50px; /* Mantiene un padding uniforme */   
+    padding: 0; /* Mantiene un padding uniforme */   
     display: flex; /* Imposta il layout Flexbox */
     flex-direction: column; /* Dispone gli elementi in verticale */
     justify-content: center;
     align-items:left;
-    padding: 0px;
     margin: 0 auto 10px; /* Riduci il margine inferiore */
     border: 1px solid #ddd;
     border-radius: 15px;
