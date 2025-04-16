@@ -283,3 +283,147 @@ nav ul li a:hover {
     flex-direction: column;
     border-top: 1px solid #ddd; /* Linea sottile sopra il footer */
 }
+
+@media (max-width: 768px) {
+    
+    nav {
+        display: none;
+    }
+
+    .register-btn {
+        display: none;
+    }
+
+    .content h1{
+        font-size: 25px;
+    }
+
+    .h-left h1 {
+        margin: 0;
+    }
+
+    .login-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        padding: 0;
+        line-height: 40px;
+        text-align: center;
+        background-color: rgb(170, 33, 33);
+        background-image: url('../assets/utente.png');
+        background-size: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+        border: none;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        text-indent: -9999px; /* DA SISTEMARE */
+    }
+
+    .login-btn:hover {
+        transform: scale(1.1);
+        background-color: rgb(150, 30, 30);
+    }
+
+    .auth-buttons {
+        flex-direction: row;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .card{
+        width: 100%;
+        align-self: center;
+    }
+
+    .card h3 {
+        font-size: 17px;
+    }
+
+    .card p{
+        font-size: 14px;
+    }
+
+
+    .search-bar {
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 20px;
+    }
+
+}
+
+/*sotto i 480px */
+@media (max-width: 480px) {
+
+    .header{
+        width: 100%;
+        padding: 10px;
+    }
+
+    .auth-buttons {
+        margin-right: 10px;
+    }
+
+    .content {
+        max-width: 90%;
+        padding: 0px;
+        margin:0px;
+
+    }
+
+    .content h1{
+        font-size: 20px;
+    }
+
+    .card{
+        width: 90%;
+        flex-direction: column;
+    }
+
+    .card h3 {
+        font-size: 13px;
+    }
+
+    .card p{
+        font-size: 10px;
+    }
+
+    .h-left h1 {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .search-bar{
+        transform: scale(0.95);
+    }
+
+    .search-bar input::placeholder{
+        font-size: 10px;
+    }
+
+    .search-bar input{
+        width: 90%;
+        margin: 0 0 0;
+        border-radius: 20px;
+    }
+
+    .search-bar img{
+        transform: scale(0.7);
+        transform-origin: center;
+    }
+
+    .search-bar button{
+        transform: scale(0.7);
+        font-size: 18px;
+        transform-origin: center;
+    }
+
+    .footer {
+        margin-top:10px;
+        font-size: 12px;
+        padding: 10px;
+        text-align: center;
+    }
+
+}
