@@ -52,7 +52,7 @@ body {
 }
 
 .header{
-    grid-area: "header";
+    grid-area: header;
     background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
     color: white;
     display: flex;
@@ -399,9 +399,7 @@ nav ul li a:hover {
     display: flex; /* Layout Flexbox */
     flex-direction: column; /* Elementi in verticale */
     background-color: white;
-    /* Imposta padding se necessario */
     padding: 20px;
-    /* Imposta margini con una distanza ridotta, ad esempio top 10px */
     margin: 0 auto 10px;
     border: 1px solid #ddd;
     border-radius: 15px;

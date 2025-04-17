@@ -46,7 +46,7 @@ body {
 }
 
 .header{
-    grid-area: "header";
+    grid-area: header;
     background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
     color: white;
     display: flex;
@@ -207,13 +207,14 @@ nav ul li a:hover {
     display: block; 
 }
 .content {
-    flex: 1; /* Fa sì che il contenuto occupi lo spazio disponibile sopra il footer */
+    grid-area: content;
+    flex: 1; 
     background-color: white;
-    padding: 20px; /* Mantiene un padding uniforme */
-    margin-top: 10px; /* Riduce lo spazio tra la barra di ricerca e il contenuto */
-    display: flex; /* Imposta il layout Flexbox */
-    flex-direction: column; /* Dispone gli elementi in verticale */
-    gap: 20px; /* Aggiunge spazio tra gli elementi */
+    padding: 20px; 
+    margin-top: 10px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px;
 }
 
 .content h1 {
@@ -274,6 +275,7 @@ nav ul li a:hover {
 
 .footer {
     background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
+    grid-area: footer;
     color: white ; /* Forza il testo nero */
     text-align: center;
     padding: 20px 0;

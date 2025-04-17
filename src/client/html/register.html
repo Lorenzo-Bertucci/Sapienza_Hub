@@ -3,9 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrazione</title>
+    <title>Registrati - SapienzHub</title>
+    <base href="/src/client/">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" href="assets/favicon.png" type="image/x-icon">
 </head>
 <body>
-    <h1>Pagina di Registrazione</h1>
+
+    <div class="container">
+        <div class="header">
+            <div class="h-left">
+                <a href="html/index.html">
+                    <h1>SapienzHub</h1>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="html/corsi.html">Corsi</a></li>
+                        <li><a href="html/professori.html">Professori</a></li>
+                        <li><a href="#">Contatti</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="content">
+            <h3>SapienzHub</h3>
+            <form action="/register" method="POST" class="login-form">
+                <input type="text" id="nome" name="nome" placeholder="Inserisci il tuo nome" required>
+                <br>
+                <input type="text" id="cognome" name="cognome" placeholder="Inserisci il tuo cognome" required>
+                <br>
+                <input type="email" id="email" name="email" placeholder="Inserisci la mail istituzionale" required>
+                <br>
+                <input type="password" id="password" name="password" placeholder="Inserisci la tua password" required>
+                <br>
+                <button type="submit" class="login-btn">Registrati</button>
+            </form>
+            <p>Hai già un account? <a href="html/login.html">Accedi qui</a></p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 Sapienza Hub. Tutti i diritti riservati.</p>
+        </div>
+    </div>
 </body>
 </html>
