@@ -49,7 +49,7 @@
                 </p>
             </div>
             <nav class="nav-bar">
-                <button class="bottone"> <strong> Esami</strong></button>
+                <button class="bottone"> <strong>Esami</strong></button>
                 <button class="bottone"><strong>Recensioni</strong></button>
             </nav>
         </div>
@@ -61,16 +61,12 @@
                         <p>~Ingegneria informatica e automatica</p>
                     </a>
                 </div>
-                    
+            </div>
+            <div class="recensioni">
+                <h3>recensioni</h3>
             </div>
 
-            <div class="mat_did">
-                prova materiale didattico
-            </div>
-
-            <div class="chat">
-                prova chat
-            </div>
+            
         </div>
         <div class="footer">
             <p>&copy; 2025 SapienzHub. Tutti i diritti riservati.</p>
@@ -119,8 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const navButtons = document.querySelectorAll('.nav-bar .bottone');
   const navSections = {
     "esami": document.querySelector(".esami"),
-    "materiale": document.querySelector(".mat_did"),
-    "community": document.querySelector(".chat") // Aggiungi la sezione "chat"
+    "recensioni": document.querySelector(".recensioni"),
   };
   // Imposta "esami" come default
   setupButtonGroup(navButtons, "esami", navSections);

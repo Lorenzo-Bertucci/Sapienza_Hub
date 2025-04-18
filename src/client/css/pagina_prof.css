@@ -1,11 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-/* 
-    Questa regola applica la proprietà `box-sizing: border-box` a tutti gli elementi, 
-    così come ai loro pseudo-elementi `::before` e `::after`. 
-    Garantisce che larghezza e altezza degli elementi includano padding e bordo, 
-    rendendo i calcoli del layout più prevedibili.
-*/
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -14,6 +9,7 @@ html, body {
     height: 100%;
     width: 100%;
     margin: 0;
+    padding:0;
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', Arial, sans-serif;
@@ -23,8 +19,8 @@ html, body {
 .container {
     display: grid;
     max-width: 100%;
-    min-height: 100vh; /* Usa min-height per permettere l'espansione se necessario */
-    grid-template-rows: auto 1fr 1fr auto ; /* Righe che si adattano automaticamente al contenuto */
+    min-height: 100vh; 
+    grid-template-rows: auto 1fr 1fr auto ; 
     grid-template-columns: 1fr;
     grid-template-areas:
         "header"
@@ -33,22 +29,14 @@ html, body {
         "footer";
     background-color: white; 
     color: black;
-    padding: 0px;
-    margin: 0px ;
-    overflow-x: hidden;
-    overflow-y: auto; /* Abilita lo scrolling verticale */
-    -ms-overflow-style: none;  /* IE e Edge */
-    scrollbar-width: none;     /* Firefox */
+    overflow-y: auto; 
+    -ms-overflow-style: none;  
+    scrollbar-width: none;    
 }
 
+/*nasconde la barra di scorrimento*/
 .container::-webkit-scrollbar {
     display: none;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
 }
 
 .header{
@@ -71,9 +59,7 @@ body {
 }
 
 .h-left h1 {
-    margin: 0;
     font-size: 28px;
-    line-height: 1;
     font-weight: 600;
 
 }
@@ -87,8 +73,6 @@ nav ul{
     display: flex;
     align-items: center;
     list-style: none;
-    margin: 0;
-    padding: 20px;
 }
 
 nav ul li {
@@ -96,15 +80,15 @@ nav ul li {
 }
 
 nav ul li a {
-    display: inline-block;           /* Permette di applicare padding e dimensioni */
-    padding: 12px 20px;              /* Ingrandisce il padding per un aspetto più robusto */
-    font-size: 16px;                 /* Aumenta la dimensione del testo */
-    border-radius: 25px;             /* Arrotonda i bordi */
+    display: inline-block;           
+    padding: 12px 20px;              
+    font-size: 16px;                 
+    border-radius: 25px;            
     transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 
 nav ul li a:hover {
-    background-color: rgb(170, 33, 33); /* Stesso rosso del pulsante della barra di ricerca */
+    background-color: rgb(170, 33, 33);
     color: white;
     transform: scale(1.05);
 }
@@ -115,8 +99,8 @@ nav ul li a:hover {
 }
 
 .auth-buttons button {
-    padding: 12px 24px;              /* Ingrandisce i pulsanti con più padding */
-    font-size: 16px;                 /* Aumenta la dimensione del testo */
+    padding: 12px 24px;              
+    font-size: 16px;                 
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -143,6 +127,7 @@ nav ul li a:hover {
     transform: scale(1.05);
     opacity: 0.9;
 }
+
 .register-btn {
     background-color: rgb(170, 33, 33);
     color: white;
@@ -154,6 +139,7 @@ nav ul li a:hover {
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 .register-btn:hover {
     background-color: rgb(150, 30, 30);
     transform: scale(1.05);
@@ -169,10 +155,8 @@ nav ul li a:hover {
         "foto desc"
         "nav-bar nav-bar";
     column-gap: 0px;
-    row-gap: 10px;
-    justify-content: stretch;
+    row-gap: 20px;
     align-items: start;
-    padding: 0px;
     margin: 0 auto 30px;
     background-color: white;
     border: 1px solid #ddd;
@@ -195,10 +179,7 @@ nav ul li a:hover {
 
 .foto img {
     width: 150px;
-    margin: 0auto;
     height: 150px;
-    object-fit: cover;  /* Adatta l'immagine per coprire il contenitore e centrarla */
-    object-position: center;  /* Centra l'immagine orizzontalmente e verticalmente */
 }
 
 
@@ -206,52 +187,45 @@ nav ul li a:hover {
     grid-area: desc;
     color: black;
     text-align: justify;
-    margin: 0px;
     padding:30px;
     padding-left: 0px;
     width: 100%;
     margin: 0 auto;
-    /* Eventuali altri stili per la descrizione */
 }
 
 .desc h1 {
-    margin-top: 0px;
     margin-bottom: 10px;
     font-size: 30px;
-    line-height: 1;
     font-weight: 600;
 }
 .desc p {
-    margin: 0;
     font-size: 20px;
     line-height: 1.5;
     font-weight: 300;
 }
 
 .nav-bar {
-    grid-area: nav-bar;             
-    padding: 0px;
+    grid-area: nav-bar;
     border-top: 2px solid #ddd;
     display: flex;
     width: 100%;
-    align-items: center; /* Centra verticalmente il contenuto */
-    margin-bottom: 0px;
-    height: 60px; /* Imposta un'altezza fissa se necessario */
+    align-items: center; 
+    height: 60px; 
 }
 
 .nav-bar .bottone {
     flex: 1;
-    padding: 0 15px; /* Rimuovo il padding verticale */
-    height: 100%;   /* Fa sì che il bottone prenda tutta l'altezza della nav-bar */
+    padding: 0 15px;
+    height: 100%; 
     background: none;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 16px;
-    border-radius: 15px; /* Arrotonda solo gli angoli inferiori */
+    border-radius: 15px;
     display: flex;            
-    align-items: center;      /* Centra verticalmente */
-    justify-content: center;  /* Centra orizzontalmente */
+    align-items: center;
+    justify-content: center; 
 }
 
 .nav-bar .bottone:hover {
@@ -267,35 +241,26 @@ nav ul li a:hover {
 }
 
 .esami {
-    flex: 1; /* Fa sì che il contenuto occupi lo spazio disponibile sopra il footer */
+    flex: 1; 
     background-color: white;
-    padding: 30px; /* Mantiene un padding uniforme */   
-    display: flex; /* Imposta il layout Flexbox */
-    flex-direction: column; /* Dispone gli elementi in verticale */
+    padding: 30px;
+    display: flex;
+    flex-direction: column; 
     justify-content: center;
     align-items:left;
-    margin: 0 auto ; /* Riduci il margine inferiore */
+    margin: 0 auto 20px; 
     border: 1px solid #ddd;
     border-radius: 15px;
     width: 85%;
     height:fit-content;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Aggiunge spazio tra gli elementi */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .esami h1 {
     margin-left: 50px;
     margin-top: 20px;
-    margin-bottom: 10px; /* Riduci questo valore per diminuire la separazione */
+    margin-bottom: 10px; 
     font-size: 28px;
-    line-height: 1;
-    font-weight: 600;
-}
-
-.esami h2 {
-    margin-left: 50px;
-    margin-top: 0; /* Rimuovi o riduci il margine superiore */
-    font-size: 24px;
-    line-height: 1.2;
     font-weight: 600;
 }
 
@@ -306,37 +271,36 @@ nav ul li a:hover {
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 15px;
-    padding: 0px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 90%; /* Mantiene la larghezza della card */
+    width: 90%; 
     margin: 0 auto;
-    margin-bottom: 10px; 
 }
+
 .card:hover {
     transform: translate(-5px); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Mantiene l'ombra invariata */
 }
 
 .card a {
-    display: flex; /* Imposta il layout Flexbox per il contenuto */
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start; /* Allinea il contenuto a sinistra */
-    text-decoration: none; /* Rimuove la sottolineatura del link */
-    color: inherit; /* Mantiene il colore del testo */
-    width: 100%; /* Occupa tutta la larghezza della card */
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+    width: 100%; 
     height: 100%;
-    padding: 20px; /* Occupa tutta l'altezza della card */ /* Mantiene il padding interno */
-    border-radius: 15px; /* Mantiene gli angoli arrotondati */
+    padding: 20px; 
+    border-radius: 15px; 
 }
 
 .card h3 {
     margin: 0 0 0px;
-    font-size: 20px; /* Aumenta la dimensione del titolo */
+    font-size: 20px; 
     font-weight: 500;
 }
 .card p {
-    margin: 0 0 0;
+    margin: 0 0 0px;
     color: #555;
     font-size: 20px;
     font-weight: 400;
@@ -378,12 +342,10 @@ nav ul li a:hover {
 }
 
 .mat_did, .chat {
-    display: flex; /* Layout Flexbox */
-    flex-direction: column; /* Elementi in verticale */
+    display: flex; 
+    flex-direction: column; 
     background-color: white;
-    /* Imposta padding se necessario */
     padding: 20px;
-    /* Imposta margini con una distanza ridotta, ad esempio top 10px */
     margin: 0 auto 10px;
     border: 1px solid #ddd;
     border-radius: 15px;
@@ -404,31 +366,15 @@ nav ul li a:hover {
 
 /* Al di sotto di 768px, adatta la larghezza delle card e della benvenuto, e semplifica il layout della navbar */
 @media (max-width: 768px) {
-    /* Nascondi la nav se già non visibile */
+    
     nav {
         display: none;
     }
 
-    /* Adatta il layout per le sezioni */
-    .benvenuto,
-    .card {
-        width: 90%;
-        padding: 15px;
-    }
-
-    /* Riduci la dimensione della search-bar */
-    .search-bar {
-        max-width: 100%;
-        border-radius: 20px;
-    }
-
-    /* Modifica dei pulsanti di autenticazione */
-    /* Nascondo il bottone per la registrazione */
     .register-btn {
         display: none;
     }
 
-    /* Rendo il bottone per il login tondo e più piccolo */
     .login-btn {
         width: 40px;
         height: 40px;
@@ -437,6 +383,10 @@ nav ul li a:hover {
         line-height: 40px;
         text-align: center;
         background-color: rgb(170, 33, 33);
+        background-image: url('../assets/utente.png');
+        background-size: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
         color: white;
         border: none;
         transition: transform 0.3s ease, background-color 0.3s ease;
@@ -448,73 +398,85 @@ nav ul li a:hover {
         background-color: rgb(150, 30, 30);
     }
 
-    /* Eventuale centramento dei pulsanti in mobile */
     .auth-buttons {
         flex-direction: row;
         justify-content: center;
-    }
-
-    /* Se hai altre regole per nav in mobile le mantieni, ad esempio: */
-    nav ul {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-    }
-
-    nav ul li {
-        margin: 5px 0;
-    }
-
-    /* Adatta il layout dei contenitori centrali */
-    .benvenuto,
-    .card {
-        width: 90%;
-        padding: 15px;
-    }
-
-    /* Navbar in colonna */
-    nav ul {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-    }
-
-    nav ul li {
-        margin: 5px 0;
-    }
-
-    /* Riduci la dimensione del search-bar e aumenta la rotondità */
-    .search-bar {
-        max-width: 100%;
-        border-radius: 20px;
-    }
-
-    /* Adatta i bottoni della navbar se necessario */
-    .auth-buttons {
-        flex-direction: column;
         gap: 5px;
     }
 
-    .card{
+    .main{
         width: auto;
         height: auto;
     }
+
+    .desc{
+        width: auto;
+        height: auto;
+    }
+
+    
+
+    .nav-bar {
+        max-width: 100%;
+        border-radius: 20px;
+    }
 }
 
-/* Per schermi molto piccoli (es. sotto i 480px) */
+/*sotto i 480px */
 @media (max-width: 480px) {
-    .main h2 {
-        font-size: 36px;
+
+    .main {
+        font-size: 14px; 
+        padding: 10px;
+        width: 90%; 
     }
 
-    .main p,
-    .benvenuto p,
-    .card p {
-        font-size: 16px;
+
+    .desc {
+        width: 100%; 
+        padding: 10px;  
     }
 
-    nav ul li a {
-        padding: 8px 15px;
+    .desc h1{
+        align-items: center;
         font-size: 14px;
     }
+
+    .desc p{
+        align-items: center;
+        font-size: 10px;
+    }
+
+    .foto {
+        width: 100px;
+        height: 100px;
+        margin: 10px auto; 
+    }
+
+    .foto img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .card {
+        justify-items: space-between;
+        width: 100%; 
+    }
+
+    .card h3 {
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .card p {
+        font-size: 9px; 
+        text-align: justify; 
+    }
+
+    .footer {
+        font-size: 12px; 
+        padding: 10px;
+    }
+    
+    
 }
