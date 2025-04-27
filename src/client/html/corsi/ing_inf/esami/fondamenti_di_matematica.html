@@ -7,6 +7,7 @@
     <base href="/src/client/">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/esame.css">
+    <script src="js/esame.js"></script>
 </head>
 <body>
     <div class="container">
@@ -64,7 +65,7 @@
                 <button class="bottone">Professori</button>
                 <button class="bottone">Materiale Didattico</button>
                 <button class="bottone">Community</button>
-                <button class="bottone">Recensioni</button>
+                <button class="bottone" onclick="openRec()">Recensioni</button>
             </div>
         </div>
 
@@ -85,13 +86,13 @@
                 </div>
             </div>
             <div class="mat-did">
-                <h3>Materiale didattico</h3>
+                
             </div>
             <div class="community">
-                <h3>Community</h3>
+                
             </div>
             <div class="recensioni">
-                <h3>Recensioni</h3>
+                
             </div>
 
 
@@ -103,57 +104,6 @@
             </div>
         </footer>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-        
-          /**
-           * Imposta un gruppo di bottoni con:
-           * - Un bottone "default" (che contiene defaultString nel testo) attivo all'avvio
-           * - Gestione del click per mostrare la sezione corrispondente
-           *
-           * @param {NodeList} buttons - I bottoni del gruppo
-           * @param {string} defaultString - Stringa (in minuscolo) da cercare per impostare il default
-           * @param {Object} sections - Un oggetto in cui le chiavi sono stringhe da cercare (in minuscolo)
-           *                            e i valori sono gli elementi da mostrare/nascondere
-           */
-          function setupButtonGroup(buttons, defaultString, sections) {
-            // Imposta il bottone di default
-            buttons.forEach(btn => {
-              if (btn.textContent.trim().toLowerCase().includes(defaultString)) {
-                btn.classList.add('active');
-              } else {
-                btn.classList.remove('active');
-              }
-            });
-            // Imposta la visualizzazione di default: mostra la sezione del bottone default
-            for (const condition in sections) {
-              sections[condition].style.display = condition === defaultString ? 'block' : 'none';
-            }
-            // Gestione del click: mostra la sezione corrispondente e rende attivo il bottone cliccato
-            buttons.forEach(btn => {
-              btn.addEventListener('click', () => {
-                buttons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const btnText = btn.textContent.trim().toLowerCase();
-                for (const condition in sections) {
-                  sections[condition].style.display = btnText.includes(condition) ? 'block' : 'none';
-                }
-              });
-            });
-          }
-          
-          // Imposta per i bottoni della barra
-          const navButtons = document.querySelectorAll('.barra .bottone');
-          const navSections = {
-            "professori": document.querySelector(".professori"),
-            "materiale": document.querySelector(".mat-did"),
-            "community": document.querySelector(".community"),
-            "recensioni": document.querySelector(".recensioni")
-          };
-          // Imposta "professori" come default
-          setupButtonGroup(navButtons, "professori", navSections);
-
-        });
-    </script>
+    
 </body>
 </html>
