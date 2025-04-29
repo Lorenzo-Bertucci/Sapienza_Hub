@@ -48,21 +48,103 @@ document.addEventListener("DOMContentLoaded", function() {
           setupButtonGroup(navButtons, "professori", navSections);
 });
 
+/*
 function openRec(){
-    const recensioniDiv = document.querySelector(".recensioni");
-    fetch('/src/server/recensioni_esami.php')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Errore nel caricamento delle recensioni.");
-            }
-            return response.text();
-        })
-        .then(data => {
-            console.log(data);
-            recensioniDiv.innerHTML = data; 
-        })
-        .catch(error => {
-            console.error("Errore:", error);
-            recensioniDiv.innerHTML = "<p>Impossibile caricare le recensioni.</p>";
+  const recensioniDiv = document.querySelector(".php");
+  fetch('/src/server/recensioni_esami.php')
+    .then(response => {
+        if (!response.ok) {
+          throw new Error("Errore nel caricamento delle recensioni.");
+        }
+        return response.text();
+    })
+    .then(data => {
+      recensioniDiv.innerHTML = data; 
+    })
+    .catch(error => {
+      console.error("Errore:", error);
+      recensioniDiv.innerHTML = "<p>Impossibile caricare le recensioni.</p>";
+    });
+}
+*/
+
+function openRec(materia){
+  const recensioniDiv = document.querySelector(".php");
+  fetch(`/src/server/recensioni_esami.php?materia=${encodeURIComponent(materia)}`)
+    .then(response => {
+      console.log(response);
+        if (!response.ok) {
+          throw new Error("Errore nel caricamento delle recensioni.");
+        }
+        return response.json();
+    })
+    .then(data => {
+      if(data.success){
+        recensioniDiv.innerHTML='';
+        const tit=document.createElement('div');
+        tit.classList.add("titolo");
+        tit.innerHTML='<b>Dicono di questo esame:</b>';
+        recensioniDiv.appendChild(tit);
+        const rec=document.createElement('div');
+        rec.classList.add("rec");
+        data.recensioni.forEach(recensione=>{
+          rec.innerHTML+=`<h4>~${recensione.nome}</h4> <p>${recensione.testo}</p>`;
         });
+        recensioniDiv.appendChild(rec);
+      }else{
+        console.error("Errore nel caricamento dati: ", data.message);
+      }
+    })
+    .catch(error => {
+      console.error("Errore:", error);
+      recensioniDiv.innerHTML = "<p>Impossibile caricare le recensioni.</p>";
+    });
+}
+
+function inviaRecensione(event, materia){
+  event.preventDefault();
+  
+  Swal.fire({
+    title: 'Conferma invio',
+    text: "Sei sicuro di voler inviare questa recensione?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sì, invia!',
+    cancelButtonText: 'Annulla'
+  })
+  .then(result =>{
+    if(result.isConfirmed){
+
+      const form=document.querySelector(".recensione-form");
+      const formData=new FormData(form);
+      formData.append('materia', materia);
+      fetch('/src/server/carica_recensioni.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Errore durante l\'invio della recensione.');
+        }
+        return response.json(); 
+      })
+      .then(data => {
+        if (data.success) {
+          Swal.fire('Successo!', 'Recensione inviata con successo!', 'success');
+          openRec(materia);
+        } else {
+          Swal.fire('Errore!', data.message, 'error');
+        }
+      })
+      .catch(error => {
+        Swal.fire('Errore!', 'Errore durante l\'invio della recensione.', 'error');
+      });
+
+
     }
+  })
+
+
+}

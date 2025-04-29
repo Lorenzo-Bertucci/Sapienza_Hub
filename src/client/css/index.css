@@ -308,7 +308,11 @@ nav ul li a:hover {
     }
 
     .main h2{
-        font-size: 50px;
+        font-size: 30px;
+    }
+
+    .main p{
+        font-size: 15px;
     }
     
     nav {
@@ -342,8 +346,7 @@ nav ul li a:hover {
     }
 
     .search-bar {
-        max-width: 100%;
-        border-radius: 20px;
+        transform: scale(0.8);
     }
 
     .register-btn {
@@ -402,7 +405,7 @@ nav ul li a:hover {
     }
     
     .main h2 {
-        font-size: 25px;
+        font-size: 20px;
         text-align: center;
     }
 
@@ -412,9 +415,7 @@ nav ul li a:hover {
     }
 
     .search-bar {
-        margin:0;
-        max-width: 100%;
-        border-radius: 20px;
+        transform: scale(0.8);
     }
 
     .search-bar input{
@@ -425,7 +426,15 @@ nav ul li a:hover {
         transform: scale(0.75);
     }
 
-    .benvenuto,
+    .content a{
+        transform: scale(0.8);
+    }
+
+    .benvenuto{
+        transform: scale(0.7);
+    }
+
+    /*.benvenuto,
     .card {
         max-width: 100%;
         margin:0;
@@ -438,7 +447,7 @@ nav ul li a:hover {
 
     .benvenuto p {
         font-size: 16px;
-    }
+    }*/
 
     .aside, .content{
         max-width: 100%;
