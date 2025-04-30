@@ -332,7 +332,9 @@ nav ul li a:hover {
 }
 .card:hover {
     transform: translate(-5px); 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Mantiene l'ombra invariata */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    background-color:rgb(170, 33, 33);
+    color: white;
 }
 
 .card a {
