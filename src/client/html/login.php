@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Controlla se l'utente è loggato
+if (isset($_SESSION['logged_in'])) {
+    // Reindirizza alla pagina di login se è loggato
+    header('Location: index.php');
+    exit;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -15,13 +26,13 @@
     <div class="container">
         <div class="header">
             <div class="h-left">
-                <a href="html/index.html">
+                <a href="html/index.php">
                     <h1>SapienzHub</h1>
                 </a>
                 <nav>
                     <ul>
-                        <li><a href="html/corsi.html">Corsi</a></li>
-                        <li><a href="html/professori.html">Professori</a></li>
+                        <li><a href="html/corsi.php">Corsi</a></li>
+                        <li><a href="html/professori.php">Professori</a></li>
                         <li><a href="#">Contatti</a></li>
                     </ul>
                 </nav>
@@ -36,7 +47,7 @@
                 <br>
                 <button type="submit" class="login-btn">Accedi</button>
             </form>
-            <p>Non hai un account? <a href="html/register.html">Registrati qui</a></p>
+            <p>Non hai un account? <a href="html/register.php">Registrati qui</a></p>
         </div>
         <div class="footer">
             <p>&copy; 2025 Sapienza Hub. Tutti i diritti riservati.</p>

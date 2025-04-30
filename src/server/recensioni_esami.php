@@ -11,7 +11,7 @@
             exit;
         }
 
-        $conn=pg_connect("host=localhost port=5432 dbname=sapienzhub user=postgres password=Postgre*1");
+        $conn=pg_connect("host=localhost port=5433 dbname=sapienzhub user=postgres password=Postgre*1");
             
         if (!$conn) {
             echo json_encode(['success' => false, 'message' => 'Errore di connessione al database: ' . pg_last_error()]);

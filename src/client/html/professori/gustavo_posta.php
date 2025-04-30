@@ -1,5 +1,8 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,20 +15,32 @@
     <div class="container">
         <div class="header">
             <div class="h-left">
-                <a href="html/index.html">
+                <a href="html/index.php">
                     <h1>SapienzHub</h1>
                 </a>
                 <nav>
                     <ul>
-                        <li><a href="html/corsi.html">Corsi</a></li>
-                        <li><a href="html/professori.html">Professori</a></li>
+                        <li><a href="html/corsi.php">Corsi</a></li>
+                        <li><a href="html/professori.php">Professori</a></li>
                         <li><a>Contatti</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="auth-buttons">
-                <a href="html/login.html"><button class="login-btn">Accedi</button></a>
-                <a href="html/register.html"><button class="register-btn">Registrati</button></a>
+                <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
+                    <div class="profile-container">
+                        <button class="profile-btn" onclick="window.location.href='html/dashboard.php'">
+                            <img src="assets/utente.png" class="profile-icon">
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="html/dashboard.php" style="text-decoration: none;"><button class="dropdown-item">Dashboard</button></a>
+                            <a href="../server/logout.php"><button class="dropdown-item">Logout</button></a>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <a href="html/login.php"><button class="login-btn">Accedi</button></a>
+                    <a href="html/register.php"><button class="register-btn">Registrati</button></a>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -56,7 +71,7 @@
         <div class="content">
             <div class="esami">
                 <div class="card">
-                    <a href="html/corsi/ing_inf/esami/elementi_di_calcolo_delle_probabilita_e_statistica.html">
+                    <a href="html/corsi/ing_inf/esami/elementi_di_calcolo_delle_probabilita_e_statistica.php">
                         <h3>Elementi di calcolo delle probabilità e statistica</h3>
                         <p>~Ingegneria informatica e automatica</p>
                     </a>

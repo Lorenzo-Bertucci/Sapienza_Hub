@@ -8,7 +8,10 @@ session_unset();
 // Distrugge la sessione
 session_destroy();
 
-// Reindirizza l'utente alla pagina di login
-header('Location: /src/client/html/index.html');
+// Recupera l'URL della pagina corrente
+$current_page = $_SERVER['HTTP_REFERER'] ?? '/src/client/html/index.html';
+
+// Reindirizza l'utente alla pagina corrente
+header("Location: $current_page");
 exit;
 ?>

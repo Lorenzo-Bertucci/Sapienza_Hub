@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -12,20 +15,32 @@
     <div class="container">
         <div class="header">
             <div class="h-left">
-                <a href="html/index.html">
+                <a href="html/index.php">
                     <h1>SapienzHub</h1>
                 </a>
                 <nav>
                     <ul>
-                        <li><a href="html/corsi.html">Corsi</a></li>
-                        <li><a href="html/professori.html">Professori</a></li>
+                        <li><a href="html/corsi.php">Corsi</a></li>
+                        <li><a href="html/professori.php">Professori</a></li>
                         <li><a >Contatti</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="auth-buttons">
-                <a href="html/login.html"><button class="login-btn">Accedi</button></a>
-                <a href="html/register.html"><button class="register-btn">Registrati</button></a>
+                <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
+                    <div class="profile-container">
+                        <button class="profile-btn" onclick="window.location.href='html/dashboard.php'">
+                            <img src="assets/utente.png" class="profile-icon">
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="html/dashboard.php" style="text-decoration: none;"><button class="dropdown-item">Dashboard</button></a>
+                            <a href="../server/logout.php"><button class="dropdown-item">Logout</button></a>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <a href="html/login.php"><button class="login-btn">Accedi</button></a>
+                    <a href="html/register.php"><button class="register-btn">Registrati</button></a>
+                <?php endif; ?>
             </div>
         </div>
         <div class="content">
@@ -36,7 +51,7 @@
             </div>
                 <h1>Lista dei Corsi di Laurea</h1>
                 <div class="card">
-                    <a href="html/corsi/ing_inf/ing_inf.html">
+                    <a href="html/corsi/ing_inf/ing_inf.php">
                         <h3>💻 Ingegneria Informatica</h3>
                         <p>~Corso Triennale</p>
                     </a>
@@ -148,7 +163,7 @@
                 filterCourses(searchQuery);
             }
 
-            // Aggiungi un evento per la barra di ricerca nella pagina corsi.html
+            // Aggiungi un evento per la barra di ricerca nella pagina corsi.php
             searchButton.addEventListener("click", function () {
                 const query = searchInput.value.toLowerCase();
                 filterCourses(query);

@@ -1,9 +1,12 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicola Galesi - SapienzHub</title>
+    <title>Emilio De Santis - SapienzHub</title>
     <base href="/src/client/">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/pagina_prof.css">
@@ -12,20 +15,32 @@
     <div class="container">
         <div class="header">
             <div class="h-left">
-                <a href="html/index.html">
+                <a href="html/index.php">
                     <h1>SapienzHub</h1>
                 </a>
                 <nav>
                     <ul>
-                        <li><a href="html/corsi.html">Corsi</a></li>
-                        <li><a href="html/professori.html">Professori</a></li>
+                        <li><a href="html/corsi.php">Corsi</a></li>
+                        <li><a href="html/professori.php">Professori</a></li>
                         <li><a>Contatti</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="auth-buttons">
-                <a href="html/login.html"><button class="login-btn">Accedi</button></a>
-                <a href="html/register.html"><button class="register-btn">Registrati</button></a>
+                <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
+                    <div class="profile-container">
+                        <button class="profile-btn" onclick="window.location.href='html/dashboard.php'">
+                            <img src="assets/utente.png" class="profile-icon">
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="html/dashboard.php" style="text-decoration: none;"><button class="dropdown-item">Dashboard</button></a>
+                            <a href="../server/logout.php"><button class="dropdown-item">Logout</button></a>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <a href="html/login.php"><button class="login-btn">Accedi</button></a>
+                    <a href="html/register.php"><button class="register-btn">Registrati</button></a>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -35,15 +50,15 @@
             </div>
 
             <div class="desc">
-                <h1>Nicola Galesi</h1>
+                <h1>Emilio De Santis</h1>
                 <p>
-                    <strong>E-mail</strong>: <a href="mailto:nicola.galesi@uniroma1.it" style="color: black;">nicola.galesi@uniroma1.it</a>
+                    <strong>E-mail</strong>: <a href="mailto:emilio.desantis@uniroma1.it" style="color: black;">emilio.desantis@uniroma1.it</a>
                     <br>
-                    <strong>Dipartimento</strong>: INGEGNERIA INFORMATICA, AUTOMATICA E GESTIONALE "ANTONIO RUBERTI"
+                    <strong>Dipartimento</strong>: MATEMATICA
                     <br>
-                    <strong>SSD</strong>: MAT/01
+                    <strong>SSD</strong>: MAT/06
                     <br>
-                    <a href="https://sites.google.com/diag.uniroma1.it/nicolagalesi" style="color: black;" target="_blank">
+                    <a href="https://corsidilaurea.uniroma1.it/user/15574" style="color: black;" target="_blank">
                         <strong>Link sito</strong>
                     </a>
                 </p>
@@ -56,21 +71,9 @@
         <div class="content">
             <div class="esami">
                 <div class="card">
-                    <a href="html/corsi/ing_inf/esami/fondamenti_di_matematica.html">
-                        <h3>Fondamenti di Matematica</h3>
+                    <a href="html/corsi/ing_inf/esami/elementi_di_calcolo_delle_probabilita_e_statistica.php">
+                        <h3>Elementi di calcolo delle probabilità e statistica</h3>
                         <p>~Ingegneria informatica e automatica</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a>
-                        <h3>Computational complexity</h3>
-                        <p>~Engineering in computer science</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a>
-                        <h3>Logica Matematica</h3>
-                        <p>~Filosofia e intelligenza artificiale</p>
                     </a>
                 </div>
             </div>

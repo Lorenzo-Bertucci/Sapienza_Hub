@@ -59,6 +59,7 @@ body {
     padding: 20px 20px;
     justify-content: space-between;
     align-items: center;
+    justify-items: center;
     width: 100%;
     height: 100px;
     margin-bottom: 20px;
@@ -110,7 +111,8 @@ nav ul li a:hover {
 }
 
 .auth-buttons {
-    display: flex;
+    display: flex;  
+    align-items: center;
     gap: 10px;
 }
 
@@ -158,6 +160,87 @@ nav ul li a:hover {
     background-color: rgb(150, 30, 30);
     transform: scale(1.05);
     opacity: 0.9;
+}
+
+.profile-container {
+    position: relative; /* Necessario per posizionare il menu a tendina */
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    width: 80px; /* Aumenta la larghezza del contenitore */
+    height: 80px; /* Aumenta l'altezza del contenitore */
+}
+
+/* Bottone profilo utente */
+.profile-btn {
+    background-color: white; /* Sfondo bianco */
+    border: 2px solid rgba(170, 33, 33, 1); /* Bordo rosso */
+    border-radius: 50%; /* Rende il bottone tondo */
+    width: 60px; /* Larghezza del bottone */
+    height: 60px; /* Altezza del bottone */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra */
+}
+
+.profile-container:hover .profile-btn {
+    transform: scale(1.1); /* Effetto di ingrandimento al passaggio del mouse */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Ombra più pronunciata */
+}
+
+.profile-icon {
+    width: auto; /* L'immagine occupa tutto lo spazio del bottone */
+    height: 100%; /* L'immagine occupa tutto lo spazio del bottone */
+    border-radius: 50%; /* Rende l'immagine tonda */
+    object-fit:cover;
+    display: block; /* Adatta l'immagine senza distorcerla */
+}
+
+/* Contenitore del menu a tendina */
+
+
+/* Menu a tendina */
+.dropdown-menu {
+    display: none; /* Nascondi il menu di default */
+    position: absolute;
+    top: 70px; /* Posiziona il menu sotto il bottone */
+    right: 0;
+    background-color: white;
+    border: 1px solid rgba(170, 33, 33, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 150px;
+    padding: 10px 0;
+}
+
+/* Pulsanti del menu */
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    text-align: left;
+    background-color: white;
+    color: rgba(170, 33, 33, 1);
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(170, 33, 33, 0.1);
+    color: rgba(170, 33, 33, 1);
+}
+
+/* Mostra il menu a tendina quando si passa sopra il contenitore */
+.profile-container:hover .dropdown-menu {
+    display: block;
 }
 
 .main {

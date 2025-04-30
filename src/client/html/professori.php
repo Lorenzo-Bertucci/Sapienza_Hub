@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -12,20 +15,32 @@
     <div class="container">
         <div class="header">
             <div class="h-left">
-                <a href="html/index.html">
+                <a href="html/index.php">
                     <h1>SapienzHub</h1>
                 </a>
                 <nav>
                     <ul>
-                        <li><a href="html/corsi.html">Corsi</a></li>
-                        <li><a href="html/professori.html">Professori</a></li>
+                        <li><a href="html/corsi.php">Corsi</a></li>
+                        <li><a href="html/professori.php">Professori</a></li>
                         <li><a>Contatti</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="auth-buttons">
-                <a href="html/login.html"><button class="login-btn">Accedi</button></a>
-                <a href="html/register.html"><button class="register-btn">Registrati</button></a>
+                <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
+                    <div class="profile-container">
+                        <button class="profile-btn" onclick="window.location.href='html/dashboard.php'">
+                            <img src="assets/utente.png" class="profile-icon">
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="html/dashboard.php" style="text-decoration: none;"><button class="dropdown-item">Dashboard</button></a>
+                            <a href="../server/logout.php"><button class="dropdown-item">Logout</button></a>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <a href="html/login.php"><button class="login-btn">Accedi</button></a>
+                    <a href="html/register.php"><button class="register-btn">Registrati</button></a>
+                <?php endif; ?>
             </div>
         </div>
         <div class="content">
@@ -36,37 +51,37 @@
             </div>
                 <h1>Lista dei Professori</h1>
                 <div class="card">
-                    <a href="html/professori/saverio_salzo.html">
+                    <a href="html/professori/saverio_salzo.php">
                         <h3>Saverio Salzo</h3>
                     </a>
                 </div>
                 <div class="card">
-                    <a href="html/professori/nicola_galesi.html">
+                    <a href="html/professori/nicola_galesi.php">
                         <h3>Nicola Galesi</h3>
                     </a>
                 </div>
                 <div class="card">
-                    <a href="html/professori/gustavo_posta.html">
+                    <a href="html/professori/gustavo_posta.php">
                         <h3>Gustavo Posta</h3>
                     </a>
                 </div>
                 <div class="card">
-                    <a href="html/professori/emilio_de_santis.html">
+                    <a href="html/professori/emilio_de_santis.php">
                         <h3>Emilio De Santis</h3>
                     </a>
                 </div>
                 <div class="card">
-                    <a href="html/professori/marco_schaerf.html">
+                    <a href="html/professori/marco_schaerf.php">
                         <h3>Marco Schaerf</h3>
                     </a>
                 </div>
                 <div class="card">
-                    <a href="html/professori/antonella_poggi.html">
+                    <a href="html/professori/antonella_poggi.php">
                         <h3>Antonella Poggi</h3>
                     </a>
                 </div>
                 <div class="card">
-                    <a href="html/professori/giuseppe_santucci.html">
+                    <a href="html/professori/giuseppe_santucci.php">
                         <h3>Giuseppe Santucci</h3>
                     </a>
                 </div>

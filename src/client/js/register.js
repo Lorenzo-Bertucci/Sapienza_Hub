@@ -35,7 +35,7 @@ function inviaReg(event){
         if (data.success) {
           Swal.fire('Registrazione effettuata con successo!', 'A breve verrai reindirizzato alla pagina di login', 'success');
             setTimeout(() => {
-                window.location.href = '../client/html/login.html';
+                window.location.href = '../client/html/login.php';
             }, 3000);
         } else {
           Swal.fire('Errore!', data.message, 'error');

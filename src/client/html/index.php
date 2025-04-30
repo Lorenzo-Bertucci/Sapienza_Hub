@@ -2,7 +2,7 @@
 session_start();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,13 +15,13 @@ session_start();
     <div class="container">
         <div class="header">
             <div class="h-left">
-                <a href="html/index.html">
+                <a href="html/index.php">
                     <h1>SapienzHub</h1>
                 </a>
                 <nav>
                     <ul>
-                        <li><a href="html/corsi.html">Corsi</a></li>
-                        <li><a href="html/professori.html">Professori</a></li>
+                        <li><a href="html/corsi.php">Corsi</a></li>
+                        <li><a href="html/professori.php">Professori</a></li>
                         <li><a>Contatti</a></li>
                     </ul>
                 </nav>
@@ -38,8 +38,8 @@ session_start();
                         </div>
                     </div>
                 <?php else: ?>
-                    <a href="html/login.html"><button class="login-btn">Accedi</button></a>
-                    <a href="html/register.html"><button class="register-btn">Registrati</button></a>
+                    <a href="html/login.php"><button class="login-btn">Accedi</button></a>
+                    <a href="html/register.php"><button class="register-btn">Registrati</button></a>
                 <?php endif; ?>
             </div>
         </div>
@@ -66,7 +66,7 @@ session_start();
             </div>
         </div>
         <div class="content">
-            <a href="html/corsi.html" style="text-decoration: none; color: inherit;">
+            <a href="html/corsi.php" style="text-decoration: none; color: inherit;">
             <div class="card">
                 <h3>📚 Corsi di Laurea</h3>
                 <p>
@@ -86,7 +86,7 @@ session_start();
                 </p>
             </div>
             </a>
-            <a href="html/professori.html" style="text-decoration: none; color: inherit;">
+            <a href="html/professori.php" style="text-decoration: none; color: inherit;">
             <div class="card">
                 <h3>👨‍🏫 Professori</h3>
                 <p>
@@ -116,8 +116,8 @@ session_start();
         document.getElementById("search-button").addEventListener("click", function () {
             const searchInput = document.getElementById("search-input").value.trim();
             if (searchInput) {
-                // Reindirizza alla pagina corsi.html con il termine di ricerca come parametro
-                window.location.href = `html/corsi.html?search=${encodeURIComponent(searchInput)}`;
+                // Reindirizza alla pagina corsi.php con il termine di ricerca come parametro
+                window.location.href = `html/corsi.php?search=${encodeURIComponent(searchInput)}`;
             }
         });
 
@@ -126,7 +126,7 @@ session_start();
             if (event.key === "Enter") {
                 const searchInput = document.getElementById("search-input").value.trim();
                 if (searchInput) {
-                    window.location.href = `html/corsi.html?search=${encodeURIComponent(searchInput)}`;
+                    window.location.href = `html/corsi.php?search=${encodeURIComponent(searchInput)}`;
                 }
             }
         });
