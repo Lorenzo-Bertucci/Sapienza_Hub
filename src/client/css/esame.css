@@ -372,7 +372,7 @@ nav ul li a:hover {
     text-align: center;
 }
 
-.rec{
+.rec, .mat{
     background-color: white;
     margin: 0 auto 30px;
     width: 85%;
@@ -391,7 +391,7 @@ nav ul li a:hover {
     margin-top: 0;
 }
 
-.rec p{
+.rec p, .mat p{
     padding-bottom: 10px;
     font-size: 14px;
     border-bottom: 1px solid darkgray;
@@ -571,15 +571,15 @@ nav ul li a:hover {
     }
 
 
-    .rec{
+    .rec, .mat{
         height: 300px;
     }
 
-    .rec h4{
+    .rec h4, .mat h4{
         font-size: 12px;
     }
 
-    .rec p{
+    .rec p, .mat p{
         font-size: 10px;
     }
 

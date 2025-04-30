@@ -16,7 +16,7 @@
         exit;
     }
 
-    $query="select nome, materiale, nome_file, TO_CHAR(dat, 'YYYY-MM-DD HH24:MI:SS') AS dat from $materia";
+    $query="select nome, nomefile, TO_CHAR(dat, 'YYYY-MM-DD HH24:MI:SS') AS dat from $materia";
     $result = pg_query($query);
     if (!$result) {
         echo json_encode(['success' => false, 'message' => 'Errore durante il recupero del materiale.']);
@@ -29,6 +29,5 @@
     pg_free_result($result);
     pg_close($conn);
     echo json_encode(["success"=>true, "materiale"=> $materiale]);
-
 
 ?>

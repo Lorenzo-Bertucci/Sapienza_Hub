@@ -127,13 +127,13 @@ function inviaRecensione(event, materia){
   })
 }
 
-/*function openMat(materia){
-  const materialeDiv=document.querySelector("materiale");
+function openMat(materia){
+  const materialeDiv=document.querySelector(".materiale");
   fetch(`/src/server/materiale_didattico.php?materia=${encodeURIComponent(materia)}`)
     .then(response => {
       console.log(response);
         if (!response.ok) {
-          throw new Error("Errore nel caricamento delle recensioni.");
+          throw new Error("Errore nel caricamento del materiale.");
         }
         return response.json();
     })
@@ -143,23 +143,24 @@ function inviaRecensione(event, materia){
         const tit=document.createElement('div');
         tit.classList.add("titolo");
         tit.innerHTML='<b>Materiale su questo esame:</b>';
-        recensioniDiv.appendChild(tit);
-        const rec=document.createElement('div');
-        rec.classList.add("");
-        data. .forEach(recensione=>{
-          rec.innerHTML+=``;
+        materialeDiv.appendChild(tit);
+        const mat=document.createElement('div');
+        mat.classList.add("mat");
+        data.materiale.forEach(didattico=>{
+          mat.innerHTML+=`<div><span class='utente'><strong>~${didattico.nome}</strong></span>
+          <span style="margin-left: 10px; font-size: smaller; font-style: italic;"><small><i> ${didattico.dat}</i></small></span></div> <p>${didattico.nomefile}</p>`;
         });
-        materialeDiv.appendChild(rec);
+        materialeDiv.appendChild(mat);
       }else{
         console.error("Errore nel caricamento dati: ", data.message);
       }
     })
     .catch(error => {
       console.error("Errore:", error);
-      materialeDiv.innerHTML = "<p class='errore'>Impossibile caricare le recensioni.<br><br>Controllare la connessione.</p>";
+      materialeDiv.innerHTML = "<p class='errore'>Impossibile caricare il materiale.<br><br>Controllare la connessione.</p>";
     });
 
-}*/
+}
 
 function inviaMateriale(event, materia){
   event.preventDefault();
@@ -193,13 +194,13 @@ function inviaMateriale(event, materia){
       .then(data => {
         if (data.success) {
           Swal.fire('Successo!', 'Documento inviato con successo!', 'success');
-          //openRec(materia);
+          //openMat(materia);
         } else {
           Swal.fire('Errore!', data.message, 'error');
         }
       })
       .catch(error => {
-        Swal.fire('Errore!', 'Errore durante l\'invio del materiale.', 'error');
+        Swal.fire('Errore!', 'Errore durante l\'invio del materiale catch esame.js.', 'error');
       });
 
 
