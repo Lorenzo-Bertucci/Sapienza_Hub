@@ -18,7 +18,7 @@
             exit;
         }
 
-        $query="select * from $materia";
+        $query="select nome, testo, TO_CHAR(dat, 'YYYY-MM-DD HH24:MI:SS') AS dat from $materia";
         $result = pg_query($query);
 
         if (!$result) {

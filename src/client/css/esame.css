@@ -411,14 +411,14 @@ nav ul li a:hover {
     margin-bottom: 15px;
 }
 
-.recensione-form {
+.recensione-form, .materiale-form{
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
 .recensione-form input,
-.recensione-form textarea {
+.recensione-form textarea, .materiale-form input {
     width: 100%;
     padding: 10px;
     font-size: 14px;
@@ -426,7 +426,7 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-.recensione-form button {
+.recensione-form button, .materiale-form button {
     padding: 10px;
     font-size: 16px;
     background-color: rgb(170, 33, 33);
@@ -437,11 +437,11 @@ nav ul li a:hover {
     transition: background-color 0.3s ease;
 }
 
-.recensione-form button:hover {
+.recensione-form button:hover, .materiale-form button:hover {
     background-color: rgb(150, 30, 30);
 }
 
-.recensione-form button:active {
+.recensione-form button:active, .materiale-form button:active {
     transform: scale(1.02);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
 }
@@ -451,7 +451,7 @@ nav ul li a:hover {
     text-align: center;
 }
 
-.rec{
+.rec, .mat{
     background-color: white;
     margin: 0 auto 30px;
     width: 85%;
@@ -463,17 +463,28 @@ nav ul li a:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.rec h4{
+.utente{
     font-size: 16px;
     color: rgba(149,30,30,1);
     padding-top: 0;
     margin-top: 0;
 }
 
-.rec p{
+.rec p, .mat p{
     padding-bottom: 10px;
     font-size: 14px;
     border-bottom: 1px solid darkgray;
+}
+
+.errore{
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: rgba(88, 14, 14, 1);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 50%;
+    justify-self: center;
 }
 
 
@@ -623,31 +634,31 @@ nav ul li a:hover {
         font-size: 15px;
     }
 
-    .recensione-form {
+    .recensione-form, .materiale-form {
         display: flex;
         flex-direction: column;
         gap: 15px;
     }
 
     .recensione-form input,
-    .recensione-form textarea {
+    .recensione-form textarea, .materiale-form input {
         font-size: 10px;
     }
 
-    .recensione-form button {
+    .recensione-form button, .materiale-form button {
         font-size: 12px;
     }
 
 
-    .rec{
+    .rec, .mat{
         height: 300px;
     }
 
-    .rec h4{
+    .rec h4, .mat h4{
         font-size: 12px;
     }
 
-    .rec p{
+    .rec p, .mat p{
         font-size: 10px;
     }
 

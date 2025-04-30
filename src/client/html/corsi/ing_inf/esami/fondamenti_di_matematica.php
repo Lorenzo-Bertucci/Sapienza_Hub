@@ -73,9 +73,9 @@
             </div>
             <div class="barra">
                 <button class="bottone">Professori</button>
-                <button class="bottone">Materiale Didattico</button>
+                <button class="bottone" onclick="openMat('fondamentidimatematicamat')">Materiale Didattico</button>
                 <button class="bottone">Community</button>
-                <button class="bottone" onclick="openRec('fondamenti_di_matematica')">Recensioni</button>
+                <button class="bottone" onclick="openRec('fondamentidimatematicarec')">Recensioni</button>
             </div>
         </div>
 
@@ -96,6 +96,20 @@
                 </div>
             </div>
             <div class="mat-did">
+                <div class="form-container">
+                    <h3>Condividi il tuo materiale didattico:</h3>
+                    <form class="materiale-form" enctype="multipart/form-data" onsubmit="inviaMateriale(event, 'fondamentidimatematicamat')">
+                        <input type="text" name="nome" placeholder="Il tuo nome" required>
+                        <input type="text" name="nomefile" placeholder="Inserire il nome del file" required>
+                        <label for="pdf"><br>Inserire qui il materiale in formato pdf:</label>
+                        <input type="file" id="pdf" name="materiale" accept="application/pdf" required>
+                        <button>Invia</button>
+                    </form>
+                </div>
+
+                <div class="materiale">
+
+                </div>
 
             </div>
             <div class="community">
@@ -104,7 +118,7 @@
             <div class="recensioni">
                 <div class="form-container">
                     <h3>Aggiungi la tua recensione</h3>
-                    <form class="recensione-form" onsubmit="inviaRecensione(event, 'fondamenti_di_matematica')">
+                    <form class="recensione-form" onsubmit="inviaRecensione(event, 'fondamentidimatematicarec')">
                         <input type="text" name="nome" placeholder="Il tuo nome" required>
                         <textarea name="testo" placeholder="Scrivi la tua recensione" required></textarea>
                         <button>Invia</button>
