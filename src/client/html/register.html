@@ -7,6 +7,8 @@
     <base href="/src/client/">
     <link rel="stylesheet" href="css/login.css">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
+    <script src="js/register.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -20,21 +22,21 @@
                     <ul>
                         <li><a href="html/corsi.html">Corsi</a></li>
                         <li><a href="html/professori.html">Professori</a></li>
-                        <li><a href="#">Contatti</a></li>
+                        <li><a>Contatti</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
         <div class="content">
             <h3>SapienzHub</h3>
-            <form action="/register" method="POST" class="login-form">
-                <input type="text" id="nome" name="nome" placeholder="Inserisci il tuo nome" required>
+            <form id="registerForm" method="POST" class="login-form" onsubmit="inviaReg(event)">
+                <input type="text" id="nome" name="inputNome" placeholder="Inserisci il tuo nome" required>
                 <br>
-                <input type="text" id="cognome" name="cognome" placeholder="Inserisci il tuo cognome" required>
+                <input type="text" id="cognome" name="inputCognome" placeholder="Inserisci il tuo cognome" required>
                 <br>
-                <input type="email" id="email" name="email" placeholder="Inserisci la mail istituzionale" required>
+                <input type="email" id="email" name="inputEmail" placeholder="Inserisci la mail istituzionale" required>
                 <br>
-                <input type="password" id="password" name="password" placeholder="Inserisci la tua password" required>
+                <input type="password" id="password" name="inputPassword" placeholder="Inserisci la tua password" required>
                 <br>
                 <button type="submit" class="login-btn">Registrati</button>
             </form>

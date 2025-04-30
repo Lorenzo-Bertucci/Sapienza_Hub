@@ -139,7 +139,7 @@ function inviaRecensione(event, materia){
         }
       })
       .catch(error => {
-        Swal.fire('Errore!', 'Errore durante l\'invio della recensione.', 'error');
+        Swal.fire('Errore!', 'Errore durante l\'invio della recensione .', 'error');
       });
 
 

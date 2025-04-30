@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,8 +27,20 @@
                 </nav>
             </div>
             <div class="auth-buttons">
-                <a href="html/login.html"><button class="login-btn">Accedi</button></a>
-                <a href="html/register.html"><button class="register-btn">Registrati</button></a>
+                <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
+                    <div class="profile-container">
+                        <button class="profile-btn" onclick="window.location.href='html/dashboard.php'">
+                            <img src="assets/utente.png" class="profile-icon">
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="html/dashboard.php" style="text-decoration: none;"><button class="dropdown-item">Dashboard</button></a>
+                            <a href="../server/logout.php"><button class="dropdown-item">Logout</button></a>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <a href="html/login.html"><button class="login-btn">Accedi</button></a>
+                    <a href="html/register.html"><button class="register-btn">Registrati</button></a>
+                <?php endif; ?>
             </div>
         </div>
         <div class="main">
