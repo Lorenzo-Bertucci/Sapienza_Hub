@@ -10,6 +10,7 @@ session_start();
     <base href="/src/client/">
     <link rel="stylesheet" href="css/corsi.css">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
+    <script src="js/corsi.js"></script>
 </head>
 <body>
     <div class="container">
@@ -50,132 +51,10 @@ session_start();
                 <button>Cerca</button>
             </div>
                 <h1>Lista dei Corsi di Laurea</h1>
-                <div class="card">
-                    <a href="html/corsi/ing_inf/ing_inf.php">
-                        <h3>💻 Ingegneria Informatica</h3>
-                        <p>~Corso Triennale</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a>
-                        <h3>🩺 Medicina e Chirurgia</h3>
-                        <p>~Corso Unico</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a>
-                        <h3>⚖️ Giurisprudenza</h3>
-                        <p>~Corso Unico</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a >
-                        <h3>🏛️ Scienze Politiche</h3>
-                        <p>~Corso Triennale</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a >
-                        <h3>⚙️ Ingegneria Meccanica</h3>
-                        <p>~Corso Triennale</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a >
-                        <h3>🧠 Psicologia</h3>
-                        <p>~Corso Triennale</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a >
-                        <h3>🏗️ Architettura</h3>
-                        <p>~Corso Triennale</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a >
-                        <h3>🧬 Biotecnologie</h3>
-                        <p>~Corso Triennale</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a >
-                        <h3>⚗️ Chimica Industriale</h3>
-                        <p>~Corso Triennale</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a >
-                        <h3>➗ Matematica</h3>
-                        <p>~Corso Triennale</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a >
-                        <h3>🔭 Fisica</h3>
-                        <p>~Corso Triennale</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a >
-                        <h3>📚 Lettere Moderne</h3>
-                        <p>~Corso Triennale</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a >
-                        <h3>🤖 Informatica</h3>
-                        <p>~Corso Triennale</p>
-                    </a>
-                </div>
         </div>
         <div class="footer">
             <p>&copy; 2025 Sapienza Hub. Tutti i diritti riservati.</p>
         </div>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const searchQuery = urlParams.get("search")?.toLowerCase() || "";
-            const cards = document.querySelectorAll(".card");
-            const searchInput = document.getElementById("search-input");
-            const searchButton = document.querySelector(".search-bar button");
-
-            // Imposta il valore della barra di ricerca con il testo della query
-            if (searchQuery) {
-                searchInput.value = searchQuery; // Mostra il testo nella barra di ricerca
-            }
-
-            // Funzione per filtrare i corsi
-            function filterCourses(query) {
-                cards.forEach(card => {
-                    const courseName = card.querySelector("h3").textContent.toLowerCase();
-                    if (courseName.includes(query)) {
-                        card.style.display = "flex"; // Mostra la card
-                    } else {
-                        card.style.display = "none"; // Nascondi la card
-                    }
-                });
-            }
-
-            // Filtra i corsi se c'è un termine di ricerca
-            if (searchQuery) {
-                filterCourses(searchQuery);
-            }
-
-            // Aggiungi un evento per la barra di ricerca nella pagina corsi.php
-            searchButton.addEventListener("click", function () {
-                const query = searchInput.value.toLowerCase();
-                filterCourses(query);
-            });
-
-            searchInput.addEventListener("keydown", function (event) {
-                if (event.key === "Enter") {
-                    const query = searchInput.value.toLowerCase();
-                    filterCourses(query);
-                }
-            });
-        });
-    </script>
 </body>
 </html>

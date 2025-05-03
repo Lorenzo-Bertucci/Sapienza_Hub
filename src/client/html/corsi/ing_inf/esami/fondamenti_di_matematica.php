@@ -16,20 +16,20 @@
     <div class="container">
         <div class="header">
             <div class="h-left">
-                <a href="html/index.html">
+                <a href="html/index.php">
                     <h1>SapienzHub</h1>
                 </a>
                 <nav>
                     <ul>
-                        <li><a href="html/corsi.html">Corsi</a></li>
-                        <li><a href="html/professori.html">Professori</a></li>
+                        <li><a href="html/corsi.php">Corsi</a></li>
+                        <li><a href="html/professori.php">Professori</a></li>
                         <li><a>Contatti</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="auth-buttons">
-                <a href="html/login.html"><button class="login-btn">Accedi</button></a>
-                <a href="html/register.html"><button class="register-btn">Registrati</button></a>
+                <a href="html/login.php"><button class="login-btn">Accedi</button></a>
+                <a href="html/register.php"><button class="register-btn">Registrati</button></a>
             </div>
         </div>
 
@@ -83,14 +83,14 @@
             <div class="professori">
                 <h2>Primo Canale</h2>
                 <div class="prof">
-                    <a href="html/professori/saverio_salzo.html">
+                    <a href="html/professori/saverio_salzo.php">
                         <h3>Saverio Salzo</h3>
                     </a>
                 </div>
                 <br><br>
                 <h2>Secondo Canale</h2>
                 <div class="prof">
-                    <a href="html/professori/nicola_galesi.html">
+                    <a href="html/professori/nicola_galesi.php">
                         <h3>Nicola Galesi</h3>
                     </a>
                 </div>
