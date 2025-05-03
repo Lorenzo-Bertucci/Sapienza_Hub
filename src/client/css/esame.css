@@ -464,16 +464,27 @@ nav ul li a:hover {
 }
 
 .utente{
-    font-size: 16px;
+    font-size: 20px;
     color: rgba(149,30,30,1);
-    padding-top: 0;
-    margin-top: 0;
 }
 
 .rec p, .mat p{
     padding-bottom: 10px;
-    font-size: 14px;
+    font-size: 17px;
     border-bottom: 1px solid darkgray;
+}
+
+.mat a{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 20px;
+    border-bottom: 1px solid darkgray;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    
+
 }
 
 .errore{
@@ -658,7 +669,7 @@ nav ul li a:hover {
         font-size: 12px;
     }
 
-    .rec p, .mat p{
+    .rec p, .mat p, .mat a{
         font-size: 10px;
     }
 

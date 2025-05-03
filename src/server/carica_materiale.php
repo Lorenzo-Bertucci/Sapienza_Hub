@@ -9,6 +9,7 @@
             $date = date('Y-m-d H:i:s');
             $materia=pg_escape_string($conn, $_POST['materia']);
 
+
             if (isset($_FILES['materiale']) && $_FILES['materiale']['error'] === UPLOAD_ERR_OK) {
                 $fileTmpPath = $_FILES['materiale']['tmp_name'];
                 $fileType = $_FILES['materiale']['type'];

@@ -146,11 +146,24 @@ function openMat(materia){
         materialeDiv.appendChild(tit);
         const mat=document.createElement('div');
         mat.classList.add("mat");
+        materialeDiv.appendChild(mat);
         data.materiale.forEach(didattico=>{
-          mat.innerHTML+=`<div><span class='utente'><strong>~${didattico.nome}</strong></span>
+        /*  mat.innerHTML+=`<div><span class='utente'><strong>~${didattico.nome}</strong></span>
           <span style="margin-left: 10px; font-size: smaller; font-style: italic;"><small><i> ${didattico.dat}</i></small></span></div> <p>${didattico.nomefile}</p>`;
         });
-        materialeDiv.appendChild(mat);
+        //<a href="download_materiale.php?nomefile=${encodeURIComponent(${didattico.nomefile})}"></a>
+        materialeDiv.appendChild(mat);*/
+        const nomedata=document.createElement('div');
+        nomedata.innerHTML=`<div><span class='utente'><strong>~${didattico.nome}</strong></span>
+          <span style="margin-left: 10px; font-size: smaller; font-style: italic;"><small><i> ${didattico.dat}</i></small></span></div>`;
+        mat.appendChild(nomedata);
+        const link = document.createElement('a');
+        link.href=`/src/server/download_materiale.php?materia=${encodeURIComponent(materia)}&nomefile=${encodeURIComponent(didattico.nomefile)}`
+        link.textContent=didattico.nomefile;
+        link.download=didattico.nomefile;
+        link.style.display = 'block';
+        mat.appendChild(link);
+        });
       }else{
         console.error("Errore nel caricamento dati: ", data.message);
       }
@@ -194,7 +207,7 @@ function inviaMateriale(event, materia){
       .then(data => {
         if (data.success) {
           Swal.fire('Successo!', 'Documento inviato con successo!', 'success');
-          //openMat(materia);
+          openMat(materia);
         } else {
           Swal.fire('Errore!', data.message, 'error');
         }
