@@ -7,16 +7,16 @@
         exit;
     }
 
-    $materia = $_GET['materia'];
+    $esame = $_GET['esame'];
     $nomefile = $_GET['nomefile'];
 
-    if (!$materia || !$nomefile) {
+    if (!$esame || !$nomefile) {
         http_response_code(400);
         echo "Parametri mancanti.";
         exit;
     }
 
-    $query="select materiale from $materia where nomefile='$nomefile'";
+    $query="select materiale from materiale_didattico where nomefile='$nomefile' and esame='$esame'";
     $result=pg_query($query);
     
     if ($row = pg_fetch_assoc($result)) {

@@ -3,12 +3,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const info = document.querySelector(".info");
     const desc = document.querySelector(".desc");
     const esamiContainer = document.querySelector(".esami");
+
+    // Funzione per ottenere il parametro "codice" dall'URL
+    function getUrlParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // Recupera il codice del corso di laurea dall'URL
+    const corso = getUrlParameter("corso");
+
+    if (!corso) {
+        desc.innerHTML = "<p class='errore'>Codice del corso non specificato.</p>";
+        return;
+    }
     
     function createCard(codice,nome) {
         const card = document.createElement("div");
         card.classList.add("card");
         card.innerHTML = `
-            <a href="/src/client/html/esame.php?codice=${encodeURIComponent(codice)}">
+            <a href="/src/client/html/esame.php?corso=${encodeURIComponent(corso)}&codice=${encodeURIComponent(codice)}">
                 <h3>${nome}</h3>
             </a>
         `;
@@ -42,19 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // Funzione per ottenere il parametro "codice" dall'URL
-    function getUrlParameter(name) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(name);
-    }
-
-    // Recupera il codice del corso di laurea dall'URL
-    const codice = getUrlParameter("corso");
-
-    if (!codice) {
-        desc.innerHTML = "<p class='errore'>Codice del corso non specificato.</p>";
-        return;
-    }
 
     // Funzione per caricare i dati del corso di laurea
     function loadCorso(codice) {
@@ -127,6 +128,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Carica i dati del corso di laurea
-    loadCorso(codice);
+    loadCorso(corso);
 });
 

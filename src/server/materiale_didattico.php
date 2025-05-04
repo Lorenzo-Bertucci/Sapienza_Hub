@@ -1,8 +1,8 @@
 <?php
 
     header('Content-Type: application/json');
-    if(isset($_GET['materia'])){
-        $materia=$_GET['materia'];
+    if(isset($_GET['esame'])){
+        $esame=$_GET['esame'];
     }
     else{
         echo json_encode(['success' => false, 'message' => 'Errore GET ' . pg_last_error()]);
@@ -16,7 +16,7 @@
         exit;
     }
 
-    $query="select nome, nomefile, TO_CHAR(dat, 'YYYY-MM-DD HH24:MI:SS') AS dat from $materia";
+    $query="select utente, nomefile, TO_CHAR(dat, 'YYYY-MM-DD HH24:MI:SS') AS dat from materiale_didattico where esame='$esame'";
     $result = pg_query($query);
     if (!$result) {
         echo json_encode(['success' => false, 'message' => 'Errore durante il recupero del materiale.']);
