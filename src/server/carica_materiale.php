@@ -6,8 +6,7 @@
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nome = pg_escape_string($conn, $_POST['nome']);
             $nome_file= pg_escape_string($conn, $_POST['nomefile']);
-            $date = date('Y-m-d H:i:s');
-            $materia=pg_escape_string($conn, $_POST['materia']);
+            $esame=pg_escape_string($conn, $_POST['esame']);
 
 
             if (isset($_FILES['materiale']) && $_FILES['materiale']['error'] === UPLOAD_ERR_OK) {
@@ -19,14 +18,14 @@
                     $fileContentRaw = file_get_contents($fileTmpPath);
                     $fileContent = pg_escape_bytea($conn, $fileContentRaw);
 
-                    $insert_query = "INSERT INTO $materia (nome, materiale, dat, nomefile) VALUES ('$nome', '$fileContent', '$date', '$nome_file')";
+                    $insert_query = "INSERT INTO materiale_didattico (utente, materiale, nomefile, esame) VALUES ('$nome', '$fileContent', '$nome_file', '$esame')";
                     $insert_result = pg_query($conn, $insert_query);
         
                     if ($insert_result) {
                         echo json_encode(['success' => true, 'message' => 'Materiale caricato con successo!']);
                     } else {
                         
-                        echo json_encode(['success' => false, 'message' => 'Errore durante l\'inserimento del materiale: ' . pg_last_error($conn)]);
+                        echo json_encode(['success' => false, 'message' => 'Errore durante l\'inserimento del materiale. Assicurati che il nome del file non sia già stato inserito.']);
                     }
                 } else {
                     echo json_encode(['success' => false, 'message' => 'Il file caricato non è un PDF.']);

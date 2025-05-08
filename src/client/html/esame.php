@@ -6,10 +6,11 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduzione alla programmazione - SapienzHub</title>
     <base href="/src/client/">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/esame.css">
+    <script src="js/esame.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="container">
@@ -46,39 +47,21 @@ session_start();
         
         <div class="main">
             <div class="dati">
-                <p><b>CFU: </b>9</p>
-                <p><b>SSD: </b>ING-INF/05</p>
-                <p><b>Lingua: </b>🇮🇹</p>
-                <p><b>Tipo: </b>Attività formativa di base</p>
-                <p><b>Ambito Disciplinare: </b>Matmatica, informatica e statistica</p>
-                <a href="https://corsidilaurea.uniroma1.it/it/view-course-details/2024/31810/20220331104432/47c0ec84-11c0-4c84-bd7c-fab4d3c00649/2e537653-64f5-4bab-a05f-f04329673a16/684a57ec-3179-4dd4-8c48-551b594a65e3/62977ef3-a2cc-4d64-8524-13f4e0e57225?guid_cv=2e537653-64f5-4bab-a05f-f04329673a16&current_erogata=47c0ec84-11c0-4c84-bd7c-fab4d3c00649" style="color: black;" target="_blank">
-                    <strong>Link pagina esame</strong>
-                </a>
-                
             </div>
             <div class="desc">
-                <br>
-                <h1>Introduzione alla programmazione</h1><br>
-                <p>
-                    Il corso fornisce le basi della programmazione attraverso l’apprendimento del linguaggio Python, con l’obiettivo di sviluppare competenze sia nella programmazione funzionale che imperativa. Oltre all’uso del linguaggio, il corso introduce modelli fondamentali per l’informatica, ponendo particolare enfasi sulla capacità di progettare e realizzare soluzioni computazionali a problemi reali.<br>
-                    Al termine del corso, lo studente sarà in grado di analizzare problemi, progettare soluzioni efficaci e implementarle in Python, utilizzando le principali strutture dati e tecniche di programmazione introdotte. 
-                    Il calcolatore rappresenta uno strumento essenziale per l’acquisizione di tali competenze.<br>
-                    Il percorso formativo favorisce lo sviluppo del pensiero computazionale, della capacità critica nell’analisi e valutazione dei programmi, e dell’autonomia nell’apprendimento. 
-                    Inoltre, il corso contribuisce a migliorare le capacità comunicative, rendendo lo studente in grado di presentare in modo chiaro ed efficace problematiche e soluzioni nell’ambito dell’ingegneria e dell’informatica applicata.
-                </p>
-                
                 
             </div>
             <div class="barra">
                 <button class="bottone">Professori</button>
-                <button class="bottone">Materiale Didattico</button>
+                <button class="bottone" onclick="openMat()">Materiale Didattico</button>
                 <button class="bottone">Community</button>
-                <button class="bottone">Recensioni</button>
+                <button class="bottone" onclick="openRec()">Recensioni</button>
             </div>
         </div>
 
         <div class="content">
             <div class="professori">
+                <!--
                 <h2>Primo Canale</h2>
                 <div class="prof">
                     <a href="html/professori/marco_schaerf.php">
@@ -97,17 +80,42 @@ session_start();
                         <h3>Giuseppe Santucci</h3>
                         </a>
                 </div>
+                -->
             </div>
             <div class="mat-did">
-                <h3>Materiale didattico</h3>
+                <div class="form-container">
+                    <h3>Condividi il tuo materiale didattico:</h3>
+                    <form class="materiale-form" enctype="multipart/form-data" onsubmit="inviaMateriale(event)">
+                        <input type="text" name="nome" placeholder="Il tuo nome" required>
+                        <input type="text" name="nomefile" placeholder="Inserire il nome del file" required>
+                        <label for="pdf"><br>Inserire qui il materiale in formato pdf:</label>
+                        <input type="file" id="pdf" name="materiale" accept="application/pdf" required>
+                        <button>Invia</button>
+                    </form>
+                </div>
+
+                <div class="materiale">
+
+                </div>
+                
             </div>
             <div class="community">
-                <h3>Community</h3>
+                
             </div>
             <div class="recensioni">
-                <h3>Recensioni</h3>
-            </div>
+                <div class="form-container">
+                    <h3>Aggiungi la tua recensione</h3>
+                    <form class="recensione-form" onsubmit="inviaRecensione(event)">
+                        <input type="text" name="nome" placeholder="Il tuo nome" required>
+                        <textarea name="testo" placeholder="Scrivi la tua recensione" required></textarea>
+                        <button>Invia</button>
+                    </form>
+                </div>
+                
+                <div class="php">
 
+                </div>
+            </div>
 
         </div>
         

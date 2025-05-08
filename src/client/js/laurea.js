@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const card = document.createElement("div");
         card.classList.add("card");
         card.innerHTML = `
-            <a href="/src/client/html/esame.php?codice=${encodeURIComponent(codice)}">
+            <a href="/src/client/html/esame.php?corso=${encodeURIComponent(corso)}&codice=${encodeURIComponent(codice)}">
                 <h3>${nome}</h3>
             </a>
         `;
@@ -173,6 +173,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Carica i dati del corso di laurea
-    loadCorso(codice);
+    loadCorso(corso);
 });
 

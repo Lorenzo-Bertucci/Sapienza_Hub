@@ -12,9 +12,9 @@
             $nome = pg_escape_string($conn, $_POST['nome']);
             $testo = pg_escape_string($conn, $_POST['testo']);
             //$date = date('Y-m-d H:i:s');
-            $materia=pg_escape_string($conn, $_POST['materia']);
+            $esame=pg_escape_string($conn, $_POST['esame']);
 
-            $insert_query = "INSERT INTO $materia (nome, testo) VALUES ('$nome', '$testo')";
+            $insert_query = "INSERT INTO recensioni (utente, testo, esame) VALUES ('$nome', '$testo', '$esame')";
             $insert_result = pg_query($conn, $insert_query);
 
             if ($insert_result) {
