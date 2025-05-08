@@ -36,6 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     // Ricollega gli eventi di ricerca
                     addSearchFunctionality();
+                    // Imposta il valore della barra di ricerca
+                    searchInput.value = searchQuery;
 
                     // Filtra i corsi in base al termine di ricerca
                     filterCourses(searchQuery);

@@ -33,6 +33,7 @@ if (!password_verify($password, $tuple['password'])) {
 // Login riuscito
 
 $_SESSION['logged_in'] = true;
+$_SESSION['user_id'] = $tuple['id'];
 $_SESSION['user_email'] = $email;
 $_SESSION['user_nome'] = $tuple['nome'];
 $_SESSION['user_cognome'] = $tuple['cognome'];

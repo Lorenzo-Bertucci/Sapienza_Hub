@@ -1,9 +1,53 @@
+// Funzione per ottenere il parametro "codice" dall'URL
+function getUrlParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+// Funzione per aggiornare lo stato del pulsante
+function updateFavoriteState(isFavorite) {
+    const favoriteBtn = document.querySelector(".favorite-btn");
+    if (isFavorite) {
+        favoriteBtn.classList.add("active");
+        favoriteBtn.title = "Rimuovi dai preferiti";
+    } else {
+        favoriteBtn.classList.remove("active");
+        favoriteBtn.title = "Aggiungi ai preferiti";
+    }
+}
+
+function favorite() {
+    const favoriteBtn = document.querySelector(".favorite-btn");
+    const action = favoriteBtn.classList.contains("active") ? "remove" : "add";
+    const corsoCodice = getUrlParameter("corso"); // Recupera il codice del corso dall'URL
+
+    fetch(`/src/server/toggle_favorite.php`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ corso: corsoCodice, action: action }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                updateFavoriteState(action === "add");
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Errore:", error);
+            alert("Si è verificato un errore.");
+        });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const foto = document.querySelector(".foto");
     const info = document.querySelector(".info");
     const desc = document.querySelector(".desc");
     const esamiContainer = document.querySelector(".esami");
-    
+
     function createCard(codice,nome) {
         const card = document.createElement("div");
         card.classList.add("card");
@@ -39,13 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             esamiContainer.appendChild(annoDiv2);
         }
-    }
-
-
-    // Funzione per ottenere il parametro "codice" dall'URL
-    function getUrlParameter(name) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(name);
     }
 
     // Recupera il codice del corso di laurea dall'URL
@@ -84,10 +121,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         </a>
                         <br><br>
                     `;
-                    desc.innerHTML = `
-                        <h1>${corso.nome}</h1>
-                        <p>${corso.descrizione}</p>
-                    `;
+                    document.getElementById("corso-nome").textContent = corso.nome;
+                    document.getElementById("corso-descrizione").textContent = corso.descrizione;
                     load_esami(codice,corso.durata);
                 } else {
                     desc.innerHTML = `<p class='errore'>${data.message}</p>`;
@@ -125,6 +160,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 esamiContainer.innerHTML = "<p class='errore'>Errore durante il caricamento degli esami.</p>";
             });
     }
+
+
+    // Controlla se il corso è già nei preferiti
+    fetch(`/src/server/check_favorite.php?corso=${encodeURIComponent(codice)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                updateFavoriteState(data.isFavorite);
+            }
+        });
+
 
     // Carica i dati del corso di laurea
     loadCorso(codice);

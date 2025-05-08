@@ -51,11 +51,19 @@ session_start();
 
                 </div>
                 <div class="info">
-
+                    
                 </div>
             </div>
             <div class="desc">
-                
+                <div class="nome">
+                    <h1 id="corso-nome"></h1>
+                    <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
+                        <button id="favorite-btn" class="favorite-btn" title="Aggiungi ai preferiti" onclick="favorite()">
+                            &#9734;
+                        </button>
+                    <?php endif; ?>
+                </div>
+                <p id="corso-descrizione"></p>
             </div>
             <nav class="nav-bar">
                 <button class="bottone"> <strong> Esami</strong></button>
