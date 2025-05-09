@@ -10,7 +10,7 @@ if (!$conn) {
 }
 
 // Query per recuperare i corsi di laurea
-$query = "SELECT codice,nome, tipo FROM corsi_laurea";
+$query = "SELECT codice,nome, tipo FROM corsi";
 $result = pg_query($conn, $query);
 
 if (!$result) {

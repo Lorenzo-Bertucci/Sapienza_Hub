@@ -48,6 +48,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const desc = document.querySelector(".desc");
     const esamiContainer = document.querySelector(".esami");
 
+    // Recupera il codice del corso di laurea dall'URL
+    const corso = getUrlParameter("corso");
+
+    if (!corso) {
+        desc.innerHTML = "<p class='errore'>Codice del corso non specificato.</p>";
+        return;
+    }
+
     function createCard(codice,nome) {
         const card = document.createElement("div");
         card.classList.add("card");
@@ -83,14 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             esamiContainer.appendChild(annoDiv2);
         }
-    }
-
-    // Recupera il codice del corso di laurea dall'URL
-    const codice = getUrlParameter("corso");
-
-    if (!codice) {
-        desc.innerHTML = "<p class='errore'>Codice del corso non specificato.</p>";
-        return;
     }
 
     // Funzione per caricare i dati del corso di laurea
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function load_esami(codice,durata) {
-        fetch(`/src/server/get_esami.php?esami=esami_${encodeURIComponent(codice)}`)
+        fetch(`/src/server/get_esami.php?corso=${encodeURIComponent(codice)}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Errore durante il caricamento degli esami.");
@@ -162,14 +162,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // Controlla se il corso è già nei preferiti
-    fetch(`/src/server/check_favorite.php?corso=${encodeURIComponent(codice)}`)
+    /*Controlla se il corso è già nei preferiti
+    fetch(`/src/server/check_favorite.php?corso=${encodeURIComponent(corso)}`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
                 updateFavoriteState(data.isFavorite);
             }
         });
+    */
+        
 
 
     // Carica i dati del corso di laurea

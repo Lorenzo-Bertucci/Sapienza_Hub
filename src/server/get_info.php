@@ -15,12 +15,11 @@ if (!isset($_GET['codice']) || !isset($_GET['corso'])) {
     exit;
 }
 
-$corso = pg_escape_string($conn, $_GET['corso']);
 $codice = pg_escape_string($conn, $_GET['codice']);
 
 // Query per recuperare le informazioni dell'esame
-$query = "SELECT * FROM esami_".$corso ." WHERE codice = '$codice'";
-$result = pg_query($conn, $query);
+$query = "SELECT * FROM esami WHERE codice = $1";
+$result = pg_query_params($conn, $query, array($codice));
 
 if (!$result || pg_num_rows($result) === 0) {
     echo json_encode(['success' => false, 'message' => 'Esame non trovato.']);

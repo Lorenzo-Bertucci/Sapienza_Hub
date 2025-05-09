@@ -19,7 +19,7 @@ $esame = pg_escape_string($conn, $_GET['esame']);
 
 
 // Query per recuperare gli esami associati al corso
-$query = "SELECT * FROM professori where esame='$esame'";
+$query = "SELECT * FROM insegna where codice_esame='$esame'";
 $result = pg_query($conn, $query);
 
 if (!$result) {

@@ -47,6 +47,7 @@ session_start();
         
         <div class="main">
             <div class="dati">
+                
             </div>
             <div class="desc">
                 
@@ -61,26 +62,7 @@ session_start();
 
         <div class="content">
             <div class="professori">
-                <!--
-                <h2>Primo Canale</h2>
-                <div class="prof">
-                    <a href="html/professori/marco_schaerf.php">
-                    <h3>Marco Schaerf</h3>
-                    </a>
-                </div>
-                <div class="prof">
-                    <a href="html/professori/antonella_poggi.php">
-                    <h3>Antonella Poggi</h3>
-                    </a>
-                </div>
-                <br><br>
-                <h2>Secondo Canale</h2>
-                <div class="prof">
-                    <a href="html/professori/giuseppe_santucci.php">
-                        <h3>Giuseppe Santucci</h3>
-                        </a>
-                </div>
-                -->
+               
             </div>
             <div class="mat-did">
                 <div class="form-container">

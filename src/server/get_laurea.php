@@ -18,7 +18,7 @@ if (!isset($_GET['corso'])) {
 $corso = pg_escape_string($conn, $_GET['corso']);
 
 // Query per recuperare le informazioni del corso di laurea
-$query = "SELECT * FROM corsi_laurea WHERE codice = $1";
+$query = "SELECT * FROM corsi WHERE codice = $1";
 $result = pg_query_params($conn, $query, array($corso));
 
 if (!$result || pg_num_rows($result) === 0) {

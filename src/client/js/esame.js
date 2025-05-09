@@ -81,13 +81,13 @@ document.addEventListener("DOMContentLoaded", function (){
                   profDiv.innerHTML = "<h3 style='text-align:center;'>Nessun professore trovato per questo corso.</h3>";
                   return;
               }
-              profDiv.innerHTML = "<h2 style='text-align:center;'>Professori:</h2>"
+      
               prof.forEach(profess =>{
                 const cardprof=document.createElement('div');
                 cardprof.classList.add("prof");
                 cardprof.innerHTML=`
                     <a>
-                        <h3>${profess.nome}</h3>
+                        <h3>${profess.nome_professore}</h3>
                     </a>`;
                 profDiv.appendChild(cardprof);
               });

@@ -10,17 +10,17 @@ if (!$conn) {
 }
 
 // Recupera il codice del corso dall'URL
-if (!isset($_GET['esami'])) {
+if (!isset($_GET['corso'])) {
     echo json_encode(['success' => false, 'message' => 'Codice del corso non specificato.']);
     exit;
 }
 
-$corso = pg_escape_string($conn, $_GET['esami']);
+$corso = pg_escape_string($conn, $_GET['corso']);
 
 
 // Query per recuperare gli esami associati al corso
-$query = "SELECT codice,nome,anno,semestre FROM ".$corso;
-$result = pg_query($conn, $query);
+$query = "SELECT codice,nome,anno,semestre FROM esami WHERE corso = $1";
+$result = pg_query_params($conn, $query, array($corso));
 
 if (!$result) {
     echo json_encode(['success' => false, 'message' => 'Errore durante il recupero degli esami.']);
