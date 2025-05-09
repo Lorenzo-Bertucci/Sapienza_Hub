@@ -86,14 +86,14 @@ document.addEventListener("DOMContentLoaded", function (){
                 const cardprof=document.createElement('div');
                 cardprof.classList.add("prof");
                 cardprof.innerHTML=`
-                    <a>
+                    <a href="/src/client/html/home_prof.php?id=${profess.id_professore}">
                         <h3>${profess.nome_professore}</h3>
                     </a>`;
                 profDiv.appendChild(cardprof);
               });
-          } else {
-              profDiv.innerHTML = `<p class='errore'>${data.message}</p>`;
-          }
+            } else {
+                profDiv.innerHTML = `<p class='errore'>${data.message}</p>`;
+            }
       })
       .catch(error => {
           console.error("Errore:", error);
