@@ -9,12 +9,12 @@
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $nome = pg_escape_string($conn, $_POST['nome']);
+            $id = pg_escape_string($conn, $_POST['id']);
             $testo = pg_escape_string($conn, $_POST['testo']);
             //$date = date('Y-m-d H:i:s');
             $esame=pg_escape_string($conn, $_POST['esame']);
 
-            $insert_query = "INSERT INTO recensioni (utente, testo, esame) VALUES ('$nome', '$testo', '$esame')";
+            $insert_query = "INSERT INTO recensioni_esami (id_utente, testo, codice) VALUES ('$id', '$testo', '$esame')";
             $insert_result = pg_query($conn, $insert_query);
 
             if ($insert_result) {

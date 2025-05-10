@@ -485,6 +485,12 @@ nav ul li a:hover {
 
 }
 
+.mat h1{
+    text-align: center;
+    color: rgba(149, 30, 30, 1);
+
+}
+
 .errore{
     border: 1px solid black;
     border-radius: 15px;

@@ -295,7 +295,7 @@ nav ul li a:hover {
     gap: 20px; 
 }
 
-.content h1 {
+.lista h1 {
     font-size: 30px; 
     font-weight: 600;
     align-self: left; 
@@ -322,10 +322,12 @@ nav ul li a:hover {
     color: white;
 }
 
-.card h3 {
+.card a h3 {
     margin: 0 0 0px;
     font-size: 20px; 
     font-weight: 500;
+    text-align: center;
+    
 }
 .card p {
     margin: 0 0 0;
@@ -349,6 +351,8 @@ nav ul li a:hover {
     padding: 20px; /* Occupa tutta l'altezza della card */ /* Mantiene il padding interno */
     border-radius: 15px; /* Mantiene gli angoli arrotondati */
 }
+
+
 
 
 .footer {
