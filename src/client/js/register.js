@@ -33,13 +33,23 @@ function inviaReg(event){
       })
       .then(data => {
         if (data.success) {
-          Swal.fire('Registrazione effettuata con successo!', 'A breve verrai reindirizzato alla pagina di login', 'success');
+            Swal.fire({
+                title: 'Registrazione effettuata con successo!',
+                text: 'A breve verrai reindirizzato alla pagina di login',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2000
+            });
             setTimeout(() => {
                 window.location.href = '../client/html/login.php';
-            }, 3000);
+            }, 2000);
         } else {
           Swal.fire('Errore!', data.message, 'error');
         }
       })
+      .catch(error => {
+        console.error('Errore:', error);
+        Swal.fire('Errore!', 'Si è verificato un errore durante la registrazione.', 'error');
+    });
 }
 

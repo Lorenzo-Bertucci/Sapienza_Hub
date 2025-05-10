@@ -1,4 +1,3 @@
-
 <?php
 
 header('Content-Type: application/json'); // Imposta il tipo di contenuto come JSON
@@ -35,8 +34,9 @@ if (!password_verify($password, $tuple['password'])) {
 $_SESSION['logged_in'] = true;
 $_SESSION['user_id'] = $tuple['id'];
 $_SESSION['user_email'] = $email;
-$_SESSION['user_nome'] = $tuple['nome'];
-$_SESSION['user_cognome'] = $tuple['cognome'];
+list($nome, $cognome) = explode(' ', $tuple['nome'], 2);
+$_SESSION['user_nome'] = $nome;
+$_SESSION['user_cognome'] = $cognome;
 echo json_encode(['success' => true, 'message' => 'Login effettuato con successo.']);
 exit;
 

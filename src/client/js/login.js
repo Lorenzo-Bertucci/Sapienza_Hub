@@ -21,7 +21,13 @@ function inviaLogin(event){
     .then(data => {
         console.log('Risposta JSON:', data); // Log della risposta JSON
         if (data.success) {
-            Swal.fire('Login effettuato con successo!', 'A breve verrai reindirizzato alla tua Dashboard', 'success');
+            Swal.fire({
+                title: 'Login effettuato con successo!',
+                text: 'A breve verrai reindirizzato alla tua Dashboard',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2000
+            });
             setTimeout(() => {
                 window.location.href = '../client/html/dashboard.php';
             }, 2000);
