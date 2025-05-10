@@ -76,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function (){
       .then(data => {
           if (data.success) {
               const prof = data.data;
-              console.log(prof); 
               if (prof.length === 0) {
                   profDiv.innerHTML = "<h3 style='text-align:center;'>Nessun professore trovato per questo corso.</h3>";
                   return;
@@ -132,7 +131,7 @@ function openRec(){
         recensioniDiv.appendChild(rec);
       }else{
         console.error("Errore nel caricamento dati: ", data.message);
-        recensioniDiv.innerHTML = "<p class='errore'>Impossibile caricare il materiale.<br><br>Controllare la connessione al database.<br> Non esiste</p>";
+        recensioniDiv.innerHTML = "<p class='errore'>Impossibile caricare le recensioni.<br><br>Controllare la connessione al database.<br> Non esiste</p>";
       }
     })
     .catch(error => {
@@ -141,7 +140,7 @@ function openRec(){
     });
 }
 
-function inviaRecensione(event){
+function inviaRecensione(event, id){
   event.preventDefault();
   
   Swal.fire({
@@ -161,7 +160,8 @@ function inviaRecensione(event){
       const formData=new FormData(form);
       const esame=getUrlParameter('codice');
       formData.append('esame', esame);
-      fetch('/src/server/carica_recensioni.php', {
+      formData.append('id', id);
+      fetch('/src/server/carica_recensioni_esami.php', {
         method: 'POST',
         body: formData
       })
@@ -234,8 +234,10 @@ function openMat(){
 
 }
 
-function inviaMateriale(event, materia){
+function inviaMateriale(event, id){
   event.preventDefault();
+
+  console.log( id);
   
   Swal.fire({
     title: 'Conferma invio',
@@ -254,6 +256,7 @@ function inviaMateriale(event, materia){
       const formData=new FormData(form);
       const esame=getUrlParameter('codice');
       formData.append('esame', esame);
+      formData.append('id', id);
       fetch('/src/server/carica_materiale.php', {
         method: 'POST',
         body: formData

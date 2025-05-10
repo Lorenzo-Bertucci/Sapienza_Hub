@@ -2,8 +2,8 @@
 
     header('Content-Type: application/json');
     
-    if(isset($_GET['esame'])){
-        $esame=$_GET['esame'];
+    if(isset($_GET['id'])){
+        $prof_id=$_GET['id'];
     }
     else{
         echo json_encode(['success' => false, 'message' => 'Errore GET ' . pg_last_error()]);
@@ -17,7 +17,7 @@
         exit;
     }
 
-    $query="select u.nome as utente, testo, TO_CHAR(dat, 'YYYY-MM-DD') AS dat from recensioni_esami r, utenti u where r.codice='$esame' and r.id_utente=u.id";
+    $query="select u.nome as utente, testo, TO_CHAR(dat, 'YYYY-MM-DD') AS dat from recensioni_professori r, utenti u where r.id_professore='$prof_id' and r.id_utente=u.id";
     $result = pg_query($query);
 
     if (!$result) {

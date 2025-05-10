@@ -1,5 +1,6 @@
 <?php
 session_start();
+$user_id=isset($_SESSION['user_id']);
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -11,6 +12,7 @@ session_start();
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/pagina_prof.css">
     <script src="js/home_prof.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="container">
@@ -75,10 +77,8 @@ session_start();
                         exit;
                     }
                     
-                    // Recupera i dati del professore
                     $professore = pg_fetch_assoc($result);
                     
-                    // Chiudi la connessione al database
                     pg_free_result($result);
                     pg_close($conn);
 
@@ -98,23 +98,35 @@ session_start();
             </div>
             <nav class="nav-bar">
                 <button class="bottone"> <strong>Esami</strong></button>
-                <button class="bottone"><strong>Recensioni</strong></button>
+                <button class="bottone" onclick="openRec()"><strong>Recensioni</strong></button>
             </nav>
         </div>
         <div class="content">
             <div class="esami">
-                <!--
-                <div class="card">
-                    <a href="html/corsi/ing_inf/esami/fondamenti_di_matematica.php">
-                        <h3>Fondamenti di Matematica</h3>
-                        <p>~Ingegneria informatica e automatica</p>
-                    </a>
-                </div>
-                -->
+
             </div>
+            <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
             <div class="recensioni">
-                <h3>recensioni</h3>
+                <div class="form-container">
+                    <h3>Aggiungi la tua recensione</h3>
+                    <form class="recensione-form" onsubmit="inviaRecensione(event, <?php echo $user_id; ?>)">
+                        <textarea name="testo" placeholder="Scrivi la tua recensione" required></textarea>
+                        <button>Invia</button>
+                    </form>
+                </div>
+                    
+                <div class="php">
+
+                </div>
             </div>
+            <?php else: ?>
+                <div class="recensioni">
+                    <div class="rec">
+                        <h1> Devi effettuare il login per vedere questa sezione</h1>
+                    </div>
+                </div>
+
+            <?php endif; ?>
 
             
         </div>

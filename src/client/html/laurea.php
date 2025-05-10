@@ -67,8 +67,6 @@ session_start();
             </div>
             <nav class="nav-bar">
                 <button class="bottone"> <strong> Esami</strong></button>
-                <button class="bottone"><strong>Materiale Didattico</strong></button>
-                <button class="bottone"><strong>Community</strong></button>
             </nav>
         </div>
         <div class="content">
@@ -76,13 +74,6 @@ session_start();
                     
             </div>
 
-            <div class="mat_did">
-                prova materiale didattico
-            </div>
-
-            <div class="chat">
-                prova chat
-            </div>
         </div>
         <div class="footer">
             <p>&copy; 2025 SapienzHub. Tutti i diritti riservati.</p>
@@ -130,9 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Imposta per i bottoni della nav-bar
   const navButtons = document.querySelectorAll('.nav-bar .bottone');
   const navSections = {
-    "esami": document.querySelector(".esami"),
-    "materiale": document.querySelector(".mat_did"),
-    "community": document.querySelector(".chat") // Aggiungi la sezione "chat"
+    "esami": document.querySelector(".esami")
   };
   // Imposta "esami" come default
   setupButtonGroup(navButtons, "esami", navSections);

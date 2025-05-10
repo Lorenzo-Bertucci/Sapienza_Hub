@@ -91,3 +91,86 @@ document.addEventListener("DOMContentLoaded", function() {
   
   
   });
+
+
+function inviaRecensione(event, user_id){
+  event.preventDefault();
+  
+  Swal.fire({
+    title: 'Conferma invio',
+    text: "Sei sicuro di voler inviare questa recensione?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sì, invia!',
+    cancelButtonText: 'Annulla'
+  })
+  .then(result =>{
+    if(result.isConfirmed){
+
+      const form=document.querySelector(".recensione-form");
+      const formData=new FormData(form);
+      const prof_id=getUrlParameter('id');
+      formData.append('prof_id', prof_id);
+      formData.append('user_id', user_id);
+      fetch('/src/server/carica_recensioni_prof.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (!response.ok) {
+          Swal.fire('Errore!', 'Errore durante l\'invio della recensione.', 'error');
+        }
+        return response.json(); 
+      })
+      .then(data => {
+        if (data.success) {
+          Swal.fire('Successo!', 'Recensione inviata con successo!', 'success');
+          openRec();
+        } else {
+          Swal.fire('Errore!', data.message, 'error');
+        }
+      })
+      .catch(error => {
+        Swal.fire('Errore!', 'Errore durante l\'invio della recensione .', 'error');
+      });
+
+    }
+  })
+}
+
+function openRec(){
+  const recensioniDiv = document.querySelector(".php");
+  const prof_id=getUrlParameter('id');
+  fetch(`/src/server/recensioni_professori.php?id=${encodeURIComponent(prof_id)}`)
+    .then(response => {
+      console.log(response);
+        if (!response.ok) {
+          throw new Error("Errore nel caricamento delle recensioni.");
+        }
+        return response.json();
+    })
+    .then(data => {
+      if(data.success){
+        recensioniDiv.innerHTML='';
+        const tit=document.createElement('div');
+        tit.classList.add("titolo");
+        tit.innerHTML='<b>Dicono di questo esame:</b>';
+        recensioniDiv.appendChild(tit);
+        const rec=document.createElement('div');
+        rec.classList.add("rec");
+        data.recensioni.forEach(recensione=>{
+          rec.innerHTML+=`<div><span class='utente'><strong>~${recensione.utente}</strong></span><span style="margin-left: 10px; font-size: smaller; font-style: italic;"><small><i> ${recensione.dat}</i></small></span></div> <p>${recensione.testo}</p>`;
+        });
+        recensioniDiv.appendChild(rec);
+      }else{
+        console.error("Errore nel caricamento dati: ", data.message);
+        recensioniDiv.innerHTML = "<p class='errore'>Impossibile caricare le recensioni.<br><br>Controllare la connessione al database.<br> Non esiste</p>";
+      }
+    })
+    .catch(error => {
+      console.error("Errore:", error);
+      recensioniDiv.innerHTML = "<p class='errore'>Impossibile caricare le recensioni.<br><br>Controllare la connessione.</p>";
+    });
+}

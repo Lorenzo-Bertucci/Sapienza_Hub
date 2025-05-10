@@ -16,7 +16,7 @@
         exit;
     }
 
-    $query="select utente, nomefile, TO_CHAR(dat, 'YYYY-MM-DD HH24:MI:SS') AS dat from materiale_didattico where esame='$esame'";
+    $query="select u.nome as utente, nomefile, TO_CHAR(dat, 'YYYY-MM-DD') AS dat from materiale_didattico m, utenti u where esame='$esame' and u.id=m.utente";
     $result = pg_query($query);
     if (!$result) {
         echo json_encode(['success' => false, 'message' => 'Errore durante il recupero del materiale.']);

@@ -1,5 +1,6 @@
 <?php
 session_start();
+$id=isset($_SESSION['user_id']);
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -55,7 +56,6 @@ session_start();
             <div class="barra">
                 <button class="bottone">Professori</button>
                 <button class="bottone" onclick="openMat()">Materiale Didattico</button>
-                <button class="bottone">Community</button>
                 <button class="bottone" onclick="openRec()">Recensioni</button>
             </div>
         </div>
@@ -64,40 +64,57 @@ session_start();
             <div class="professori">
                
             </div>
-            <div class="mat-did">
-                <div class="form-container">
-                    <h3>Condividi il tuo materiale didattico:</h3>
-                    <form class="materiale-form" enctype="multipart/form-data" onsubmit="inviaMateriale(event)">
-                        <input type="text" name="nome" placeholder="Il tuo nome" required>
-                        <input type="text" name="nomefile" placeholder="Inserire il nome del file" required>
-                        <label for="pdf"><br>Inserire qui il materiale in formato pdf:</label>
-                        <input type="file" id="pdf" name="materiale" accept="application/pdf" required>
-                        <button>Invia</button>
-                    </form>
+            <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
+
+                <div class="mat-did">
+                    <div class="form-container">
+                        <h3>Condividi il tuo materiale didattico:</h3>
+                        <form class="materiale-form" enctype="multipart/form-data" onsubmit="inviaMateriale(event, <?php echo $id; ?>)">
+                            <input type="text" name="nomefile" placeholder="Inserire il nome del file" required>
+                            <label for="pdf"><br>Inserire qui il materiale in formato pdf:</label>
+                            <input type="file" id="pdf" name="materiale" accept="application/pdf" required>
+                            <button>Invia</button>
+                        </form>
+                    </div>
+
+                    <div class="materiale">
+
+                    </div>
+                    
+                </div>
+                <div class="community">
+                    
+                </div>
+                <div class="recensioni">
+                    <div class="form-container">
+                        <h3>Aggiungi la tua recensione</h3>
+                        <form class="recensione-form" onsubmit="inviaRecensione(event, <?php echo $id; ?>)">
+                            <textarea name="testo" placeholder="Scrivi la tua recensione" required></textarea>
+                            <button>Invia</button>
+                        </form>
+                    </div>
+                    
+                    <div class="php">
+
+                    </div>
+                </div>
+                    
+            <?php else: ?>
+                <div class="mat-did">
+                    <div class="mat">
+                        <h1> Devi effettuare il login per vedere questa sezione</h1>
+                    </div>
+                </div>
+                <div class="recensioni">
+                    <div class="mat">
+                        <h1> Devi effettuare il login per vedere questa sezione</h1>
+                    </div>
+                    
                 </div>
 
-                <div class="materiale">
+            <?php endif; ?>
 
-                </div>
-                
-            </div>
-            <div class="community">
-                
-            </div>
-            <div class="recensioni">
-                <div class="form-container">
-                    <h3>Aggiungi la tua recensione</h3>
-                    <form class="recensione-form" onsubmit="inviaRecensione(event)">
-                        <input type="text" name="nome" placeholder="Il tuo nome" required>
-                        <textarea name="testo" placeholder="Scrivi la tua recensione" required></textarea>
-                        <button>Invia</button>
-                    </form>
-                </div>
-                
-                <div class="php">
-
-                </div>
-            </div>
+            
 
         </div>
         
@@ -151,7 +168,6 @@ session_start();
           const navSections = {
             "professori": document.querySelector(".professori"),
             "materiale": document.querySelector(".mat-did"),
-            "community": document.querySelector(".community"),
             "recensioni": document.querySelector(".recensioni")
           };
           // Imposta "professori" come default
