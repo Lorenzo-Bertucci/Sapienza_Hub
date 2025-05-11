@@ -21,11 +21,11 @@ $action = $data['action'];
 $user_id = $_SESSION['user_id'];
 
 if ($action === "add") {
-    $query = "INSERT INTO preferiti_corsi(id_utente,codice,nome) VALUES ($1, $2,$3)";
+    $query = "INSERT INTO preferiti_esami(id_utente,codice,nome) VALUES ($1, $2,$3)";
     $result = pg_query_params($conn, $query, array($user_id, $codice, $corso));
     $message = $result ? "Corso aggiunto ai preferiti." : "Errore durante l'aggiunta ai preferiti.";
 } elseif ($action === "remove") {
-    $query = "DELETE FROM preferiti_corsi WHERE id_utente = $1 AND codice = $2";
+    $query = "DELETE FROM preferiti_esami WHERE id_utente = $1 AND codice = $2";
     $result = pg_query_params($conn, $query, array($user_id, $codice));
     $message = $result ? "Corso rimosso dai preferiti." : "Errore durante la rimozione dai preferiti.";
 } else {

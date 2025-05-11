@@ -10,7 +10,7 @@ if (!$conn) {
 }
 
 // Recupera il codice del corso di laurea dall'URL
-if (!isset($_GET['codice']) || !isset($_GET['corso'])) {
+if (!isset($_GET['codice'])) {
     echo json_encode(['success' => false, 'message' => 'Codice del corso non specificato.']);
     exit;
 }

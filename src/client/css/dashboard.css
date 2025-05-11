@@ -32,6 +32,7 @@ html, body {
         "content"
         "footer";
     background-color: white; 
+    row-gap: 50px;
     color: black;
     padding: 0px;
     margin: 0px ;
@@ -62,7 +63,7 @@ body {
     justify-items: center;
     width: 100%;
     height: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .h-left{
@@ -111,55 +112,18 @@ nav ul li a:hover {
 }
 
 .auth-buttons {
-    display: flex;  
-    align-items: center;
+    display: flex;
     gap: 10px;
 }
 
 .auth-buttons button {
-    padding: 12px 24px;              /* Ingrandisce i pulsanti con più padding */
-    font-size: 16px;                 /* Aumenta la dimensione del testo */
+    padding: 12px 24px;              
+    font-size: 16px;               
     border: none;
     border-radius: 25px;
     cursor: pointer;
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.login-btn {
-    background-color: white;
-    color: rgb(170, 33, 33);
-    border: 1px solid rgb(170, 33, 33);
-    padding: 10px 20px;
-    font-size: 14px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    
-}
-
-.login-btn:hover {
-    background-color: rgb(170, 33, 33);
-    color: white;
-    transform: scale(1.05);
-    opacity: 0.9;
-}
-.register-btn {
-    background-color: rgb(170, 33, 33);
-    color: white;
-    padding: 10px 20px;
-    font-size: 14px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-.register-btn:hover {
-    background-color: rgb(150, 30, 30);
-    transform: scale(1.05);
-    opacity: 0.9;
 }
 
 .profile-container {
@@ -256,7 +220,8 @@ nav ul li a:hover {
     justify-content: center;
     align-items: start;
     padding: 0px;
-    margin: 0 auto 30px;
+    margin: 0 auto 0px;
+    margin-bottom: 0px;
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 15px;
@@ -285,8 +250,12 @@ nav ul li a:hover {
     line-height: 1;
     font-weight: 600;
 }
+
+.desc h2{
+    margin-left: 50px;
+}
 .desc p {
-    margin: 0;
+    margin-left: 50px;
     font-size: 20px;
     line-height: 1.5;
     font-weight: 300;
@@ -332,15 +301,16 @@ nav ul li a:hover {
    
 }
 
-.esami {
+.content {
+    grid-area: content;
     flex: 1; /* Fa sì che il contenuto occupi lo spazio disponibile sopra il footer */
     background-color: white;
-    padding: 0; /* Mantiene un padding uniforme */   
+    padding: 20px; /* Mantiene un padding uniforme */   
     display: flex; /* Imposta il layout Flexbox */
     flex-direction: column; /* Dispone gli elementi in verticale */
     justify-content: center;
     align-items:left;
-    margin: 0 auto 10px; /* Riduci il margine inferiore */
+    margin: 0 auto 0px; /* Riduci il margine inferiore */
     border: 1px solid #ddd;
     border-radius: 15px;
     width: 85%;
@@ -348,21 +318,34 @@ nav ul li a:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Aggiunge spazio tra gli elementi */
 }
 
-.esami h1 {
-    margin-left: 50px;
-    margin-top: 20px;
-    margin-bottom: 10px; /* Riduci questo valore per diminuire la separazione */
-    font-size: 28px;
-    line-height: 1;
-    font-weight: 600;
+.content h2 {
+    margin: 0px;
+    font-size: 24px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-weight: 500;
+    text-align: center;
 }
 
-.esami h2 {
+.content h3 {
+    margin: 0px;
+    font-size: 22px;
+    margin-bottom: 20px;
     margin-left: 50px;
-    margin-top: 0; /* Rimuovi o riduci il margine superiore */
-    font-size: 24px;
     line-height: 1.2;
-    font-weight: 600;
+    font-weight: 500;
+    text-align: left;
+}
+
+.content p, .recensioni p {
+    margin: 0px;
+    font-size: 20px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.corsi{
+    margin-bottom: 20px;
 }
 
 .card {
@@ -411,51 +394,71 @@ nav ul li a:hover {
     line-height: 1.5;
 }
 
-.button-row{
+.rec{
     display: flex;
-    justify-content: left;
-    align-items: center;
-    margin-left: 50px;
-    margin-bottom: 10px;
-    gap:10px
+    flex-direction: column;
+    align-self: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-items: flex-start; 
+    width: 80%;
+    margin: 15px auto;
+    
 }
 
-.button-row button {
-    background-color: white;
-    color: rgb(170, 33, 33);
-    border: 1px solid rgb(170, 33, 33);
-    padding: 10px 20px;
-    font-size: 14px;
-    border-radius: 25px;
+.rec:hover {
+    transform: translateY(-3px); /* Leggera traslazione verso l'alto */
+    transition: transform 0.3s ease; /* Transizione fluida */
     cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.button-row button:hover {
-    background-color: rgb(170, 33, 33);
-    color: white;
-    transform: scale(1.05);
-    opacity: 0.9;
+.rec h2{
+    margin: 0px;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    
 }
 
-.button-row .bottone.active {
-    background-color: rgb(170, 33, 33);
-    color: white;
-    transform: scale(0.98);
+.rec h3{
+    margin: 0px;
+    font-size: 18px;
+    font-weight: 500; 
 }
 
-.mat_did, .chat {
-    display: flex; /* Layout Flexbox */
-    flex-direction: column; /* Elementi in verticale */
+
+.rec p{
+    padding-bottom: 10px;
+    font-size: 17px;
+    line-height: 1.3;
+    border-bottom: 1px solid darkgray;
+    width: 100%;
+    text-align: justify;
+}
+
+
+.rec:hover .delete-button {
+    display: block; /* Mostra il bottone quando si passa sopra .rec */
+}
+
+.delete-button {    
+    position: absolute;
+    border-radius: 10px; /* Arrotonda leggermente i bordi */
+    display: none;
+    top: 0px;
+    right: 0px;
+    padding: 0px;
+    cursor: pointer;
+    border: none;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgb(150, 30, 30);
     background-color: white;
-    padding: 20px;
-    margin: 0 auto 10px;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    width: 85%;
-    height: fit-content;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.delete-button:hover {
+    transform: scale(1.3); /* Leggero ingrandimento al passaggio del mouse */
 }
 
 .footer {

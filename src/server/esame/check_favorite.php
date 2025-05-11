@@ -1,5 +1,3 @@
-
-
 <?php
 header('Content-Type: application/json');
 session_start();
@@ -19,7 +17,7 @@ if (!$conn) {
 $corso = pg_escape_string($conn, $_GET['corso']);
 $user_id = $_SESSION['user_id'];
 
-$query = "SELECT * FROM preferiti_corsi WHERE id_utente = $1 AND codice = $2";
+$query = "SELECT * FROM preferiti_esami WHERE id_utente = $1 AND codice = $2";
 $result = pg_query_params($conn, $query, array($user_id, $corso));
 
 $isFavorite = pg_num_rows($result) > 0;

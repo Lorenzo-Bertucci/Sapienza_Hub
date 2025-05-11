@@ -90,7 +90,7 @@ $user_id=isset($_SESSION['user_id']);
                             <br>
                             <strong>SSD</strong>: {$professore['ssd']}
                             <br>
-                            <a href='{$professore['link_']}' style='color: black;' target='_blank'>
+                            <a href='{$professore['link']}' style='color: black;' target='_blank'>
                                 <strong>Link sito</strong>
                             </a>
                         </p>";
@@ -98,7 +98,7 @@ $user_id=isset($_SESSION['user_id']);
             </div>
             <nav class="nav-bar">
                 <button class="bottone"> <strong>Esami</strong></button>
-                <button class="bottone" onclick="openRec()"><strong>Recensioni</strong></button>
+                <button class="bottone"><strong>Recensioni</strong></button>
             </nav>
         </div>
         <div class="content">

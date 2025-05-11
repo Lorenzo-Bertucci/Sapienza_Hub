@@ -20,13 +20,14 @@ function favorite() {
     const favoriteBtn = document.querySelector(".favorite-btn");
     const action = favoriteBtn.classList.contains("active") ? "remove" : "add";
     const corsoCodice = getUrlParameter("corso"); // Recupera il codice del corso dall'URL
+    const nome_corso=document.getElementById("corso-nome").textContent
 
     fetch(`/src/server/toggle_favorite.php`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ corso: corsoCodice, action: action }),
+        body: JSON.stringify({ codice: corsoCodice,corso:nome_corso, action: action }),
     })
         .then(response => response.json())
         .then(data => {
@@ -60,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const card = document.createElement("div");
         card.classList.add("card");
         card.innerHTML = `
-            <a href="/src/client/html/esame.php?corso=${encodeURIComponent(corso)}&codice=${encodeURIComponent(codice)}">
+            <a href="/src/client/html/esame.php?codice=${encodeURIComponent(codice)}">
                 <h3>${nome}</h3>
             </a>
         `;
@@ -162,16 +163,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /*Controlla se il corso è già nei preferiti
+    //Controlla se il corso è già nei preferiti
     fetch(`/src/server/check_favorite.php?corso=${encodeURIComponent(corso)}`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
                 updateFavoriteState(data.isFavorite);
             }
-        });
-    */
-        
+    });        
 
 
     // Carica i dati del corso di laurea

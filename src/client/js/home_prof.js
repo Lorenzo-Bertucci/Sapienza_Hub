@@ -1,7 +1,47 @@
 function getUrlParameter(name) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(name);
-  }
+}
+
+function openRec(){
+  const recensioniDiv = document.querySelector(".php");
+  const prof_id=getUrlParameter('id');
+  fetch(`/src/server/recensioni_professori.php?id=${encodeURIComponent(prof_id)}`)
+    .then(response => {
+      console.log(response);
+        if (!response.ok) {
+          throw new Error("Errore nel caricamento delle recensioni.");
+        }
+        return response.json();
+    })
+    .then(data => {
+      if(data.success){
+        recensioniDiv.innerHTML='';
+        const tit=document.createElement('div');
+        tit.classList.add("titolo");
+        tit.innerHTML='<b>Dicono di questo esame:</b>';
+        recensioniDiv.appendChild(tit);
+        const rec=document.createElement('div');
+        rec.classList.add("rec");
+        data.recensioni.forEach(recensione=>{
+          recensione.dat = new Date(recensione.dat).toLocaleDateString("it-IT", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric"
+          });
+          rec.innerHTML+=`<div><span class='utente'><strong>~${recensione.utente}</strong></span><span style="margin-left: 10px; font-size: smaller; font-style: italic;"><small><i> ${recensione.dat}</i></small></span></div> <p>${recensione.testo}</p>`;
+        });
+        recensioniDiv.appendChild(rec);
+      }else{
+        console.error("Errore nel caricamento dati: ", data.message);
+        recensioniDiv.innerHTML = "<p class='errore'>Impossibile caricare le recensioni.<br><br>Controllare la connessione al database.<br> Non esiste</p>";
+      }
+    })
+    .catch(error => {
+      console.error("Errore:", error);
+      recensioniDiv.innerHTML = "<p class='errore'>Impossibile caricare le recensioni.<br><br>Controllare la connessione.</p>";
+    });
+}
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -53,30 +93,48 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   
     function setupButtonGroup(buttons, defaultString, sections) {
-      // Imposta il bottone di default
-      buttons.forEach(btn => {
-        if (btn.textContent.trim().toLowerCase().includes(defaultString)) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
-      // Imposta la visualizzazione di default: mostra la sezione del bottone default
-      for (const condition in sections) {
-        sections[condition].style.display = condition === defaultString ? 'block' : 'none';
+      // Mappa tra i testi dei bottoni e i nomi delle sezioni
+      const buttonToSectionMap = {
+          "esami": "esami",
+          "recensioni": "recensioni"
+      };
+
+      // Controlla l'hash nell'URL
+      if (!window.location.hash) {
+          // Se non c'è un hash, imposta quello di default
+          window.location.hash = `#${defaultString}`;
       }
-      // Gestione del click: mostra la sezione corrispondente e rende attivo il bottone cliccato
+      const currentHash = window.location.hash.substring(1).toLowerCase();
+
+      // Imposta il bottone attivo e la sezione visibile in base all'hash
       buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          buttons.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
           const btnText = btn.textContent.trim().toLowerCase();
-          for (const condition in sections) {
-            sections[condition].style.display = btnText.includes(condition) ? 'block' : 'none';
+          if (buttonToSectionMap[btnText] === currentHash) {
+              btn.classList.add('active');
+          } else {
+              btn.classList.remove('active');
           }
-        });
       });
-    }
+
+      for (const condition in sections) {
+          sections[condition].style.display = condition === currentHash ? 'block' : 'none';
+      }
+
+      // Gestione del click: mostra la sezione corrispondente e aggiorna l'URL
+      buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+              buttons.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              const btnText = btn.textContent.trim().toLowerCase();
+              const sectionId = buttonToSectionMap[btnText];
+              for (const condition in sections) {
+                  sections[condition].style.display = condition === sectionId ? 'block' : 'none';
+              }
+              // Aggiorna l'URL con il nome della sezione attiva
+              window.location.hash = sectionId;
+          });
+      });
+  }
     
     // Imposta per i bottoni della nav-bar
     const navButtons = document.querySelectorAll('.nav-bar .bottone');
@@ -88,6 +146,8 @@ document.addEventListener("DOMContentLoaded", function() {
     loadEsami();
 
     setupButtonGroup(navButtons, "esami", navSections);
+
+    openRec();
   
   
   });
@@ -140,37 +200,3 @@ function inviaRecensione(event, user_id){
   })
 }
 
-function openRec(){
-  const recensioniDiv = document.querySelector(".php");
-  const prof_id=getUrlParameter('id');
-  fetch(`/src/server/recensioni_professori.php?id=${encodeURIComponent(prof_id)}`)
-    .then(response => {
-      console.log(response);
-        if (!response.ok) {
-          throw new Error("Errore nel caricamento delle recensioni.");
-        }
-        return response.json();
-    })
-    .then(data => {
-      if(data.success){
-        recensioniDiv.innerHTML='';
-        const tit=document.createElement('div');
-        tit.classList.add("titolo");
-        tit.innerHTML='<b>Dicono di questo esame:</b>';
-        recensioniDiv.appendChild(tit);
-        const rec=document.createElement('div');
-        rec.classList.add("rec");
-        data.recensioni.forEach(recensione=>{
-          rec.innerHTML+=`<div><span class='utente'><strong>~${recensione.utente}</strong></span><span style="margin-left: 10px; font-size: smaller; font-style: italic;"><small><i> ${recensione.dat}</i></small></span></div> <p>${recensione.testo}</p>`;
-        });
-        recensioniDiv.appendChild(rec);
-      }else{
-        console.error("Errore nel caricamento dati: ", data.message);
-        recensioniDiv.innerHTML = "<p class='errore'>Impossibile caricare le recensioni.<br><br>Controllare la connessione al database.<br> Non esiste</p>";
-      }
-    })
-    .catch(error => {
-      console.error("Errore:", error);
-      recensioniDiv.innerHTML = "<p class='errore'>Impossibile caricare le recensioni.<br><br>Controllare la connessione.</p>";
-    });
-}

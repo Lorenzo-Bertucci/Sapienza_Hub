@@ -22,6 +22,8 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
     <base href="/src/client/">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/dashboard.js"></script>
 </head>
 <body>
     <div class="container">
@@ -65,65 +67,112 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
                 <button class="bottone"> <strong>Preferiti</strong></button>
                 <button class="bottone"><strong>Le tue recensioni</strong></button>
                 <button class="bottone"><strong>I tuoi file</strong></button>
-
             </nav>
         </div>
+        <div class="content">
+            <div class="preferiti">
+                <h2>Qui puoi trovare i tuoi corsi ed esami preferiti </h2>
+                <div class="corsi">
+                  <h3><b>Corsi di laurea</b></h3>
+
+                </div>
+                <div class="esami">
+                  <h3><b>Esami</b></h3>
+
+                </div>
+            </div>
+            <div class="recensioni" >
+              <h2>Qui puoi trovare le recensioni che hai lasciato su esami e professori</h2>
+              <div class="rec-esami">
+                  <h3><b>Esami</b></h3>
+
+                </div>
+                <div class="rec-professori">
+                  <h3><b>Professori</b></h3>
+
+                </div>
+
+            </div>
+            <div class="file" >
+                <h2>Qui puoi trovare i file che hai caricato e condiviso</h2>
+
+            </div>
+          </div>
         
         <div class="footer">
             <p>&copy; 2025 SapienzHub. Tutti i diritti riservati.</p>
         </div>
     </div>
-    <script>
-document.addEventListener("DOMContentLoaded", function() {
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+        
+        /**
+         * Imposta un gruppo di bottoni con:
+         * - Un bottone "default" (che contiene defaultString nel testo) attivo all'avvio
+         * - Gestione del click per mostrare la sezione corrispondente
+         *
+         * @param {NodeList} buttons - I bottoni del gruppo
+         * @param {string} defaultString - Stringa (in minuscolo) da cercare per impostare il default
+         * @param {Object} sections - Un oggetto in cui le chiavi sono stringhe da cercare (in minuscolo)
+         *                            e i valori sono gli elementi da mostrare/nascondere
+         */
+        function setupButtonGroup(buttons, defaultString, sections) {
+                // Mappa tra i testi dei bottoni e i nomi delle sezioni
+                const buttonToSectionMap = {
+                    "preferiti": "preferiti",
+                    "le tue recensioni": "recensioni",
+                    "i tuoi file": "file"
+                };
 
-  /**
-   * Imposta un gruppo di bottoni con:
-   * - Un bottone "default" (che contiene defaultString nel testo) attivo all'avvio
-   * - Gestione del click per mostrare la sezione corrispondente
-   *
-   * @param {NodeList} buttons - I bottoni del gruppo
-   * @param {string} defaultString - Stringa (in minuscolo) da cercare per impostare il default
-   * @param {Object} sections - Un oggetto in cui le chiavi sono stringhe da cercare (in minuscolo)
-   *                            e i valori sono gli elementi da mostrare/nascondere
-   */
-  function setupButtonGroup(buttons, defaultString, sections) {
-    // Imposta il bottone di default
-    buttons.forEach(btn => {
-      if (btn.textContent.trim().toLowerCase().includes(defaultString)) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
-    });
-    // Imposta la visualizzazione di default: mostra la sezione del bottone default
-    for (const condition in sections) {
-      sections[condition].style.display = condition === defaultString ? 'block' : 'none';
-    }
-    // Gestione del click: mostra la sezione corrispondente e rende attivo il bottone cliccato
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const btnText = btn.textContent.trim().toLowerCase();
-        for (const condition in sections) {
-          sections[condition].style.display = btnText.includes(condition) ? 'block' : 'none';
-        }
+                // Controlla l'hash nell'URL
+                if (!window.location.hash) {
+                    // Se non c'è un hash, imposta quello di default
+                    window.location.hash = `#${defaultString}`;
+                }
+                const currentHash = window.location.hash.substring(1).toLowerCase();
+
+                // Imposta il bottone attivo e la sezione visibile in base all'hash
+                buttons.forEach(btn => {
+                    const btnText = btn.textContent.trim().toLowerCase();
+                    if (buttonToSectionMap[btnText] === currentHash) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                for (const condition in sections) {
+                    sections[condition].style.display = condition === currentHash ? 'block' : 'none';
+                }
+
+                // Gestione del click: mostra la sezione corrispondente e aggiorna l'URL
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        buttons.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        const btnText = btn.textContent.trim().toLowerCase();
+                        const sectionId = buttonToSectionMap[btnText];
+                        for (const condition in sections) {
+                            sections[condition].style.display = condition === sectionId ? 'block' : 'none';
+                        }
+                        // Aggiorna l'URL con il nome della sezione attiva
+                        window.location.hash = sectionId;
+                    });
+                });
+            }
+        
+        // Imposta per i bottoni della barra
+        const navButtons = document.querySelectorAll('.nav-bar .bottone');
+        const navSections = {
+          "preferiti": document.querySelector(".preferiti"),
+          "recensioni": document.querySelector(".recensioni"),
+          "file": document.querySelector(".file")
+        };
+        // Imposta "professori" come default
+        setupButtonGroup(navButtons, "preferiti", navSections);
+
       });
-    });
-  }
-  
-  // Imposta per i bottoni della nav-bar
-  const navButtons = document.querySelectorAll('.nav-bar .bottone');
-  const navSections = {
-    "preferiti": document.querySelector(".preferiti"),
-    "recensioni": document.querySelector(".le tue recensioni"), // Aggiungi la sezione "recensioni"
-    "file": document.querySelector(".i tuoi file") // Aggiungi la sezione "chat"
-  };
-  // Imposta "esami" come default
-  setupButtonGroup(navButtons, "preferti", navSections);
-  
-  // Imposta per i bottoni della .button-row
-});
+
 </script>
 </body>
 </html>

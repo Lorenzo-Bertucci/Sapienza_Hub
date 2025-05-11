@@ -17,8 +17,8 @@
         exit;
     }
 
-    $query="select u.nome as utente, testo, TO_CHAR(dat, 'YYYY-MM-DD') AS dat from recensioni_esami r, utenti u where r.codice='$esame' and r.id_utente=u.id";
-    $result = pg_query($query);
+    $query="SELECT u.nome AS utente, testo, dat FROM recensioni_esami r JOIN utenti u ON r.id_utente=u.id WHERE r.codice=$1 ORDER BY dat";
+    $result = pg_query_params($conn, $query, array($esame));
 
     if (!$result) {
         echo json_encode(['success' => false, 'message' => 'Errore durante il recupero delle recensioni.']);
