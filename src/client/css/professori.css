@@ -46,7 +46,7 @@ body {
 }
 
 .header{
-    grid-area: "header";
+    grid-area: header;
     background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
     color: white;
     display: flex;
@@ -232,7 +232,6 @@ nav ul li a:hover {
 .profile-container:hover .dropdown-menu {
     display: block;
 }
-
 .hero h2 {
     font-size: 25px; /* Riduce leggermente la dimensione del testo */
     font-weight: 700; /* Rende il testo più bold */
@@ -295,13 +294,6 @@ nav ul li a:hover {
     gap: 20px; 
 }
 
-.lista h1 {
-    font-size: 30px; 
-    font-weight: 600;
-    align-self: left; 
-    margin-left: 75px; 
-    color: black;
-}
 .card {
     display: flex;
     flex-direction: row;

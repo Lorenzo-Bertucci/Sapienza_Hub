@@ -55,7 +55,6 @@ body {
     align-items: center;
     width: 100%;
     height: 100px;
-    margin-bottom: 20px;
 }
 
 .h-left{
@@ -241,7 +240,7 @@ nav ul li a:hover {
     padding-left: 100px; /* Allinea il testo con la barra di ricerca */
 }
 .search-bar {
-    margin: 0 auto; /* Centra la barra orizzontalmente */
+    margin: 10px auto; /* Centra la barra orizzontalmente */
     border: 3px solid rgba(192,54,57,1);
     width: 90%;
     display: flex;
@@ -295,13 +294,6 @@ nav ul li a:hover {
     gap: 20px;
 }
 
-.content h1 {
-    font-size: 30px; /* Aumenta la dimensione del titolo */
-    font-weight: 600;
-    align-self: left; 
-    margin-left: 75px; 
-    color: black;
-}
 .card {
     display: flex;
     flex-direction: row;
@@ -311,8 +303,8 @@ nav ul li a:hover {
     border-radius: 15px;
     padding: 0px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 60%;
-    margin: 0 auto;
+    width: 75%;
+    margin: 5px auto;
     
 }
 .card:hover {
@@ -372,10 +364,6 @@ nav ul li a:hover {
 
     .register-btn {
         display: none;
-    }
-
-    .content h1{
-        font-size: 25px;
     }
 
     .h-left h1 {
@@ -450,10 +438,6 @@ nav ul li a:hover {
         padding: 0px;
         margin:0px;
 
-    }
-
-    .content h1{
-        font-size: 20px;
     }
 
     .card{

@@ -115,16 +115,16 @@ $user_id=isset($_SESSION['user_id']);
                     </form>
                 </div>
                     
-                <div class="php">
+                <div class="rec-esami">
 
                 </div>
             </div>
             <?php else: ?>
-                <div class="recensioni">
-                    <div class="rec">
-                        <h1> Devi effettuare il login per vedere questa sezione</h1>
-                    </div>
+            <div class="recensioni">
+                <div class="rec-esami" style="height:100%;">
+                    <h1> Devi effettuare il login per vedere questa sezione</h1>
                 </div>
+            </div>
 
             <?php endif; ?>
 

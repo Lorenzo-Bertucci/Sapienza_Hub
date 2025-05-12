@@ -275,7 +275,7 @@ nav ul li a:hover {
     grid-template-rows: auto auto; /* Due righe: una per foto e una per info */
     justify-content: center;
     align-items: center;
-    margin: 20px 0px 0px 30px ;
+    margin: 20px 0px 0px 30px;
     width: 100%;
     height: 100%;
 }
@@ -306,11 +306,9 @@ nav ul li a:hover {
     grid-area: desc;
     color: black;
     text-align: justify;
-    margin: 0px;
-    padding:30px;
+    padding: 20px 30px 0 0;
     width: 100%;
     margin: 0 auto;
-    /* Eventuali altri stili per la descrizione */
 }
 
 
@@ -380,7 +378,7 @@ nav ul li a:hover {
     flex-direction: column; /* Dispone gli elementi in verticale */
     justify-content: center;
     align-items:left;
-    margin: 0 auto 10px; /* Riduci il margine inferiore */
+    margin: 0 auto 0; 
     border: 1px solid #ddd;
     border-radius: 15px;
     width: 85%;
@@ -414,7 +412,7 @@ nav ul li a:hover {
     border-radius: 15px;
     padding: 0px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 60%; 
+    width: 70%; 
     margin: 0 auto;
     margin-bottom: 10px; 
 }
@@ -520,6 +518,7 @@ nav ul li a:hover {
     background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
     color: white;
     text-align: center;
+    margin-top: 20px;
     padding: 20px 0;
     width: 100%;
     height: fit-content;

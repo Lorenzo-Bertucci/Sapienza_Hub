@@ -74,49 +74,49 @@ $id=isset($_SESSION['user_id']);
             </div>
             <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
 
-                <div class="mat-did">
-                    <div class="form-container">
-                        <h3>Condividi il tuo materiale didattico:</h3>
-                        <form class="materiale-form" enctype="multipart/form-data" onsubmit="inviaMateriale(event, <?php echo $id; ?>)">
-                            <input type="text" name="nomefile" placeholder="Inserire il nome del file" required>
-                            <label for="pdf"><br>Inserire qui il materiale in formato pdf:</label>
-                            <input type="file" id="pdf" name="materiale" accept="application/pdf" required>
-                            <button>Invia</button>
-                        </form>
-                    </div>
+            <div class="mat-did">
+                <div class="form-container">
+                    <h3>Condividi il tuo materiale didattico:</h3>
+                    <form class="materiale-form" enctype="multipart/form-data" onsubmit="inviaMateriale(event, <?php echo $id; ?>)">
+                        <input type="text" name="nomefile" placeholder="Inserire il nome del file" required>
+                        <label for="pdf"><br>Inserire qui il materiale in formato pdf:</label>
+                        <input type="file" id="pdf" name="materiale" accept="application/pdf" required>
+                        <button>Invia</button>
+                    </form>
+                </div>
 
-                    <div class="materiale">
+                <div class="materiale">
 
-                    </div>
-                    
                 </div>
                 
-                <div class="recensioni">
-                    <div class="form-container">
-                        <h3>Aggiungi la tua recensione</h3>
-                        <form class="recensione-form" onsubmit="inviaRecensione(event, <?php echo $id; ?>)">
-                            <textarea name="testo" placeholder="Scrivi la tua recensione" required></textarea>
-                            <button>Invia</button>
-                        </form>
-                    </div>
-                    
-                    <div class="php">
-
-                    </div>
+            </div>
+            
+            <div class="recensioni">
+                <div class="form-container">
+                    <h3>Aggiungi la tua recensione</h3>
+                    <form class="recensione-form" onsubmit="inviaRecensione(event, <?php echo $id; ?>)">
+                        <textarea name="testo" placeholder="Scrivi la tua recensione" required></textarea>
+                        <button>Invia</button>
+                    </form>
                 </div>
+                
+                <div class="rec-esami">
+
+                </div>
+            </div>
                     
             <?php else: ?>
-                <div class="mat-did">
-                    <div class="mat">
-                        <h1> Devi effettuare il login per vedere questa sezione</h1>
-                    </div>
+            <div class="mat-did">
+                <div class="mat" style="height:100%;">
+                    <h1> Devi effettuare il login per vedere questa sezione</h1>
                 </div>
-                <div class="recensioni">
-                    <div class="mat">
-                        <h1> Devi effettuare il login per vedere questa sezione</h1>
-                    </div>
-                    
+            </div>
+            <div class="recensioni">
+                <div class="mat" style="height:100%;">
+                    <h1> Devi effettuare il login per vedere questa sezione</h1>
                 </div>
+                
+            </div>
 
             <?php endif; ?>
 

@@ -50,7 +50,6 @@ session_start();
                 <input type="text" id="search-input" placeholder="Cerca il tuo corso di laurea">
                 <button>Cerca</button>
             </div>
-                <h1>Lista dei Corsi di Laurea</h1>
         </div>
         <div class="footer">
             <p>&copy; 2025 Sapienza Hub. Tutti i diritti riservati.</p>
