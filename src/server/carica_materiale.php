@@ -1,10 +1,11 @@
 <?php
         header('Content-Type: application/json');
+        session_start();
 
         $conn=pg_connect("host=localhost port=5433 dbname=sapienzhub user=postgres password=Postgre*1");
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = pg_escape_string($conn, $_POST['id']);
+            $id = $_SESSION['user_id'];
             $nome_file= pg_escape_string($conn, $_POST['nomefile']);
             $esame=pg_escape_string($conn, $_POST['esame']);
             
@@ -20,7 +21,7 @@
                     $fileContentRaw = file_get_contents($fileTmpPath);
                     $fileContent = pg_escape_bytea($conn, $fileContentRaw);
 
-                    $insert_query = "INSERT INTO materiale_didattico (utente, materiale, nomefile, esame) VALUES ('$id', '$fileContent', '$nome_file', '$esame')";
+                    $insert_query = "INSERT INTO materiale_didattico (id_utente, materiale, nomefile, esame) VALUES ('$id', '$fileContent', '$nome_file', '$esame')";
                     $insert_result = pg_query($conn, $insert_query);
         
                     if ($insert_result) {
