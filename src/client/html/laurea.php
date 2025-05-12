@@ -10,7 +10,7 @@ session_start();
     <base href="/src/client/">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/laurea.css">
-    <script src=/src/client/js/laurea.js></script>
+    <script src=/src/client/js/corso.js></script>
 </head>
 <body>
     <div class="container">

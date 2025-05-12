@@ -76,7 +76,7 @@ $id=isset($_SESSION['user_id']);
 
             <div class="mat-did">
                 <div class="form-container">
-                    <h3>Condividi il tuo materiale didattico:</h3>
+                    <h3>Condividi il tuo materiale didattico</h3>
                     <form class="materiale-form" enctype="multipart/form-data" onsubmit="inviaMateriale(event, <?php echo $id; ?>)">
                         <input type="text" name="nomefile" placeholder="Inserire il nome del file" required>
                         <label for="pdf"><br>Inserire qui il materiale in formato pdf:</label>

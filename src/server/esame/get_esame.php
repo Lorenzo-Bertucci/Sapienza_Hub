@@ -34,5 +34,5 @@ pg_free_result($result);
 pg_close($conn);
 
 // Restituisci i dati come JSON
-echo json_encode(['success' => true, 'data' => $esame]);
+echo json_encode(['success' => true, 'esame' => $esame]);
 ?>

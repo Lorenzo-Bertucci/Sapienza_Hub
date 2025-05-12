@@ -10,27 +10,27 @@ if (!$conn) {
 }
 
 // Recupera il codice del corso dall'URL
-if (!isset($_GET['corso'])) {
+if (!isset($_GET['esame'])) {
     echo json_encode(['success' => false, 'message' => 'Codice del corso non specificato.']);
     exit;
 }
 
-$corso = pg_escape_string($conn, $_GET['corso']);
+$esame = pg_escape_string($conn, $_GET['esame']);
 
 
 // Query per recuperare gli esami associati al corso
-$query = "SELECT codice,nome,anno,semestre FROM esami WHERE corso = $1";
-$result = pg_query_params($conn, $query, array($corso));
+$query = "SELECT * FROM insegna where codice_esame='$esame'";
+$result = pg_query($conn, $query);
 
 if (!$result) {
-    echo json_encode(['success' => false, 'message' => 'Errore durante il recupero degli esami.']);
+    echo json_encode(['success' => false, 'message' => 'Errore durante il recupero dei professori.']);
     exit;
 }
 
 // Creazione dell'array degli esami
-$esami = [];
+$prof = [];
 while ($row = pg_fetch_assoc($result)) {
-    $esami[] = $row;
+    $prof[] = $row;
 }
 
 // Liberazione della memoria e chiusura della connessione
@@ -38,5 +38,5 @@ pg_free_result($result);
 pg_close($conn);
 
 // Restituzione dei dati come JSON
-echo json_encode(['success' => true, 'data' => $esami]);
+echo json_encode(['success' => true, 'professori' => $prof]);
 ?>

@@ -1,5 +1,4 @@
 <?php
-
 header('Content-Type: application/json');
 
 // Connessione al database PostgreSQL
@@ -10,7 +9,7 @@ if (!$conn) {
     exit;
 }
 
-$query = "SELECT id,nome FROM professori";
+$query = "SELECT id,nome FROM professori ORDER BY nome";   
 $result = pg_query($conn, $query);
 
 if (!$result) {
@@ -28,7 +27,5 @@ pg_free_result($result);
 pg_close($conn);
 
 // Restituzione dei dati come JSON
-echo json_encode(['success' => true, 'data' => $professori]);
-
-
+echo json_encode(['success' => true, 'professori' => $professori]);
 ?>

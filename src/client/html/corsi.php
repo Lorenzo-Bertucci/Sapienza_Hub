@@ -10,7 +10,7 @@ session_start();
     <base href="/src/client/">
     <link rel="stylesheet" href="css/corsi.css">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
-    <script src="js/corsi.js"></script>
+    <script src="js/corsi_di_laurea.js"></script>
 </head>
 <body>
     <div class="container">
