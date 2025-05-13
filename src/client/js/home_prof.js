@@ -4,7 +4,7 @@ function getUrlParameter(name) {
 }
 
 function openRec(){
-  const recensioniDiv = document.querySelector(".php");
+  const recensioniDiv = document.querySelector(".rec-esami");
   const prof_id=getUrlParameter('id');
   fetch(`/src/server/recensioni_professori.php?id=${encodeURIComponent(prof_id)}`)
     .then(response => {
@@ -19,19 +19,19 @@ function openRec(){
         recensioniDiv.innerHTML='';
         const tit=document.createElement('div');
         tit.classList.add("titolo");
-        tit.innerHTML='<b>Dicono di questo esame:</b>';
+        tit.innerHTML='<b>Dicono di questo Professore</b>';
         recensioniDiv.appendChild(tit);
-        const rec=document.createElement('div');
-        rec.classList.add("rec");
         data.recensioni.forEach(recensione=>{
+          const rec=document.createElement('div');
+          rec.classList.add("rec");
           recensione.dat = new Date(recensione.dat).toLocaleDateString("it-IT", {
             day: "2-digit",
             month: "2-digit",
             year: "numeric"
           });
           rec.innerHTML+=`<div><span class='utente'><strong>~${recensione.utente}</strong></span><span style="margin-left: 10px; font-size: smaller; font-style: italic;"><small><i> ${recensione.dat}</i></small></span></div> <p>${recensione.testo}</p>`;
+          recensioniDiv.appendChild(rec);
         });
-        recensioniDiv.appendChild(rec);
       }else{
         console.error("Errore nel caricamento dati: ", data.message);
         recensioniDiv.innerHTML = "<p class='errore'>Impossibile caricare le recensioni.<br><br>Controllare la connessione al database.<br> Non esiste</p>";
@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
 
-function inviaRecensione(event, user_id){
+function inviaRecensione(event){
   event.preventDefault();
   
   Swal.fire({
@@ -173,7 +173,6 @@ function inviaRecensione(event, user_id){
       const formData=new FormData(form);
       const prof_id=getUrlParameter('id');
       formData.append('prof_id', prof_id);
-      formData.append('user_id', user_id);
       fetch('/src/server/carica_recensioni_prof.php', {
         method: 'POST',
         body: formData

@@ -1,6 +1,5 @@
 <?php
 session_start();
-$user_id=isset($_SESSION['user_id']);
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -109,7 +108,7 @@ $user_id=isset($_SESSION['user_id']);
             <div class="recensioni">
                 <div class="form-container">
                     <h3>Aggiungi la tua recensione</h3>
-                    <form class="recensione-form" onsubmit="inviaRecensione(event, <?php echo $user_id; ?>)">
+                    <form class="recensione-form" onsubmit="inviaRecensione(event)">
                         <textarea name="testo" placeholder="Scrivi la tua recensione" required></textarea>
                         <button>Invia</button>
                     </form>
@@ -121,7 +120,7 @@ $user_id=isset($_SESSION['user_id']);
             </div>
             <?php else: ?>
             <div class="recensioni">
-                <div class="rec-esami" style="height:100%;">
+                <div class="mat" style="height:100%;">
                     <h1> Devi effettuare il login per vedere questa sezione</h1>
                 </div>
             </div>

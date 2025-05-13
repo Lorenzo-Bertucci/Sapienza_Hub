@@ -165,7 +165,7 @@ function loadEsame(codice) {
         window.location.href = "/src/client/html/404.php";
         return;
       }
-      document.titolo = `${esame.nome} - SapienzHub`;
+      document.title = `${esame.nome} - SapienzHub`;
       dati.innerHTML = `
         <p><strong>CFU:</strong> ${esame.cfu}</p>
         <p><strong>SSD:</strong> ${esame.ssd}</p>
@@ -254,11 +254,11 @@ function checkFavorite(codice){
 }
 
 // Funzione per inviare una recensione
-function inviaRecensione(event, id){
+function inviaRecensione(event){
   event.preventDefault();
   
   Swal.fire({
-    titolo: 'Conferma invio',
+    title: 'Conferma invio',
     text: "Sei sicuro di voler inviare questa recensione?",
     icon: 'warning',
     showCancelButton: true,
@@ -274,7 +274,6 @@ function inviaRecensione(event, id){
       const formData=new FormData(form);
       const esame=getUrlParameter('codice');
       formData.append('esame', esame);
-      formData.append('id', id);
       fetch('/src/server/esame/carica_recensione.php', {
         method: 'POST',
         body: formData
@@ -301,7 +300,7 @@ function inviaRecensione(event, id){
 }
 
 // Funzione per caricare un materiale 
-function inviaMateriale(event, id){
+function inviaMateriale(event){
   event.preventDefault();
   
   Swal.fire({
@@ -321,7 +320,6 @@ function inviaMateriale(event, id){
       const formData=new FormData(form);
       const esame=getUrlParameter('codice');
       formData.append('esame', esame);
-      formData.append('id', id);
       fetch('/src/server/esame/carica_materiale.php', {
         method: 'POST',
         body: formData

@@ -1,6 +1,5 @@
 <?php
 session_start();
-$id=isset($_SESSION['user_id']);
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -8,6 +7,7 @@ $id=isset($_SESSION['user_id']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/src/client/">
+    <title></title>
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/esame.css">
     <script src="js/esame.js"></script>
@@ -77,7 +77,7 @@ $id=isset($_SESSION['user_id']);
             <div class="mat-did">
                 <div class="form-container">
                     <h3>Condividi il tuo materiale didattico</h3>
-                    <form class="materiale-form" enctype="multipart/form-data" onsubmit="inviaMateriale(event, <?php echo $id; ?>)">
+                    <form class="materiale-form" enctype="multipart/form-data" onsubmit="inviaMateriale(event)">
                         <input type="text" name="nomefile" placeholder="Inserire il nome del file" required>
                         <label for="pdf"><br>Inserire qui il materiale in formato pdf:</label>
                         <input type="file" id="pdf" name="materiale" accept="application/pdf" required>
@@ -94,7 +94,7 @@ $id=isset($_SESSION['user_id']);
             <div class="recensioni">
                 <div class="form-container">
                     <h3>Aggiungi la tua recensione</h3>
-                    <form class="recensione-form" onsubmit="inviaRecensione(event, <?php echo $id; ?>)">
+                    <form class="recensione-form" onsubmit="inviaRecensione(event)">
                         <textarea name="testo" placeholder="Scrivi la tua recensione" required></textarea>
                         <button>Invia</button>
                     </form>
