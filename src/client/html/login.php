@@ -7,7 +7,6 @@ if (isset($_SESSION['logged_in'])) {
     header('Location: dashboard.php');
     exit;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -22,7 +21,6 @@ if (isset($_SESSION['logged_in'])) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-
     <div class="container">
         <div class="header">
             <div class="h-left">

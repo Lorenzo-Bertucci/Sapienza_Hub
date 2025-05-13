@@ -10,6 +10,7 @@ session_start();
     <base href="/src/client/">
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
+    <script src=/src/client/js/index.js></script>
 </head>
 <body>
     <div class="container">
@@ -112,24 +113,5 @@ session_start();
         </div>
     </footer>
     </div>
-    <script>
-        document.getElementById("search-button").addEventListener("click", function () {
-            const searchInput = document.getElementById("search-input").value.trim();
-            if (searchInput) {
-                // Reindirizza alla pagina corsi.php con il termine di ricerca come parametro
-                window.location.href = `html/corsi.php?search=${encodeURIComponent(searchInput)}`;
-            }
-        });
-
-        // Permetti la ricerca anche premendo "Invio"
-        document.getElementById("search-input").addEventListener("keydown", function (event) {
-            if (event.key === "Enter") {
-                const searchInput = document.getElementById("search-input").value.trim();
-                if (searchInput) {
-                    window.location.href = `html/corsi.php?search=${encodeURIComponent(searchInput)}`;
-                }
-            }
-        });
-    </script>
 </body>
 </html>
