@@ -66,7 +66,7 @@ session_start();
                 <p id="corso-descrizione"></p>
             </div>
             <nav class="nav-bar">
-                <button class="bottone"> <strong> Esami</strong></button>
+                <button class="bottone active"><strong>Esami</strong></button>
             </nav>
         </div>
         <div class="content">
@@ -79,54 +79,5 @@ session_start();
             <p>&copy; 2025 SapienzHub. Tutti i diritti riservati.</p>
         </div>
     </div>
-    <script>
-document.addEventListener("DOMContentLoaded", function() {
-
-  /**
-   * Imposta un gruppo di bottoni con:
-   * - Un bottone "default" (che contiene defaultString nel testo) attivo all'avvio
-   * - Gestione del click per mostrare la sezione corrispondente
-   *
-   * @param {NodeList} buttons - I bottoni del gruppo
-   * @param {string} defaultString - Stringa (in minuscolo) da cercare per impostare il default
-   * @param {Object} sections - Un oggetto in cui le chiavi sono stringhe da cercare (in minuscolo)
-   *                            e i valori sono gli elementi da mostrare/nascondere
-   */
-  function setupButtonGroup(buttons, defaultString, sections) {
-    // Imposta il bottone di default
-    buttons.forEach(btn => {
-      if (btn.textContent.trim().toLowerCase().includes(defaultString)) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
-    });
-    // Imposta la visualizzazione di default: mostra la sezione del bottone default
-    for (const condition in sections) {
-      sections[condition].style.display = condition === defaultString ? 'block' : 'none';
-    }
-    // Gestione del click: mostra la sezione corrispondente e rende attivo il bottone cliccato
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const btnText = btn.textContent.trim().toLowerCase();
-        for (const condition in sections) {
-          sections[condition].style.display = btnText.includes(condition) ? 'block' : 'none';
-        }
-      });
-    });
-  }
-  
-  // Imposta per i bottoni della nav-bar
-  const navButtons = document.querySelectorAll('.nav-bar .bottone');
-  const navSections = {
-    "esami": document.querySelector(".esami")
-  };
-  // Imposta "esami" come default
-  setupButtonGroup(navButtons, "esami", navSections);
-  
-});
-</script>
 </body>
 </html>

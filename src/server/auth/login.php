@@ -2,8 +2,9 @@
 
 header('Content-Type: application/json'); // Imposta il tipo di contenuto come JSON
 
-require_once 'session_config.php'; // Includi la configurazione della sessione
-// Connessione al database PostgreSQL
+ini_set('session.cookie_lifetime', 1200); // La sessione termina quando il browser viene chiuso
+session_start(); // Inizia la sessione// Connessione al database PostgreSQL
+
 $conn = pg_connect("host=localhost port=5433 dbname=sapienzhub user=postgres password=Postgre*1");
 if (!$conn) {
     echo json_encode(['success' => false, 'message' => 'Errore di connessione al database.']);

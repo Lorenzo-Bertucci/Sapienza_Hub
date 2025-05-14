@@ -100,7 +100,7 @@ function createMat(esame,utente,data,nomefile){
   nomedata.innerHTML=`<div><span class='utente'><strong>~${utente}</strong></span>
   <span style="margin-left: 10px; font-size: smaller; font-style: italic;"><small><i> ${data}</i></small></span></div>`;
   const link = document.createElement('a');
-  link.href=`/src/server/download_materiale.php?esame=${encodeURIComponent(esame)}&nomefile=${encodeURIComponent(nomefile)}`
+  link.href=`/src/server/esame/download_materiale.php?esame=${encodeURIComponent(esame)}&nomefile=${encodeURIComponent(nomefile)}`
   link.textContent=nomefile;
   link.download=nomefile;
   link.style.display = 'block';
@@ -263,7 +263,7 @@ function inviaRecensione(event){
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
+    cancelButtonColor: 'rgb(170, 33, 33)',
     confirmButtonText: 'Sì, invia!',
     cancelButtonText: 'Annulla'
   })
@@ -309,7 +309,7 @@ function inviaMateriale(event){
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
+    cancelButtonColor: 'rgb(170, 33, 33)',
     confirmButtonText: 'Sì, invia!',
     cancelButtonText: 'Annulla'
   })
@@ -345,6 +345,51 @@ function inviaMateriale(event){
   })
 }
 
+function setupButtonGroup(buttons, defaultString, sections) {
+  // Mappa tra i testi dei bottoni e i nomi delle sezioni
+  const buttonToSectionMap = {
+      "professori": "professori",
+      "materiale didattico": "mat-did",
+      "recensioni": "recensioni"
+  };
+
+  // Controlla l'hash nell'URL
+  if (!window.location.hash) {
+    // Se non c'è un hash, imposta quello di default
+    window.location.hash = `#${defaultString}`;
+  }
+  const currentHash = window.location.hash.substring(1).toLowerCase();
+
+  // Imposta il bottone attivo e la sezione visibile in base all'hash
+  buttons.forEach(btn => {
+    const btnText = btn.textContent.toLowerCase();
+    if (buttonToSectionMap[btnText] === currentHash) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  for (const condition in sections) {
+      sections[condition].style.display = condition === currentHash ? 'block' : 'none';
+  }
+
+  // Gestione del click: mostra la sezione corrispondente e aggiorna l'URL
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const btnText = btn.textContent.trim().toLowerCase();
+        const sectionId = buttonToSectionMap[btnText];
+        for (const condition in sections) {
+          sections[condition].style.display = condition === sectionId ? 'block' : 'none';
+        }
+        // Aggiorna l'URL con il nome della sezione attiva
+        window.location.hash = sectionId;
+    });
+  });
+}
+
 // Inizializza la pagina
 document.addEventListener("DOMContentLoaded", function (){
 
@@ -354,6 +399,18 @@ document.addEventListener("DOMContentLoaded", function (){
     window.location.href = "/src/client/html/404.php";
     return;
   }
+
+  // Imposta per i bottoni della barra
+  const navButtons = document.querySelectorAll('.barra .bottone');
+  const navSections = {
+      "professori": document.querySelector(".professori"),
+      "mat-did": document.querySelector(".mat-did"),
+      "recensioni": document.querySelector(".recensioni")
+  };
+
+  // Imposta "professori" come default, ma controlla l'hash nell'URL
+  setupButtonGroup(navButtons, "professori", navSections);
+  
   //Controlla se il corso è già nei preferiti
   checkFavorite(codice);
 

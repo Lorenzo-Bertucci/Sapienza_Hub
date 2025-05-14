@@ -1,3 +1,4 @@
+// Funzione per gestire il login
 function inviaLogin(event){
     event.preventDefault(); // Previene il comportamento predefinito del form
 
@@ -5,9 +6,8 @@ function inviaLogin(event){
     const form=document.getElementById("loginForm");
     const formData=new FormData(form);
  
-
     // Invia i dati al server tramite fetch
-    fetch('/src/server/login.php', {
+    fetch('/src/server/auth/login.php', {
         method: 'POST',
         body: formData
     })
@@ -19,7 +19,6 @@ function inviaLogin(event){
         return response.json();
     })
     .then(data => {
-        console.log('Risposta JSON:', data); // Log della risposta JSON
         if (data.success) {
             Swal.fire({
                 title: 'Login effettuato con successo!',
