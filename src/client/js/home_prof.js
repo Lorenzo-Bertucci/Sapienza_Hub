@@ -43,6 +43,50 @@ function openRec(){
     });
 }
 
+function getInfo(){
+  const infoDiv=document.querySelector(".desc");
+  const prof_id=getUrlParameter('id');
+  fetch(`/src/server/professori/get_dati_prof.php?id=${encodeURIComponent(prof_id)}`)
+    .then(response => {
+      console.log(response);
+        if (!response.ok) {
+          throw new Error("Errore nel caricamento delle recensioni.");
+        }
+        return response.json();
+    })
+    .then(data => {
+      if(data.success){
+        const professore=data.info;
+        if (!professore.email) {
+            window.location.href = "/src/client/html/404.php";
+            return;
+        }
+        document.title = `${professore.nome} - SapienzHub`;
+        infoDiv.innerHTML=`<h1>${professore.nome}</h1>
+                          <p>
+                              <strong>E-mail</strong>: <a href='mailto:${professore.email}' style='color: black;'>${professore.email}</a>
+                              <br>
+                              <strong>Dipartimento</strong>: ${professore.dip}
+                              <br>
+                              <strong>SSD</strong>: ${professore.ssd}
+                              <br>
+                              <a href='${professore.link}' style='color: black;' target='_blank'>
+                                  <strong>Link sito</strong>
+                              </a>
+                          </p>`;
+      }else{
+        console.error("Errore nel caricamento dati: ", data.message);
+        recensioniDiv.innerHTML = "<p class='errore'>Impossibile caricare le recensioni.<br><br>Controllare la connessione al database.<br> Non esiste</p>";
+      }
+    })
+    .catch(error => {
+      console.error("Errore:", error);
+      recensioniDiv.innerHTML = "<p class='errore'>Impossibile caricare le recensioni.<br><br>Controllare la connessione.</p>";
+    });
+
+
+}
+
 document.addEventListener("DOMContentLoaded", function() {
 
     /**
@@ -55,6 +99,8 @@ document.addEventListener("DOMContentLoaded", function() {
      * @param {Object} sections - Un oggetto in cui le chiavi sono stringhe da cercare (in minuscolo)
      *                            e i valori sono gli elementi da mostrare/nascondere
      */
+
+    getInfo();
 
     function loadEsami(){
         const id=getUrlParameter('id');
@@ -148,6 +194,7 @@ document.addEventListener("DOMContentLoaded", function() {
     setupButtonGroup(navButtons, "esami", navSections);
 
     openRec();
+
   
   
   });

@@ -545,6 +545,10 @@ gap: 15px;
     border-radius: 5px;
 }
 
+.recensione-form textarea{
+    resize:none;
+}
+
 .recensione-form button{
     padding: 10px;
     font-size: 16px;
