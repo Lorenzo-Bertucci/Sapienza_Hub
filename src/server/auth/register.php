@@ -8,7 +8,8 @@ if (!$conn) {
     exit;
 }
 
-$email = $_POST['inputEmail'];
+$email = pg_escape_string($conn,$_POST['inputEmail']);
+
 $q1 = "SELECT * FROM utenti WHERE email=$1";
 $result = pg_query_params($conn, $q1, array($email));
 
@@ -16,9 +17,9 @@ if ($tuple = pg_fetch_array($result, null, PGSQL_ASSOC)) {
     echo json_encode(['success' => false, 'message' => 'Email già registrata.']);
     exit;
 } else {
-    $nome= $_POST['inputNome'] . ' ' . $_POST['inputCognome'];
+    $nome= pg_escape_string($conn,$_POST['inputNome']) . ' ' . pg_escape_string($conn,$_POST['inputCognome']);
     $password = password_hash($_POST['inputPassword'], PASSWORD_DEFAULT);
-    $q2 = "INSERT INTO utenti (email, nome, password) VALUES ($1, $2, $3) RETURNING id";
+    $q2 = "INSERT INTO utenti (email, nome, password) VALUES ($1, $2, $3)";
     $result = pg_query_params($conn, $q2, array($email, $nome, $password));
 
     if (!$result) {
@@ -29,4 +30,7 @@ if ($tuple = pg_fetch_array($result, null, PGSQL_ASSOC)) {
     echo json_encode(['success' => true, 'message' => 'Registrazione avvenuta con successo.']);
     exit;
 }
+
+pg_free_result($result);
+pg_close($conn);
 ?>

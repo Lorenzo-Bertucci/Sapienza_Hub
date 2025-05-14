@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fileType = $_FILES['materiale']['type'];
 
         if ($fileType === 'application/pdf') {
-            
             $fileContentRaw = file_get_contents($fileTmpPath);
             $fileContent = pg_escape_bytea($conn, $fileContentRaw);
 
@@ -34,4 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+pg_free_result($insert_result);
+pg_close($conn);
 ?>

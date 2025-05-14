@@ -1,4 +1,3 @@
-<!-- filepath: /Users/lorenzo/Documents/Sapienza_Hub/src/server/logout.php -->
 <?php
 session_start(); // Avvia la sessione
 

@@ -6,19 +6,16 @@ Funzionalità principali:
 
 1. Profili utente
 	•	Registrazione e login con email universitaria
-	•	Creazione di un profilo personale con foto, bio e corsi seguiti
+	•	Creazione di un profilo personale con bio e corsi seguiti
 	•	Possibilità di comunicare con altri studenti
 
 2. Catalogo corsi ed esami
 	•	Lista completa dei corsi di laurea con relativi esami
 	•	Possibilità di cercare corsi per nome
 
-3. Interazione e community
-	•	Sistema di recensioni e valutazioni per corsi ed esami
-	•	Forum e chat per ogni corso
+3. Interazione 
+	•	Sistema di recensioni per esami e professori
 
 4. Condivisione materiali didattici
 	•	Upload e download di appunti, dispense e slide per ogni esame
 	•	Opzione per segnalare contenuti inappropriati
-
-

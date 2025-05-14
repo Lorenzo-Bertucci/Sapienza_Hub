@@ -492,6 +492,41 @@ nav ul li a:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+.rec{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    flex-basis: auto;
+    align-items: flex-start; 
+    width: 80%;
+    margin: 15px auto;
+    
+    
+}
+
+.rec h2{
+    margin: 0px;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    
+}
+
+.rec h3{
+    margin: 0px;
+    font-size: 18px;
+    font-weight: 500; 
+}
+
+
+.rec p{
+    padding-bottom: 10px;
+    font-size: 17px;
+    line-height: 1.3;
+    border-bottom: 1px solid darkgray;
+    width: 100%;
+    text-align: justify;
+}
 
 .utente{
     font-size: 20px;

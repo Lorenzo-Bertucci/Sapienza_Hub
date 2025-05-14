@@ -9,16 +9,13 @@ if (!$conn) {
     echo json_encode(['success' => false, 'message' => 'Errore di connessione al database.']);
     exit;
 }
-// Avvio della sessione
-
-
-// Controllo se l'ID utente è presente nella sessione
 
 // Recupero dell'ID utente dalla sessione
 $user_id = $_SESSION['user_id'];
 // Recupero dell'ID della recensione dall'URL
-$recensione_id = $_GET['id'];
-$tipo = $_GET['tipo'];
+$recensione_id = pg_escape_string($conn, $_GET['id']);
+$tipo = pg_escape_string($conn, $_GET['tipo']);
+
 if ($tipo === 'esami') {
     $query = "DELETE FROM recensioni_esami  WHERE id_utente=$1 and id=$2 ";
 } elseif ($tipo === 'professori') {
@@ -34,9 +31,6 @@ if (!$result) {
     echo json_encode(['success' => false, 'message' => 'Errore durante il recupero dei dati.']);
     exit;
 }
-
-// Creazione dell'array dei corsi
-
 
 // Liberazione della memoria e chiusura della connessione
 pg_free_result($result);

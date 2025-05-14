@@ -29,7 +29,6 @@ if (!$result || pg_num_rows($result) === 0) {
 // Recupera i dati delgli esami
 $esame = pg_fetch_all($result);
 
-
 // Chiudi la connessione al database
 pg_free_result($result);
 pg_close($conn);

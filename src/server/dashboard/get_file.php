@@ -9,17 +9,11 @@ if (!$conn) {
     echo json_encode(['success' => false, 'message' => 'Errore di connessione al database.']);
     exit;
 }
-// Avvio della sessione
-
-
-// Controllo se l'ID utente è presente nella sessione
 
 // Recupero dell'ID utente dalla sessione
 $user_id = $_SESSION['user_id'];
-// Recupero del campo 'tipo' dall'URL
 
-$query = "SELECT * FROM materiale_didattico m JOIN esami e ON m.esame=e.codice  WHERE id_utente=$1 ORDER BY dat";
-
+$query = "SELECT id,codice,nome,nomefile,dat FROM materiale_didattico m JOIN esami e ON m.esame=e.codice  WHERE id_utente=$1 ORDER BY dat";
 
 // Query per recuperare i corsi di laurea
 $result = pg_query_params($conn, $query,array($user_id));

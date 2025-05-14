@@ -24,4 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode(['success' => true, 'message' => 'Recensione aggiunta con successo!']);
     exit;
 }
+
+pg_free_result($insert_result);
+pg_close($conn);
 ?>

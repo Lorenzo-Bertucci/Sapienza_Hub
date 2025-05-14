@@ -47,7 +47,7 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
                     </button>
                     <div class="dropdown-menu">
                         <a href="html/dashboard.php" style="text-decoration: none;"><button class="dropdown-item">Dashboard</button></a>
-                        <a href="../server/logout.php"><button class="dropdown-item">Logout</button></a>
+                        <a href="../server/auth/logout.php"><button class="dropdown-item">Logout</button></a>
                     </div>
                 </div>
             </div>
@@ -73,28 +73,27 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
             <div class="preferiti">
                 <h2>Qui puoi trovare i tuoi corsi ed esami preferiti </h2>
                 <div class="corsi">
-                  <h3><b>Corsi di laurea</b></h3>
+                  
 
                 </div>
                 <div class="esami">
-                  <h3><b>Esami</b></h3>
+                  
 
                 </div>
             </div>
             <div class="recensioni" >
-              <h2>Qui puoi trovare le recensioni che hai lasciato su esami e professori</h2>
-              <div class="rec-esami">
-                  <h3><b>Esami</b></h3>
+                <h2>Qui puoi trovare le recensioni che hai lasciato su esami e professori</h2>
+                <div class="rec-esami">
 
                 </div>
                 <div class="rec-professori">
-                  <h3><b>Professori</b></h3>
+                  
 
                 </div>
 
             </div>
             <div class="file" >
-                <h2>Qui puoi trovare i file che hai caricato e condiviso</h2>
+                
 
             </div>
           </div>

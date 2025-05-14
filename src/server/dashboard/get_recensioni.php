@@ -9,15 +9,12 @@ if (!$conn) {
     echo json_encode(['success' => false, 'message' => 'Errore di connessione al database.']);
     exit;
 }
-// Avvio della sessione
-
-
-// Controllo se l'ID utente è presente nella sessione
 
 // Recupero dell'ID utente dalla sessione
 $user_id = $_SESSION['user_id'];
 // Recupero del campo 'tipo' dall'URL
-$tipo = $_GET['tipo'];
+$tipo = pg_escape_string($conn, $_GET['tipo']);
+
 if ($tipo === 'esami') {
     $query = "SELECT r.id,r.testo,r.dat,e.codice,e.nome FROM recensioni_esami r JOIN esami e on r.codice=e.codice WHERE id_utente=$1 ORDER BY dat";
 } elseif ($tipo === 'professori') {
@@ -26,7 +23,6 @@ if ($tipo === 'esami') {
     echo json_encode(['success' => false, 'message' => 'Tipo non valido.']);
     exit;
 }
-
 
 // Query per recuperare i corsi di laurea
 $result = pg_query_params($conn, $query,array($user_id));

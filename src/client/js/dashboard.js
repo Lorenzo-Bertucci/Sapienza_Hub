@@ -53,7 +53,7 @@ function createDeleteButtonRecensione(id,tipo){
                     if (data.success) {
                         Swal.fire("Eliminata!", "La recensione è stata eliminata", "success")
                     .then(() => {
-                        location.reload(); // Ricarica la pagina
+                        loadRecensioni(); // Ricarica le recensioni
                     });
                     }else {
                         Swal.fire("Errore", data.message, "error");
@@ -101,7 +101,7 @@ function createDeleteButtonFile(id){
                     if (data.success) {
                         Swal.fire("Eliminata!", "Il file è stato eliminato", "success")
                         .then(() => {
-                            location.reload(); // Ricarica la pagina
+                            loadFile(); // Ricarica i file
                         });
                     } else {
                         Swal.fire("Errore", data.message, "error");
@@ -185,6 +185,7 @@ function loadPreferiti() {
     })
     .then(data => {
         if (data.success) {
+            corsiContainer.innerHTML = "<h3><b>Corsi di laurea</b></h3>"; // Pulisci il contenitore prima di aggiungere i corsi
             if (data.corsi.length === 0) {
                 const noCorsiMessage = document.createElement("p");
                 noCorsiMessage.textContent = "Non hai ancora aggiunto un corso ai preferiti";
@@ -214,6 +215,8 @@ function loadPreferiti() {
     })
     .then(data => {
         if (data.success) {
+            esamiContainer.innerHTML = "<h3><b>Esami</b></h3>"; // Pulisci il contenitore prima di aggiungere gli esami
+            
             if (data.esami.length === 0) {
                 const noEsamiMessage = document.createElement("p");
                 noEsamiMessage.textContent = "Non hai ancora aggiunto un esame ai preferiti";
@@ -248,6 +251,7 @@ function loadRecensioni() {
         })
     .then(data => {
         if (data.success) {
+            recesamiContainer.innerHTML = "<h3><b>Esami</b></h3>"; // Pulisci il contenitore prima di aggiungere le recensioni
             if (data.recensioni.length === 0) {
             const noRecensioniMessage = document.createElement("p");
             noRecensioniMessage.textContent = "Non hai ancora lasciato nessuna recensione sugli esami";
@@ -276,6 +280,7 @@ function loadRecensioni() {
     })
     .then(data => {
         if (data.success) {
+            recprofessoriContainer.innerHTML = "<h3><b>Professori</b></h3>"; // Pulisci il contenitore prima di aggiungere le recensioni
             if (data.recensioni.length === 0) {
                 const noRecensioniMessage = document.createElement("p");
                 noRecensioniMessage.textContent = "Non hai ancora lasciato nessuna recensione";
@@ -309,6 +314,7 @@ function loadFile() {
         })
     .then(data => {
         if (data.success) {
+            filesContainer.innerHTML = "<h2>Qui puoi trovare i file che hai caricato e condiviso</h2>"; // Pulisci il contenitore prima di aggiungere i file
             if (data.files.length === 0) {
             const noFileMessage = document.createElement("p");
             noFileMessage.textContent = "Non hai ancora condiviso nessun file";

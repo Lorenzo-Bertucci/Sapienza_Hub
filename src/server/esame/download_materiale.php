@@ -29,8 +29,8 @@ if (!$esame || !$nomefile) {
 }
 
 // Esegue la query per recuperare il materiale didattico
-$query = "select materiale from materiale_didattico where nomefile='$nomefile' and esame='$esame'";
-$result = pg_query($query);
+$query = "SELECT materiale FROM materiale_didattico WHERE nomefile=$1 AND esame=$2";
+$result = pg_query_params($conn,$query,array($nomefile, $esame));
 
 // Se il file esiste, lo restituisce come download
 if ($row = pg_fetch_assoc($result)) {
@@ -44,40 +44,7 @@ if ($row = pg_fetch_assoc($result)) {
 }
 
 // Chiude la connessione al database
+pg_free_result($result);
 pg_close($conn);
-session_start();
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    http_response_code(401);
-    echo json_encode(['success' => false, 'message' => 'Accesso non autorizzato.']);
-    exit;
-}
-$conn=pg_connect("host=localhost port=5433 dbname=sapienzhub user=postgres password=Postgre*1");
 
-if (!$conn) {
-    echo json_encode(['success' => false, 'message' => 'Errore di connessione al database: ' . pg_last_error()]);
-    exit;
-}
-
-$esame = pg_escape_string($conn, $_GET['esame']);
-$nomefile = pg_escape_string($conn, $_GET['nomefile']);
-
-if (!$esame || !$nomefile) {
-    http_response_code(400);
-    echo "Parametri mancanti.";
-    exit;
-}
-
-$query="select materiale from materiale_didattico where nomefile='$nomefile' and esame='$esame'";
-$result=pg_query($query);
-    
-if ($row = pg_fetch_assoc($result)) {
-    header('Content-Type: application/pdf');
-    header('Content-Disposition: attachment; filename="' . basename($nomefile) . '.pdf"');
-    echo pg_unescape_bytea($row['materiale']);
-} else {
-    http_response_code(404);
-    echo "File non trovato.";
-}
-
-pg_close($conn);
 ?>

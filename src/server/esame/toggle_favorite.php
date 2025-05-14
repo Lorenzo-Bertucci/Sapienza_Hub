@@ -34,6 +34,7 @@ if ($action === "add") {
 }
 
 pg_close($conn);
+pg_free_result($result);
 
 echo json_encode(['success' => true, 'message' => $message]);
 ?>

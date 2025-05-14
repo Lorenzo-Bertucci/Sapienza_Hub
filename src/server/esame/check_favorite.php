@@ -22,6 +22,7 @@ $result = pg_query_params($conn, $query, array($user_id, $corso));
 
 $isFavorite = pg_num_rows($result) > 0;
 
+pg_free_result($result);
 pg_close($conn);
 
 echo json_encode(['success' => true, 'isFavorite' => $isFavorite]);

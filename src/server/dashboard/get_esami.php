@@ -9,10 +9,6 @@ if (!$conn) {
     echo json_encode(['success' => false, 'message' => 'Errore di connessione al database.']);
     exit;
 }
-// Avvio della sessione
-
-
-// Controllo se l'ID utente è presente nella sessione
 
 // Recupero dell'ID utente dalla sessione
 $user_id = $_SESSION['user_id'];

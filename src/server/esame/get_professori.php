@@ -9,14 +9,7 @@ if (!$conn) {
     exit;
 }
 
-// Recupera il codice del corso dall'URL
-if (!isset($_GET['esame'])) {
-    echo json_encode(['success' => false, 'message' => 'Codice del corso non specificato.']);
-    exit;
-}
-
 $esame = pg_escape_string($conn, $_GET['esame']);
-
 
 // Query per recuperare gli esami associati al corso
 $query = "SELECT * FROM insegna where codice_esame='$esame'";

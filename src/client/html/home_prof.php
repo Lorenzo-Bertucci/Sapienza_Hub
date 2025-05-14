@@ -36,7 +36,7 @@ session_start();
                         </button>
                         <div class="dropdown-menu">
                             <a href="html/dashboard.php" style="text-decoration: none;"><button class="dropdown-item">Dashboard</button></a>
-                            <a href="../server/logout.php"><button class="dropdown-item">Logout</button></a>
+                            <a href="../server/auth/logout.php"><button class="dropdown-item">Logout</button></a>
                         </div>
                     </div>
                 <?php else: ?>
