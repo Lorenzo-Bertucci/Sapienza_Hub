@@ -50,3 +50,19 @@ body {
     height: auto;
     margin-top: 20px;
 }
+
+@media (max-width: 768) {
+
+    .container{
+        transform: scale(0.85);
+    }
+    
+}
+
+@media (max-width: 480px) {
+
+    .container{
+        transform: scale(0.8);
+    }
+
+}

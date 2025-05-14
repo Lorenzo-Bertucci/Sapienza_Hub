@@ -340,11 +340,7 @@ nav ul li a:hover {
     margin: 0 auto 0;
 
 }
-    
 
-.professori h2{
-    margin-left: 50px;
-}
 
 .prof{
     display: flex;
@@ -492,41 +488,6 @@ nav ul li a:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.rec{
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    flex-basis: auto;
-    align-items: flex-start; 
-    width: 80%;
-    margin: 15px auto;
-    
-    
-}
-
-.rec h2{
-    margin: 0px;
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 10px;
-    
-}
-
-.rec h3{
-    margin: 0px;
-    font-size: 18px;
-    font-weight: 500; 
-}
-
-
-.rec p{
-    padding-bottom: 10px;
-    font-size: 17px;
-    line-height: 1.3;
-    border-bottom: 1px solid darkgray;
-    width: 100%;
-    text-align: justify;
-}
 
 .utente{
     font-size: 20px;
@@ -554,7 +515,6 @@ nav ul li a:hover {
 .mat h1, .rec-esami h1{
     text-align: center;
     color: rgba(149, 30, 30, 1);
-
 }
 
 .errore{
@@ -618,6 +578,10 @@ nav ul li a:hover {
         margin: 0;
     }
 
+    .dati{
+        margin: 0 auto;
+    }
+
     .dati p{
         font-size: 16px;
     }
@@ -660,12 +624,33 @@ nav ul li a:hover {
         align-self: center;
     }
 
-    .professori h2 {
-        font-size: 17px;
-    }
 
     .prof{
         transform: scale(0.9);
+    }
+
+    .prof h3{
+        font-size: 17px;
+    }
+
+    .mat h1{
+        font-size: 20px;
+    }
+
+    .materiale-form, .recensione-form{
+        transform: scale(0.9);
+    }
+
+    .titolo{
+        font-size: 20px;
+    }
+
+    .utente{
+        font-size: 15px;
+    }
+
+    .materiale-card a, .rec p{
+        font-size: 13px;
     }
 
 
@@ -704,10 +689,6 @@ nav ul li a:hover {
         flex-direction: column;
     }
 
-    .professori h2 {
-        font-size: 13px;
-    }
-
     .prof h3{
         font-size: 13px;
     }
@@ -731,7 +712,7 @@ nav ul li a:hover {
 
         
     .form-container h3 {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .recensione-form, .materiale-form {
@@ -749,22 +730,25 @@ nav ul li a:hover {
         font-size: 12px;
     }
 
-
-    .rec, .mat{
-        height: 300px;
+    .mat h1{
+        font-size: 14px;
     }
 
-    .rec h4, .mat h4{
+    .titolo{
+        font-size: 14px;
+    }
+
+    .utente{
         font-size: 12px;
     }
 
-    .rec p, .mat p, .mat a{
+
+    .materiale-card a, .rec p{
         font-size: 10px;
     }
 
-
-    .titolo{
-        font-size: 18px;
+    .materiale-form, .recensione-form{
+        transform: scale(0.8);
     }
 
 

@@ -438,7 +438,7 @@ nav ul li a:hover {
 
 .card h3 {
     margin: 0 0 0px;
-    font-size: 20px; /* Aumenta la dimensione del titolo */
+    font-size: 20px; 
     font-weight: 500;
 }
 .card p {
@@ -546,6 +546,10 @@ nav ul li a:hover {
         text-align: center;
     }
 
+    .desc{
+        padding: 20px 30px 20px 30px;
+    }
+
     .desc p{
         font-size: 16px;
     }
@@ -596,7 +600,6 @@ nav ul li a:hover {
     }
 
     .esami{
-        width: 90%;
         align-self: center;
     }
 
@@ -610,6 +613,10 @@ nav ul li a:hover {
 
     .card{
         transform: scale(0.9);
+    }
+
+    .card h3{
+        font-size: 17px;
     }
 
     .foto{

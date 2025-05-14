@@ -259,6 +259,8 @@ nav ul li a:hover {
 .foto img {
     width: 150px;
     height: 150px;
+    padding: 5px;
+    margin: auto;
 }
 
 
@@ -610,23 +612,51 @@ gap: 15px;
         gap: 5px;
     }
 
-    .main{
-        width: auto;
-        height: auto;
+    .desc h1{
+        font-size: 22px;
     }
 
-    .desc{
-        width: auto;
-        height: auto;
+    .desc p{
+        font-size: 18px;
     }
 
-    
+    .foto img{
+        width: 100px;
+        height: 100px;
+    }
 
-    .nav-bar {
+    .nav-bar{
         max-width: 100%;
         border-radius: 20px;
     }
 
+    .nav-bar .bottone{
+        font-size: 14px;
+    }
+
+    .card h3{
+        font-size: 16px;
+    }
+
+    .mat h1{
+        font-size: 20px;
+    }
+
+    .recensione-form{
+        transform: scale(0.9);
+    }
+
+    .titolo{
+        font-size: 20px;
+    }
+
+    .utente{
+        font-size: 15px;
+    }
+
+    .rec p{
+        font-size: 13px;
+    }
 
     
 }
@@ -634,12 +664,19 @@ gap: 15px;
 /*sotto i 480px */
 @media (max-width: 480px) {
 
+    .h-left, .auth-buttons{
+        transform: scale(0.9);
+    }
+
     .main {
         font-size: 14px; 
         padding: 10px;
         width: 90%; 
     }
 
+    .nav-bar{
+        transform: scale(0.9);
+    }
 
     .desc {
         width: 100%; 
@@ -657,29 +694,56 @@ gap: 15px;
     }
 
     .foto {
-        width: 100px;
-        height: 100px;
-        margin: 10px auto; 
+        width: 90px;
+        height: 90px;
     }
 
     .foto img {
-        width: 100px;
-        height: 100px;
+        width: 90px;
+        height: 90px;
     }
 
     .card {
         justify-items: space-between;
-        width: 100%; 
+        transform: scale(0.85);
     }
 
     .card h3 {
-        font-size: 14px;
+        font-size: 13px;
         text-align: left;
     }
 
     .card p {
         font-size: 9px; 
         text-align: justify; 
+    }
+
+    .nav-bar .bottone{
+        font-size: 10px;
+    }
+
+    .mat h1{
+        font-size: 16px;
+    }
+
+    .titolo{
+        font-size: 14px;
+    }
+
+    .utente{
+        font-size: 12px;
+    }
+
+    .form-container h3{
+        font-size: 14px;
+    }
+
+    .rec p{
+        font-size: 10px;
+    }
+
+    .recensione-form{
+        transform: scale(0.8);
     }
 
     .footer {

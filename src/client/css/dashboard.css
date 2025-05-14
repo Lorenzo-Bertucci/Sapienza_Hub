@@ -563,6 +563,10 @@ nav ul li a:hover {
         display: none;
     }
 
+    .preferiti, .recensioni, .file{
+        transform: scale(0.9);
+    }
+
 
 }
 
@@ -576,14 +580,36 @@ nav ul li a:hover {
 
     .auth-buttons {
         margin-right: 10px;
+        transform: scale(0.85);
     }
 
     .desc h1{
         font-size: 15px;
     }
 
-    .desc p, .dati a{
+    .desc h2{
+        font-size: 15px;
+    }
+
+    .desc p, .dati a, .rec p{
         font-size: 12px;
+        margin-left: 0;
+    }
+
+    .preferiti h2, .recensioni h2, .file h2{
+        font-size: 18px;
+    }
+
+    .corsi h3, .esami h3{
+        font-size: 17px;
+    }
+
+    .rec-professori h3,  .rec-esami h3{
+        font-size: 19px;
+    }
+
+    .rec h2{
+        font-size: 15px;
     }
 
     .h-left h1 {
@@ -594,16 +620,9 @@ nav ul li a:hover {
         font-size: 10px;
     }
 
-    .esami{
-        width: 90%;
-        flex-direction: column;
-    }
 
-    .esami h1{
-        font-size: 18px;
-    }
-    .esami h2 {
-        font-size: 13px;
+    .card{
+        width: 80%;
     }
 
     .card h3{
