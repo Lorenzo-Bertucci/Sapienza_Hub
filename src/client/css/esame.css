@@ -436,6 +436,17 @@ nav ul li a:hover {
     resize:none;
 }
 
+.recensione-form textarea:focus {
+    border-color: rgb(170, 33, 33);
+    outline: none;
+}
+
+.recensione-form textarea::placeholder {
+    font-size: 15px;
+    color: #b0b0b0;
+    font-style: italic;
+}
+
 .recensione-form button, .materiale-form button {
     padding: 10px;
     font-size: 16px;
