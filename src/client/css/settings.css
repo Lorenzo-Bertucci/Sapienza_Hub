@@ -1,0 +1,92 @@
+
+
+.container{
+    display: grid;
+    height: 95vh;
+    width: 100%;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+        "laterale tool";
+    
+}
+
+.laterale{
+    grid-area: laterale;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    background-color: skyblue;
+    border:2px solid black;
+}
+
+.tool{
+    grid-area: tool;
+    display: flex;
+    flex-direction: column;
+    align-items: center;      
+    justify-content: flex-start;  
+    background-color: whitesmoke;
+    padding: 20px;
+    overflow-y: scroll;
+    border: 2px solid black;
+}
+
+ul{
+    font-size: 25px;
+}
+
+ul li{
+    cursor: pointer;
+}
+
+ul li:hover{
+    color: white;
+}
+
+.form-element {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-element input{
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-element button{
+    width: 50%;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+    padding:  15px;
+}
+
+.form-element button:hover{
+    background-color: skyblue;
+
+}
+
+.back{
+    width: 30%;
+    padding: 10px;
+    cursor: pointer;
+    font-size:large;
+    font-weight: 500;
+}
+
+.lista{
+    border: 1px darkgray solid;
+    width: 80%;
+    height: 30%;
+    overflow-y: scroll;
+    padding: 15px;
+    margin: 15px;
+    font-size: 20px;
+}

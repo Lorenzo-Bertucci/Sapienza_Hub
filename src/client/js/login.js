@@ -31,7 +31,15 @@ function inviaLogin(event){
                 window.location.href = '../client/html/dashboard.php';
             }, 2000);
         } else {
-            Swal.fire('Errore!', data.message, 'error');
+            if(data.gestione){
+                Swal.fire('Login Utente Speciale effettuato con successo!', 'Verrai reindirizzato a breve nella pagina di gestione.', 'success');
+                setTimeout(() => {
+                    window.location.href = '../server/gestione/settings.php';
+                }, 2000); 
+            }
+            else{
+                Swal.fire('Errore!', data.message, 'error');
+            }
         }
     })
     .catch(error => {

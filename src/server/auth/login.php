@@ -13,18 +13,36 @@ if (!$conn) {
 $email = pg_escape_string($conn,$_POST['inputEmail']);
 $password = pg_escape_string($conn,$_POST['inputPassword']);
 
+$qgestione="SELECT * FROM gestione where utente=$1";
+$result= pg_query_params($conn, $qgestione, array($email));
+$utente = pg_fetch_array($result, null, PGSQL_ASSOC);
+if ($utente) {
+    if (!password_verify($password, $utente['password'])) {
+        echo json_encode(['success' => false, 'message' => 'Password errata.']);
+        exit;
+    }
+    $_SESSION['logged_in'] = true;
+    $_SESSION['user_id'] = $tuple['id'];
+    $_SESSION['user_email'] = $email;
+    
+    echo json_encode(['success' => false, 'message' => 'Login Gestore confermato', 'gestione' => true]);
+
+    exit;
+}
+
+
 // Controlla se l'email esiste
 $q1 = "SELECT * FROM utenti WHERE email=$1";
 $result = pg_query_params($conn, $q1, array($email));
 $tuple = pg_fetch_array($result, null, PGSQL_ASSOC);
 if (!$tuple) {
-    echo json_encode(['success' => false, 'message' => 'Email non presente.']);
+    echo json_encode(['success' => false, 'message' => 'Email non presente.', 'gestione' => false]);
     exit;
 }
 
 // Verifica la password
 if (!password_verify($password, $tuple['password'])) {
-    echo json_encode(['success' => false, 'message' => 'Password errata.']);
+    echo json_encode(['success' => false, 'message' => 'Password errata.', 'gestione' => false]);
     exit;
 }
 
@@ -40,6 +58,6 @@ $_SESSION['user_cognome'] = $cognome;
 pg_free_result($result);
 pg_close($conn);
 
-echo json_encode(['success' => true, 'message' => 'Login effettuato con successo.']);
+echo json_encode(['success' => true, 'message' => 'Login effettuato con successo.', 'gestione' => false]);
 exit;
 ?>
