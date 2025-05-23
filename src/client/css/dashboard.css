@@ -194,19 +194,22 @@ nav ul li a:hover {
 .profile-container:hover .dropdown-menu {
     display: block;
 }
-
 .side-bar {
     grid-area: side-bar;
+    background: linear-gradient(to bottom, #ffffff, #f9f9f9);
     background: linear-gradient(to bottom, #ffffff, #f9f9f9);
     border-right: 4px solid rgba(170, 33, 33, 0.5);  /* separazione più spessa e trasparente */
     padding: 30px 30px;
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* tutto allineato a sinistra */
+    min-width: fit-content;
     width: 100%;
     min-height: 100vh;
     box-shadow: 2px 0 6px rgba(0, 0, 0, 0.15); /* ombra che evidenzia la separazione */
     margin-right: 20px;  /* spazio extra a destra della sidebar */
+    overflow-y: auto;
+
 }
 
 /* Sezione dei dati utente ("desc") presente nella sidebar */

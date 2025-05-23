@@ -79,7 +79,6 @@ function load_esami(codice,durata) {
 
 // Funzione per caricare i dati del corso di laurea
 function loadCorso(codice) {
-    const foto = document.querySelector(".foto");
     const info = document.querySelector(".info");
     const desc = document.querySelector(".desc");
 
@@ -98,7 +97,6 @@ function loadCorso(codice) {
                 return;
             }
             document.title = `${corso.nome} - SapienzHub`;
-            foto.innerHTML = `<img src='assets/${corso.codice}.jpg' alt='${corso.nome}'>`;
             info.innerHTML = `
                 <p><strong>Codice corso:</strong> ${corso.codice}</p>
                 <p><strong>Durata:</strong> ${corso.durata} anni</p>
@@ -111,6 +109,11 @@ function loadCorso(codice) {
             `;
             document.getElementById("corso-nome").textContent = corso.nome;
             document.getElementById("corso-descrizione").textContent = corso.descrizione;
+            // Dopo aver ottenuto i dati del corso, imposta lo sfondo del main
+            document.querySelector(".foto").style.backgroundImage = `url('assets/${corso.codice}.jpg')`;
+            document.querySelector(".foto").style.backgroundRepeat = "no-repeat";
+            document.querySelector(".foto").style.backgroundPosition = "center";
+            document.querySelector(".foto").style.backgroundSize = "cover";
             load_esami(corso.codice,corso.durata);
         } else {
             console.error("Errore:", data.message);

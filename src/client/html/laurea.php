@@ -44,30 +44,27 @@ session_start();
                 <?php endif; ?>
             </div>
         </div>
-
-        <div class="main">
+        <div class="foto">
             <div class="aside">
-                <div class="foto">
-
-                </div>
                 <div class="info">
-                    
+                    <!-- I dettagli che desideri mostrare -->
                 </div>
             </div>
-            <div class="desc">
-                <div class="nome">
-                    <h1 id="corso-nome"></h1>
+            <div class="titolo">
+                    <h1 id="corso-nome">Titolo del corso</h1>
                     <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
                         <button id="favorite-btn" class="favorite-btn" title="Aggiungi ai preferiti" onclick="favorite()">
                             &#9734;
                         </button>
                     <?php endif; ?>
-                </div>
+                
+            </div>
+        </div>
+        <div class="main">
+            <div class="desc">
+                <h1>Descrizione del Corso</h1>
                 <p id="corso-descrizione"></p>
             </div>
-            <nav class="nav-bar">
-                <button class="bottone active"><strong>Esami</strong></button>
-            </nav>
         </div>
         <div class="content">
             <div class="esami">

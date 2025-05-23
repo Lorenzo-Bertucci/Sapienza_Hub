@@ -24,10 +24,11 @@ html, body {
     display: grid;
     max-width: 100%;
     min-height: 100vh; /* Usa min-height per permettere l'espansione se necessario */
-    grid-template-rows: auto 1fr 1fr auto ; /* Righe che si adattano automaticamente al contenuto */
+    grid-template-rows: auto 1fr 1fr 1fr auto ; /* Righe che si adattano automaticamente al contenuto */
     grid-template-columns: 1fr;
     grid-template-areas:
         "header"
+        "foto"
         "main"
         "content"
         "footer";
@@ -62,7 +63,6 @@ body {
     justify-items: center;
     width: 100%;
     height: 100px;
-    margin-bottom: 20px;
 }
 
 .h-left{
@@ -241,130 +241,185 @@ nav ul li a:hover {
 
 .main {
     grid-area: main;
-    display: grid;
-    grid-template-columns: auto auto ;  /* Colonna sinistra adatta al contenuto (foto e info) e colonna destra espandibile per desc */
-    grid-template-rows: 1fr auto auto;     /* Due righe: una per foto e una per info */
-    grid-template-areas:
-        "aside desc"
-        "aside desc"
-        "nav-bar nav-bar";
-    column-gap: 50px;
-    row-gap: 20px;
-    justify-content: center;
-    align-items: start;
-    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;   /* Allinea tutti gli elementi a sinistra */
+    padding: 20px 50px;
     margin: 0 auto 30px;
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 15px;
     width: 85%;
-    height: fit-content;
+    height: fit-content; /* Puoi usare min-height al posto di height per adattarsi meglio al contenuto */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.aside{
-    grid-area: aside;
-    display: grid;
-    grid-template-areas:
-        "foto"
-        "info";
-    grid-template-rows: auto auto; /* Due righe: una per foto e una per info */
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0px 0px 30px;
-    width: 100%;
-    height: 100%;
-}
 
+
+/* Sezione foto e descrizione */
 .foto {
     grid-area: foto;
-    width: 150px;
-    height: 150px;
-    margin:0 auto;
-    border-radius: 50%;
+    display: grid;
+    grid-template-columns: 15% 1fr;  /* Aside più largo */
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "aside titolo"
+        "aside titolo";
+    width: 100%;
+    min-height: 380px; /* Altezza leggermente aumentata */
+    margin: 0 auto;
     overflow: hidden;
-    display: flex;
     justify-content: center;
     align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    gap: 30px; /* Spazio tra aside e titolo */
+    border-radius: 0; /* Nessun bordo tondeggiante */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    padding-left: 30px; /* Spazio a sinistra per non attaccare aside */
+    margin-bottom: 30px;
+    position: relative; /* Necessario per posizionare l'overlay */
 }
 
-.foto img {
+/* Aggiungi un overlay scuro semi trasparente sopra l'immagine */
+.foto::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Regola il livello di trasparenza */
+    z-index: 1;
 }
 
-.info {
-    grid-area: info;
-    margin: 0 auto;
-}
-
-.desc {
-    grid-area: desc;
-    color: black;
-    text-align: justify;
-    padding: 20px 30px 0 0;
+/* Aside più compatta e visivamente migliorata */
+.aside {
+    grid-area: aside;
+    background-color: #fff;
+    min-width: fit-content;
     width: 100%;
-    margin: 0 auto;
+    border-radius: 14px;
+    padding: 18px 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    gap: 12px;
+    border: 1.5px solid #eee;
+    transition: box-shadow 0.2s;
+    margin-left: 16px; /* Spazio a sinistra per non essere attaccata */
+    z-index: 2; /* Assicura che l'aside sia sopra l'immagine */
+}
+.aside:hover {
+    box-shadow: 0 8px 24px rgba(170,33,33,0.10);
 }
 
 
-.nome h1 {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-size: 30px;
-    font-weight: 600;
-}
-.desc p {
-    margin: 0;
-    font-size: 20px;
-    line-height: 1.5;
-    font-weight: 300;
-}
 
-.nome{
+/* Titolo più leggibile e responsive */
+.titolo {
+    grid-area: titolo;
+    align-self: flex-start;
+    z-index: 2;
+    padding-left: 10px;
+    padding-top: 10px;
+    position: relative;
     display: flex ;
     flex-direction: row;
 }
 
-.nav-bar {
-    grid-area: nav-bar;             
-    padding: 0px;
-    border-top: 2px solid #ddd;
-    display: flex;
+.titolo h1 {
+    text-align: left;
+    font-size: 64px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1.1;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+    letter-spacing: 1.5px;
+    word-break: break-word;
+}
+
+@media (max-width: 900px) {
+    .foto {
+        grid-template-columns: 38% 1fr;
+        min-height: 320px;
+        gap: 16px;
+        padding-left: 10px;
+    }
+    .aside {
+        min-width: 120px;
+        max-width: 160px;
+        padding: 12px 6px;
+        margin-left: 8px;
+    }
+    .titolo h1 {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 600px) {
+    .foto {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "aside"
+            "titolo";
+        min-height: 0;
+        gap: 8px;
+        padding-left: 0;
+    }
+    .aside {
+        max-width: 100%;
+        min-width: 0;
+        width: 95%;
+        margin-bottom: 10px;
+        padding: 10px 2px;
+        margin-left: 0;
+    }
+    .titolo {
+        padding-left: 0;
+        padding-top: 0;
+        text-align: center;
+    }
+    .titolo h1 {
+        font-size: 24px;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    }
+}
+
+
+
+
+.desc {
+    color: black;
+    text-align: justify;
     width: 100%;
-    position: relative;
-    align-items: center; /* Centra verticalmente il contenuto */
-    z-index: 1000;
-    margin-bottom: 0px;
-    height: 60px; /* Imposta un'altezza fissa se necessario */
+    min-height: fit-content;
+    margin: 0 auto;
 }
 
-.nav-bar .bottone {
-    flex: 1;
-    padding: 0 15px; /* Rimuovo il padding verticale */
-    height: 100%;   
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 16px;
-    border-radius: 15px; /* Arrotonda solo gli angoli inferiori */
-    display: flex;            
-    align-items: center;      /* Centra verticalmente */
-    justify-content: center;  /* Centra orizzontalmente */
+
+
+
+.desc h1{
+    margin:0;
+}
+.desc p {
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: 300;
 }
 
-.nav-bar .bottone:hover {
-    background-color: rgb(150, 30, 30);
-    color: white;
- 
-}
 
-.nav-bar .bottone.active {
-    background-color: rgb(150, 30, 30);
-    color: white;
-   
-}
+
+
+
 
 .esami {
     flex: 1; /* Fa sì che il contenuto occupi lo spazio disponibile sopra il footer */
@@ -373,12 +428,12 @@ nav ul li a:hover {
     display: flex; /* Imposta il layout Flexbox */
     flex-direction: column; /* Dispone gli elementi in verticale */
     justify-content: center;
-    align-items:left;
+    align-items: left;
     margin: 0 auto 0; 
     border: 1px solid #ddd;
     border-radius: 15px;
     width: 85%;
-    height:fit-content;
+    height: fit-content;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Aggiunge spazio tra gli elementi */
 }
 
@@ -415,7 +470,7 @@ nav ul li a:hover {
 .card:hover {
     transform: translate(-5px); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-    background-color:rgb(170, 33, 33);
+    background-color: rgb(170, 33, 33);
     color: white;
 }
 
@@ -511,7 +566,7 @@ nav ul li a:hover {
 
 .footer {
     grid-area: footer;
-    background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
+    background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30) 40%);
     color: white;
     text-align: center;
     margin-top: 20px;
