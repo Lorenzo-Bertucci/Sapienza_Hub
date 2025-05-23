@@ -21,25 +21,10 @@ if (isset($_SESSION['logged_in'])) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-
     <div class="container">
-        <div class="header">
-            <div class="h-left">
-                <a href="html/index.php">
-                    <h1>SapienzHub</h1>
-                </a>
-                <nav>
-                    <ul>
-                        <li><a href="html/corsi.php">Corsi</a></li>
-                        <li><a href="html/professori.php">Professori</a></li>
-                        <li><a>Contatti</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
         <div class="content">
-            <h3>SapienzHub</h3>
-            <form id="registerForm" method="POST" class="login-form" onsubmit="inviaReg(event)">
+            <h3><a href="html/index.php" style="text-decoration: none; color: inherit;">SapienzHub</a></h3>
+            <form id="registerForm" method="POST" class="login-form" enctype="multipart/form-data" onsubmit="inviaReg(event)">
                 <input type="text" id="nome" name="inputNome" placeholder="Inserisci il tuo nome" required>
                 <br>
                 <input type="text" id="cognome" name="inputCognome" placeholder="Inserisci il tuo cognome" required>
@@ -48,12 +33,17 @@ if (isset($_SESSION['logged_in'])) {
                 <br>
                 <input type="password" id="password" name="inputPassword" placeholder="Inserisci la tua password" required>
                 <br>
+                
+                <div class="profile-row">
+                    <label for="profilePic" class="profile-label">
+                        <span>Imposta la tua immagine profilo</span>
+                    </label>
+                    <input type="file" id="profilePic" name="profilePic" accept="image/*" style="display:none;">
+                    <img id="preview" src="assets/utente.png" alt="Preview immagine profilo" class="profile-preview" tabindex="0">
+                </div>
                 <button type="submit" class="login-btn">Registrati</button>
             </form>
             <p>Hai già un account? <a href="html/login.php">Accedi qui</a></p>
-        </div>
-        <div class="footer">
-            <p>&copy; 2025 Sapienza Hub. Tutti i diritti riservati.</p>
         </div>
     </div>
 </body>

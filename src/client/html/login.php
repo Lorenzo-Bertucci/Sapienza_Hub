@@ -22,22 +22,8 @@ if (isset($_SESSION['logged_in'])) {
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="h-left">
-                <a href="html/index.php">
-                    <h1>SapienzHub</h1>
-                </a>
-                <nav>
-                    <ul>
-                        <li><a href="html/corsi.php">Corsi</a></li>
-                        <li><a href="html/professori.php">Professori</a></li>
-                        <li><a href="#">Contatti</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
         <div class="content">
-            <h3>SapienzHub</h3>
+            <h3><a href="html/index.php" style="text-decoration: none; color: inherit;">SapienzHub</a></h3>
             <form id="loginForm" method="POST" class="login-form" onsubmit="inviaLogin(event)">
                 <input type="email" name="inputEmail" placeholder="Inserisci la mail istituzionale" required>
                 <br>
@@ -46,9 +32,6 @@ if (isset($_SESSION['logged_in'])) {
                 <button type="submit" class="login-btn">Accedi</button>
             </form>
             <p>Non hai un account? <a href="html/register.php">Registrati qui</a></p>
-        </div>
-        <div class="footer">
-            <p>&copy; 2025 Sapienza Hub. Tutti i diritti riservati.</p>
         </div>
     </div>
 </body>

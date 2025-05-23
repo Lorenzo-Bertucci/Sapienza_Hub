@@ -36,6 +36,13 @@ list($nome, $cognome) = explode(' ', $tuple['nome'], 2);
 $_SESSION['user_nome'] = $nome;
 $_SESSION['user_cognome'] = $cognome;
 
+// Salva l'immagine profilo in sessione (base64 se presente, altrimenti percorso default)
+if (!empty($tuple['foto'])) {
+    $_SESSION['profile_img'] = 'data:image/png;base64,' . base64_encode(pg_unescape_bytea($tuple['foto']));
+} else {
+    $_SESSION['profile_img'] = 'assets/utente.png';
+}
+
 // Liberazione della memoria e chiusura della connessione
 pg_free_result($result);
 pg_close($conn);

@@ -31,7 +31,7 @@ session_start();
                 <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
                     <div class="profile-container">
                         <button class="profile-btn" onclick="window.location.href='html/dashboard.php'">
-                            <img src="assets/utente.png" class="profile-icon">
+                            <img src="<?php echo isset($_SESSION['profile_img']) ? $_SESSION['profile_img'] : 'assets/utente.png'; ?>" class="profile-icon">
                         </button>
                         <div class="dropdown-menu">
                             <a href="html/dashboard.php" style="text-decoration: none;"><button class="dropdown-item">Dashboard</button></a>
@@ -54,7 +54,7 @@ session_start();
         </div>
         <div class="aside">
             <div class="benvenuto">
-                <h3>🎓 Benvenuto su SapienzHub</h3>
+                <h3>🎓 Cos'è SapienzHub?</h3>
                 <br>
                 <p> <strong>SapienzHub</strong> nasce con un obiettivo semplice ma ambizioso: rendere la vita universitaria più facile, connessa e collaborativa per tutti gli studenti della Sapienza.
                     <br>
@@ -107,11 +107,6 @@ session_start();
             </div>
             </a>
         </div>
-        <footer>
-            <div class="footer">
-                <p>&copy; 2025 SapienzHub. Tutti i diritti riservati.</p>
-            </div>
-        </footer>
     </div>
 </body>
 </html>

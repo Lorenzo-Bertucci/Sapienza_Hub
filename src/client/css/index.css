@@ -155,9 +155,10 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    margin-right: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra */
+    overflow: hidden; /* IMPORTANTE: nasconde le parti fuori dal cerchio */
+    padding: 0;        /* Nessun padding */
 }
 
 .profile-container:hover .profile-btn {
@@ -166,10 +167,10 @@ nav ul li a:hover {
 }
 
 .profile-icon {
-    width: auto; /* L'immagine occupa tutto lo spazio del bottone */
-    height: 100%; /* L'immagine occupa tutto lo spazio del bottone */
-    border-radius: 50%; /* Rende l'immagine tonda */
-    object-fit:cover;
+    width: auto;      /* L'immagine riempie tutto il bottone */
+    height: 100%;     /* L'immagine riempie tutto il bottone */
+    border-radius: 50%;
+    object-fit: cover; /* Ritaglia l'immagine senza deformarla */
     display: block; /* Adatta l'immagine senza distorcerla */
 }
 
@@ -177,6 +178,8 @@ nav ul li a:hover {
 .profile-container {
     position: relative; /* Necessario per posizionare il menu a tendina */
     display: inline-block;
+    align-content: center;
+    justify-items: center;
     width: 80px; /* Aumenta la larghezza del contenitore */
     height: 80px; /* Aumenta l'altezza del contenitore */
 }

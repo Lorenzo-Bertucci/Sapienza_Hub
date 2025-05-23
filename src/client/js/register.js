@@ -54,3 +54,34 @@ function inviaReg(event){
   });
 }
 
+
+document.addEventListener("DOMContentLoaded", function() {
+    const input = document.getElementById("profilePic");
+    const preview = document.getElementById("preview");
+    const defaultImg = "assets/utente.png";
+
+    // Clicca sulla preview per aprire il file picker
+    preview.addEventListener("click", () => input.click());
+    preview.addEventListener("keypress", (e) => {
+        if (e.key === "Enter" || e.key === " ") input.click();
+    });
+
+    // Mostra la preview dell'immagine scelta
+    input.addEventListener("change", function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = defaultImg;
+        }
+    });
+
+    // Se la preview viene rimossa, torna all'immagine di default
+    preview.onerror = function() {
+        preview.src = defaultImg;
+    };
+});
