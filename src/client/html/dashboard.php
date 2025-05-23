@@ -18,7 +18,7 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingegneria Informatica e Automatica - SapienzHub</title>
+    <title>Dashboard - SapienzHub</title>
     <base href="/src/client/">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/dashboard.css">
@@ -40,22 +40,12 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
                     </ul>
                 </nav>
             </div>
-            <div class="auth-buttons">
-                <div class="profile-container">
-                    <button class="profile-btn" onclick="window.location.href='html/dashboard.php'">
-                        <img src="assets/utente.png" class="profile-icon">
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="html/dashboard.php" style="text-decoration: none;"><button class="dropdown-item">Dashboard</button></a>
-                        <a href="../server/auth/logout.php"><button class="dropdown-item">Logout</button></a>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <div class="main">
+        <div class="side-bar">
             <div class="desc">
-                <h1>Ciao <?php echo htmlspecialchars($_SESSION['user_nome'] ?? 'Utente'); ?></span><span style="font-weight: normal;">, benvenuto nella tua Dashboard!</span></h1>
+                <img src="<?php echo isset($_SESSION['profile_img']) ? $_SESSION['profile_img'] : 'assets/utente.png'; ?>" class="profile-icon">
+                <button id="change-profile-btn" class="change-profile-btn" onclick="modificaFoto()">Modifica Immagine</button>
                 <h2> I tuoi dati:</h2>
                 <p>
                     <strong>Nome:</strong> <?php echo htmlspecialchars($user_nome); ?><br>
@@ -64,39 +54,47 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
                 </p>
             </div>
             <nav class="nav-bar">
-                <button class="bottone"> <strong>Preferiti</strong></button>
+                <button class="bottone"><strong>Preferiti</strong></button>
                 <button class="bottone"><strong>Le tue recensioni</strong></button>
                 <button class="bottone"><strong>I tuoi file</strong></button>
+                <span ></span>
+                <span ></span>
+                <button class="logout" onclick="logout()"><strong>Logout</strong></button>
             </nav>
         </div>
-        <div class="content">
-            <div class="preferiti">
-                <h2>Qui puoi trovare i tuoi corsi ed esami preferiti </h2>
-                <div class="corsi">
-                  
+        <div class="main">
+            <h1>Ciao <?php echo htmlspecialchars($_SESSION['user_nome'] ?? 'Utente'); ?></span><span style="font-weight: normal;">, benvenuto nella tua Dashboard!</span></h1>
+
+            <div class="content">
+
+                <div class="preferiti">
+                    <h2>Qui puoi trovare i tuoi corsi ed esami preferiti </h2>
+                    <div class="corsi">
+                    
+
+                    </div>
+                    <div class="esami">
+                    
+
+                    </div>
+                </div>
+                <div class="recensioni" >
+                    <h2>Qui puoi trovare le recensioni che hai lasciato su esami e professori</h2>
+                    <div class="rec-esami">
+
+                    </div>
+                    <div class="rec-professori">
+                    
+
+                    </div>
 
                 </div>
-                <div class="esami">
-                  
+                <div class="file" >
+                    
 
                 </div>
             </div>
-            <div class="recensioni" >
-                <h2>Qui puoi trovare le recensioni che hai lasciato su esami e professori</h2>
-                <div class="rec-esami">
-
-                </div>
-                <div class="rec-professori">
-                  
-
-                </div>
-
-            </div>
-            <div class="file" >
-                
-
-            </div>
-          </div>
+        </div>
         
         <div class="footer">
             <p>&copy; 2025 SapienzHub. Tutti i diritti riservati.</p>

@@ -30,9 +30,9 @@ session_start();
             <div class="auth-buttons">
                 <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
                     <div class="profile-container">
-                        <button class="profile-btn" onclick="window.location.href='html/dashboard.php'">
-                            <img src="<?php echo isset($_SESSION['profile_img']) ? $_SESSION['profile_img'] : 'assets/utente.png'; ?>" class="profile-icon">
-                        </button>
+                        
+                        <img src="<?php echo isset($_SESSION['profile_img']) ? $_SESSION['profile_img'] : 'assets/utente.png'; ?>" class="profile-icon" onclick="window.location.href='html/dashboard.php'">
+    
                         <div class="dropdown-menu">
                             <a href="html/dashboard.php" style="text-decoration: none;"><button class="dropdown-item">Dashboard</button></a>
                             <a href="../server/auth/logout.php"><button class="dropdown-item">Logout</button></a>

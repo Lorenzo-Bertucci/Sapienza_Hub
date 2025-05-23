@@ -23,23 +23,23 @@ html, body {
 .container {
     display: grid;
     max-width: 100%;
-    min-height: 100vh; /* Usa min-height per permettere l'espansione se necessario */
-    grid-template-rows: auto 1fr 1fr auto ; /* Righe che si adattano automaticamente al contenuto */
-    grid-template-columns: 1fr;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr 1fr auto;
+    grid-template-columns: 0.8fr 2fr;
     grid-template-areas:
-        "header"
-        "main"
-        "content"
-        "footer";
-    background-color: white; 
-    row-gap: 50px;
+        "header header"
+        "side-bar main"
+        "side-bar main"
+        "footer footer";
+    background-color: white;
+    row-gap: 0px;
     color: black;
     padding: 0px;
-    margin: 0px ;
+    margin: 0px;
     overflow-x: hidden;
-    overflow-y: auto; /* Abilita lo scrolling verticale */
-    -ms-overflow-style: none;  /* IE e Edge */
-    scrollbar-width: none;     /* Firefox */
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .container::-webkit-scrollbar {
@@ -126,53 +126,41 @@ nav ul li a:hover {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.profile-container {
-    position: relative; /* Necessario per posizionare il menu a tendina */
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    width: 80px; /* Aumenta la larghezza del contenitore */
-    height: 80px; /* Aumenta l'altezza del contenitore */
-}
 
-/* Bottone profilo utente */
-.profile-btn {
-    background-color: white; /* Sfondo bianco */
-    border: 2px solid rgba(170, 33, 33, 1); /* Bordo rosso */
-    border-radius: 50%; /* Rende il bottone tondo */
-    width: 60px; /* Larghezza del bottone */
-    height: 60px; /* Altezza del bottone */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    margin-right: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra */
-}
-
-.profile-container:hover .profile-btn {
+.profile-container:hover .profile-icon{
     transform: scale(1.1); /* Effetto di ingrandimento al passaggio del mouse */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Ombra più pronunciata */
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .profile-icon {
-    width: auto; /* L'immagine occupa tutto lo spazio del bottone */
-    height: 100%; /* L'immagine occupa tutto lo spazio del bottone */
-    border-radius: 50%; /* Rende l'immagine tonda */
-    object-fit:cover;
+    width: 80%;      /* L'immagine riempie tutto il bottone */
+    height: 80%;     /* L'immagine riempie tutto il bottone */
+    border-radius: 50%;
+    object-fit: cover; /* Ritaglia l'immagine senza deformarla */
     display: block; /* Adatta l'immagine senza distorcerla */
+    margin: 0px;
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Contenitore del menu a tendina */
-
+.profile-container {
+    position: relative; /* Necessario per posizionare il menu a tendina */
+    display: inline-block;
+    align-content: center;
+    justify-content: center;
+    width: 80px; /* Aumenta la larghezza del contenitore */
+    height: 80px; /* Aumenta l'altezza del contenitore */
+    cursor: pointer;
+}
 
 /* Menu a tendina */
 .dropdown-menu {
     display: none; /* Nascondi il menu di default */
     position: absolute;
-    top: 70px; /* Posiziona il menu sotto il bottone */
-    right: 0;
+    top: 80px; /* Posiziona il menu sotto il bottone */
+    right: 30px;
     background-color: white;
     border: 1px solid rgba(170, 33, 33, 0.2);
     border-radius: 10px;
@@ -207,120 +195,110 @@ nav ul li a:hover {
     display: block;
 }
 
-.main {
-    grid-area: main;
-    display: grid;
-    grid-template-columns: 1fr; /* La colonna occupa tutto lo spazio disponibile */
-    grid-template-rows: auto auto ;     /* Due righe: una per foto e una per info */
-    grid-template-areas:
-        "desc"
-        "nav-bar";
-    column-gap: 50px;
-    row-gap: 20px;
-    justify-content: center;
-    align-items: start;
-    padding: 0px;
-    margin: 0 auto 0px;
-    margin-bottom: 0px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    width: 85%;
-    height: fit-content;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-
-.desc {
-    grid-area: desc;
-    color: black;
-    text-align: justify;
-    margin: 0px;
-    padding:30px;
-    width: 100%;
-    margin: 0 auto;
-    /* Eventuali altri stili per la descrizione */
-}
-
-.desc h1 {
-    margin-top: 0px;
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 30px;
-    line-height: 1;
-    font-weight: 600;
-}
-
-.desc h2{
-    margin-left: 50px;
-}
-.desc p {
-    margin-left: 50px;
-    font-size: 20px;
-    line-height: 1.5;
-    font-weight: 300;
-}
-
-.nav-bar {
-    grid-area: nav-bar;             
-    padding: 0px;
-    border-top: 2px solid #ddd;
+.side-bar {
+    grid-area: side-bar;
+    background: linear-gradient(to bottom, #ffffff, #f9f9f9);
+    border-right: 4px solid rgba(170, 33, 33, 0.5);  /* separazione più spessa e trasparente */
+    padding: 30px 30px;
     display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* tutto allineato a sinistra */
     width: 100%;
-    position: relative;
-    align-items: center; /* Centra verticalmente il contenuto */
-    z-index: 1000;
-    margin-bottom: 0px;
-    height: 60px; /* Imposta un'altezza fissa se necessario */
+    min-height: 100vh;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.15); /* ombra che evidenzia la separazione */
+    margin-right: 20px;  /* spazio extra a destra della sidebar */
 }
 
-.nav-bar .bottone {
-    flex: 1;
-    padding: 0 15px; /* Rimuovo il padding verticale */
-    height: 100%;   
-    background: none;
+/* Sezione dei dati utente ("desc") presente nella sidebar */
+.desc {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 4px solid #ccc;
+}
+
+.desc img.profile-icon {
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 15px;
+    cursor: default;
+}
+
+.desc h2,
+.desc p {
+    margin: 5px 0;
+    font-size: 25px;
+    color: #333;
+}
+
+/* Sezione di navigazione (i pulsanti per le varie sezioni) */
+.nav-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nav-bar .bottone,
+.nav-bar .logout {
+    width: 100%;
+    padding: 15px;
+    padding-left: 30px;
+    font-size: 22px;
+    text-align: left;
     border: none;
+    border-radius: 20px;  /* aumenta l'arrotondamento */
+    background: #f2f2f2;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 16px;
-    border-radius: 15px; /* Arrotonda solo gli angoli inferiori */
-    display: flex;            
-    align-items: center;      /* Centra verticalmente */
-    justify-content: center;  /* Centra orizzontalmente */
 }
 
-.nav-bar .bottone:hover {
+.nav-bar .bottone:hover,
+.nav-bar .bottone.active,
+.nav-bar .logout:hover,
+.nav-bar .logout.active {
     background-color: rgb(150, 30, 30);
-    color: white;
- 
+    color: #fff;
+}
+.main{
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto; /* Permette lo scorrimento verticale */
+    text-align: center;
 }
 
-.nav-bar .bottone.active {
-    background-color: rgb(150, 30, 30);
-    color: white;
-   
+.main h1 {
+    font-size: 40px;
+    margin-top: 30px;
+
 }
 
 .content {
-    grid-area: content;
-    flex: 1; /* Fa sì che il contenuto occupi lo spazio disponibile sopra il footer */
     background-color: white;
-    padding: 20px; /* Mantiene un padding uniforme */   
-    display: flex; /* Imposta il layout Flexbox */
-    flex-direction: column; /* Dispone gli elementi in verticale */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items:left;
-    margin: 0 auto 0px; /* Riduci il margine inferiore */
+    align-items: left;
+    margin: 0 auto 0px;
+    margin-bottom: 40px;
     border: 1px solid #ddd;
-    border-radius: 15px;
-    width: 85%;
-    height:fit-content;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Aggiunge spazio tra gli elementi */
+    border-radius: 35px; /* Maggiore arrotondamento */
+    width: 90%;
+    height: fit-content;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12); /* Ombra leggermente più ampia */
 }
 
 .content h2 {
     margin: 0px;
-    font-size: 24px;
+    font-size: 28px;
     margin-bottom: 20px;
     line-height: 1.2;
     font-weight: 500;
@@ -329,7 +307,7 @@ nav ul li a:hover {
 
 .content h3 {
     margin: 0px;
-    font-size: 22px;
+    font-size: 25px;
     margin-bottom: 20px;
     margin-left: 50px;
     line-height: 1.2;
@@ -339,7 +317,7 @@ nav ul li a:hover {
 
 .content p, .recensioni p {
     margin: 0px;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 1.2;
     text-align: center;
 }
@@ -357,7 +335,7 @@ nav ul li a:hover {
     border-radius: 15px;
     padding: 0px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 60%; 
+    width: 70%; 
     margin: 0 auto;
     margin-bottom: 10px; 
 }
@@ -383,7 +361,7 @@ nav ul li a:hover {
 
 .card h3 {
     margin: 0 0 0px;
-    font-size: 20px; /* Aumenta la dimensione del titolo */
+    font-size: 24px; /* Aumenta la dimensione del titolo */
     font-weight: 500;
 }
 .card p {
@@ -408,14 +386,13 @@ nav ul li a:hover {
 }
 
 .rec:hover {
-    transform: translateY(-3px); /* Leggera traslazione verso l'alto */
     transition: transform 0.3s ease; /* Transizione fluida */
     cursor: pointer;
 }
 
 .rec h2{
     margin: 0px;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 500;
     margin-bottom: 10px;
     
@@ -423,14 +400,14 @@ nav ul li a:hover {
 
 .rec h3{
     margin: 0px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500; 
 }
 
 
 .rec p{
     padding-bottom: 10px;
-    font-size: 17px;
+    font-size: 22px;
     line-height: 1.3;
     border-bottom: 1px solid darkgray;
     width: 100%;
@@ -441,20 +418,23 @@ nav ul li a:hover {
 .rec:hover .delete-button {
     display: block; /* Mostra il bottone quando si passa sopra .rec */
 }
-
 .delete-button {    
     position: absolute;
-    border-radius: 10px; /* Arrotonda leggermente i bordi */
-    display: none;
     top: 0px;
     right: 0px;
+    border-radius: 10px; /* Arrotonda leggermente i bordi */
+    display: none;
     padding: 0px;
+    margin-bottom: 80px;
     cursor: pointer;
     border: none;
-    font-size: 28px;
+    font-size: 35px;
     font-weight: 700;
     color: rgb(150, 30, 30);
     background-color: white;
+}
+.rec {
+    position: relative;
 }
 
 .delete-button:hover {
@@ -470,6 +450,53 @@ nav ul li a:hover {
     width: 100%;
     height: fit-content;
 }
+
+/* Aumenta il bottone per modificare l'immagine profilo */
+.change-profile-btn {
+    display: block;
+    margin: 10px auto 0;
+    padding: 12px 16px; /* Ingrandito */
+    font-size: 18px;    /* Font più grande */
+    border: none;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.change-profile-btn:hover {
+    background-color: rgb(150, 30, 30);
+    color: white;
+}
+
+/* Modernizza solo la label "Scegli file" degli input file (solo Webkit/Chrome/Edge/Safari) */
+input[type="file"]::-webkit-file-upload-button {
+    padding: 12px 28px;
+    font-size: 16px;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-weight: 600;
+    color: #fff;
+    background: #a92121;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 2px 8px rgba(170, 33, 33, 0.10);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    outline: none;
+    letter-spacing: 1px;
+}
+
+input[type="file"]:hover::-webkit-file-upload-button {
+    background: #941e1e;
+    transform: translateY(-1px) scale(1.03);
+    box-shadow: 0 4px 16px rgba(170, 33, 33, 0.16);
+}
+
+input[type="file"]:active::-webkit-file-upload-button {
+    transform: scale(0.97);
+    box-shadow: 0 1px 4px rgba(170, 33, 33, 0.10);
+}
+
 
 @media (max-width: 768px) {
 

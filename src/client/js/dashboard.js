@@ -380,6 +380,22 @@ function setupButtonGroup(buttons, defaultString, sections) {
   });
 }
 
+function logout(){
+    Swal.fire({
+        title: "Sei sicuro di voler uscire?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "rgb(170, 33, 33)",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Sì, esci",
+        cancelButtonText: "Annulla"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "/src/server/auth/logout.php";
+        }
+    });
+}
+
 //Inizializza la pagina
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -396,3 +412,58 @@ document.addEventListener("DOMContentLoaded", function () {
     loadRecensioni();
     loadFile();
 });
+
+
+// Modifica della funzione per aggiornare l'immagine profilo con popup più grande
+function modificaFoto(){
+    Swal.fire({
+        title: 'Modifica Immagine Profilo',
+        width: '65%', // Popup meno largo
+        html: `<input type="file" id="newProfilePic" accept="image/*" style="margin-top: 10px; width: 100%; font-size: 25px; padding: 4px;">
+               <style>
+                 .swal2-actions button {
+                   font-size: 18px;
+                   padding: 10px 20px;
+                 }
+               </style>`,
+        showCancelButton: true,
+        confirmButtonText: 'Aggiorna',
+        confirmButtonColor: "rgb(170, 33, 33)", // Colore rosso come gli altri popup
+        preConfirm: () => {
+            const fileInput = document.getElementById('newProfilePic');
+            if(fileInput.files.length === 0){
+                Swal.showValidationMessage('Seleziona un file');
+            }
+            return fileInput.files[0];
+        }
+    }).then((result) => {
+        if(result.isConfirmed){
+            const formData = new FormData();
+            formData.append('profilePic', result.value);
+            fetch('/src/server/dashboard/update_profile_image.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if(!response.ok){
+                    throw new Error("Errore durante l'aggiornamento");
+                }
+                return response.json();
+            })
+            .then(data => {
+                if(data.success){
+                    Swal.fire('Aggiornato!', data.message, 'success')
+                    .then(() => {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire('Errore', data.message, 'error');
+                }
+            })
+            .catch(err => {
+                Swal.fire('Errore', 'Impossibile aggiornare l\'immagine', 'error');
+                console.error(err);
+            });
+        }
+    });
+}

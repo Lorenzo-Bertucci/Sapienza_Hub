@@ -152,51 +152,42 @@ nav ul li a:hover {
     opacity: 0.9;
 }
 
-/* Bottone profilo utente */
-.profile-btn {
-    background-color: white; /* Sfondo bianco */
-    border: 2px solid rgba(170, 33, 33, 1); /* Bordo rosso */
-    border-radius: 50%; /* Rende il bottone tondo */
-    width: 60px; /* Larghezza del bottone */
-    height: 60px; /* Altezza del bottone */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    margin-right: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra */
-}
 
-.profile-container:hover .profile-btn {
+
+.profile-container:hover .profile-icon{
     transform: scale(1.1); /* Effetto di ingrandimento al passaggio del mouse */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Ombra più pronunciata */
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .profile-icon {
-    width: auto; /* L'immagine occupa tutto lo spazio del bottone */
-    height: 100%; /* L'immagine occupa tutto lo spazio del bottone */
-    border-radius: 50%; /* Rende l'immagine tonda */
-    object-fit:cover;
+    width: 80%;      /* L'immagine riempie tutto il bottone */
+    height: 80%;     /* L'immagine riempie tutto il bottone */
+    border-radius: 50%;
+    object-fit: cover; /* Ritaglia l'immagine senza deformarla */
     display: block; /* Adatta l'immagine senza distorcerla */
+    margin: 0px;
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Contenitore del menu a tendina */
 .profile-container {
     position: relative; /* Necessario per posizionare il menu a tendina */
-    display: flex;
-    justify-items: center;
-    align-items: center;
+    display: inline-block;
+    align-content: center;
+    justify-content: center;
     width: 80px; /* Aumenta la larghezza del contenitore */
     height: 80px; /* Aumenta l'altezza del contenitore */
+    cursor: pointer;
 }
 
 /* Menu a tendina */
 .dropdown-menu {
     display: none; /* Nascondi il menu di default */
     position: absolute;
-    top: 70px; /* Posiziona il menu sotto il bottone */
-    right: 0;
+    top: 80px; /* Posiziona il menu sotto il bottone */
+    right: 30px;
     background-color: white;
     border: 1px solid rgba(170, 33, 33, 0.2);
     border-radius: 10px;
