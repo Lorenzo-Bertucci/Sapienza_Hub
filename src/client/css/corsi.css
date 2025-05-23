@@ -31,7 +31,6 @@ body {
         "header"
         "content"
         "footer";
-    background-color: white; 
     color: black;
     padding: 0px;
     margin: 0px;
@@ -283,6 +282,7 @@ nav ul li a:hover {
     margin: 5px;
     display: block; 
 }
+
 .content {
     grid-area: content;
     flex: 1; 

@@ -26,9 +26,7 @@ html, body {
         "header"
         "main"
         "aside"
-        "content"
-        "footer";
-    /*background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);*/
+        "content";
     background-image: url('/src/client/assets/home.jpg'); 
     background-size: cover;         /* Adatta l'immagine coprendo tutto il container */
     background-position: center;    /* Centra l'immagine */
@@ -332,8 +330,7 @@ nav ul li a:hover {
     margin: 0 auto; 
     background-color: white;
     border: 1px solid #ddd;
-    width: 70%; 
-    height: 500px;
+    width: 70%;
     border-radius: 10px; 
     padding: 20px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -377,13 +374,6 @@ nav ul li a:hover {
     margin-bottom: 10px;
 }
 
-.footer {
-    background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149,30,30,1) 40%);
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    width: 100%;
-}
 
 /* Al di sotto di 768px */
 @media (max-width: 770px) {
@@ -535,11 +525,5 @@ nav ul li a:hover {
 
     .card ul {
         font-size: 13px;
-    }
-
-    .footer {
-        font-size: 12px;
-        padding: 10px;
-        margin-top: 10px;
     }
 }

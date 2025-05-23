@@ -45,7 +45,7 @@ session_start();
             </div>
         </div>
         <div class="main">
-            <h2>"Meno sbatti più sapienza"</h2>
+            <h2>"Benvenuto su SapienzHub"</h2>
             <p>Trova il tuo corso di laurea e inizia la tua esperienza universitaria insieme a noi</p>
             <div class="search-bar">
                 <input type="text" id="search-input" placeholder="Cerca il tuo corso di laurea">
