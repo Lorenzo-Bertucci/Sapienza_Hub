@@ -8,7 +8,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professori - Sapienza Hub</title>
     <base href="/src/client/">
-    <link rel="stylesheet" href="css/corsi.css">
+    <link rel="stylesheet" href="css/professori.css">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <script src="js/professori.js"></script>
 </head>
@@ -44,12 +44,15 @@ session_start();
                 <?php endif; ?>
             </div>
         </div>
-        <div class="content">
+        <div class="foto">
             <div class="search-bar">
                 <img src="assets/lente.png" alt="search" class="search" >
                 <input type="text" id="search-input" placeholder="Cerca il Professore">
                 <button>Cerca</button>
             </div>
+        </div>
+        <div class="content">
+            
         </div>
         <div class="footer">
             <p>&copy; 2025 Sapienza Hub. Tutti i diritti riservati.</p>

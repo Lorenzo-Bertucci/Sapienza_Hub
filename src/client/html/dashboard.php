@@ -22,6 +22,7 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
     <base href="/src/client/">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/dashboard.js"></script>
 </head>
@@ -54,12 +55,20 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
                 </p>
             </div>
             <nav class="nav-bar">
-                <button class="bottone"><strong>Preferiti</strong></button>
-                <button class="bottone"><strong>Le tue recensioni</strong></button>
-                <button class="bottone"><strong>I tuoi file</strong></button>
-                <span ></span>
-                <span ></span>
-                <button class="logout" onclick="logout()"><strong>Logout</strong></button>
+                <button class="bottone">
+                    <i class="fa fa-star"></i> <strong>Preferiti</strong>
+                </button>
+                <button class="bottone">
+                    <i class="fa fa-comment"></i> <strong>Le tue recensioni</strong>
+                </button>
+                <button class="bottone">
+                    <i class="fa fa-file"></i> <strong>I tuoi file</strong>
+                </button>
+                <span></span>
+                <span></span>
+                <button class="logout" onclick="logout()">
+                    <i class="fa fa-sign-out-alt"></i> <strong>Logout</strong>
+                </button>
             </nav>
         </div>
         <div class="main">

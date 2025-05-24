@@ -134,14 +134,19 @@ nav ul li a:hover {
 }
 
 .profile-icon {
-    width: 80%;      /* L'immagine riempie tutto il bottone */
-    height: 80%;     /* L'immagine riempie tutto il bottone */
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
     border-radius: 50%;
-    object-fit: cover; /* Ritaglia l'immagine senza deformarla */
-    display: block; /* Adatta l'immagine senza distorcerla */
+    object-fit: cover;
+    display: block;
     margin: 0px;
     cursor: pointer;
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: 180px;      /* Aumenta la dimensione massima */
+    max-height: 180px;
+    min-width: 120px;      /* Aumenta la dimensione minima */
+    min-height: 120px;
 }
 
 /* Contenitore del menu a tendina */
@@ -267,6 +272,18 @@ nav ul li a:hover {
     background-color: rgb(150, 30, 30);
     color: #fff;
 }
+
+.nav-bar .bottone i {
+    margin-right: 8px;
+    font-size: 18px;
+    color: rgba(170, 33, 33, 1);
+}
+
+.nav-bar .bottone.active i,
+.nav-bar .bottone:hover i {
+    color: #fff;
+}
+
 .main{
     grid-area: main;
     display: flex;

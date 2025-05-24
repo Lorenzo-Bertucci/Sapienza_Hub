@@ -358,7 +358,7 @@ nav ul li a:hover {
     height: 380px; /* Altezza desiderata */
     margin: 0 auto;
     overflow: hidden;
-    background: url('../assets/corsi.png') no-repeat center 65%;
+    background: url('../assets/professori.jpg') no-repeat center 45%;
     background-color: white;
     background-size: cover; /* Mostra l'immagine interamente e meno zoomata */
 }

@@ -310,6 +310,17 @@ nav ul li a:hover {
    
 }
 
+.nav-bar .bottone i {
+    margin-right: 8px;
+    font-size: 18px;
+    color: rgba(170, 33, 33, 1);
+}
+
+.nav-bar .bottone.active i,
+.nav-bar .bottone:hover i {
+    color: #fff;
+}
+
 .esami {
     flex: 1; 
     background-color: white;

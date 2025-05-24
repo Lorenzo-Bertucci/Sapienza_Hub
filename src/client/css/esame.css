@@ -315,6 +315,17 @@ nav ul li a:hover {
     color: white;
 }
 
+.barra .bottone i {
+    margin-right: 8px;
+    font-size: 18px;
+    color: rgba(170, 33, 33, 1);
+}
+
+.barra .bottone.active i,
+.barra .bottone:hover i {
+    color: #fff;
+}
+
 
 .professori{
     flex:1;

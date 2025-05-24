@@ -44,12 +44,15 @@ session_start();
                 <?php endif; ?>
             </div>
         </div>
-        <div class="content">
+        <div class="foto">
             <div class="search-bar">
                 <img src="assets/lente.png" alt="search" class="search" >
                 <input type="text" id="search-input" placeholder="Cerca il tuo corso di laurea">
                 <button>Cerca</button>
             </div>
+        </div>
+        <div class="content">
+            
         </div>
         <div class="footer">
             <p>&copy; 2025 Sapienza Hub. Tutti i diritti riservati.</p>

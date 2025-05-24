@@ -32,7 +32,13 @@ function inviaLogin(event){
             }, 2000);
         } else {
             if(data.gestione){
-                Swal.fire('Login Utente Speciale effettuato con successo!', 'Verrai reindirizzato a breve nella pagina di gestione.', 'success');
+                Swal.fire({
+                title: 'Login Utente Speciale effettuato con successo!',
+                text: 'Verrai reindirizzato a breve nella pagina di gestione',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2000
+                });
                 setTimeout(() => {
                     window.location.href = '../server/gestione/settings.php';
                 }, 2000); 

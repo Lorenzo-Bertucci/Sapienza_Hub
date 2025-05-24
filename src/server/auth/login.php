@@ -20,11 +20,7 @@ if ($utente) {
     if (!password_verify($password, $utente['password'])) {
         echo json_encode(['success' => false, 'message' => 'Password errata.']);
         exit;
-    }
-    $_SESSION['logged_in'] = true;
-    $_SESSION['user_id'] = $tuple['id'];
-    $_SESSION['user_email'] = $email;
-    
+    }    
     echo json_encode(['success' => false, 'message' => 'Login Gestore confermato', 'gestione' => true]);
 
     exit;

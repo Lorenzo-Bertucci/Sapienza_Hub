@@ -10,6 +10,7 @@ session_start();
     <base href="/src/client/">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/laurea.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src=/src/client/js/corso.js></script>
 </head>
 <body>
@@ -54,7 +55,7 @@ session_start();
                     <h1 id="corso-nome">Titolo del corso</h1>
                     <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
                         <button id="favorite-btn" class="favorite-btn" title="Aggiungi ai preferiti" onclick="favorite()">
-                            &#9734;
+                            <i class="fa fa-star"></i>
                         </button>
                     <?php endif; ?>
                 

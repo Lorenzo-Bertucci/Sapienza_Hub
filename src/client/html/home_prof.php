@@ -10,6 +10,7 @@ session_start();
     <base href="/src/client/">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/pagina_prof.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="js/home_prof.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -55,8 +56,8 @@ session_start();
                 
             </div>
             <nav class="nav-bar">
-                <button class="bottone"> <strong>Esami</strong></button>
-                <button class="bottone"><strong>Recensioni</strong></button>
+                <button class="bottone"><i class="fa-solid fa-book-open"></i> <strong>Esami</strong></button>
+                <button class="bottone"><i class="fa fa-comment"></i> <strong>Recensioni</strong></button>
             </nav>
         </div>
         <div class="content">

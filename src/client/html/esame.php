@@ -10,6 +10,7 @@ session_start();
     <title></title>
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/esame.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="js/esame.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -55,16 +56,22 @@ session_start();
                     <h1 id="corso-nome"></h1>
                     <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
                         <button id="favorite-btn" class="favorite-btn" title="Aggiungi ai preferiti" onclick="favorite()">
-                            &#9734;
+                            <i class="fa fa-star"></i>
                         </button>
                     <?php endif; ?>
                 </div>
                 <p id="corso-descrizione"></p>
             </div>
             <div class="barra">
-                <button class="bottone">Professori</button>
-                <button class="bottone">Materiale Didattico</button>
-                <button class="bottone">Recensioni</button>
+                <button class="bottone">
+                    <i class="fa fa-users"></i> Professori
+                </button>
+                <button class="bottone">
+                    <i class="fa fa-book"></i> Materiale Didattico
+                </button>
+                <button class="bottone">
+                    <i class="fa fa-comment"></i> Recensioni
+                </button>
             </div>
         </div>
 
