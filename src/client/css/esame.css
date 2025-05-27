@@ -483,10 +483,6 @@ nav ul li a:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.materiale-card:hover{
-    transform: scale(1.02);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
-}
 
 .titolo{
     font-size: 30px;
@@ -595,6 +591,41 @@ nav ul li a:hover {
 
 .favorite-btn.active {
     color: #ffcc00; /* Colore giallo quando attivo */
+}
+
+.rec{
+    position: relative;
+}
+
+.materiale-card{
+    position: relative;
+}
+.report-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: 1px solid rgba(192,54,57,1);
+  color: rgba(192,54,57,1); 
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.2s;
+  display: none;
+  align-items: center;
+  gap: 5px;
+}
+
+.rec:hover .report-btn,
+.materiale-card:hover .report-btn {
+    display: block;
+}
+
+.report-btn:hover {
+  background-color: rgba(192,54,57,1);
+  color: white;
+  transform: scale(1.05);
 }
 
 

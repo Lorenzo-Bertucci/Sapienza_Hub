@@ -34,9 +34,13 @@ $result = pg_query_params($conn,$query,array($nomefile, $esame));
 
 // Se il file esiste, lo restituisce come download
 if ($row = pg_fetch_assoc($result)) {
-    header('Content-Type: application/pdf');
-    header('Content-Disposition: attachment; filename="' . basename($nomefile) . '.pdf"');
-    echo pg_unescape_bytea($row['materiale']);
+    $fileData = pg_unescape_bytea($row['materiale']);
+    
+    header('Content-Type: application/pdf'); // Specifica il tipo MIME corretto
+    header('Content-Disposition: inline; filename="' . $nomefile . '"');
+    header('Content-Length: ' . strlen($fileData));
+    
+    echo $fileData;
 } else {
     // Restituisce un errore 404 se il file non viene trovato
     http_response_code(404);

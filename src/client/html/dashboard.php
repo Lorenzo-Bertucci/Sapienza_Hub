@@ -46,7 +46,9 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
         <div class="side-bar">
             <div class="desc">
                 <img src="<?php echo isset($_SESSION['profile_img']) ? $_SESSION['profile_img'] : 'assets/utente.png'; ?>" class="profile-icon">
-                <button id="change-profile-btn" class="change-profile-btn" onclick="modificaFoto()">Modifica Immagine</button>
+                <button id="change-profile-btn" class="change-profile-btn" onclick="modificaFoto()">
+                    <i class="fa fa-camera"></i> Modifica Immagine
+                </button>
                 <h2> I tuoi dati:</h2>
                 <p>
                     <strong>Nome:</strong> <?php echo htmlspecialchars($user_nome); ?><br>
@@ -66,7 +68,7 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
                 </button>
                 <span></span>
                 <span></span>
-                <button class="logout" onclick="logout()">
+                <button class="bottone logout" onclick="logout()">
                     <i class="fa fa-sign-out-alt"></i> <strong>Logout</strong>
                 </button>
             </nav>

@@ -15,7 +15,7 @@ if(!isset($_GET['id'])){
 
 $prof_id = pg_escape_string($conn, $_GET['id']);
 
-$query="SELECT u.nome as utente, testo, dat FROM recensioni_professori r JOIN utenti u ON r.id_utente=u.id  where r.id_professore=$1 ORDER BY dat";
+$query="SELECT r.id,u.nome as utente, testo, dat FROM recensioni_professori r JOIN utenti u ON r.id_utente=u.id  where r.id_professore=$1 ORDER BY dat DESC";
 $result = pg_query_params($conn, $query, array($prof_id));
 
 if (!$result) {

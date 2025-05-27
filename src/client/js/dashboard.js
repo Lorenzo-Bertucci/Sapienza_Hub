@@ -25,7 +25,7 @@ function createEsame(codice,nome) {
 // Funzione per creare il pulsante per eliminare una recensione
 function createDeleteButtonRecensione(id,tipo){
     const deleteButton = document.createElement("button");
-    deleteButton.textContent = "×";
+    deleteButton.innerHTML = `<i class="fa fa-trash" aria-hidden="true" style="font-size: 22px;"></i>`;
     deleteButton.classList.add("delete-button");
 
     deleteButton.addEventListener("click", (event) => {
@@ -73,7 +73,7 @@ function createDeleteButtonRecensione(id,tipo){
 // Funzione per creare il pulsante per eliminare un file
 function createDeleteButtonFile(id){
     const deleteButton = document.createElement("button");
-    deleteButton.textContent = "×";
+    deleteButton.innerHTML = `<i class="fa fa-trash" aria-hidden="true" style="font-size: 22px;"></i>`;
     deleteButton.classList.add("delete-button");
 
     deleteButton.addEventListener("click", (event) => {
@@ -421,13 +421,14 @@ function modificaFoto(){
         width: '65%', // Popup meno largo
         html: `<input type="file" id="newProfilePic" accept="image/*" style="margin-top: 10px; width: 100%; font-size: 25px; padding: 4px;">
                <style>
-                 .swal2-actions button {
-                   font-size: 18px;
-                   padding: 10px 20px;
-                 }
+             .swal2-actions button {
+               font-size: 18px;
+               padding: 10px 20px;
+             }
                </style>`,
         showCancelButton: true,
         confirmButtonText: 'Aggiorna',
+        cancelButtonText: 'Annulla',
         confirmButtonColor: "rgb(170, 33, 33)", // Colore rosso come gli altri popup
         preConfirm: () => {
             const fileInput = document.getElementById('newProfilePic');
