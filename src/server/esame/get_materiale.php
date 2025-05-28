@@ -11,7 +11,7 @@ if (!$conn) {
 
 $esame = pg_escape_string($conn,$_GET['esame']);
 
-$query="SELECT u.nome AS utente, nomefile, dat FROM materiale_didattico m JOIN utenti u ON m.id_utente=u.id where esame=$1 ORDER BY dat";
+$query="SELECT u.nome AS utente, nomefile, dat FROM materiale_didattico m JOIN utenti u ON m.id_utente=u.id where esame=$1 ORDER BY dat DESC";
 $result = pg_query_params($conn, $query, array($esame));
 if (!$result) {
     echo json_encode(['success' => false, 'message' => 'Errore durante il recupero del materiale.']);

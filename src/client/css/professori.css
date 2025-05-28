@@ -15,31 +15,23 @@ html, body {
     overflow-y: auto; /* Abilita lo scrolling verticale */
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-}
-
 .container {
     display: grid;
     max-width: 100%;
     min-height: 100vh; /* Usa min-height per permettere l'espansione se necessario */
-    grid-template-rows: auto auto 1fr auto ; /* Righe che si adattano automaticamente al contenuto */
+    grid-template-rows: auto auto auto 1fr; /* Righe che si adattano automaticamente al contenuto */
     grid-template-columns: 1fr;
     grid-template-areas:
         "header"
         "foto"
-        "content"
-        "footer";
+        "search-bar"
+        "content";
     color: black;
     background-color: white;
     padding: 0px;
     margin: 0px;
     overflow-x: hidden;
-    overflow-y: auto; /* Abilita lo scrolling verticale */
-    -ms-overflow-style: none;  /* IE e Edge */
-    scrollbar-width: none;     /* Firefox */
+    overflow-y: scroll;
 }
 
 .container::-webkit-scrollbar {
@@ -232,6 +224,7 @@ nav ul li a:hover {
     padding-left: 100px; /* Allinea il testo con la barra di ricerca */
 }
 .search-bar {
+    grid-area: search-bar;
     margin: 10px auto; /* Centra la barra orizzontalmente */
     border: 3px solid rgba(192,54,57,1);
     width: 90%;
@@ -239,9 +232,7 @@ nav ul li a:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     background-color: white;
     padding: 10px; 
-    border-radius: 30px; 
-    position: relative;
-    z-index: 2;
+    border-radius: 30px;
 }
 
 .search-bar input {
@@ -314,15 +305,6 @@ nav ul li a:hover {
     font-size: 20px; 
     font-weight: 500;
 }
-.card p {
-    margin: 0 0 0;
-    color: #999;
-    font-size: 15px;
-}
-
-.card:hover p{
-    color: white;
-}
 
 .card a {
     display: flex; /* Imposta il layout Flexbox per il contenuto */
@@ -338,25 +320,12 @@ nav ul li a:hover {
 }
 
 
-.footer {
-    background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
-    grid-area: footer;
-    color: white ; /* Forza il testo nero */
-    text-align: center;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-top: 1px solid #ddd; /* Linea sottile sopra il footer */
-}
-
 /* Imposta lo sfondo con l'immagine 'corsi.png' e aggiunge un overlay */
 .foto {
     position: relative;  /* Necessario per il posizionamento assoluto dei figli */
     width: 100%;
     height: 380px; /* Altezza desiderata */
-    margin: 0 auto;
+    margin: 0 auto 20px;
     overflow: hidden;
     background: url('../assets/professori.jpg') no-repeat center 45%;
     background-color: white;
@@ -374,20 +343,22 @@ nav ul li a:hover {
     background: rgba(0, 0, 0, 0.4); /* Regola la trasparenza */
     z-index: 1;
 }
-
-/* Posiziona la barra di ricerca in fondo al contenitore .foto */
-.foto .search-bar {
+.foto h3{
     position: absolute;
-    bottom: 20px; /* Distanza dal fondo */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3; /* Sopra l'overlay */
+    bottom: 20px;   /* distanza dal fondo */
+    left: 100px;     /* distanza dal lato sinistro */
+    color: white;
+    font-size: 40px;
+    font-weight: 800;
+    margin: 0;
+    z-index: 2;     /* sopra l'overlay */
 }
+
 
 @media (max-width: 768px) {
     
-    nav {
-        display: none;
+    nav ul li a{
+        font-size: 13px;
     }
 
     .register-btn {
@@ -396,6 +367,7 @@ nav ul li a:hover {
 
     .h-left h1 {
         margin: 0;
+        font-size: 24px;
     }
 
     .login-btn {
@@ -421,105 +393,107 @@ nav ul li a:hover {
         background-color: rgb(150, 30, 30);
     }
 
-    .auth-buttons {
-        flex-direction: row;
-        justify-content: center;
-        gap: 5px;
-    }
-
     .card{
         width: 80%;
-        transform: scale(0.9);
         align-self: center;
     }
 
     .card h3 {
-        font-size: 17px;
+        font-size: 15px;
     }
 
-    .card p{
-        font-size: 14px;
-    }
 
+    .foto h3{
+        font-size: 30px;
+        left: 75px;
+    }
 
     .search-bar {
         width: 85%;
         margin: 0 auto;
         border-radius: 20px;
-        transform: scale(0.9);
     }
+    .search-bar input, .search-bar button{
+        font-size: 13px;
+        padding:10px;
+   }
+
+    .search-bar img{
+        width: 30px;
+        height: 30px;
+    }
+
 
 }
 
 /*sotto i 480px */
 @media (max-width: 480px) {
 
+    nav ul{
+        padding: 5px;
+        flex-direction: column;
+    }
+
+    nav ul li a {
+        font-size: 10px;
+    }
+
+    .h-left{
+        margin-right: 5px;
+        margin-left: 0;
+    }
+
     .header{
         width: 100%;
         padding: 10px;
     }
 
-    .auth-buttons {
-        margin-right: 10px;
-    }
-
-    .content {
-        max-width: 90%;
-        padding: 0px;
-        margin:0px;
-
-    }
 
     .card{
-        transform: scale(0.8);
         flex-direction: column;
-        margin: 0 auto;
+        margin: 10px auto 10px;
     }
 
     .card h3 {
-        font-size: 13px;
-    }
-
-    .card p{
-        font-size: 10px;
-    }
-
-    .h-left h1 {
-        font-size: 20px;
-        margin: 0;
-    }
-
-    .search-bar{
-        margin-top: 10px;
-        transform: scale(0.8);
-    }
-
-    .search-bar input::placeholder{
         font-size: 11px;
     }
 
-    .search-bar input{
-        width: 90%;
-        margin: 0 0 0;
+    .profile-icon{
+        transform: scale(0.8);
+    }
+
+    .dropdown-menu {
+        right: 10px; 
+        width: 120px;
+    }
+
+    .dropdown-menu button{
+        font-size: 12px;
+    }
+
+    .h-left h1 {
+        font-size: 14px;
+    }
+
+    .foto h3{
+        font-size: 25px;
+        left: 50;
+    }
+
+    .search-bar {
+        width: 85%;
+        margin: 0 auto;
         border-radius: 20px;
     }
+    .search-bar input, .search-bar button{
+        font-size: 11px;
+        padding:5px;
+   }
 
     .search-bar img{
-        transform: scale(0.7);
-        transform-origin: center;
+        width: 15px;
+        height: 15px;
     }
 
-    .search-bar button{
-        transform: scale(0.7);
-        font-size: 18px;
-        transform-origin: center;
-    }
-
-    .footer {
-        margin-top:10px;
-        font-size: 12px;
-        padding: 10px;
-        text-align: center;
-    }
 
 }

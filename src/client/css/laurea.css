@@ -24,14 +24,13 @@ html, body {
     display: grid;
     max-width: 100%;
     min-height: 100vh; /* Usa min-height per permettere l'espansione se necessario */
-    grid-template-rows: auto 1fr 1fr 1fr auto ; /* Righe che si adattano automaticamente al contenuto */
+    grid-template-rows: auto 1fr 1fr 1fr ; /* Righe che si adattano automaticamente al contenuto */
     grid-template-columns: 1fr;
     grid-template-areas:
         "header"
         "foto"
         "main"
-        "content"
-        "footer";
+        "content";
     background-color: white; 
     color: black;
     padding: 0px;
@@ -193,6 +192,7 @@ nav ul li a:hover {
     position: relative; /* Necessario per posizionare il menu a tendina */
     display: inline-block;
     align-content: center;
+    align-content: center;
     justify-content: center;
     width: 80px; /* Aumenta la larghezza del contenitore */
     height: 80px; /* Aumenta l'altezza del contenitore */
@@ -249,9 +249,9 @@ nav ul li a:hover {
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 15px;
-    width: 85%;
+    width: 90%;
     height: fit-content; /* Puoi usare min-height al posto di height per adattarsi meglio al contenuto */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 
@@ -260,13 +260,13 @@ nav ul li a:hover {
 .foto {
     grid-area: foto;
     display: grid;
-    grid-template-columns: 15% 1fr;  /* Aside più largo */
+    grid-template-columns: 20% 1fr;
     grid-template-rows: auto auto;
     grid-template-areas:
         "aside titolo"
         "aside titolo";
     width: 100%;
-    min-height: 380px; /* Altezza leggermente aumentata */
+    min-height: 380px;
     margin: 0 auto;
     overflow: hidden;
     justify-content: center;
@@ -294,25 +294,24 @@ nav ul li a:hover {
     z-index: 1;
 }
 
-/* Aside più compatta e visivamente migliorata */
+
 .aside {
     grid-area: aside;
     background-color: #fff;
-    min-width: fit-content;
-    width: 80%;
+    width: fit-content;
+    max-height: fit-content;
     border-radius: 14px;
-    padding: 18px 12px;
+    margin: 10px auto 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.10);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 18px;
-    gap: 12px;
+    gap: 10px;
     border: 1.5px solid #eee;
     transition: box-shadow 0.2s;
-    margin-left: 16px; /* Spazio a sinistra per non essere attaccata */
-    z-index: 2; /* Assicura che l'aside sia sopra l'immagine */
+    margin-left: 20px;
+    z-index: 2;
 }
 .aside:hover {
     box-shadow: 0 8px 24px rgba(170,33,33,0.10);
@@ -326,6 +325,8 @@ nav ul li a:hover {
     text-align: center;
     width: 100%;
     height: 100%;
+    padding: 10px;
+    padding-bottom: 0;
 }
 
 
@@ -355,56 +356,6 @@ nav ul li a:hover {
     word-break: break-word;
 }
 
-@media (max-width: 900px) {
-    .foto {
-        grid-template-columns: 38% 1fr;
-        min-height: 320px;
-        gap: 16px;
-        padding-left: 10px;
-    }
-    .aside {
-        min-width: 120px;
-        max-width: 160px;
-        padding: 12px 6px;
-        margin-left: 8px;
-    }
-    .titolo h1 {
-        font-size: 38px;
-    }
-}
-
-@media (max-width: 600px) {
-    .foto {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "aside"
-            "titolo";
-        min-height: 0;
-        gap: 8px;
-        padding-left: 0;
-    }
-    .aside {
-        max-width: 100%;
-        min-width: 0;
-        width: 95%;
-        margin-bottom: 10px;
-        padding: 10px 2px;
-        margin-left: 0;
-    }
-    .titolo {
-        padding-left: 0;
-        padding-top: 0;
-        text-align: center;
-    }
-    .titolo h1 {
-        font-size: 24px;
-        text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-    }
-}
-
-
-
-
 .desc {
     color: black;
     text-align: justify;
@@ -412,8 +363,6 @@ nav ul li a:hover {
     min-height: fit-content;
     margin: 0 auto;
 }
-
-
 
 
 .desc h1{
@@ -427,10 +376,6 @@ nav ul li a:hover {
 }
 
 
-
-
-
-
 .esami {
     flex: 1; /* Fa sì che il contenuto occupi lo spazio disponibile sopra il footer */
     background-color: white;
@@ -440,11 +385,9 @@ nav ul li a:hover {
     justify-content: center;
     align-items: left;
     margin: 0 auto 0; 
-    border: 1px solid #ddd;
     border-radius: 15px;
     width: 85%;
     height: fit-content;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Aggiunge spazio tra gli elementi */
 }
 
 .esami h1 {
@@ -482,6 +425,12 @@ nav ul li a:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     background-color: rgb(170, 33, 33);
     color: white;
+}
+
+.card:active {
+    border-color: rgb(170, 33, 33);
+    background-color: #ffeaea;
+    color: rgb(170, 33, 33);
 }
 
 .card a {
@@ -574,53 +523,20 @@ nav ul li a:hover {
     color: #ffcc00; /* Colore giallo quando attivo */
 }
 
-.footer {
-    grid-area: footer;
-    background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30) 40%);
-    color: white;
-    text-align: center;
-    margin-top: 20px;
-    padding: 20px 0;
-    width: 100%;
-    height: fit-content;
-}
 
 @media (max-width: 768px) {
 
-    .main{
-        grid-template-areas:
-        "desc desc"
-        "aside aside"
-        "nav-bar nav-bar";
-    }
-    
-    nav {
-        display: none;
+    nav ul li a{
+        font-size: 13px;
     }
 
     .register-btn {
         display: none;
     }
 
-    .desc h1{
-        font-size: 24px;
-        text-align: center;
-    }
-
-    .desc{
-        padding: 20px 30px 20px 30px;
-    }
-
-    .desc p{
-        font-size: 16px;
-    }
-
     .h-left h1 {
         margin: 0;
-    }
-
-    .info p, .info a{
-        font-size: 14px;
+        font-size: 24px;
     }
 
     .login-btn {
@@ -646,42 +562,30 @@ nav ul li a:hover {
         background-color: rgb(150, 30, 30);
     }
 
-    .auth-buttons {
-        flex-direction: row;
-        justify-content: center;
-        gap: 5px;
+    .titolo h1{
+        font-size: 40px;
     }
 
-
-    .nav-bar{
-        font-size: 14px;
-        width: 100%;
-        align-self: center;
-        
+    .info p, .info a{
+        font-size: 12px;
     }
-
-    .esami{
-        align-self: center;
-    }
-
-    .esami h1{
-        font-size: 22px;
-    }
-
-    .esami h2 {
-        font-size: 17px;
-    }
-
-    .card{
-        transform: scale(0.9);
-    }
-
-    .card h3{
-        font-size: 17px;
-    }
-
+    
     .foto{
-        display: none;
+        min-height: 300px;
+        gap: 10px;
+        grid-template-columns: 30% 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .desc h1, .esami h1{
+        font-size: 23px;
+    }
+
+    .desc p, .card h3{
+        font-size: 15px;
+    }
+    .esami h2{
+        font-size: 20px;
     }
 
 
@@ -689,66 +593,74 @@ nav ul li a:hover {
 
 /*sotto i 480px */
 @media (max-width: 480px) {
+    
+    nav ul{
+        padding: 5px;
+        flex-direction: column;
+    }
+
+    nav ul li a {
+        font-size: 10px;
+    }
+
+    .h-left{
+        margin-right: 5px;
+        margin-left: 0;
+    }
 
     .header{
         width: 100%;
         padding: 10px;
     }
 
-    .auth-buttons {
-        margin-right: 10px;
-    }
-
-    .desc h1{
-        font-size: 15px;
-    }
-
-    .desc p, .dati a{
-        font-size: 12px;
-    }
-
     .h-left h1 {
-        margin: 0;
+        font-size: 14px;
     }
 
-    .info p, .info a{
-        font-size: 10px;
-    }
-
-    .esami{
-        width: 90%;
-        flex-direction: column;
-    }
-
-    .esami h1{
-        font-size: 18px;
-    }
-    .esami h2 {
-        font-size: 13px;
-    }
-
-    .card h3{
-        font-size: 13px;
-    }
-
-    .h-left h1 {
+    .titolo h1{
         font-size: 20px;
-        margin: 0;
     }
 
-    .nav-bar .bottone{
-        font-size: 10px;
+    .profile-icon, .favorite-btn {
+        transform: scale(0.8);
+    }
+
+    .dropdown-menu {
+        right: 10px; 
+        width: 120px;
+    }
+
+    .dropdown-menu button{
+        font-size: 12px;
     }
 
     .foto{
-        display: none;
+        grid-template-columns: 35% 1fr;
+        grid-template-rows: 1fr 1fr;
+        min-height: 200px;
     }
 
-    .footer {
-        margin-top:10px;
-        font-size: 12px;
-        padding: 10px;
-        text-align: center;
+    .aside{
+        width: 100%;
+        margin: 0;
+        gap: 0;
+    }
+
+    .info p, .info a{
+        font-size: 9px;
+        padding-top:1px;
+    }
+
+    .desc h1, .esami h1{
+        font-size: 15px;
+        padding-bottom: 5px;
+    }
+
+    .desc p, .card h3{
+        font-size: 10px;
+    }
+    .esami h2{
+        font-size: 15px;
     }
 
 }

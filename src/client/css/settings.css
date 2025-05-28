@@ -18,7 +18,7 @@
     align-items: center;
     justify-content: center;
     padding-top: 20px;
-    background-color: skyblue;
+    background-color: rgba(192,54,57,1);
     border:2px solid black;
 }
 
@@ -69,7 +69,7 @@ ul li:hover{
 }
 
 .form-element button:hover{
-    background-color: skyblue;
+    background-color: rgba(192,54,57,1);
 
 }
 

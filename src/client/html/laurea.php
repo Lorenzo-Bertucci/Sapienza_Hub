@@ -24,7 +24,6 @@ session_start();
                     <ul>
                         <li><a href="html/corsi.php">Corsi</a></li>
                         <li><a href="html/professori.php">Professori</a></li>
-                        <li><a>Contatti</a></li>
                     </ul>
                 </nav>
             </div>
@@ -48,11 +47,11 @@ session_start();
         <div class="foto">
             <div class="aside">
                 <div class="info">
-                    <!-- I dettagli che desideri mostrare -->
+                   
                 </div>
             </div>
             <div class="titolo">
-                    <h1 id="corso-nome">Titolo del corso</h1>
+                    <h1 id="corso-nome"></h1>
                     <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
                         <button id="favorite-btn" class="favorite-btn" title="Aggiungi ai preferiti" onclick="favorite()">
                             <i class="fa fa-star"></i>
@@ -72,9 +71,6 @@ session_start();
                     
             </div>
 
-        </div>
-        <div class="footer">
-            <p>&copy; 2025 SapienzHub. Tutti i diritti riservati.</p>
         </div>
     </div>
 </body>
