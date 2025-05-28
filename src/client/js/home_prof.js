@@ -4,8 +4,46 @@ function getUrlParameter(name) {
     return urlParams.get(name);
 }
 
+// Funzione per segnalare una recensione
+function reportReview(reviewId) {
+  Swal.fire({
+    title: 'Segnala recensione',
+    text: "Vuoi segnalare questa recensione?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Segnala',
+    cancelButtonText: 'Annulla',
+    confirmButtonColor: 'rgb(170, 33, 33)', // rosso come da altri Swal
+    cancelButtonColor: '#3085d6'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const formData = new FormData();
+      formData.append('review_id', reviewId);
+      
+      fetch('/src/server/home_prof/report_review.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          Swal.fire('Segnalata!', data.message, 'success');
+          // Ricarica le recensioni dopo la segnalazione
+          openRec();
+        } else {
+          Swal.fire('Errore', data.message, 'error');
+        }
+      })
+      .catch(error => {
+        console.error('Errore:', error);
+        Swal.fire('Errore', "Impossibile segnalare la recensione.", 'error');
+      });
+    }
+  });
+}
+
 // Funzione per creare una card per una recensione
-function createRec(utente,data,testo){
+function createRec(id,utente,data,testo){
   const rec=document.createElement('div');
   rec.classList.add("rec");
   data = new Date(data).toLocaleDateString("it-IT", {
@@ -13,7 +51,18 @@ function createRec(utente,data,testo){
     month: "2-digit",
     year: "numeric"
   });
-  rec.innerHTML=`<div><span class='utente'><strong>~${utente}</strong></span><span style="margin-left: 10px; font-size: smaller; font-style: italic;"><small><i> ${data}</i></small></span></div> <p>${testo}</p>`;
+  rec.innerHTML = `
+    <div>
+      <span class='utente'><strong>~${utente}</strong></span>
+      <span style="margin-left: 10px; font-size: smaller; font-style: italic;">
+        <small><i> ${data}</i></small>
+      </span>
+      <button class="report-btn" title="Segnala questa recensione" onclick="reportReview(${id})">
+          <i class="fa fa-exclamation-triangle"></i> Segnala
+      </button>
+    </div>
+    <p>${testo}</p>
+  `;
 
   return rec;
 }
@@ -38,7 +87,7 @@ function openRec(){
       recensioniContainer.appendChild(titolo);
 
       data.recensioni.forEach(recensione=>{
-        const rec=createRec(recensione.utente,recensione.dat,recensione.testo);
+        const rec=createRec(recensione.id,recensione.utente,recensione.dat,recensione.testo);
         recensioniContainer.appendChild(rec);
       });
     }else{
@@ -185,10 +234,199 @@ function setupButtonGroup(buttons, defaultString, sections) {
   });
 }
 
-// Funzione per inviare la recensione
-function inviaRecensione(event){
+// Funzione per inviare la recensione dopo il controllo delle parole proibite
+function inviaRecensione(event) {
   event.preventDefault();
   
+  // Recupera il testo della recensione (assicurati che il textarea abbia name="recensione")
+  const recensioneInput = document.querySelector(".recensione-form textarea[name='testo']");
+  const reviewText = recensioneInput.value.toLowerCase();
+  
+  // Lista di parole proibite
+  const forbiddenWords = [
+    "allupato",
+    "ammucchiata",
+    "anale",
+    "arrapato",
+    "arrusa",
+    "arruso",
+    "assatanato",
+    "bagascia",
+    "bagassa",
+    "bagnarsi",
+    "baldracca",
+    "balle",
+    "battere",
+    "battona",
+    "belino",
+    "biga",
+    "bocchinara",
+    "bocchino",
+    "bofilo",
+    "boiata",
+    "bordello",
+    "brinca",
+    "bucaiolo",
+    "budiùlo",
+    "busone",
+    "cacca",
+    "caciocappella",
+    "cadavere",
+    "cagare",
+    "cagata",
+    "cagna",
+    "casci",
+    "cazzata",
+    "cazzimma",
+    "cazzo",
+    "cesso",
+    "cazzone",
+    "checca",
+    "chiappa",
+    "chiavare",
+    "chiavata",
+    "ciospo",
+    "ciucciami il cazzo",
+    "coglione",
+    "coglioni",
+    "cornuto",
+    "cozza",
+    "culattina",
+    "culattone",
+    "culo",
+    "ditalino",
+    "fava",
+    "femminuccia",
+    "fica",
+    "figa",
+    "figlio di buona donna",
+    "figlio di puttana",
+    "figone",
+    "finocchio",
+    "fottere",
+    "fottersi",
+    "fracicone",
+    "fregna",
+    "frocio",
+    "froscio",
+    "goldone",
+    "guardone",
+    "imbecille",
+    "incazzarsi",
+    "incoglionirsi",
+    "ingoio",
+    "leccaculo",
+    "lecchino",
+    "lofare",
+    "loffa",
+    "loffare",
+    "mannaggia",
+    "merda",
+    "merdata",
+    "merdoso",
+    "mignotta",
+    "minchia",
+    "minchione",
+    "mona",
+    "monta",
+    "montare",
+    "mussa",
+    "nave scuola",
+    "nerchia",
+    "padulo",
+    "palle",
+    "palloso",
+    "patacca",
+    "patonza",
+    "pecorina",
+    "pesce",
+    "picio",
+    "pincare",
+    "pippa",
+    "pinnolone",
+    "pipì",
+    "pippone",
+    "pirla",
+    "pisciare",
+    "piscio",
+    "pisello",
+    "pistolotto",
+    "pomiciare",
+    "pompa",
+    "pompino",
+    "porca",
+    "porca madonna",
+    "porca miseria",
+    "porca puttana",
+    "porco",
+    "porco due",
+    "porco zio",
+    "potta",
+    "puppami",
+    "puttana",
+    "quaglia",
+    "recchione",
+    "regina",
+    "rincoglionire",
+    "rizzarsi",
+    "rompiballe",
+    "rompipalle",
+    "ruffiano",
+    "sbattere",
+    "sbattersi",
+    "sborra",
+    "sborrata",
+    "sborrone",
+    "sbrodolata",
+    "scopare",
+    "scopata",
+    "scorreggiare",
+    "sega",
+    "slinguare",
+    "slinguata",
+    "smandrappata",
+    "soccia",
+    "socmel",
+    "sorca",
+    "spagnola",
+    "spompinare",
+    "sticchio",
+    "stronza",
+    "stronzata",
+    "stronzo",
+    "succhiami",
+    "succhione",
+    "sveltina",
+    "sverginare",
+    "tarzanello",
+    "terrone",
+    "testa di cazzo",
+    "tette",
+    "tirare",
+    "topa",
+    "troia",
+    "trombare",
+    "vacca",
+    "vaffanculo",
+    "vangare",
+    "zinne",
+    "zio cantante",
+    "zoccola"
+  ];
+  
+  // Verifica se il testo contiene una delle parole proibite
+  const containsForbidden = forbiddenWords.some(word => reviewText.includes(word));
+  if (containsForbidden) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Errore nella recensione',
+      text: 'La recensione contiene parole non consentite',
+      confirmButtonColor: 'rgb(170, 33, 33)'
+    });
+    return;
+  }
+  
+  // Se il controllo va a buon fine, chiedi conferma all'utente
   Swal.fire({
     title: 'Conferma invio',
     text: "Sei sicuro di voler inviare questa recensione?",
@@ -198,14 +436,13 @@ function inviaRecensione(event){
     cancelButtonColor: 'rgb(170, 33, 33)',
     confirmButtonText: 'Sì, invia!',
     cancelButtonText: 'Annulla'
-  })
-  .then(result =>{
-    if(result.isConfirmed){
-      const form=document.querySelector(".recensione-form");
-      const formData=new FormData(form);
-      const prof_id=getUrlParameter('id');
+  }).then(result => {
+    if (result.isConfirmed) {
+      const form = document.querySelector(".recensione-form");
+      const formData = new FormData(form);
+      const prof_id = getUrlParameter('id');
       formData.append('prof_id', prof_id);
-
+  
       fetch('/src/server/home_prof/carica_recensione.php', {
         method: 'POST',
         body: formData
@@ -214,7 +451,7 @@ function inviaRecensione(event){
         if (!response.ok) {
           Swal.fire('Errore!', 'Errore durante l\'invio della recensione.', 'error');
         }
-        return response.json(); 
+        return response.json();
       })
       .then(data => {
         if (data.success) {
@@ -225,11 +462,10 @@ function inviaRecensione(event){
         }
       })
       .catch(error => {
-        Swal.fire('Errore!', 'Errore durante l\'invio della recensione .', 'error');
+        Swal.fire('Errore!', 'Errore durante l\'invio della recensione.', 'error');
       });
-
     }
-  })
+  });
 }
 
 // Funzione principale per inizializzare la pagina

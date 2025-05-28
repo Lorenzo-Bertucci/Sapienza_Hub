@@ -580,11 +580,40 @@ gap: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
 }
 
-
-
 .titolo{
     font-size: 30px;
     text-align: center;
+}
+
+.rec{
+    position: relative;
+}
+
+.report-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: transparent;
+  border: 1px solid rgba(192,54,57,1);
+  color: rgba(192,54,57,1); 
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.2s;
+  display: none;
+  align-items: center;
+  gap: 5px;
+}
+
+.rec:hover .report-btn {
+    display: block;
+}
+
+.report-btn:hover {
+  background-color: rgba(192,54,57,1);
+  color: white;
+  transform: scale(1.05);
 }
 
 /* Al di sotto di 768px, adatta la larghezza delle card e della benvenuto, e semplifica il layout della navbar */

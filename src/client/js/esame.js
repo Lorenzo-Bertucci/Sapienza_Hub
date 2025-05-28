@@ -44,8 +44,46 @@ function favorite() {
   });
 }
 
+// Funzione per segnalare una recensione
+function reportReview(reviewId) {
+  Swal.fire({
+    title: 'Segnala recensione',
+    text: "Vuoi segnalare questa recensione?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Segnala',
+    cancelButtonText: 'Annulla',
+    confirmButtonColor: 'rgb(170, 33, 33)', // rosso come da altri Swal
+    cancelButtonColor: '#3085d6'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const formData = new FormData();
+      formData.append('review_id', reviewId);
+      
+      fetch('/src/server/esame/report_review.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          Swal.fire('Segnalata!', data.message, 'success');
+          // Ricarica le recensioni dopo la segnalazione
+          openRec();
+        } else {
+          Swal.fire('Errore', data.message, 'error');
+        }
+      })
+      .catch(error => {
+        console.error('Errore:', error);
+        Swal.fire('Errore', "Impossibile segnalare la recensione.", 'error');
+      });
+    }
+  });
+}
+
 // Funzione per creare la card di una recensione
-function createRec(utente,data,testo){
+function createRec(id,utente,data,testo){
   const rec=document.createElement('div');
   rec.classList.add("rec");
 
@@ -54,9 +92,21 @@ function createRec(utente,data,testo){
     month: "2-digit",
     year: "numeric"
   });
-  rec.innerHTML=`<div><span class='utente'><strong>~${utente}</strong></span><span style="margin-left: 10px; font-size: smaller; font-style: italic;"><small><i> ${data}</i></small></span></div> <p>${testo}</p>`;
 
-  return rec;
+  rec.innerHTML = `
+      <div>
+        <span class='utente'><strong>~${utente}</strong></span>
+        <span style="margin-left: 10px; font-size: smaller; font-style: italic;">
+          <small><i>${data}</i></small>
+        </span>
+        <button class="report-btn" title="Segnala questa recensione" onclick="reportReview(${id})">
+          <i class="fa fa-exclamation-triangle"></i> Segnala
+        </button>
+      </div>
+      <p>${testo}</p>
+    `;
+    return rec;
+  
 }
 
 // Funzione per caricare le recensioni
@@ -79,7 +129,7 @@ function openRec(){
       recensioniContainer.appendChild(titolo);
 
       data.recensioni.forEach(recensione=>{
-        const rec=createRec(recensione.utente,recensione.dat,recensione.testo);
+        const rec=createRec(recensione.id,recensione.utente,recensione.dat,recensione.testo);
         recensioniContainer.appendChild(rec); 
       });
       }else{
@@ -93,58 +143,103 @@ function openRec(){
     });
 }
 
+// Funzione per segnalare un materiale didattico
+function reportMaterial(materialId) {
+  Swal.fire({
+    title: 'Segnala materiale',
+    text: "Vuoi segnalare questo materiale?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Segnala',
+    cancelButtonText: 'Annulla',
+    confirmButtonColor: 'rgb(170, 33, 33)',
+    cancelButtonColor: '#3085d6'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const formData = new FormData();
+      formData.append('material_id', materialId);
+
+      fetch('/src/server/esame/report_materiale.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          Swal.fire('Segnalato!', data.message, 'success');
+          openMat();
+        } else {
+          Swal.fire('Errore', data.message, 'error');
+        }
+      })
+      .catch(error => {
+        console.error('Errore:', error);
+        Swal.fire('Errore', "Impossibile segnalare il materiale.", 'error');
+      });
+    }
+  });
+}
+
 // Funzione per creare la card di un materiale didattico
-function createMat(esame,utente,data,nomefile){
-  const nomedata=document.createElement('div');
+function createMat(esame, utente, data, nomefile, id) {
+  const nomedata = document.createElement('div');
   nomedata.classList.add("materiale-card");
-  nomedata.innerHTML=`<div><span class='utente'><strong>~${utente}</strong></span>
-  <span style="margin-left: 10px; font-size: smaller; font-style: italic;"><small><i> ${data}</i></small></span></div>`;
+  nomedata.innerHTML = `<div>
+    <span class='utente'><strong>~${utente}</strong></span>
+    <span style="margin-left: 10px; font-size: smaller; font-style: italic;">
+      <small><i> ${data}</i></small>
+    </span>
+    <button class="report-btn" title="Segnala questo materiale" onclick="reportMaterial(${id})">
+      <i class="fa fa-exclamation-triangle"></i> Segnala
+    </button>
+  </div>`;
   const link = document.createElement('a');
-  link.href=`/src/server/esame/download_materiale.php?esame=${encodeURIComponent(esame)}&nomefile=${encodeURIComponent(nomefile)}`
-  link.textContent=nomefile;
-  link.download=nomefile;
+  link.href = `/src/server/esame/download_materiale.php?esame=${encodeURIComponent(esame)}&nomefile=${encodeURIComponent(nomefile)}`;
+  link.textContent = nomefile;
   link.style.display = 'block';
+  link.target = '_blank';
   nomedata.appendChild(link);
 
   return nomedata;
 }
 
 // Funzione per caricare il materiale didattico
-function openMat(){
-  const materialeContainer=document.querySelector(".materiale");
-  const esame=getUrlParameter('codice');
+function openMat() {
+  const materialeContainer = document.querySelector(".materiale");
+  const esame = getUrlParameter('codice');
 
   fetch(`/src/server/esame/get_materiale.php?esame=${encodeURIComponent(esame)}`)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error("Errore nel caricamento del materiale.");
-    }
-    return response.json();
-  })
-  .then(data => {
-    if(data.success){
-      materialeContainer.innerHTML='';
-      const mat=document.createElement('div');
-      mat.classList.add("mat");
-      const titolo=document.createElement('div');
-      titolo.classList.add("titolo");
-      titolo.innerHTML='<b>Materiale su questo esame</b>';
-      mat.appendChild(titolo);
-      materialeContainer.appendChild(mat);
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Errore nel caricamento del materiale.");
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.success) {
+        materialeContainer.innerHTML = '';
+        const mat = document.createElement('div');
+        mat.classList.add("mat");
+        const titolo = document.createElement('div');
+        titolo.classList.add("titolo");
+        titolo.innerHTML = '<b>Materiale su questo esame</b>';
+        mat.appendChild(titolo);
+        materialeContainer.appendChild(mat);
 
-      data.materiale.forEach(didattico=>{
-        const card=createMat(esame,didattico.utente,didattico.dat,didattico.nomefile);
-        mat.appendChild(card);
-      });
-    }else{
-      console.error("Errore nel caricamento dati: ", data.message);
-      materialeContainer.innerHTML = "<p class='errore'>Impossibile caricare il materiale.<br><br>Controllare la connessione al database.<br> Non esiste</p>";
-    }
-  })
-  .catch(error => {
-    console.error("Errore:", error);
-    materialeContainer.innerHTML = "<p class='errore'>Impossibile caricare il materiale.<br><br>Controllare la connessione.</p>";
-  });
+        data.materiale.forEach(didattico => {
+          // Assicurati che l'oggetto abbia un id unico per il materiale
+          const card = createMat(esame, didattico.utente, didattico.dat, didattico.nomefile, didattico.id);
+          mat.appendChild(card);
+        });
+      } else {
+        console.error("Errore nel caricamento dati: ", data.message);
+        materialeContainer.innerHTML = "<p class='errore'>Impossibile caricare il materiale.<br><br>Controllare la connessione al database.<br> Non esiste</p>";
+      }
+    })
+    .catch(error => {
+      console.error("Errore:", error);
+      materialeContainer.innerHTML = "<p class='errore'>Impossibile caricare il materiale.<br><br>Controllare la connessione.</p>";
+    });
 }
 
 //Funzione per caricare i dati dell'esame
@@ -253,9 +348,199 @@ function checkFavorite(codice){
   }); 
 }
 
+const forbiddenWords = [
+    "allupato",
+    "ammucchiata",
+    "anale",
+    "arrapato",
+    "arrusa",
+    "arruso",
+    "assatanato",
+    "bagascia",
+    "bagassa",
+    "bagnarsi",
+    "baldracca",
+    "balle",
+    "battere",
+    "battona",
+    "belino",
+    "biga",
+    "bocchinara",
+    "bocchino",
+    "bofilo",
+    "boiata",
+    "bordello",
+    "brinca",
+    "bucaiolo",
+    "budiùlo",
+    "busone",
+    "cacca",
+    "caciocappella",
+    "cadavere",
+    "cagare",
+    "cagata",
+    "cagna",
+    "casci",
+    "cazzata",
+    "cazzimma",
+    "cazzo",
+    "cesso",
+    "cazzone",
+    "checca",
+    "chiappa",
+    "chiavare",
+    "chiavata",
+    "ciospo",
+    "ciucciami il cazzo",
+    "coglione",
+    "coglioni",
+    "cornuto",
+    "cozza",
+    "culattina",
+    "culattone",
+    "culo",
+    "ditalino",
+    "fava",
+    "femminuccia",
+    "fica",
+    "figa",
+    "figlio di buona donna",
+    "figlio di puttana",
+    "figone",
+    "finocchio",
+    "fottere",
+    "fottersi",
+    "fracicone",
+    "fregna",
+    "frocio",
+    "froscio",
+    "goldone",
+    "guardone",
+    "imbecille",
+    "incazzarsi",
+    "incoglionirsi",
+    "ingoio",
+    "leccaculo",
+    "lecchino",
+    "lofare",
+    "loffa",
+    "loffare",
+    "mannaggia",
+    "merda",
+    "merdata",
+    "merdoso",
+    "mignotta",
+    "minchia",
+    "minchione",
+    "mona",
+    "monta",
+    "montare",
+    "mussa",
+    "nave scuola",
+    "nerchia",
+    "padulo",
+    "palle",
+    "palloso",
+    "patacca",
+    "patonza",
+    "pecorina",
+    "pesce",
+    "picio",
+    "pincare",
+    "pippa",
+    "pinnolone",
+    "pipì",
+    "pippone",
+    "pirla",
+    "pisciare",
+    "piscio",
+    "pisello",
+    "pistolotto",
+    "pomiciare",
+    "pompa",
+    "pompino",
+    "porca",
+    "porca madonna",
+    "porca miseria",
+    "porca puttana",
+    "porco",
+    "porco due",
+    "porco zio",
+    "potta",
+    "puppami",
+    "puttana",
+    "quaglia",
+    "recchione",
+    "regina",
+    "rincoglionire",
+    "rizzarsi",
+    "rompiballe",
+    "rompipalle",
+    "ruffiano",
+    "sbattere",
+    "sbattersi",
+    "sborra",
+    "sborrata",
+    "sborrone",
+    "sbrodolata",
+    "scopare",
+    "scopata",
+    "scorreggiare",
+    "sega",
+    "slinguare",
+    "slinguata",
+    "smandrappata",
+    "soccia",
+    "socmel",
+    "sorca",
+    "spagnola",
+    "spompinare",
+    "sticchio",
+    "stronza",
+    "stronzata",
+    "stronzo",
+    "succhiami",
+    "succhione",
+    "sveltina",
+    "sverginare",
+    "tarzanello",
+    "terrone",
+    "testa di cazzo",
+    "tette",
+    "tirare",
+    "topa",
+    "troia",
+    "trombare",
+    "vacca",
+    "vaffanculo",
+    "vangare",
+    "zinne",
+    "zio cantante",
+    "zoccola"
+  ];
+
 // Funzione per inviare una recensione
 function inviaRecensione(event){
   event.preventDefault();
+
+  // Recupera il testo della recensione (assicurati che il textarea abbia name="recensione")
+  const recensioneInput = document.querySelector(".recensione-form textarea[name='testo']");
+  const reviewText = recensioneInput.value.toLowerCase();
+  
+  // Lista di parole proibite
+  
+  
+  // Verifica se il testo contiene una delle parole proibite
+  const containsForbidden = forbiddenWords.some(word => reviewText.includes(word));
+  if (containsForbidden) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Errore nella recensione',
+      text: 'La recensione contiene parole non consentite',
+      confirmButtonColor: 'rgb(170, 33, 33)'
+    });
+    return;
+  }
   
   Swal.fire({
     title: 'Conferma invio',
@@ -302,6 +587,19 @@ function inviaRecensione(event){
 // Funzione per caricare un materiale 
 function inviaMateriale(event){
   event.preventDefault();
+  const materialeInput = document.querySelector(".materiale-form input[name='nomefile']");
+  const materialeName = materialeInput.value.toLowerCase();
+
+  const containsForbidden = forbiddenWords.some(word => materialeName.includes(word));
+  if (containsForbidden) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Errore nel nome del materiale',
+      text: 'Il nome del materiale contiene parole non consentite',
+      confirmButtonColor: 'rgb(170, 33, 33)'
+    });
+    return;
+  }
   
   Swal.fire({
     titolo: 'Conferma invio',
