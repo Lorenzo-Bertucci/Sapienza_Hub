@@ -23,7 +23,6 @@ session_start();
                     <ul>
                         <li><a href="html/corsi.php">Corsi</a></li>
                         <li><a href="html/professori.php">Professori</a></li>
-                        <li><a href="html/contatti.php">Contatti</a></li>
                     </ul>
                 </nav>
             </div>
@@ -55,7 +54,6 @@ session_start();
         <div class="aside">
             <div class="benvenuto">
                 <h3>🎓 Cos'è SapienzHub?</h3>
-                <br>
                 <p> <strong>SapienzHub</strong> nasce con un obiettivo semplice ma ambizioso: rendere la vita universitaria più facile, connessa e collaborativa per tutti gli studenti della Sapienza.
                     <br>
                     Qui puoi esplorare i corsi di laurea, consultare gli esami, scoprire opinioni reali e sincere di altri studenti, condividere materiali utili e creare connessioni con chi sta affrontando il tuo stesso percorso.
@@ -67,8 +65,7 @@ session_start();
             </div>
         </div>
         <div class="content">
-            <a href="html/corsi.php" style="text-decoration: none; color: inherit;">
-            <div class="card">
+            <a class="card" href="html/corsi.php">
                 <h3>📚 Corsi di Laurea</h3>
                 <p>
                     Hai presente quel momento in cui non sai nemmeno che esami ti aspettano, figuriamoci da che prof sono tenuti? Tranquillo, ci pensiamo noi.
@@ -85,10 +82,8 @@ session_start();
                 <p>
                     Che tu sia una matricola persa nel caos o un laureando in crisi esistenziale, qui trovi tutto quello che ti serve: chiaro, ordinato e senza sbatti.
                 </p>
-            </div>
             </a>
-            <a href="html/professori.php" style="text-decoration: none; color: inherit;">
-            <div class="card">
+            <a class="card" href="html/professori.php">
                 <h3>👨‍🏫 Professori</h3>
                 <p>
                     Chi c’è dietro a ogni esame? Un nome su un piano di studi non basta. 
@@ -104,7 +99,7 @@ session_start();
                 </ul>
                 <p>
                     Niente più “E questo prof com’è?”, adesso hai tutto quello che ti serve per farti un’idea in un unico posto.
-            </div>
+                </p>
             </a>
         </div>
     </div>

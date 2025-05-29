@@ -270,7 +270,7 @@ function loadEsame(codice) {
         <a href=${esame.link} style="color: black;" target="_blank">
           <strong>Link del corso</strong>
         </a>
-        <br><br>
+        <br>
       `;
       document.getElementById("corso-nome").textContent = esame.nome;
       document.getElementById("corso-descrizione").textContent = esame.descrizione;

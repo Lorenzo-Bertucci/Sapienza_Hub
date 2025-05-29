@@ -18,13 +18,12 @@ html, body {
     display: grid;
     width: 100%;
     min-height: 100vh; 
-    grid-template-rows: auto auto auto auto; 
+    grid-template-rows: auto auto auto; 
     grid-template-columns: 1fr;
     grid-template-areas:
         "header"
         "main"
-        "content"
-        "footer";
+        "content";
     color: black;
     overflow-y: auto; 
     -ms-overflow-style: none;  /* IE e Edge */
@@ -339,7 +338,7 @@ nav ul li a:hover {
     border-radius: 15px;
     height:fit-content;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto 0;
+    margin: 0 auto 20px;
 
 }
 
@@ -390,16 +389,6 @@ nav ul li a:hover {
     height: 100%;
     padding: 20px; 
     border-radius: 15px; 
-}
-
-
-.footer {
-    background-image: linear-gradient(0deg, rgba(88, 14, 14, 1) 0%, rgba(149,30,30,1) 40%);
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 20px;
-    
 }
 
 
@@ -576,6 +565,7 @@ nav ul li a:hover {
     justify-self: center;
 }
 
+
 .favorite-btn {
     background: none;
     border: none;
@@ -592,7 +582,6 @@ nav ul li a:hover {
 .favorite-btn.active {
     color: #ffcc00; /* Colore giallo quando attivo */
 }
-
 .rec{
     position: relative;
 }
@@ -628,6 +617,11 @@ nav ul li a:hover {
   transform: scale(1.05);
 }
 
+.prof:active{
+    border-color: rgb(170, 33, 33);
+    background-color: #ffeaea;
+    color: rgb(170, 33, 33);
+}
 
 
 
@@ -640,8 +634,17 @@ nav ul li a:hover {
         'dati'
         'barra';
     }
-    nav {
+    nav ul li a{
+        font-size: 13px;
+    }
+
+    .register-btn {
         display: none;
+    }
+
+    .h-left h1 {
+        margin: 0;
+        font-size: 24px;
     }
 
     .register-btn {
@@ -657,12 +660,14 @@ nav ul li a:hover {
         font-size: 16px;
     }
 
-    .h-left h1 {
-        margin: 0;
-    }
-
     .dati{
         margin: 0 auto;
+        padding-top:0px;
+        padding-bottom: 0px;
+    }
+
+    .desc{
+        padding-bottom: 0px;
     }
 
     .dati p{
@@ -742,6 +747,29 @@ nav ul li a:hover {
 /*sotto i 480px */
 @media (max-width: 480px) {
 
+    nav ul{
+        padding: 5px;
+        flex-direction: column;
+    }
+
+    nav ul li a {
+        font-size: 10px;
+    }
+
+    .dropdown-menu {
+        right: 10px; 
+        width: 120px;
+    }
+
+    .dropdown-menu button{
+        font-size: 12px;
+    }
+
+    .h-left{
+        margin-right: 5px;
+        margin-left: 0;
+    }
+
     .header{
         width: 100%;
         padding: 10px;
@@ -759,7 +787,12 @@ nav ul li a:hover {
         font-size: 12px;
     }
 
+    .profile-icon, .favorite-btn {
+        transform: scale(0.8);
+    }
+
     .h-left h1 {
+        font-size: 14px;
         margin: 0;
     }
 
@@ -776,23 +809,10 @@ nav ul li a:hover {
         font-size: 13px;
     }
 
-    .h-left h1 {
-        font-size: 20px;
-        margin: 0;
-    }
 
     .barra .bottone{
         font-size: 9px;
     }
-
-
-    .footer {
-        margin-top:10px;
-        font-size: 12px;
-        padding: 10px;
-        text-align: center;
-    }
-
         
     .form-container h3 {
         font-size: 14px;

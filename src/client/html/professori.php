@@ -23,7 +23,6 @@ session_start();
                     <ul>
                         <li><a href="html/corsi.php">Corsi</a></li>
                         <li><a href="html/professori.php">Professori</a></li>
-                        <li><a>Contatti</a></li>
                     </ul>
                 </nav>
             </div>
@@ -45,17 +44,15 @@ session_start();
             </div>
         </div>
         <div class="foto">
-            <div class="search-bar">
-                <img src="assets/lente.png" alt="search" class="search" >
-                <input type="text" id="search-input" placeholder="Cerca il Professore">
-                <button>Cerca</button>
-            </div>
+            <h3>Professori</h3>
+        </div>
+        <div class="search-bar">
+            <img src="assets/lente.png" alt="search" class="search" >
+            <input type="text" id="search-input" placeholder="Cerca il Professore">
+            <button>Cerca</button>
         </div>
         <div class="content">
             
-        </div>
-        <div class="footer">
-            <p>&copy; 2025 Sapienza Hub. Tutti i diritti riservati.</p>
         </div>
     </div>
     

@@ -105,7 +105,7 @@ function loadCorso(codice) {
                 <a href=${corso.link} style="color: black;" target="_blank">
                     <strong>Link del corso</strong>
                 </a>
-                <br><br>
+                <br>
             `;
             document.getElementById("corso-nome").textContent = corso.nome;
             document.getElementById("corso-descrizione").textContent = corso.descrizione;

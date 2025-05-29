@@ -20,7 +20,7 @@ html, body {
     display: grid;
     max-width: 100%;
     min-height: 100vh;
-    grid-template-rows: auto auto auto auto auto; /* righe che si adattano automaticamente al contenuto */
+    grid-template-rows: auto auto auto auto auto;
     grid-template-columns: 1fr;
     grid-template-areas:
         "header"
@@ -28,9 +28,9 @@ html, body {
         "aside"
         "content";
     background-image: url('/src/client/assets/home.jpg'); 
-    background-size: cover;         /* Adatta l'immagine coprendo tutto il container */
-    background-position: center;    /* Centra l'immagine */
-    background-repeat: no-repeat;   /* Evita la ripetizione */
+    background-size: cover;        
+    background-position: center;
+    background-repeat: no-repeat;
     color: white;
     padding-top: 0px;
     overflow-y: auto; 
@@ -89,7 +89,7 @@ nav ul li a {
     transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 nav ul li a:hover {
-    background-color: rgb(170, 33, 33); /* Stesso rosso del pulsante della barra di ricerca */
+    background-color: rgb(170, 33, 33);
     color: white;
     transform: scale(1.05);
 }
@@ -117,7 +117,6 @@ nav ul li a:hover {
     cursor: pointer;
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    
 }
 .login-btn:hover {
     background-color: rgb(170, 33, 33);
@@ -144,17 +143,17 @@ nav ul li a:hover {
 
 
 .profile-container:hover .profile-icon{
-    transform: scale(1.1); /* Effetto di ingrandimento al passaggio del mouse */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Ombra più pronunciata */
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .profile-icon {
-    width: 80%;      /* L'immagine riempie tutto il bottone */
-    height: 80%;     /* L'immagine riempie tutto il bottone */
+    width: 80%;      
+    height: 80%;   
     border-radius: 50%;
-    object-fit: cover; /* Ritaglia l'immagine senza deformarla */
-    display: block; /* Adatta l'immagine senza distorcerla */
+    object-fit: cover; 
+    display: block; 
     margin: 0px;
     cursor: pointer;
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -162,20 +161,20 @@ nav ul li a:hover {
 
 /* Contenitore del menu a tendina */
 .profile-container {
-    position: relative; /* Necessario per posizionare il menu a tendina */
+    position: relative; 
     display: inline-block;
     align-content: center;
     justify-content: center;
-    width: 80px; /* Aumenta la larghezza del contenitore */
-    height: 80px; /* Aumenta l'altezza del contenitore */
+    width: 80px; 
+    height: 80px; 
     cursor: pointer;
 }
 
 /* Menu a tendina */
 .dropdown-menu {
-    display: none; /* Nascondi il menu di default */
+    display: none; 
     position: absolute;
-    top: 80px; /* Posiziona il menu sotto il bottone */
+    top: 80px;
     right: 30px;
     background-color: white;
     border: 1px solid rgba(170, 33, 33, 0.2);
@@ -277,7 +276,7 @@ nav ul li a:hover {
 }
 
 .benvenuto {
-    margin:0 auto 30px; /* Aggiungiamo un margine inferiore per evitare che la card tocchi il footer */
+    margin:0 auto 30px; 
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 15px;
@@ -285,11 +284,12 @@ nav ul li a:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 .benvenuto:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Mantiene l'ombra invariata */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
 .benvenuto h3 {
-    font-size: 30px; /* Aumenta la dimensione del titolo */
+    font-size: 30px;
     font-weight: 600;
+    padding-bottom: 50px;
     color: black;
     text-align: center;
 }
@@ -308,18 +308,18 @@ nav ul li a:hover {
     gap: 30px;
     padding: 30px;
     max-width: 100%;
-    /*margin: 50px auto;*/
     margin: 0 auto;
-    flex-wrap: wrap;
 }
 
-
-
-.card {
+.content a.card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    max-height: 100%;
     margin: 0 auto; 
     background-color: white;
     border: 1px solid #ddd;
-    width: 70%;
+    max-width: 70%;
     border-radius: 10px; 
     padding: 20px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -327,12 +327,12 @@ nav ul li a:hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
-.card:hover {
+.content a.card:hover {
     transform: translateY(-10px); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
-.card h3 {
+.content a.card h3 {
     margin: 0;
     width: 100%;
     font-size: 24px; 
@@ -341,7 +341,7 @@ nav ul li a:hover {
     text-align: center;
 }
 
-.card p {
+.content a.card p {
     margin: 0;
     width: 100%;
     color: black;
@@ -351,7 +351,7 @@ nav ul li a:hover {
     text-align: justify;
 }
 
-.card ul {
+.content a.card ul {
     color: black;
     list-style: disc inside;
     margin: 20px 0;
@@ -359,69 +359,30 @@ nav ul li a:hover {
     font-size: 18px;
     line-height: 1.6;
 }
-.card ul li {
+.content a.card ul li {
     margin-bottom: 10px;
 }
 
-
-/* Al di sotto di 768px */
-@media (max-width: 770px) {
-
-    .main{
-        width: auto;
-        height: auto;
+@media(max-width:768px){
+    .h-left h1{
+        font-size: 22px;
+    }
+    nav ul li a{
+        font-size: 14px;
     }
 
     .main h2{
-        font-size: 30px;
+        font-size: 35px;
     }
 
-    .main p{
+    .main p, .benvenuto p, .content a.card p, .content a.card ul li{
         font-size: 15px;
-    }
-    
-    nav {
-        display: none;
-    }
-
-    .benvenuto,
-    .card {
-        width: 90%;
-        padding: 15px;
-    }
-
-    .benvenuto h3 {
-        font-size: 21px
-    }
-    
-    .benvenuto p {
-        font-size: 16px
-    }
-
-    .card h3 {
-        font-size: 19px; 
-    }
-    
-    .card p {
-        font-size: 13px; 
-    }
-
-    .card ul {
-        font-size: 13px;
-    }
-
-
-    .register-btn {
-        display: none;
     }
 
     .login-btn {
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        padding: 0;
-        line-height: 40px;
-        text-align: center;
         background-color: rgb(170, 33, 33);
         background-image: url('../assets/utente.png');
         background-size: 50%;
@@ -430,7 +391,7 @@ nav ul li a:hover {
         color: white;
         border: none;
         transition: transform 0.3s ease, background-color 0.3s ease;
-        text-indent: -9999px; /* DA SISTEMARE */
+        text-indent: -9999px;
     }
 
     .login-btn:hover {
@@ -438,81 +399,85 @@ nav ul li a:hover {
         background-color: rgb(150, 30, 30);
     }
 
-    .auth-buttons {
-        flex-direction: row;
-        justify-content: center;
+    .register-btn{
+        display: none;
     }
 
-    .card{
-        width: auto;
-        height: auto;
+    .search-bar{
+        width: 80%;
     }
+
+   .search-bar input, .search-bar button{
+        font-size: 13px;
+   }
+
+   .benvenuto h3, .content a.card h3{
+        font-size: 20px;
+   }
 }
 
-@media (max-width: 480px) {
+@media(max-width: 480px){
 
-    .container{
-        max-width: 100%;
-        margin: 0;
-    }
-    .main {
-        font-size: 14px; 
+    .content {
+        grid-template-columns: 1fr;
         padding: 10px;
-        margin: 0;
-        
-    }
-    
-    .main h2 {
-        font-size: 20px;
-        text-align: center;
     }
 
-    .main p {
+    .dropdown-menu {
+        right: 10px; 
+        width: 120px;
+    }
+
+    .dropdown-menu button{
         font-size: 12px;
-        text-align: center;
     }
 
-    .search-bar {
-        max-width: 80%;
-    }
-
-    .search-bar input{
-        max-width: 80%;
-    }
-
-    .benvenuto{
-        max-width: 85%;
-        margin: 20px auto;
-    }
-
-    .benvenuto h3 {
-        font-size: 19px;
-    }
-
-    .benvenuto p {
-        font-size: 14px;
-    }
-
-    .card {
-        max-width: 90%;
-        margin:0 auto;
-    }
-
-
-    .aside, .content{  
-        margin: 0px;
-        padding: 0px;
-    }
-
-    .card h3 {
+    .h-left h1{
         font-size: 18px;
     }
-
-    .card p {
-        font-size: 13px;
+    nav ul li a{
+        display: none;
     }
 
-    .card ul {
-        font-size: 13px;
+    .login-btn{
+        transform: scale(0.9);
     }
+
+    .profile-icon{
+        transform: scale(0.8);
+    }
+
+    .main h2{
+        font-size: 20px;
+    }
+
+    .benvenuto, .content a.card{
+        padding: 10px;
+    }
+
+    .main p, .benvenuto p, .content a.card p, .content a.card ul li{
+        font-size: 10px;
+        margin-top:0;
+    }
+
+    .search-bar{
+        transform: scale(0.9);
+    }
+
+   .search-bar input, .search-bar button{
+        font-size: 9px;
+   }
+
+   .benvenuto h3, .content a.card h3{
+        font-size: 13px;
+        margin-bottom:0;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding-bottom: 0;
+   }
+
+   .content a.card ul {
+        padding-left: 10px;
+    }
+
 }
