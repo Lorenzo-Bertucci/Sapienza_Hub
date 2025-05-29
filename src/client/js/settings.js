@@ -22,7 +22,7 @@ function gestisciAzione(azione){
             break;
         case "Rimuovi Corso di Studi":
             div.innerHTML="<h3>Lista Corsi di studi</h3>";
-            fetch('/src/server/gestione/lista_corsi.php')
+            fetch('/src/server/php/gestione/lista_corsi.php')
                 .then(response => response.json())
                 .then(corsi => {
                     if (corsi.length === 0) {
@@ -64,7 +64,7 @@ function gestisciAzione(azione){
         case "Rimuovi Esame":
 
             div.innerHTML="<h3>Lista Esami</h3>";
-            fetch('/src/server/gestione/lista_esami.php')
+            fetch('/src/server/php/gestione/lista_esami.php')
                 .then(response => response.json())
                 .then(esami => {
                     if (esami.length === 0) {
@@ -101,7 +101,7 @@ function gestisciAzione(azione){
         case "Rimuovi Professore":
 
             div.innerHTML="<h3>Lista professori</h3>";
-            fetch('/src/server/gestione/lista_professori.php')
+            fetch('/src/server/php/gestione/lista_professori.php')
                 .then(response => response.json())
                 .then(professori => {
                     if (professori.length === 0) {
@@ -135,7 +135,7 @@ function gestisciAzione(azione){
         case "Rimuovi Utente Privilegiato":
 
             div.innerHTML="<h3>Lista Utenti Privilegiati</h3>";
-            fetch('/src/server/gestione/lista_utenti.php')
+            fetch('/src/server/php/gestione/lista_utenti.php')
                 .then(response => response.json())
                 .then(utenti => {
                     if (utenti.length === 0) {
@@ -163,7 +163,7 @@ function gestisciAzione(azione){
 function add_corso(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));
-    fetch('/src/server/gestione/add_corso.php', {
+    fetch('/src/server/php/gestione/add_corso.php', {
         method: 'POST',
         body: formData
     })
@@ -188,7 +188,7 @@ function add_corso(e){
 function remove_corso(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));
-    fetch('/src/server/gestione/remove_corso.php', {
+    fetch('/src/server/php/gestione/remove_corso.php', {
         method: 'POST',
         body: formData
     })
@@ -213,7 +213,7 @@ function remove_corso(e){
 function add_esame(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));
-    fetch('/src/server/gestione/add_esame.php', {
+    fetch('/src/server/php/gestione/add_esame.php', {
         method: 'POST',
         body: formData
     })
@@ -238,7 +238,7 @@ function add_esame(e){
 function remove_esame(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));
-    fetch('/src/server/gestione/remove_esame.php', {
+    fetch('/src/server/php/gestione/remove_esame.php', {
         method: 'POST',
         body: formData
     })
@@ -263,7 +263,7 @@ function remove_esame(e){
 function add_professore(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));
-    fetch('/src/server/gestione/add_professore.php', {
+    fetch('/src/server/php/gestione/add_professore.php', {
         method: 'POST',
         body: formData
     })
@@ -288,7 +288,7 @@ function add_professore(e){
 function remove_professore(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));
-    fetch('/src/server/gestione/remove_professore.php', {
+    fetch('/src/server/php/gestione/remove_professore.php', {
         method: 'POST',
         body: formData
     })
@@ -313,7 +313,7 @@ function remove_professore(e){
 function add_utente(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));
-    fetch('/src/server/gestione/add_utente.php', {
+    fetch('/src/server/php/gestione/add_utente.php', {
         method: 'POST',
         body: formData
     })
@@ -338,7 +338,7 @@ function add_utente(e){
 function remove_utente(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));
-    fetch('/src/server/gestione/remove_utente.php', {
+    fetch('/src/server/php/gestione/remove_utente.php', {
         method: 'POST',
         body: formData
     })

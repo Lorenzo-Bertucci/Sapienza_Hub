@@ -35,7 +35,7 @@ session_start();
     
                         <div class="dropdown-menu">
                             <a href="html/dashboard.php" style="text-decoration: none;"><button class="dropdown-item">Dashboard</button></a>
-                            <a href="../server/auth/logout.php"><button class="dropdown-item">Logout</button></a>
+                            <a href="../server/php/auth/logout.php"><button class="dropdown-item">Logout</button></a>
                         </div>
                     </div>
                 <?php else: ?>
@@ -50,7 +50,7 @@ session_start();
                 <!--<h3>Le nostre mail:</h3>
                 <p>bertucci.2044683@studenti.uniroma1.it</p>
                 <p>crisci.2060281@studenti.uniroma1.it</p>-->
-                <form class="form-mail" action="/src/server/contatti/mail.php" method="POST" onsubmit="return confermaInvio()">
+                <form class="form-mail" action="/src/server/php/contatti/mail.php" method="POST" onsubmit="return confermaInvio()">
                     <h2>Hai dei problemi? Inviaci una mail:</h2>
                     <textarea name="contenutomail" placeholder="Inserire il testo della mail" required></textarea>
                     <button>Invia</button>

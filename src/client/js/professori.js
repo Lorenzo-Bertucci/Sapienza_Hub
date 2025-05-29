@@ -44,7 +44,7 @@ function addSearchFunctionality() {
 function loadProfessori(){
     const cardsContainer =document.querySelector(".content");
 
-    fetch("/src/server/professori/get_professori.php")
+    fetch("/src/server/php/professori/get_professori.php")
     .then(response =>{
         if (!response.ok) {
             throw new Error("Errore durante il caricamento dei professori.");

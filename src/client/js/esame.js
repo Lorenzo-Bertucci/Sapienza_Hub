@@ -23,7 +23,7 @@ function favorite() {
   const esameCodice = getUrlParameter("codice"); // Recupera il codice del corso dall'URL
   const esameNome=document.getElementById("corso-nome").textContent
 
-  fetch(`/src/server/esame/toggle_favorite.php`, {
+  fetch(`/src/server/php/esame/toggle_favorite.php`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -60,7 +60,7 @@ function reportReview(reviewId) {
       const formData = new FormData();
       formData.append('review_id', reviewId);
       
-      fetch('/src/server/esame/report_review.php', {
+      fetch('/src/server/php/esame/report_review.php', {
         method: 'POST',
         body: formData
       })
@@ -113,7 +113,7 @@ function createRec(id,utente,data,testo){
 function openRec(){
   const recensioniContainer = document.querySelector(".rec-esami");
   const esame=getUrlParameter('codice');
-  fetch(`/src/server/esame/get_recensioni.php?esame=${encodeURIComponent(esame)}`)
+  fetch(`/src/server/php/esame/get_recensioni.php?esame=${encodeURIComponent(esame)}`)
   .then(response => {
     if (!response.ok) {
       throw new Error("Errore nel caricamento delle recensioni.");
@@ -159,7 +159,7 @@ function reportMaterial(materialId) {
       const formData = new FormData();
       formData.append('material_id', materialId);
 
-      fetch('/src/server/esame/report_materiale.php', {
+      fetch('/src/server/php/esame/report_materiale.php', {
         method: 'POST',
         body: formData
       })
@@ -194,7 +194,7 @@ function createMat(esame, utente, data, nomefile, id) {
     </button>
   </div>`;
   const link = document.createElement('a');
-  link.href = `/src/server/esame/download_materiale.php?esame=${encodeURIComponent(esame)}&nomefile=${encodeURIComponent(nomefile)}`;
+  link.href = `/src/server/php/esame/download_materiale.php?esame=${encodeURIComponent(esame)}&nomefile=${encodeURIComponent(nomefile)}`;
   link.textContent = nomefile;
   link.style.display = 'block';
   link.target = '_blank';
@@ -208,7 +208,7 @@ function openMat() {
   const materialeContainer = document.querySelector(".materiale");
   const esame = getUrlParameter('codice');
 
-  fetch(`/src/server/esame/get_materiale.php?esame=${encodeURIComponent(esame)}`)
+  fetch(`/src/server/php/esame/get_materiale.php?esame=${encodeURIComponent(esame)}`)
     .then(response => {
       if (!response.ok) {
         throw new Error("Errore nel caricamento del materiale.");
@@ -246,7 +246,7 @@ function openMat() {
 function loadEsame(codice) {
   const dati = document.querySelector(".dati");
 
-  fetch(`/src/server/esame/get_esame.php?codice=${encodeURIComponent(codice)}`)
+  fetch(`/src/server/php/esame/get_esame.php?codice=${encodeURIComponent(codice)}`)
   .then(response => {
     if (!response.ok) {
       throw new Error("Errore durante il caricamento dei dati.");
@@ -308,7 +308,7 @@ function loadProf(){
   const profContainer=document.querySelector(".professori");
 
   const esame=getUrlParameter('codice');
-  fetch(`/src/server/esame/get_professori.php?esame=${encodeURIComponent(esame)}`)
+  fetch(`/src/server/php/esame/get_professori.php?esame=${encodeURIComponent(esame)}`)
   .then(response => {
     if (!response.ok) {
       throw new Error("Errore durante il caricamento dei professori.");
@@ -339,7 +339,7 @@ function loadProf(){
 
 // Funzione per controllare se l'esame è nei preferiti
 function checkFavorite(codice){
-  fetch(`/src/server/esame/check_favorite.php?corso=${encodeURIComponent(codice)}`)
+  fetch(`/src/server/php/esame/check_favorite.php?corso=${encodeURIComponent(codice)}`)
   .then(response => response.json())
   .then(data => {
     if (data.success) {
@@ -535,8 +535,8 @@ function inviaRecensione(event){
   if (containsForbidden) {
     Swal.fire({
       icon: 'error',
-      title: 'Errore nella recensione',
-      text: 'La recensione contiene parole non consentite',
+      title: 'Errore',
+      text: 'La recensione contiene parole non appropriate',
       confirmButtonColor: 'rgb(170, 33, 33)'
     });
     return;
@@ -559,7 +559,7 @@ function inviaRecensione(event){
       const formData=new FormData(form);
       const esame=getUrlParameter('codice');
       formData.append('esame', esame);
-      fetch('/src/server/esame/carica_recensione.php', {
+      fetch('/src/server/php/esame/carica_recensione.php', {
         method: 'POST',
         body: formData
       })
@@ -594,8 +594,8 @@ function inviaMateriale(event){
   if (containsForbidden) {
     Swal.fire({
       icon: 'error',
-      title: 'Errore nel nome del materiale',
-      text: 'Il nome del materiale contiene parole non consentite',
+      title: 'Errore',
+      text: 'Il nome del materiale contiene parole non appropriate',
       confirmButtonColor: 'rgb(170, 33, 33)'
     });
     return;
@@ -618,7 +618,7 @@ function inviaMateriale(event){
       const formData=new FormData(form);
       const esame=getUrlParameter('codice');
       formData.append('esame', esame);
-      fetch('/src/server/esame/carica_materiale.php', {
+      fetch('/src/server/php/esame/carica_materiale.php', {
         method: 'POST',
         body: formData
       })

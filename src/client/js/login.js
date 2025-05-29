@@ -7,7 +7,7 @@ function inviaLogin(event){
     const formData=new FormData(form);
  
     // Invia i dati al server tramite fetch
-    fetch('/src/server/auth/login.php', {
+    fetch('/src/server/php/auth/login.php', {
         method: 'POST',
         body: formData
     })
@@ -40,7 +40,7 @@ function inviaLogin(event){
                 timer: 2000
                 });
                 setTimeout(() => {
-                    window.location.href = '../server/gestione/settings.php';
+                    window.location.href = '../server/php/gestione/settings.php';
                 }, 2000); 
             }
             else{

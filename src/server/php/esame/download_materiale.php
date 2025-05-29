@@ -28,21 +28,29 @@ if (!$esame || !$nomefile) {
     exit;
 }
 
-// Esegue la query per recuperare il materiale didattico
+// Esegue la query per recuperare il percorso del materiale didattico
 $query = "SELECT materiale FROM materiale_didattico WHERE nomefile=$1 AND esame=$2";
-$result = pg_query_params($conn,$query,array($nomefile, $esame));
+$result = pg_query_params($conn, $query, array($nomefile, $esame));
 
-// Se il file esiste, lo restituisce come download
 if ($row = pg_fetch_assoc($result)) {
-    $fileData = pg_unescape_bytea($row['materiale']);
+    // Il campo "materiale" contiene il percorso relativo del file
+    $relativeFilePath = $row['materiale'];
+    // Costruisce il percorso assoluto del file
+    $absoluteFilePath = $_SERVER['DOCUMENT_ROOT'] . $relativeFilePath;
     
-    header('Content-Type: application/pdf'); // Specifica il tipo MIME corretto
-    header('Content-Disposition: inline; filename="' . $nomefile . '"');
-    header('Content-Length: ' . strlen($fileData));
-    
-    echo $fileData;
+    if (file_exists($absoluteFilePath)) {
+        $fileData = file_get_contents($absoluteFilePath);
+        
+        header('Content-Type: application/pdf'); // Imposta il tipo MIME
+        header('Content-Disposition: inline; filename="' . $nomefile . '"');
+        header('Content-Length: ' . strlen($fileData));
+        
+        echo $fileData;
+    } else {
+        http_response_code(404);
+        echo "File non trovato.";
+    }
 } else {
-    // Restituisce un errore 404 se il file non viene trovato
     http_response_code(404);
     echo "File non trovato.";
 }
@@ -50,5 +58,4 @@ if ($row = pg_fetch_assoc($result)) {
 // Chiude la connessione al database
 pg_free_result($result);
 pg_close($conn);
-
 ?>

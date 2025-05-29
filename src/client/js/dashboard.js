@@ -42,7 +42,7 @@ function createDeleteButtonRecensione(id,tipo){
             cancelButtonText: "Annulla"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`/src/server/dashboard/delete_recensione.php?id=${encodeURIComponent(id)}&tipo=${encodeURIComponent(tipo)}`)
+                fetch(`/src/server/php/dashboard/delete_recensione.php?id=${encodeURIComponent(id)}&tipo=${encodeURIComponent(tipo)}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error("Errore durante l'eliminazione della recensione.");
@@ -90,7 +90,7 @@ function createDeleteButtonFile(id){
             cancelButtonText: "Annulla"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`/src/server/dashboard/delete_file.php?id=${encodeURIComponent(id)}`)
+                fetch(`/src/server/php/dashboard/delete_file.php?id=${encodeURIComponent(id)}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error("Errore durante l'eliminazione del file");
@@ -99,7 +99,7 @@ function createDeleteButtonFile(id){
                 })
                 .then(data => {
                     if (data.success) {
-                        Swal.fire("Eliminata!", "Il file è stato eliminato", "success")
+                        Swal.fire("Eliminato!", "Il file è stato eliminato", "success")
                         .then(() => {
                             loadFile(); // Ricarica i file
                         });
@@ -176,7 +176,7 @@ function loadPreferiti() {
     const corsiContainer = document.querySelector(".corsi");
     const esamiContainer = document.querySelector(".esami");
 
-    fetch(`/src/server/dashboard/get_corsi.php`)
+    fetch(`/src/server/php/dashboard/get_corsi.php`)
     .then(response => { 
         if (!response.ok) {
             throw new Error("Errore durante il caricamento dei corsi.");
@@ -206,7 +206,7 @@ function loadPreferiti() {
         console.error("Errore:", error);
     });
 
-    fetch(`/src/server/dashboard/get_esami.php`)
+    fetch(`/src/server/php/dashboard/get_esami.php`)
     .then(response => { 
         if (!response.ok) {
             throw new Error("Errore durante il caricamento degli esami.");                
@@ -242,7 +242,7 @@ function loadRecensioni() {
     const recesamiContainer = document.querySelector(".rec-esami");
     const recprofessoriContainer = document.querySelector(".rec-professori");
 
-    fetch(`/src/server/dashboard/get_recensioni.php?tipo=esami`)
+    fetch(`/src/server/php/dashboard/get_recensioni.php?tipo=esami`)
     .then(response => { 
         if (!response.ok) {
             throw new Error("Errore durante il caricamento delle recensioni degli esami");
@@ -271,7 +271,7 @@ function loadRecensioni() {
         console.error("Errore:", error);
     });
 
-    fetch(`/src/server/dashboard/get_recensioni.php?tipo=professori`)
+    fetch(`/src/server/php/dashboard/get_recensioni.php?tipo=professori`)
     .then(response => { 
         if (!response.ok) {
             throw new Error("Errore durante il caricamento delle recensioni");
@@ -305,7 +305,7 @@ function loadRecensioni() {
 function loadFile() {
     const filesContainer = document.querySelector(".file");
 
-    fetch(`/src/server/dashboard/get_file.php`)
+    fetch(`/src/server/php/dashboard/get_file.php`)
     .then(response => { 
         if (!response.ok) {
             throw new Error("Errore durante il caricamento dei file");
@@ -391,28 +391,10 @@ function logout(){
         cancelButtonText: "Annulla"
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = "/src/server/auth/logout.php";
+            window.location.href = "/src/server/php/auth/logout.php";
         }
     });
 }
-
-//Inizializza la pagina
-document.addEventListener("DOMContentLoaded", function () {
-
-    const navButtons = document.querySelectorAll('.nav-bar .bottone');
-    const navSections = {
-        "preferiti": document.querySelector(".preferiti"),
-        "recensioni": document.querySelector(".recensioni"),
-        "file": document.querySelector(".file")
-    };
-    // Imposta "professori" come default
-    setupButtonGroup(navButtons, "preferiti", navSections);
-
-    loadPreferiti();
-    loadRecensioni();
-    loadFile();
-});
-
 
 // Modifica della funzione per aggiornare l'immagine profilo con popup più grande
 function modificaFoto(){
@@ -441,7 +423,7 @@ function modificaFoto(){
         if(result.isConfirmed){
             const formData = new FormData();
             formData.append('profilePic', result.value);
-            fetch('/src/server/dashboard/update_profile_image.php', {
+            fetch('/src/server/php/dashboard/update_profile_image.php', {
                 method: 'POST',
                 body: formData
             })
@@ -468,3 +450,22 @@ function modificaFoto(){
         }
     });
 }
+
+//Inizializza la pagina
+document.addEventListener("DOMContentLoaded", function () {
+
+    const navButtons = document.querySelectorAll('.nav-bar .bottone');
+    const navSections = {
+        "preferiti": document.querySelector(".preferiti"),
+        "recensioni": document.querySelector(".recensioni"),
+        "file": document.querySelector(".file")
+    };
+    // Imposta "professori" come default
+    setupButtonGroup(navButtons, "preferiti", navSections);
+
+    loadPreferiti();
+    loadRecensioni();
+    loadFile();
+});
+
+

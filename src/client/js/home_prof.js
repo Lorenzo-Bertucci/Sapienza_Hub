@@ -20,7 +20,7 @@ function reportReview(reviewId) {
       const formData = new FormData();
       formData.append('review_id', reviewId);
       
-      fetch('/src/server/home_prof/report_review.php', {
+      fetch('/src/server/php/home_prof/report_review.php', {
         method: 'POST',
         body: formData
       })
@@ -71,7 +71,7 @@ function createRec(id,utente,data,testo){
 function openRec(){
   const recensioniContainer = document.querySelector(".rec-esami");
   const prof_id=getUrlParameter('id');
-  fetch(`/src/server/home_prof/get_recensioni.php?id=${encodeURIComponent(prof_id)}`)
+  fetch(`/src/server/php/home_prof/get_recensioni.php?id=${encodeURIComponent(prof_id)}`)
   .then(response => {
     if (!response.ok) {
       throw new Error("Errore nel caricamento delle recensioni.");
@@ -105,7 +105,7 @@ function openRec(){
 function getInfo(){
   const infoDiv=document.querySelector(".desc");
   const prof_id=getUrlParameter('id');
-  fetch(`/src/server/professori/get_dati_prof.php?id=${encodeURIComponent(prof_id)}`)
+  fetch(`/src/server/php/professori/get_dati_prof.php?id=${encodeURIComponent(prof_id)}`)
   .then(response => {
         if (!response.ok) {
           throw new Error("Errore nel caricamento delle recensioni.");
@@ -133,6 +133,10 @@ function getInfo(){
               <strong>Link sito</strong>
           </a>
         </p>`;
+
+      const fotoImg = document.querySelector('.foto img');
+      fotoImg.src = (professore.foto && professore.foto.trim() !== "") ? professore.foto : 'assets/utente.png';
+
     }else{
       console.error("Errore nel caricamento dati: ", data.message);
       recensioniContainer.innerHTML = "<p class='errore'>Impossibile caricare le recensioni.<br><br>Controllare la connessione al database.<br> Non esiste</p>";
@@ -162,7 +166,7 @@ function loadEsami(){
   const id=getUrlParameter('id');
   const divEsame = document.querySelector(".esami");
 
-  fetch(`/src/server/home_prof/get_esami.php?id=${encodeURIComponent(id)}`)
+  fetch(`/src/server/php/home_prof/get_esami.php?id=${encodeURIComponent(id)}`)
   .then(response => {
     if (!response.ok) {
       throw new Error("Errore durante il caricamento degli esami.");
@@ -443,7 +447,7 @@ function inviaRecensione(event) {
       const prof_id = getUrlParameter('id');
       formData.append('prof_id', prof_id);
   
-      fetch('/src/server/home_prof/carica_recensione.php', {
+      fetch('/src/server/php/home_prof/carica_recensione.php', {
         method: 'POST',
         body: formData
       })

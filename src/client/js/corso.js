@@ -51,7 +51,7 @@ function createEsami(durata,esami) {
 function load_esami(codice,durata) {
     const esamiContainer = document.querySelector(".esami");
 
-    fetch(`/src/server/corso/get_esami.php?corso=${encodeURIComponent(codice)}`)
+    fetch(`/src/server/php/corso/get_esami.php?corso=${encodeURIComponent(codice)}`)
     .then(response => {
         if (!response.ok) {
             throw new Error("Errore durante il caricamento degli esami.");
@@ -82,7 +82,7 @@ function loadCorso(codice) {
     const info = document.querySelector(".info");
     const desc = document.querySelector(".desc");
 
-    fetch(`/src/server/corso/get_corso.php?corso=${encodeURIComponent(codice)}`)
+    fetch(`/src/server/php/corso/get_corso.php?corso=${encodeURIComponent(codice)}`)
     .then(response => {
         if (!response.ok) {
             throw new Error("Errore durante il caricamento dei dati.");
@@ -110,7 +110,7 @@ function loadCorso(codice) {
             document.getElementById("corso-nome").textContent = corso.nome;
             document.getElementById("corso-descrizione").textContent = corso.descrizione;
             // Dopo aver ottenuto i dati del corso, imposta lo sfondo del main
-            document.querySelector(".foto").style.backgroundImage = `url('assets/${corso.codice}.jpg')`;
+            document.querySelector(".foto").style.backgroundImage = `url('${corso.foto}')`;
             document.querySelector(".foto").style.backgroundRepeat = "no-repeat";
             document.querySelector(".foto").style.backgroundPosition = "center";
             document.querySelector(".foto").style.backgroundSize = "cover";
@@ -149,7 +149,7 @@ function favorite() {
     const corsoCodice = getUrlParameter("corso"); // Recupera il codice del corso dall'URL
     const corsoNome=document.getElementById("corso-nome").textContent
 
-    fetch(`/src/server/corso/toggle_favorite.php`, {
+    fetch(`/src/server/php/corso/toggle_favorite.php`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -172,7 +172,7 @@ function favorite() {
 
 // Funzione per controllare se il corso è nei preferiti
 function checkFavorite(corso){
-    fetch(`/src/server/corso/check_favorite.php?corso=${encodeURIComponent(corso)}`)
+    fetch(`/src/server/php/corso/check_favorite.php?corso=${encodeURIComponent(corso)}`)
     .then(response => response.json())
     .then(data => {
         if (data.success) {

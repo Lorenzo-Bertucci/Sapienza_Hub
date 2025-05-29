@@ -47,7 +47,7 @@ function loadCorsi(searchQuery) {
     const cardsContainer = document.querySelector(".content");
     const searchInput = document.getElementById("search-input");
 
-    fetch(`/src/server/corsi_di_laurea/get_corsi.php`)
+    fetch(`/src/server/php/corsi_di_laurea/get_corsi.php`)
         .then(response => {
             if (!response.ok) {
                 throw new Error("Errore durante il caricamento dei corsi.");

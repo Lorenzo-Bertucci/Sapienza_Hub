@@ -22,7 +22,7 @@ function inviaReg(event){
   }
 
   // Invia i dati al server tramite fetch
-  fetch('/src/server/auth/register.php', {
+  fetch('/src/server/php/auth/register.php', {
     method: 'POST',
     body: formData
   })
