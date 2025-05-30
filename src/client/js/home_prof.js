@@ -42,8 +42,56 @@ function reportReview(reviewId) {
   });
 }
 
+// Funzione per creare il pulsante per eliminare una recensione
+function createDeleteButtonRecensione(id){
+    const deleteButton = document.createElement("button");
+    deleteButton.innerHTML = `<i class="fa fa-trash" aria-hidden="true" style="font-size: 22px;"></i>`;
+    deleteButton.classList.add("delete-button");
+
+    deleteButton.addEventListener("click", (event) => {
+        event.stopPropagation(); // Impedisce il click sulla card
+
+        Swal.fire({
+            title: "Sei sicuro di voler eliminare la recensione?",
+            text: "Questa azione non può essere annullata",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "rgb(170, 33, 33)",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Sì, elimina",
+            cancelButtonText: "Annulla"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/src/server/php/home_prof/delete_recensione.php?id=${encodeURIComponent(id)}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Errore durante l'eliminazione della recensione.");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire("Eliminata!", "La recensione è stata eliminata", "success")
+                    .then(() => {
+                        openRec(); // Ricarica le recensioni
+                    });
+                    }else {
+                        Swal.fire("Errore", data.message, "error");
+                    }
+                })
+                .catch(error => {
+                    Swal.fire("Errore", "Si è verificato un errore durante l'eliminazione", "error");
+                    console.error("Errore:", error);
+                });
+            }
+        });
+    });
+
+    return deleteButton;
+}
+
 // Funzione per creare una card per una recensione
-function createRec(id,utente,data,testo){
+function createRec(id,utente,data,testo,foto,id_utente){
   const rec=document.createElement('div');
   rec.classList.add("rec");
   data = new Date(data).toLocaleDateString("it-IT", {
@@ -51,18 +99,51 @@ function createRec(id,utente,data,testo){
     month: "2-digit",
     year: "numeric"
   });
-  rec.innerHTML = `
-    <div>
-      <span class='utente'><strong>~${utente}</strong></span>
-      <span style="margin-left: 10px; font-size: smaller; font-style: italic;">
-        <small><i> ${data}</i></small>
-      </span>
-      <button class="report-btn" title="Segnala questa recensione" onclick="reportReview(${id})">
-          <i class="fa fa-exclamation-triangle"></i> Segnala
-      </button>
-    </div>
-    <p>${testo}</p>
+  const profileImage = foto && foto.trim() !== "" ? foto : '/src/client/assets/utente.png';
+  // Recupera l'user_id dalla sessione (localStorage)
+  let currentUserId = null;
+  try {
+    currentUserId = localStorage.getItem('user_id');
+  } catch (e) {
+    currentUserId = null;
+  }
+
+  const profileLink = `/src/client/html/utente.php?id=${encodeURIComponent(id_utente)}`;
+  const dashboardLink = `/src/client/html/dashboard.php`;
+
+  if (currentUserId && id_utente == currentUserId) {
+      rec.innerHTML = `
+      <div style="display:flex; align-items:center;">
+          <a href="${dashboardLink}" style="display:flex; align-items:center; text-decoration:none; color:inherit; padding:0px;">
+              <img src="${profileImage}" alt="Profilo di ${utente}" style="width:40px; height:40px; border-radius:50%; margin-right:10px;">
+              <span class='utente'><strong>${utente}</strong></span>
+          </a>
+          <span style="margin-left: 10px; font-size: smaller; font-style: italic;">
+              <small><i>${data}</i></small>
+          </span>
+      </div>
+      <p>${testo}</p>
   `;
+  const deleteButton = createDeleteButtonRecensione(id);
+  rec.appendChild(deleteButton);
+  }
+  else{
+      rec.innerHTML = `
+      <div style="display:flex; align-items:center;">
+          <a href="${profileLink}" style="display:flex; align-items:center; text-decoration:none; color:inherit; padding:0px;">
+              <img src="${profileImage}" alt="Profilo di ${utente}" style="width:40px; height:40px; border-radius:50%; margin-right:10px;">
+              <span class='utente'><strong>${utente}</strong></span>
+          </a>
+          <span style="margin-left: 10px; font-size: smaller; font-style: italic;">
+              <small><i>${data}</i></small>
+          </span>
+          <button class="report-btn" title="Segnala questa recensione" onclick="reportReview(${id})">
+              <i class="fa fa-exclamation-triangle"></i> Segnala
+          </button>
+      </div>
+      <p>${testo}</p>
+  `;
+  }
 
   return rec;
 }
@@ -87,7 +168,7 @@ function openRec(){
       recensioniContainer.appendChild(titolo);
 
       data.recensioni.forEach(recensione=>{
-        const rec=createRec(recensione.id,recensione.utente,recensione.dat,recensione.testo);
+        const rec=createRec(recensione.id,recensione.utente,recensione.dat,recensione.testo,recensione.foto,recensione.id_utente);
         recensioniContainer.appendChild(rec);
       });
     }else{

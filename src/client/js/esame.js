@@ -82,9 +82,105 @@ function reportReview(reviewId) {
   });
 }
 
+// Funzione per creare il pulsante per eliminare una recensione
+function createDeleteButtonRecensione(id){
+    const deleteButton = document.createElement("button");
+    deleteButton.innerHTML = `<i class="fa fa-trash" aria-hidden="true" style="font-size: 22px;"></i>`;
+    deleteButton.classList.add("delete-button");
+
+    deleteButton.addEventListener("click", (event) => {
+        event.stopPropagation(); // Impedisce il click sulla card
+
+        Swal.fire({
+            title: "Sei sicuro di voler eliminare la recensione?",
+            text: "Questa azione non può essere annullata",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "rgb(170, 33, 33)",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Sì, elimina",
+            cancelButtonText: "Annulla"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/src/server/php/esame/delete_recensione.php?id=${encodeURIComponent(id)}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Errore durante l'eliminazione della recensione.");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire("Eliminata!", "La recensione è stata eliminata", "success")
+                    .then(() => {
+                        openRec(); // Ricarica le recensioni
+                    });
+                    }else {
+                        Swal.fire("Errore", data.message, "error");
+                    }
+                })
+                .catch(error => {
+                    Swal.fire("Errore", "Si è verificato un errore durante l'eliminazione", "error");
+                    console.error("Errore:", error);
+                });
+            }
+        });
+    });
+
+    return deleteButton;
+}
+
+// Funzione per creare il pulsante per eliminare un file
+function createDeleteButtonFile(id){
+    const deleteButton = document.createElement("button");
+    deleteButton.innerHTML = `<i class="fa fa-trash" aria-hidden="true" style="font-size: 22px;"></i>`;
+    deleteButton.classList.add("delete-button");
+
+    deleteButton.addEventListener("click", (event) => {
+        event.stopPropagation(); // Impedisce il click sulla card
+
+        Swal.fire({
+            title: "Sei sicuro di voler eliminare il file?",
+            text: "Questa azione non può essere annullata",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "rgb(170, 33, 33)",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Sì, elimina",
+            cancelButtonText: "Annulla"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/src/server/php/esame/delete_file.php?id=${encodeURIComponent(id)}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Errore durante l'eliminazione del file");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire("Eliminato!", "Il file è stato eliminato", "success")
+                        .then(() => {
+                            openMat(); // Ricarica i file
+                        });
+                    } else {
+                        Swal.fire("Errore", data.message, "error");
+                    }
+                })
+                .catch(error => {
+                    Swal.fire("Errore", "Si è verificato un errore durante l'eliminazione.", "error");
+                    console.error("Errore:", error);
+                });
+            }
+        });
+    });
+
+    return deleteButton;
+}
+
 // Funzione per creare la card di una recensione
-function createRec(id,utente,data,testo){
-  const rec=document.createElement('div');
+function createRec(id, utente, data, testo, foto, id_utente) {
+  const rec = document.createElement('div');
   rec.classList.add("rec");
 
   data = new Date(data).toLocaleDateString("it-IT", {
@@ -93,20 +189,55 @@ function createRec(id,utente,data,testo){
     year: "numeric"
   });
 
-  rec.innerHTML = `
-      <div>
-        <span class='utente'><strong>~${utente}</strong></span>
-        <span style="margin-left: 10px; font-size: smaller; font-style: italic;">
-          <small><i>${data}</i></small>
-        </span>
-        <button class="report-btn" title="Segnala questa recensione" onclick="reportReview(${id})">
-          <i class="fa fa-exclamation-triangle"></i> Segnala
-        </button>
+  // Se il campo foto è vuoto, usa un'immagine di default
+  const profileImage = foto && foto.trim() !== "" ? foto : '/src/client/assets/utente.png';
+
+  // Recupera l'user_id dalla sessione (localStorage)
+  let currentUserId = null;
+  try {
+    currentUserId = localStorage.getItem('user_id');
+  } catch (e) {
+    currentUserId = null;
+  }
+
+  // Crea il link al profilo dell'utente
+  const profileLink = `/src/client/html/utente.php?id=${encodeURIComponent(id_utente)}`;
+  const dashboardLink = `/src/client/html/dashboard.php`;
+
+  if (currentUserId && id_utente == currentUserId) {
+    rec.innerHTML = `
+      <div style="display:flex; align-items:center;">
+          <a href="${dashboardLink}" style="display:flex; align-items:center; text-decoration:none; color:inherit; padding:0px;">
+              <img src="${profileImage}" alt="Profilo di ${utente}" style="width:40px; height:40px; border-radius:50%; margin-right:10px;">
+              <span class='utente'><strong>${utente}</strong></span>
+          </a>
+          <span style="margin-left: 10px; font-size: smaller; font-style: italic;">
+              <small><i>${data}</i></small>
+          </span>
       </div>
       <p>${testo}</p>
     `;
-    return rec;
-  
+    const deleteButton = createDeleteButtonRecensione(id);
+    rec.appendChild(deleteButton);
+  } else {
+    rec.innerHTML = `
+      <div style="display:flex; align-items:center;">
+          <a href="${profileLink}" style="display:flex; align-items:center; text-decoration:none; color:inherit; padding:0px;">
+              <img src="${profileImage}" alt="Profilo di ${utente}" style="width:40px; height:40px; border-radius:50%; margin-right:10px;">
+              <span class='utente'><strong>${utente}</strong></span>
+          </a>
+          <span style="margin-left: 10px; font-size: smaller; font-style: italic;">
+              <small><i>${data}</i></small>
+          </span>
+          <button class="report-btn" title="Segnala questa recensione" onclick="reportReview(${id})">
+              <i class="fa fa-exclamation-triangle"></i> Segnala
+          </button>
+      </div>
+      <p>${testo}</p>
+    `;
+  }
+
+  return rec;
 }
 
 // Funzione per caricare le recensioni
@@ -129,7 +260,7 @@ function openRec(){
       recensioniContainer.appendChild(titolo);
 
       data.recensioni.forEach(recensione=>{
-        const rec=createRec(recensione.id,recensione.utente,recensione.dat,recensione.testo);
+        const rec=createRec(recensione.id,recensione.utente,recensione.dat,recensione.testo,recensione.foto,recensione.id_utente);
         recensioniContainer.appendChild(rec); 
       });
       }else{
@@ -181,25 +312,60 @@ function reportMaterial(materialId) {
 }
 
 // Funzione per creare la card di un materiale didattico
-function createMat(esame, utente, data, nomefile, id) {
+function createMat(esame, utente, data, nomefile, id, foto, id_utente) {
   const nomedata = document.createElement('div');
   nomedata.classList.add("materiale-card");
-  nomedata.innerHTML = `<div>
-    <span class='utente'><strong>~${utente}</strong></span>
-    <span style="margin-left: 10px; font-size: smaller; font-style: italic;">
-      <small><i> ${data}</i></small>
-    </span>
-    <button class="report-btn" title="Segnala questo materiale" onclick="reportMaterial(${id})">
-      <i class="fa fa-exclamation-triangle"></i> Segnala
-    </button>
-  </div>`;
+  const profileImage = foto && foto.trim() !== "" ? foto : '/src/client/assets/utente.png';
+
+  // Recupera l'user_id dalla sessione (localStorage)
+  let currentUserId = null;
+  try {
+    currentUserId = localStorage.getItem('user_id');
+  } catch (e) {
+    currentUserId = null;
+  }
+  
+  // Crea il link al profilo dell'utente
+  const profileLink = `/src/client/html/utente.php?id=${encodeURIComponent(id_utente)}`;
+  const dashboardLink = `/src/client/html/dashboard.php`;
+
+  if (currentUserId && id_utente == currentUserId) {
+    nomedata.innerHTML = `
+      <div style="display:flex; align-items:center;">
+          <a href="${dashboardLink}" style="display:flex; align-items:center; text-decoration:none; color:inherit; padding:0px;">
+              <img src="${profileImage}" alt="Profilo di ${utente}" style="width:40px; height:40px; border-radius:50%; margin-right:10px;">
+              <span class='utente'><strong>${utente}</strong></span>
+          </a>
+          <span style="margin-left: 10px; font-size: smaller; font-style: italic;">
+              <small><i>${data}</i></small>
+          </span>
+      </div>`;
+    const deleteButton = createDeleteButtonFile(id);
+    nomedata.appendChild(deleteButton);
+  } else {
+    nomedata.innerHTML = `
+      <div style="display:flex; align-items:center;">
+          <a href="${profileLink}" style="display:flex; align-items:center; text-decoration:none; color:inherit; padding:0px;">
+              <img src="${profileImage}" alt="Profilo di ${utente}" style="width:40px; height:40px; border-radius:50%; margin-right:10px;">
+              <span class='utente'><strong>${utente}</strong></span>
+          </a>
+          <span style="margin-left: 10px; font-size: smaller; font-style: italic;">
+              <small><i>${data}</i></small>
+          </span>
+          <button class="report-btn" title="Segnala questo materiale" onclick="reportMaterial(${id})">
+              <i class="fa fa-exclamation-triangle"></i> Segnala
+          </button>
+      </div>`;
+  }
+  
+  // Crea il link per scaricare (o visualizzare) il materiale
   const link = document.createElement('a');
   link.href = `/src/server/php/esame/download_materiale.php?esame=${encodeURIComponent(esame)}&nomefile=${encodeURIComponent(nomefile)}`;
   link.textContent = nomefile;
   link.style.display = 'block';
   link.target = '_blank';
   nomedata.appendChild(link);
-
+          
   return nomedata;
 }
 
@@ -228,7 +394,7 @@ function openMat() {
 
         data.materiale.forEach(didattico => {
           // Assicurati che l'oggetto abbia un id unico per il materiale
-          const card = createMat(esame, didattico.utente, didattico.dat, didattico.nomefile, didattico.id);
+          const card = createMat(esame, didattico.utente, didattico.dat, didattico.nomefile, didattico.id,didattico.foto,didattico.id_utente);
           mat.appendChild(card);
         });
       } else {
@@ -660,7 +826,7 @@ function setupButtonGroup(buttons, defaultString, sections) {
 
   // Imposta il bottone attivo e la sezione visibile in base all'hash
   buttons.forEach(btn => {
-    const btnText = btn.textContent.toLowerCase();
+    const btnText = btn.textContent.trim().toLowerCase();
     if (buttonToSectionMap[btnText] === currentHash) {
       btn.classList.add('active');
     } else {

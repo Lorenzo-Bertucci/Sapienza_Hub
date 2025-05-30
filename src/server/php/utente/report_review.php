@@ -13,9 +13,19 @@ if(!$conn){
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['review_id']) && is_numeric($_POST['review_id'])) {
         $review_id = intval($_POST['review_id']);
+        $tipo=pg_escape_string($conn, $_POST['tipo']);
+        if($tipo === 'esami') {
+            $update_query = "UPDATE recensioni_esami SET segnalazioni = segnalazioni + 1 WHERE id = $1";
+        }
+        elseif($tipo === 'professori') {
+            $update_query = "UPDATE recensioni_professori SET segnalazioni = segnalazioni + 1 WHERE id = $1";
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Tipo di recensione non valido.']);
+            exit;
+        }
 
-        // Aggiorna il campo segnalazioni nella tabella recensioni_esami
-        $update_query = "UPDATE recensioni_esami SET segnalazioni = segnalazioni + 1 WHERE id = $1";
+        
+        
         $result = pg_query_params($conn, $update_query, array($review_id));
         if ($result) {
             echo json_encode(['success' => true, 'message' => 'Grazie per il tuo contributo']);

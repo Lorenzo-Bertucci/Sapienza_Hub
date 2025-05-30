@@ -6,12 +6,12 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SapienzHub</title>
+    <title>Utente - SapienzHub</title>
     <base href="/src/client/">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/pagina_prof.css">
+    <link rel="stylesheet" href="css/utente.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="js/home_prof.js"></script>
+    <script src="js/utente.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
@@ -46,53 +46,39 @@ session_start();
                 <?php endif; ?>
             </div>
         </div>
-
         <div class="main">
             <div class="foto">  
-                <img alt="Foto professore">
+                <img src="assets/utente.png" alt="Foto utente">
             </div>
 
-            <div class="desc">
-                
+            <div class="info">
             </div>
-            <nav class="nav-bar">
-                <button class="bottone"><i class="fa-solid fa-book-open"></i> <strong>Esami</strong></button>
-                <button class="bottone"><i class="fa fa-comment"></i> <strong>Recensioni</strong></button>
-            </nav>
         </div>
+
         <div class="content">
-            <div class="esami">
+            <div class="scheda">
+                <h1>Recensioni</h1>
+                <div class="recensioni" >
+                    <div class="rec-esami">
 
-            </div>
-            <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
-            <div class="recensioni">
-                <div class="form-container">
-                    <h3>Aggiungi la tua recensione</h3>
-                    <form class="recensione-form" onsubmit="inviaRecensione(event)">
-                        <textarea name="testo" placeholder="Scrivi la tua recensione" required></textarea>
-                        <button>Invia</button>
-                    </form>
-                </div>
+                    </div>
+                    <div class="rec-professori">
                     
-                <div class="rec-esami">
 
-                </div>
-            </div>
-            <?php else: ?>
-            <div class="recensioni">
-                <div class="mat" style="height:100%;">
-                    <h1> Devi effettuare il login per vedere questa sezione</h1>
+                    </div>
                 </div>
             </div>
 
-            <?php endif; ?>
+            <div class="scheda">
+                <h1>Materiale Didattico</h1>
+                <div class="file" >
+                    
 
-            
-        </div>
-        <div class="footer">
-            <p>&copy; 2025 SapienzHub. Tutti i diritti riservati.</p>
+                </div>
+            </div>
         </div>
     </div>
 
+        
 </body>
 </html>

@@ -20,6 +20,10 @@ function inviaLogin(event){
     })
     .then(data => {
         if (data.success) {
+            console.log(data.user_id);
+            
+            localStorage.setItem("user_id", data.user_id);
+
             Swal.fire({
                 title: 'Login effettuato con successo!',
                 text: 'A breve verrai reindirizzato alla tua Dashboard',

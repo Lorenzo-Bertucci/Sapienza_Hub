@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding:0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #f9f9f9; 
+}
+
+.container {
+    display: grid;
+    max-width: 100%;
+    min-height: 100vh; 
+    grid-template-rows: auto auto 1fr; 
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "header"
+        "main"
+        "content";
+    background-color: white; 
+    color: black;
+    overflow-y: auto; 
+    -ms-overflow-style: none;  
+    scrollbar-width: none;    
+}
+
+/*nasconde la barra di scorrimento*/
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.header{
+    grid-area: "header";
+    background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
+    color: white;
+    display: flex;
+    padding: 20px 20px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.h-left{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.h-left h1 {
+    font-size: 28px;
+    font-weight: 600;
+
+}
+.h-left a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    display: inline-block;           
+    padding: 12px 20px;              
+    font-size: 16px;                 
+    border-radius: 25px;            
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: rgb(170, 33, 33);
+    color: white;
+    transform: scale(1.05);
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons button {
+    padding: 12px 24px;              
+    font-size: 16px;                 
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn {
+    background-color: white;
+    color: rgb(170, 33, 33);
+    border: 1px solid rgb(170, 33, 33);
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    
+}
+
+.login-btn:hover {
+    background-color: rgb(170, 33, 33);
+    color: white;
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.register-btn {
+    background-color: rgb(170, 33, 33);
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.register-btn:hover {
+    background-color: rgb(150, 30, 30);
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.profile-container:hover .profile-icon{
+    transform: scale(1.1); /* Effetto di ingrandimento al passaggio del mouse */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Ombra più pronunciata */
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-icon {
+    width: 80%;      /* L'immagine riempie tutto il bottone */
+    height: 80%;     /* L'immagine riempie tutto il bottone */
+    border-radius: 50%;
+    object-fit: cover; /* Ritaglia l'immagine senza deformarla */
+    display: block; /* Adatta l'immagine senza distorcerla */
+    margin: 0px;
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Contenitore del menu a tendina */
+.profile-container {
+    position: relative; /* Necessario per posizionare il menu a tendina */
+    display: inline-block;
+    align-content: center;
+    justify-content: center;
+    width: 80px; /* Aumenta la larghezza del contenitore */
+    height: 80px; /* Aumenta l'altezza del contenitore */
+    cursor: pointer;
+}
+
+/* Menu a tendina */
+.dropdown-menu {
+    display: none; /* Nascondi il menu di default */
+    position: absolute;
+    top: 80px; /* Posiziona il menu sotto il bottone */
+    right: 30px;
+    background-color: white;
+    border: 1px solid rgba(170, 33, 33, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 150px;
+    padding: 10px 0;
+}
+
+/* Pulsanti del menu */
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    text-align: left;
+    background-color: white;
+    color: rgba(170, 33, 33, 1);
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(170, 33, 33, 0.1);
+    color: rgba(170, 33, 33, 1);
+}
+
+/* Mostra il menu a tendina quando si passa sopra il contenitore */
+.profile-container:hover .dropdown-menu {
+    display: block;
+}
+
+.main {
+    grid-area: main;
+    padding: 0;
+    margin-top: 30px;
+    margin-bottom: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.foto {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 80px;
+    margin-right: 40px;
+    background: #fff;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+}
+
+.foto img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.info h1{
+    font-size: 45px;
+    font-weight: 600;
+    color: #222;
+    margin: 0;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.info p{
+    text-align: left;
+    font-size: 20px;
+    margin-left: 20px;
+    width: 100%;
+}
+
+.content {
+    grid-area: content;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.scheda{
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+    margin: 0 auto 0px;
+    margin-bottom: 40px;
+    border: 3px solid #aa2121; /* Bordo rosso sottile */
+    border-radius: 35px; /* Maggiore arrotondamento */
+    width: 90%;
+    height: 600px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12); /* Ombra leggermente più ampia */
+}
+
+.scheda h1 {
+    margin: 0px;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.scheda h3 {
+    margin: 0px;
+    font-size: 25px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    line-height: 1.2;
+    font-weight: 500;
+    text-align: left;
+}
+
+.file p, .recensioni p {
+    margin: 0px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.recensioni, .file {
+    
+    background-color: white;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #e0b3b3 #ffffff;
+    height: 100%;
+    width: 100%;
+}
+
+.rec,.mat{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-items: flex-start; 
+    width: 80%;
+    margin: 15px auto;
+    
+}
+
+.rec:hover,.mat:hover {
+    transition: transform 0.3s ease; /* Transizione fluida */
+    cursor: pointer;
+}
+
+.rec h2, .mat h2 {
+    margin: 0px;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    
+}
+
+.rec h3,   .mat h3 {
+    margin: 0px;
+    font-size: 20px;
+    font-weight: 500; 
+}
+
+
+.rec p, .mat p {
+    padding-bottom: 10px;
+    font-size: 20px;
+    line-height: 1.3;
+    border-bottom: 1px solid darkgray;
+    width: 100%;
+    text-align: justify;
+}
+
+.report-btn {
+  position: absolute;
+  top:  0px;
+  right: 0px;
+  background-color: transparent;
+  border: 1px solid rgba(192,54,57,1);
+  color: rgba(192,54,57,1); 
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.2s;
+  display: none;
+  align-items: center;
+  gap: 5px;
+}
+
+.rec:hover .report-btn, .mat:hover .report-btn {
+    display: block;
+}
+
+.report-btn:hover {
+  background-color: rgba(192,54,57,1);
+  color: white;
+  transform: scale(1.05);
+}

@@ -510,17 +510,20 @@ nav ul li a:hover {
     background: none;
     border: none;
     font-size: 32px;
-    color: #aaa;
+    color: #fff; /* Cambiato da #aaa a bianco per visibilità su sfondo nero */
+    text-shadow: 0 1px 4px rgba(0,0,0,0.7); /* Aggiunge un'ombra per maggiore contrasto */
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .favorite-btn:hover {
     color: #ffcc00; /* Colore giallo per l'hover */
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8); /* Ombra più intensa in hover */
 }
 
 .favorite-btn.active {
     color: #ffcc00; /* Colore giallo quando attivo */
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
 
 

@@ -61,6 +61,6 @@ if (!empty($tuple['foto'])) {
 pg_free_result($result);
 pg_close($conn);
 
-echo json_encode(['success' => true, 'message' => 'Login effettuato con successo.', 'gestione' => false]);
-exit;
+echo json_encode(['success' => true, 'message' => 'Login effettuato con successo.', 'gestione' => false,'user_id' => $_SESSION['user_id']]);
 ?>
+
