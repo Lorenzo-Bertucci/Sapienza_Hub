@@ -300,6 +300,12 @@ nav ul li a:hover {
     color: white;
 }
 
+.card:active {
+    border-color: rgb(170, 33, 33);
+    background-color: #ffeaea;
+    color: rgb(170, 33, 33);
+}
+
 .card h3 {
     margin: 0 0 0px;
     font-size: 20px; 
@@ -352,6 +358,10 @@ nav ul li a:hover {
     font-weight: 800;
     margin: 0;
     z-index: 2;     /* sopra l'overlay */
+}
+
+.navigation-mobile{
+    display:none;
 }
 
 
@@ -429,13 +439,27 @@ nav ul li a:hover {
 /*sotto i 480px */
 @media (max-width: 480px) {
 
-    nav ul{
-        padding: 5px;
-        flex-direction: column;
+    .container{
+        grid-template-rows: auto auto auto 1fr auto; /* Righe che si adattano automaticamente al contenuto */
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "foto"
+            "search-bar"
+            "content"
+            "navigation-mobile";
     }
 
-    nav ul li a {
-        font-size: 10px;
+    .content{
+        padding-bottom: 70px;
+    }
+
+    .foto{
+        height: 200px;
+    }
+
+    nav{
+        display: none;
     }
 
     .h-left{
@@ -493,6 +517,41 @@ nav ul li a:hover {
     .search-bar img{
         width: 15px;
         height: 15px;
+    }
+
+    .navigation-mobile{
+        grid-area: navigation-mobile;
+        width: 100%;
+        height: 70px;
+        position:fixed;
+        display: block;
+        bottom: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-top: 2px solid darkgray;
+        background-color: white;
+        border-radius: 10px;
+
+    }
+
+    .item{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .navigation-mobile .item i{
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .navigation-mobile .item a{
+        text-decoration: none;
+        padding: 5px 10px;
+        font-size: 14px;
+        color: rgba(170, 33, 33, 1);
     }
 
 

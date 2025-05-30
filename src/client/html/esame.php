@@ -129,6 +129,12 @@ session_start();
             
 
         </div>
+        <div class="navigation-mobile">
+            <div class="item"><i class="fa fa-home"></i><a href="html/index.php">Home</a></div>
+            <div class="item"><i class="fa fa-book"></i><a href="html/corsi.php">Corsi</a></div>
+            <div class="item"><i class="fa fa-users"></i><a href="html/professori.php">Professori</a></div>
+            <div class="item"><i class="fa fa-user"></i><a href="html/dashboard.php">Dashboard</a></div>
+        </div>
     </div>
 </body>
 </html>
