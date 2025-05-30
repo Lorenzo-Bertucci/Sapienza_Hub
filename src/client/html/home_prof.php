@@ -25,7 +25,6 @@ session_start();
                     <ul>
                         <li><a href="html/corsi.php">Corsi</a></li>
                         <li><a href="html/professori.php">Professori</a></li>
-                        <li><a>Contatti</a></li>
                     </ul>
                 </nav>
             </div>
@@ -48,7 +47,7 @@ session_start();
         </div>
 
         <div class="main">
-            <div class="foto">  
+            <div class="foto">
                 <img src="assets/utente.png" alt="Ingegneria Informatica e Automatica">
             </div>
 
@@ -89,8 +88,11 @@ session_start();
 
             
         </div>
-        <div class="footer">
-            <p>&copy; 2025 SapienzHub. Tutti i diritti riservati.</p>
+        <div class="navigation-mobile">
+            <div class="item"><i class="fa fa-home"></i><a href="html/index.php">Home</a></div>
+            <div class="item"><i class="fa fa-book"></i><a href="html/corsi.php">Corsi</a></div>
+            <div class="item"><i class="fa fa-users"></i><a href="html/professori.php">Professori</a></div>
+            <div class="item"><i class="fa fa-user"></i><a href="html/dashboard.php">Dashboard</a></div>
         </div>
     </div>
 

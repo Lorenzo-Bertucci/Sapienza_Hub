@@ -9,6 +9,7 @@ session_start();
     <title>Professori - Sapienza Hub</title>
     <base href="/src/client/">
     <link rel="stylesheet" href="css/professori.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <script src="js/professori.js"></script>
 </head>
@@ -53,6 +54,12 @@ session_start();
         </div>
         <div class="content">
             
+        </div>
+        <div class="navigation-mobile">
+            <div class="item"><i class="fa fa-home"></i><a href="html/index.php">Home</a></div>
+            <div class="item"><i class="fa fa-book"></i><a href="html/corsi.php">Corsi</a></div>
+            <div class="item"><i class="fa fa-users"></i><a href="html/professori.php">Professori</a></div>
+            <div class="item"><i class="fa fa-user"></i><a href="html/dashboard.php">Dashboard</a></div>
         </div>
     </div>
     

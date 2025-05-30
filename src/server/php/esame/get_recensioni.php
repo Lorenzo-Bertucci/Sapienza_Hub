@@ -10,7 +10,7 @@ if (!$conn) {
 
 // Sanitizza il codice dell'esame per prevenire SQL injection
 $esame = pg_escape_string($conn, $_GET['esame']);
-$query="SELECT r.id,u.nome AS utente, testo, dat FROM recensioni_esami r JOIN utenti u ON r.id_utente=u.id WHERE r.codice=$1 ORDER BY dat DESC DESC";
+$query="SELECT r.id,u.nome AS utente, testo, dat FROM recensioni_esami r JOIN utenti u ON r.id_utente=u.id WHERE r.codice=$1 ORDER BY dat DESC";
 $result = pg_query_params($conn, $query, array($esame));
 
 if (!$result) {

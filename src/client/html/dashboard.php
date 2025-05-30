@@ -37,7 +37,6 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
                     <ul>
                         <li><a href="html/corsi.php">Corsi</a></li>
                         <li><a href="html/professori.php">Professori</a></li>
-                        <li><a>Contatti</a></li>
                     </ul>
                 </nav>
             </div>
@@ -106,10 +105,7 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
                 </div>
             </div>
         </div>
-        
-        <div class="footer">
-            <p>&copy; 2025 SapienzHub. Tutti i diritti riservati.</p>
-        </div>
+
     </div>
 </body>
 </html>

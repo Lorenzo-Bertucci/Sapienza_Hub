@@ -274,7 +274,6 @@ nav ul li a:hover {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    gap: 30px; /* Spazio tra aside e titolo */
     border-radius: 0; /* Nessun bordo tondeggiante */
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     padding-left: 30px; /* Spazio a sinistra per non attaccare aside */
@@ -298,7 +297,7 @@ nav ul li a:hover {
 .aside {
     grid-area: aside;
     background-color: #fff;
-    width: fit-content;
+    width: 90%;
     max-height: fit-content;
     border-radius: 14px;
     margin: 10px auto 10px;
@@ -307,7 +306,6 @@ nav ul li a:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
     border: 1.5px solid #eee;
     transition: box-shadow 0.2s;
     margin-left: 20px;
@@ -336,7 +334,6 @@ nav ul li a:hover {
     grid-area: titolo;
     align-self: flex-start;
     z-index: 2;
-    padding-left: 10px;
     padding-top: 10px;
     position: relative;
     display: flex ;
@@ -384,7 +381,7 @@ nav ul li a:hover {
     flex-direction: column; /* Dispone gli elementi in verticale */
     justify-content: center;
     align-items: left;
-    margin: 0 auto 0; 
+    margin: 0 auto 20px; 
     border-radius: 15px;
     width: 85%;
     height: fit-content;
@@ -523,6 +520,9 @@ nav ul li a:hover {
     color: #ffcc00; /* Colore giallo quando attivo */
 }
 
+.navigation-mobile{
+    display:none;
+}
 
 @media (max-width: 768px) {
 
@@ -594,13 +594,23 @@ nav ul li a:hover {
 /*sotto i 480px */
 @media (max-width: 480px) {
     
-    nav ul{
-        padding: 5px;
-        flex-direction: column;
+    .container{
+        grid-template-rows: auto auto auto 1fr auto; /* Righe che si adattano automaticamente al contenuto */
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "foto"
+            "main"
+            "content"
+            "navigation-mobile";
     }
 
-    nav ul li a {
-        font-size: 10px;
+    .content{
+        padding-bottom: 70px;
+    }
+
+    nav{
+        display: none;
     }
 
     .h-left{
@@ -661,6 +671,41 @@ nav ul li a:hover {
     }
     .esami h2{
         font-size: 15px;
+    }
+
+    .navigation-mobile{
+        grid-area: navigation-mobile;
+        width: 100%;
+        height: 70px;
+        position:fixed;
+        display: block;
+        bottom: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-top: 2px solid darkgray;
+        background-color: white;
+        border-radius: 10px;
+
+    }
+
+    .item{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .navigation-mobile .item i{
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .navigation-mobile .item a{
+        text-decoration: none;
+        padding: 5px 10px;
+        font-size: 14px;
+        color: rgba(170, 33, 33, 1);
     }
 
 }
