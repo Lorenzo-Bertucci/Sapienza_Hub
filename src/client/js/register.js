@@ -2,9 +2,14 @@
 function inviaReg(event){
   event.preventDefault(); // Previene il comportamento predefinito del form
 
+  const selectElem = document.getElementById("corso");
+  console.log("Valore select:", selectElem.value);
+
   // Recupera i dati dal form
   const form=document.getElementById("registerForm");
   const formData=new FormData(form);
+
+  console.log("CORSO:" ,formData.get("inputCorso"));
 
   // Controlla il formato dell'email
   const email = formData.get('inputEmail');
@@ -54,6 +59,33 @@ function inviaReg(event){
   });
 }
 
+// Funzione per recuperare i corsi dal server e popolare il select
+function getCorsi(){
+  fetch('/src/server/php/auth/get_corsi.php')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Errore nel caricamento dei corsi");
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            const corsoSelect = document.getElementById("corso");
+            data.corsi.forEach(corso => {
+                const opt = document.createElement("option");
+                opt.value = corso.codice;
+                opt.textContent = corso.nome;
+                corsoSelect.appendChild(opt);
+            });
+        } else {
+            console.error("Impossibile recuperare i corsi:", data.message);
+        }
+    })
+    .catch(error => {
+        console.error("Errore:", error);
+    });
+}
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const input = document.getElementById("profilePic");
@@ -84,4 +116,6 @@ document.addEventListener("DOMContentLoaded", function() {
     preview.onerror = function() {
         preview.src = defaultImg;
     };
+
+    getCorsi();
 });

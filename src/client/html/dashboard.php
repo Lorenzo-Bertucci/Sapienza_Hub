@@ -12,6 +12,7 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
 $user_email = $_SESSION['user_email'] ?? 'Email non disponibile';
 $user_nome = $_SESSION['user_nome'] ?? 'Nome non disponibile';
 $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
+$user_studia = $_SESSION['studia'] ?? 'Corso non disponibile';
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -53,6 +54,7 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
                     <strong>Nome:</strong> <?php echo htmlspecialchars($user_nome); ?><br>
                     <strong>Cognome:</strong> <?php echo htmlspecialchars($user_cognome); ?><br>
                     <strong>Email:</strong> <?php echo htmlspecialchars($user_email); ?><br>                   
+                    <strong>Corso di laurea:</strong> <?php echo htmlspecialchars($user_studia); ?><br>
                 </p>
             </div>
             <nav class="nav-bar">

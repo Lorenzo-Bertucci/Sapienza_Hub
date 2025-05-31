@@ -83,7 +83,7 @@ body {
     transform: scale(1.05);
 }
 
-.login-form input {
+.login-form input{
     flex: 1;
     width: 80%;
     padding: 20px;
@@ -93,6 +93,31 @@ body {
     background-color: white;
     margin-bottom: 10px;
 }
+
+.login-form select {
+    width: 80%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: 2px solid gainsboro;
+    outline: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23c03639' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(192,54,57,0.06);
+}
+
+.login-form select:focus {
+    border-color: #951e1e;
+    box-shadow: 0 0 0 2px rgba(192,54,57,0.15);
+}
+
 
 .content a{
     color:rgb(170, 33, 33);
@@ -177,14 +202,4 @@ body {
     .login-form .login-btn{
         font-size: 14px;
     }
-
-    .login-form input{
-        font-size: 12px;
-        padding:15px;
-    }
-
-    label span{
-        font-size: 14px;
-    }
-
 }
