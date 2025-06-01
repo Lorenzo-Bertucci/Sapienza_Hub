@@ -1,4 +1,4 @@
-<?php
+src/server/php/utente/report_review.php<?php
 header('Content-Type: application/json');
 session_start();
 

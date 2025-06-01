@@ -21,6 +21,7 @@ if ($tuple = pg_fetch_array($result, null, PGSQL_ASSOC)) {
     $nome = pg_escape_string($conn, $_POST['inputNome']) . ' ' . pg_escape_string($conn, $_POST['inputCognome']);
     $password = password_hash($_POST['inputPassword'], PASSWORD_DEFAULT);
     $img_profilo = null;
+    $studia=pg_escape_string($conn, $_POST['inputCorso']);
     
     // Controlla se è stata caricata un'immagine
     if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] === UPLOAD_ERR_OK) {
@@ -41,8 +42,8 @@ if ($tuple = pg_fetch_array($result, null, PGSQL_ASSOC)) {
         }
     }
     
-    $q2 = "INSERT INTO utenti (email, nome, password, foto) VALUES ($1, $2, $3, $4)";
-    $result = pg_query_params($conn, $q2, array($email, $nome, $password, $img_profilo));
+    $q2 = "INSERT INTO utenti (email, nome, password, foto,studia) VALUES ($1, $2, $3, $4, $5)";
+    $result = pg_query_params($conn, $q2, array($email, $nome, $password, $img_profilo, $studia));
 
     if (!$result) {
         echo json_encode(['success' => false, 'message' => 'Errore durante la registrazione.']);

@@ -210,7 +210,7 @@ nav ul li a:hover {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    width: 150px;
+    width: 200px;
     padding: 10px 0;
 }
 
@@ -598,10 +598,10 @@ nav ul li a:hover {
 }
 
 /*sotto i 480px */
-@media (max-width: 480px) {
+@media (max-width: 430px){
     
     .container{
-        grid-template-rows: auto auto auto 1fr auto; /* Righe che si adattano automaticamente al contenuto */
+        grid-template-rows: auto auto auto 1fr auto;
         grid-template-columns: 1fr;
         grid-template-areas:
             "header"

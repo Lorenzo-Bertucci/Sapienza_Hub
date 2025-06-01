@@ -14,7 +14,7 @@ if (!isset($_GET['id']) ) {
 $id = pg_escape_string($conn, $_GET['id']);
 
 // Query per recuperare le informazioni del professore
-$query = "SELECT * FROM utenti WHERE id = $1";
+$query = "SELECT u.nome,u.foto,u.data_registrazione,c.nome AS corso FROM utenti u JOIN corsi c ON c.codice=u.studia WHERE id = $1";
 $result = pg_query_params($conn, $query, array($id));
 
 if (!$result || pg_num_rows($result) === 0) {

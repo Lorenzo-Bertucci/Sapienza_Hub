@@ -35,8 +35,16 @@ session_start();
                         <img src="<?php echo isset($_SESSION['profile_img']) ? $_SESSION['profile_img'] : 'assets/utente.png'; ?>" class="profile-icon" onclick="window.location.href='html/dashboard.php'">
     
                         <div class="dropdown-menu">
-                            <a href="html/dashboard.php" style="text-decoration: none;"><button class="dropdown-item">Dashboard</button></a>
-                            <a href="../server/php/auth/logout.php"><button class="dropdown-item">Logout</button></a>
+                            <a href="html/dashboard.php" style="text-decoration: none; ">
+                                <button class="dropdown-item">
+                                    <i class="fa-solid fa-house" style="margin-right: 8px;"></i>Dashboard
+                                </button>
+                            </a>
+                            <a href="../server/php/auth/logout.php" style="text-decoration: underline; text-decoration-color: rgb(170, 33, 33);">
+                                <button class="dropdown-item">
+                                    <i class="fa-solid fa-right-from-bracket" style="margin-right: 8px;"></i>Logout
+                                </button>
+                            </a>
                         </div>
                     </div>
                 <?php else: ?>

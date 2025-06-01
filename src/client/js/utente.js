@@ -204,20 +204,21 @@ function getInfo(){
       document.title = `${utente.nome} - SapienzHub`;
       infoDiv.innerHTML = `
         <h1>${utente.nome}</h1>
-        <p><strong>Data di registrazione:</strong> ${utente.data_registrazione ? new Date(utente.data_registrazione).toLocaleDateString("it-IT") : 'Non disponibile'}</p>
-      `;
+        <p><strong>•Data di registrazione:</strong> ${utente.data_registrazione ? new Date(utente.data_registrazione).toLocaleDateString("it-IT") : 'Non disponibile'}</p>
+        <p><strong>•Corso di laurea:</strong> ${utente.corso || 'Non disponibile'}</p>    
+        `;
 
       const fotoImg = document.querySelector('.foto img');
       fotoImg.src = (utente.foto && utente.foto.trim() !== "") ? utente.foto : 'assets/utente.png';
 
     }else{
       console.error("Errore nel caricamento dati: ", data.message);
-      recensioniContainer.innerHTML = "<p class='errore'>Impossibile caricare le informazioni.<br><br>Controllare la connessione al database.<br> Non esiste</p>";
+      infoDiv.innerHTML = "<p class='errore'>Impossibile caricare le informazioni.<br><br>Controllare la connessione al database.<br> Non esiste</p>";
     }
   })
   .catch(error => {
     console.error("Errore:", error);
-    recensioniContainer.innerHTML = "<p class='errore'>Impossibile caricare le informazioni.<br><br>Controllare la connessione.</p>";
+    infoDiv.innerHTML = "<p class='errore'>Impossibile caricare le informazioni.<br><br>Controllare la connessione.</p>";
   });
 }
 

@@ -28,7 +28,7 @@ if ($utente) {
 
 
 // Controlla se l'email esiste
-$q1 = "SELECT * FROM utenti WHERE email=$1";
+$q1 = "SELECT u.id, u.nome, c.nome AS corso,u.foto,u.password FROM utenti u JOIN corsi c ON u.studia=c.codice WHERE email=$1";
 $result = pg_query_params($conn, $q1, array($email));
 $tuple = pg_fetch_array($result, null, PGSQL_ASSOC);
 if (!$tuple) {
@@ -49,6 +49,7 @@ $_SESSION['user_email'] = $email;
 list($nome, $cognome) = explode(' ', $tuple['nome'], 2);
 $_SESSION['user_nome'] = $nome;
 $_SESSION['user_cognome'] = $cognome;
+$_SESSION['studia'] = $tuple['corso'];
 
 // Salva l'immagine profilo in sessione (base64 se presente, altrimenti percorso default)
 if (!empty($tuple['foto'])) {

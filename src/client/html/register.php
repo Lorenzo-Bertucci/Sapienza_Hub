@@ -1,9 +1,8 @@
 <?php
 session_start();
 
-// Controlla se l'utente è loggato
+// Se l'utente è già loggato, reindirizza altrove
 if (isset($_SESSION['logged_in'])) {
-    // Reindirizza alla pagina di login se è loggato
     header('Location: dashboard.php');
     exit;
 }
@@ -33,7 +32,10 @@ if (isset($_SESSION['logged_in'])) {
                 <br>
                 <input type="password" id="password" name="inputPassword" placeholder="Inserisci la tua password" required>
                 <br>
-                
+                <select id="corso" name="inputCorso" required>
+                    <option value="">Seleziona il tuo corso di laurea</option>
+                </select>
+                <br>
                 <div class="profile-row">
                     <label for="profilePic" class="profile-label">
                         <span>Imposta la tua immagine profilo</span>
