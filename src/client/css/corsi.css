@@ -400,7 +400,7 @@ nav ul li a:hover {
         color: white;
         border: none;
         transition: transform 0.3s ease, background-color 0.3s ease;
-        text-indent: -9999px; /* DA SISTEMARE */
+        text-indent: -9999px; 
     }
 
     .login-btn:hover {
@@ -554,16 +554,23 @@ nav ul li a:hover {
         align-content: center;
     }
 
-    .navigation-mobile .item i{
-        font-size: 12px;
+    .navigation-mobile .item a{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; 
+        text-decoration: none;
+        font-size: 14px;
+        padding: 5px 10px;
         text-align: center;
+        color: rgba(170, 33, 33, 1);
+        cursor: pointer;
     }
 
-    .navigation-mobile .item a{
-        text-decoration: none;
-        padding: 5px 10px;
-        font-size: 14px;
-        color: rgba(170, 33, 33, 1);
+    .navigation-mobile .item a i{
+        color: black;
+        font-size: 12px;
+        text-align: center;
     }
 
 

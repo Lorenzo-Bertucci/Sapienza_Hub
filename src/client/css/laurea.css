@@ -297,7 +297,7 @@ nav ul li a:hover {
 .aside {
     grid-area: aside;
     background-color: #fff;
-    width: 90%;
+    width: 70%;
     max-height: fit-content;
     border-radius: 14px;
     margin: 10px auto 10px;
@@ -318,13 +318,16 @@ nav ul li a:hover {
 .info{
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    text-align: center;
+    text-align: left;
     width: 100%;
     height: 100%;
-    padding: 10px;
-    padding-bottom: 0;
+    padding-left: 20%;
+    padding-right: 10%;
+}
+
+.info p{
+    margin-bottom: 5px;
 }
 
 
@@ -699,16 +702,23 @@ nav ul li a:hover {
         align-content: center;
     }
 
-    .navigation-mobile .item i{
-        font-size: 12px;
+    .navigation-mobile .item a{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; 
+        text-decoration: none;
+        font-size: 14px;
+        padding: 5px 10px;
         text-align: center;
+        color: rgba(170, 33, 33, 1);
+        cursor: pointer;
     }
 
-    .navigation-mobile .item a{
-        text-decoration: none;
-        padding: 5px 10px;
-        font-size: 14px;
-        color: rgba(170, 33, 33, 1);
+    .navigation-mobile .item a i{
+        color: black;
+        font-size: 12px;
+        text-align: center;
     }
 
 }

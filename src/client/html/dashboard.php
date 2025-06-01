@@ -74,7 +74,6 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
         </div>
         <div class="main">
             <h1>Ciao <?php echo htmlspecialchars($_SESSION['user_nome'] ?? 'Utente'); ?></span><span style="font-weight: normal;">, benvenuto nella tua Dashboard!</span></h1>
-
             <div class="content">
 
                 <div class="preferiti">
@@ -104,6 +103,12 @@ $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
 
                 </div>
             </div>
+        </div>
+        <div class="navigation-mobile">
+            <div class="item"><a href="html/index.php"><i class="fa fa-home"></i>Home</a></div>
+            <div class="item"><a href="html/corsi.php"><i class="fa fa-book"></i>Corsi</a></div>
+            <div class="item"><a href="html/professori.php"><i class="fa fa-users"></i>Professori</a></div>
+            <div class="item"><a href="html/dashboard.php"><i class="fa fa-user"></i>Dashboard</a></div>
         </div>
 
     </div>

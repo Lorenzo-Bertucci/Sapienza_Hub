@@ -25,7 +25,6 @@ session_start();
                     <ul>
                         <li><a href="html/corsi.php">Corsi</a></li>
                         <li><a href="html/professori.php">Professori</a></li>
-                        <li><a>Contatti</a></li>
                     </ul>
                 </nav>
             </div>
@@ -76,6 +75,12 @@ session_start();
 
                 </div>
             </div>
+        </div>
+        <div class="navigation-mobile">
+            <div class="item"><a href="html/index.php"><i class="fa fa-home"></i>Home</a></div>
+            <div class="item"><a href="html/corsi.php"><i class="fa fa-book"></i>Corsi</a></div>
+            <div class="item"><a href="html/professori.php"><i class="fa fa-users"></i>Professori</a></div>
+            <div class="item"><a href="html/dashboard.php"><i class="fa fa-user"></i>Dashboard</a></div>
         </div>
     </div>
 

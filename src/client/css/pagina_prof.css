@@ -324,6 +324,7 @@ nav ul li a:hover {
 .esami {
     flex: 1; 
     padding: 30px;
+    padding-top: 10px;
     display: flex;
     flex-direction: column; 
     justify-content: center;
@@ -332,6 +333,9 @@ nav ul li a:hover {
     border-radius: 15px;
     width: 85%;
     height:fit-content;
+    border: 1px solid #ddd;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .esami h1 {
@@ -795,6 +799,23 @@ gap: 15px;
         max-height: 80%;
     }
 
+    .nav-bar .bottone{
+        font-size: 12px;
+    }
+
+    .nav-bar .bottone i{
+        font-size: 12px;
+    }
+
+    .report-btn{
+        font-size: 0;
+        margin-top: 25px;
+    }
+
+    .report-btn i, .delete-button i{
+        font-size: 12px;
+    }
+
     .foto img{
         margin: 0;
     }
@@ -805,6 +826,10 @@ gap: 15px;
 
     .esami{
         padding-top: 0;
+    }
+
+    .esami h2{
+        font-size: 15px;
     }
 
     .card h3{
@@ -854,16 +879,23 @@ gap: 15px;
         align-content: center;
     }
 
-    .navigation-mobile .item i{
-        font-size: 12px;
+    .navigation-mobile .item a{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; 
+        text-decoration: none;
+        font-size: 14px;
+        padding: 5px 10px;
         text-align: center;
+        color: rgba(170, 33, 33, 1);
+        cursor: pointer;
     }
 
-    .navigation-mobile .item a{
-        text-decoration: none;
-        padding: 5px 10px;
-        font-size: 14px;
-        color: rgba(170, 33, 33, 1);
+    .navigation-mobile .item a i{
+        color: black;
+        font-size: 12px;
+        text-align: center;
     }
     
     

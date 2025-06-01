@@ -23,12 +23,11 @@ html, body {
 .container {
     display: grid;
     max-width: 100%;
-    min-height: 100vh;
-    grid-template-rows: auto 1fr 1fr;
+    min-height: 100%;
+    grid-template-rows: auto 1fr;
     grid-template-columns: 0.8fr 2fr;
     grid-template-areas:
         "header header"
-        "side-bar main"
         "side-bar main";
     background-color: white;
     row-gap: 0px;
@@ -36,7 +35,7 @@ html, body {
     padding: 0px;
     margin: 0px;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -202,13 +201,13 @@ nav ul li a:hover {
     grid-area: side-bar;
     color:white;
     border-right: 4px solid rgba(170, 33, 33, 0.5);  /* separazione più spessa e trasparente */
-    padding: 30px 30px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* tutto allineato a sinistra */
     min-width: fit-content;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
     box-shadow: 2px 0 6px rgba(0, 0, 0, 0.15); /* ombra che evidenzia la separazione */
     margin-right: 20px;  /* spazio extra a destra della sidebar */
     overflow-y: auto;
@@ -288,9 +287,10 @@ nav ul li a:hover {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    overflow-y: auto; /* Permette lo scorrimento verticale */
+    overflow-y: auto; 
     text-align: center;
 }
+
 
 .main h1 {
     font-size: 40px;
@@ -299,16 +299,18 @@ nav ul li a:hover {
 }
 
 .content {
-    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: left;
-    margin: 0 auto 0px;
-    margin-bottom: 40px;
-    border-radius: 35px; /* Maggiore arrotondamento */
+    align-items: center;
+    margin: 0 auto 15px;
+    border-radius: 35px;
+    padding:20px;
     width: 90%;
     height: fit-content;
+    border: 1px solid #ddd;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .content h2 {
@@ -385,6 +387,10 @@ nav ul li a:hover {
     font-size: 20px;
     font-weight: 400;
     line-height: 1.5;
+}
+
+.rec-esami{
+    margin-bottom: 10px;
 }
 
 .rec{
@@ -498,6 +504,10 @@ input[type="file"]:active::-webkit-file-upload-button {
     box-shadow: 0 1px 4px rgba(170, 33, 33, 0.10);
 }
 
+.navigation-mobile{
+    display: none;
+}
+
 
 @media (max-width: 768px) {
     
@@ -542,9 +552,9 @@ input[type="file"]:active::-webkit-file-upload-button {
         border-radius: 12px;
     }
 
-    .main h1, .preferiti h2, .corsi h3, .esami h3, .recensioni h2,
-    .rec-esami h3, .file h2, .rec-professori h3{
-        font-size: 22px;
+    .main h1, .preferiti h2, .corsi h3, .esami h3, .recensioni h2, .rec-professori p,
+    .rec-esami h3, .file h2, .rec-professori h3, .file p, .corsi p, .esami p, .rec-esami p{
+        font-size: 20px;
     }
 
     .card h3{
@@ -565,12 +575,22 @@ input[type="file"]:active::-webkit-file-upload-button {
 @media (max-width: 480px) {
 
     .container{
-        grid-template-rows: auto auto auto;
+        grid-template-rows: auto 1fr 1fr auto;
         grid-template-columns: 1fr;
         grid-template-areas:
             "header"
             "side-bar"
-            "main";
+            "main"
+            "navigation-mobile";
+    }
+
+    .main{
+        padding-bottom: 70px;
+    }
+
+    .header{
+        width: 100%;
+        padding: 10px;
     }
 
     .nav-bar{
@@ -592,6 +612,8 @@ input[type="file"]:active::-webkit-file-upload-button {
     .side-bar{
         padding: 8px;
         min-height: 100%;
+        margin-right: 0;
+        border-right: 0;
     }
 
     .desc{
@@ -621,8 +643,13 @@ input[type="file"]:active::-webkit-file-upload-button {
         color: rgba(170, 33, 33, 1);
     }
 
-    .main h1, .preferiti h2, .corsi h3, .esami h3, .recensioni h2,
-    .rec-esami h3, .file h2, .rec-professori h3{
+    .main h1{
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .preferiti h2, .corsi h3, .esami h3, .recensioni h2, .rec-professori p,
+    .rec-esami h3, .file h2, .rec-professori h3, .file p, .corsi p, .esami p, .rec-esami p{
         font-size: 15px;
     }
 
@@ -636,6 +663,48 @@ input[type="file"]:active::-webkit-file-upload-button {
 
     .rec p{
         font-size: 10px;
+    }
+
+    .navigation-mobile{
+        grid-area: navigation-mobile;
+        width: 100%;
+        height: 70px;
+        position:fixed;
+        display: block;
+        bottom: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-top: 2px solid darkgray;
+        background-color: white;
+        border-radius: 10px;
+
+    }
+
+    .item{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .navigation-mobile .item a{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; 
+        text-decoration: none;
+        font-size: 14px;
+        padding: 5px 10px;
+        text-align: center;
+        color: rgba(170, 33, 33, 1);
+        cursor: pointer;
+    }
+
+    .navigation-mobile .item a i{
+        color: black;
+        font-size: 12px;
+        text-align: center;
     }
 
 
