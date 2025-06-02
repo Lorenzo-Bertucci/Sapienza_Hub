@@ -339,8 +339,13 @@ nav ul li a:hover {
     text-align: center;
 }
 
+.preferiti, .file,.recensioni{
+    width: 100%;
+}
+
 .corsi{
     margin-bottom: 20px;
+    justify-items: left;
 }
 
 .card {
@@ -575,7 +580,7 @@ input[type="file"]:active::-webkit-file-upload-button {
 @media (max-width: 480px) {
 
     .container{
-        grid-template-rows: auto 1fr 1fr auto;
+        grid-template-rows: auto auto 1fr auto;
         grid-template-columns: 1fr;
         grid-template-areas:
             "header"
@@ -587,6 +592,8 @@ input[type="file"]:active::-webkit-file-upload-button {
     .main{
         padding-bottom: 70px;
     }
+
+    
 
     .header{
         width: 100%;
@@ -648,8 +655,18 @@ input[type="file"]:active::-webkit-file-upload-button {
         margin-top: 10px;
     }
 
-    .preferiti h2, .corsi h3, .esami h3, .recensioni h2, .rec-professori p,
+    .corsi h3, .esami h3, .rec-professori p,
     .rec-esami h3, .file h2, .rec-professori h3, .file p, .corsi p, .esami p, .rec-esami p{
+        font-size: 15px;
+        text-align: left;
+        margin-left: 0px;
+    }
+
+    .rec-esami{
+        width: 100%;
+    }
+
+    .recensioni h2,.preferiti h2{
         font-size: 15px;
     }
 
@@ -659,6 +676,7 @@ input[type="file"]:active::-webkit-file-upload-button {
 
     .rec h2{
         font-size: 10px;
+        text-align: left;
     }
 
     .rec p{

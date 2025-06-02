@@ -1,92 +1,162 @@
+/* Impostazioni di base */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
 
-
-.container{
+/* Container principale */
+.container {
     display: grid;
-    height: 95vh;
-    width: 100%;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 2fr;
-    grid-template-areas:
-        "laterale tool";
-    
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns:  1fr 4fr;
+    grid-template-areas: "laterale tool";
+    gap: 0px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 1;
 }
 
-.laterale{
+/* Sidebar laterale */
+.laterale {
     grid-area: laterale;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 20px;
-    background-color: rgba(192,54,57,1);
-    border:2px solid black;
-}
-
-.tool{
-    grid-area: tool;
-    display: flex;
-    flex-direction: column;
-    align-items: center;      
-    justify-content: flex-start;  
-    background-color: whitesmoke;
+    background-color: #aa2121; /* Rosso standard del sito */
     padding: 20px;
-    overflow-y: scroll;
-    border: 2px solid black;
-}
-
-ul{
-    font-size: 25px;
-}
-
-ul li{
-    cursor: pointer;
-}
-
-ul li:hover{
-    color: white;
-}
-
-.form-element {
-    width: 70%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
+    border-right: 1px solid #981e1e; /* Variante leggermente più scura */
+    color: #fff;
+}
+.laterale b {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+.laterale ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    font-size: 18px;
+}
+.laterale ul li {
+    padding: 16px; /* Aumenta l'imbottitura interna */
+    margin: 12px 0; /* Maggiori spaziature verticale */
+    text-align: center;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 20px; /* Font leggermente più grande */
+    line-height: 1.4;
 }
 
-.form-element input{
+/* Su hover, cambia leggermente colore, aggiunge un'ombra e uno spostamento orizzontale */
+.laterale ul li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(3px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Bottone per tornare alla home */
+.back {
+    margin-top: auto;
+    background-color: #fff;
+    color: #aa2121; /* Rosso standard */
+    border: none;
+    border-radius: 4px;
     width: 100%;
     padding: 10px;
     font-size: 16px;
-}
-
-.form-element button{
-    width: 50%;
     cursor: pointer;
-    font-weight: 600;
-    font-size: 18px;
-    padding:  15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.back:hover {
+    background-color: #f2f2f2;
+    transform: translateY(-2px);
 }
 
-.form-element button:hover{
-    background-color: rgba(192,54,57,1);
-
+/* Area Tool (contenuto principale) */
+.tool {
+    grid-area: tool;
+    background-color: #fdfdfd;
+    padding: 30px;
+    overflow-y: auto;
+    border-left: 1px solid #ddd;
+    /* Nuove regole per centrare e ingrandire il contenuto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+}
+.tool h2 {
+    font-size: 26px; /* Leggermente più grande */
+    margin-bottom: 20px;
+    color: #333;
 }
 
-.back{
-    width: 30%;
+/* Elementi dei form */
+.form-element {
+    width: 70%;
+    margin: 0 auto 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-element input,
+.form-element select,
+.form-element button {
+    width: 100%;
     padding: 10px;
-    cursor: pointer;
-    font-size:large;
-    font-weight: 500;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
 }
 
-.lista{
-    border: 1px darkgray solid;
+/* Bottoni nei form: utilizza il rosso standard e aggiunge un effetto hover moderno */
+.form-element button {
+    background-color: #aa2121; /* Rosso standard */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.form-element button:hover {
+    background-color: #981e1e; /* Variante più scura */
+}
+
+/* Lista, ad esempio per mostrare dei dati */
+.lista {
+    border: 1px solid #ddd;
     width: 80%;
     height: 30%;
     overflow-y: scroll;
     padding: 15px;
-    margin: 15px;
+    margin: 15px auto;
     font-size: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    text-align: left;
+}
+
+/* Ulteriori stili per i menu */
+ul {
+    font-size: 25px;
+}
+ul li {
+    cursor: pointer;
+}
+ul li:hover {
+    color: white;
 }

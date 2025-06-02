@@ -56,7 +56,7 @@ session_start();
 
         <div class="main">
             <div class="foto">  
-                <img alt="Foto professore">
+                <img >
             </div>
 
             <div class="desc">

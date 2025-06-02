@@ -44,7 +44,7 @@ function inviaLogin(event){
                 timer: 2000
                 });
                 setTimeout(() => {
-                    window.location.href = '../server/php/gestione/settings.php';
+                    window.location.href = '../client/html/settings.php';
                 }, 2000); 
             }
             else{

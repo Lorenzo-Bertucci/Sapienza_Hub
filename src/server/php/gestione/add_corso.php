@@ -17,6 +17,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $link=pg_escape_string($conn, $_POST['link']);
     $desc=pg_escape_string($conn, $_POST['desc']);
     $durata=pg_escape_string($conn, $_POST['durata']);
+    if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] === UPLOAD_ERR_OK) {
+        // Definisce la cartella di destinazione relativa a src/server/database/utenti
+        $uploadDir = __DIR__ . "/../../database/corsi/";
+        
+        // Crea un nome file univoco per evitare conflitti
+        $imgName = basename($_FILES['profilePic']['name']);
+        $destination = $uploadDir . $codice;
+        
+        if (move_uploaded_file($_FILES['profilePic']['tmp_name'], $destination)) {
+            // Memorizza il percorso relativo nel database (assicurati che il percorso corrisponda alla struttura del sito)
+            $img_profilo = "/src/server/database/corsi/" . $codice;
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Errore nel salvataggio dell\'immagine.']);
+            exit;
+        }
+    }
 
     $check_query = "SELECT * FROM corsi WHERE codice = $1";
     $check_result = pg_query_params($conn, $check_query, array($codice));
@@ -35,8 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }else{
 
-        $insert_query = "INSERT INTO corsi (codice, nome, tipo, laurea, lingua, link, durata, descrizione) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
-        $insert_result = pg_query_params($conn, $insert_query, array($codice, $nome, $tipo, $laurea, $lingua, $link, $durata, $desc));
+        $insert_query = "INSERT INTO corsi (codice, nome, tipo, laurea, lingua, link, durata, descrizione,foto) VALUES ($1, $2, $3, $4, $5, $6, $7, $8,$9)";
+        $insert_result = pg_query_params($conn, $insert_query, array($codice, $nome, $tipo, $laurea, $lingua, $link, $durata, $desc, $img_profilo));
         if (!$insert_result) {
             echo json_encode(['success' => false, 'message' => 'Errore durante l\'inserimento del corso: ' . pg_last_error($conn)]);
             exit;

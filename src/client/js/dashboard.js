@@ -455,13 +455,14 @@ function modificaFoto(){
 document.addEventListener("DOMContentLoaded", function () {
 
     const navButtons = document.querySelectorAll('.nav-bar .bottone');
+    const filteredNavButtons = Array.from(navButtons).filter(btn => !btn.classList.contains("logout"));
     const navSections = {
         "preferiti": document.querySelector(".preferiti"),
         "recensioni": document.querySelector(".recensioni"),
         "file": document.querySelector(".file")
     };
     // Imposta "professori" come default
-    setupButtonGroup(navButtons, "preferiti", navSections);
+    setupButtonGroup(filteredNavButtons, "preferiti", navSections);
 
     loadPreferiti();
     loadRecensioni();

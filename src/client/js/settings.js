@@ -15,6 +15,10 @@ function gestisciAzione(azione){
                                 <input type="text" name="link" placeholder="inserire link corso"required><br><br>
                                 <input type="number" name="durata" placeholder="inserire durata corso"required><br><br>
                                 <input type="text" name="desc" placeholder="inserire descrizione corso"required><br><br>
+                                <div class="profile-row"  style="display: flex; flex-direction: row; width:100%; align-items: center; justify-content: space-between;">
+                                    <label for="profilePic">Carica immagine del corso:</label>
+                                    <input type="file" id="profilePic" name="profilePic" accept="image/* required>">
+                                </div>
                                 <button type="submit">Aggiungi</button>
                             </form>`;
             form.addEventListener('submit', add_corso);
@@ -92,6 +96,10 @@ function gestisciAzione(azione){
                                 <input type="text" name="dip" placeholder="inserire dipartimento professore"><br><br>
                                 <input type="text" name="ssd" placeholder="inserire ssd professore"><br><br>
                                 <input type="text" name="link" placeholder="inserire link  pagina professore"><br><br>
+                                <div class="profile-row"  style="display: flex; flex-direction: row; width:100%; align-items: center; justify-content: space-between;">
+                                    <label for="profilePic">Carica l'immagine del professore:</label>
+                                    <input type="file" id="profilePic" name="profilePic" accept="image/* required>">
+                                </div>
                                 <button type="submit">Aggiungi</button>
                             </form>`;
             form.addEventListener('submit', add_professore);

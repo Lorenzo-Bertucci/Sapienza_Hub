@@ -5,7 +5,7 @@ if (!$conn) {
     echo json_encode(['success' => false, 'message' => 'Errore di connessione al database.']);
     exit;
 }
-$result = pg_query($conn, "SELECT id, nome FROM professori ORDER BY nome");
+$result = pg_query($conn, "SELECT id, nome FROM professori ORDER BY id");
 $professori = [];
 while ($row = pg_fetch_assoc($result)) {
     $professori[] = $row;

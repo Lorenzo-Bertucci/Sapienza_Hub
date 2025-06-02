@@ -113,9 +113,14 @@ body {
     box-shadow: 0 2px 8px rgba(192,54,57,0.06);
 }
 
-.login-form select:focus {
-    border-color: #951e1e;
-    box-shadow: 0 0 0 2px rgba(192,54,57,0.15);
+.login-form input:focus {
+    border: 1px solid;
+    border-color: rgba(192,54,57,1);    
+}
+
+.login-form select:focus{
+    border-color: rgba(192,54,57,1);   
+
 }
 
 
