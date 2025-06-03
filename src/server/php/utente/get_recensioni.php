@@ -2,7 +2,6 @@
 header('Content-Type: application/json');
 session_start();
 
-// Connessione al database PostgreSQL
 $conn = pg_connect("host=localhost port=5433 dbname=sapienzhub user=postgres password=Postgre*1");
 
 if (!$conn) {
@@ -10,9 +9,7 @@ if (!$conn) {
     exit;
 }
 
-// Recupero dell'ID utente dalla sessione
 $user_id = pg_escape_string($conn, $_GET['id']);
-// Recupero del campo 'tipo' dall'URL
 $tipo = pg_escape_string($conn, $_GET['tipo']);
 
 if ($tipo === 'esami') {
@@ -24,7 +21,6 @@ if ($tipo === 'esami') {
     exit;
 }
 
-// Query per recuperare i corsi di laurea
 $result = pg_query_params($conn, $query,array($user_id));
 
 if (!$result) {
@@ -32,16 +28,13 @@ if (!$result) {
     exit;
 }
 
-// Creazione dell'array dei corsi
 $recensioni = [];
 while ($row = pg_fetch_assoc($result)) {
     $recensioni[] = $row;
 }
 
-// Liberazione della memoria e chiusura della connessione
 pg_free_result($result);
 pg_close($conn);
 
-// Restituzione dei dati come JSON
 echo json_encode(['success' => true, 'recensioni' => $recensioni]);
 ?>

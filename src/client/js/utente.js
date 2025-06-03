@@ -13,13 +13,13 @@ function reportReview(reviewId,tipo) {
     showCancelButton: true,
     confirmButtonText: 'Segnala',
     cancelButtonText: 'Annulla',
-    confirmButtonColor: 'rgb(170, 33, 33)', // rosso come da altri Swal
+    confirmButtonColor: 'rgb(170, 33, 33)', 
     cancelButtonColor: '#3085d6'
   }).then((result) => {
     if (result.isConfirmed) {
       const formData = new FormData();
       formData.append('review_id', reviewId);
-      formData.append('tipo', tipo); // Aggiungi il tipo di recensione (esami o professori)
+      formData.append('tipo', tipo); 
       
       fetch('/src/server/php/utente/report_review.php', {
         method: 'POST',
@@ -29,7 +29,6 @@ function reportReview(reviewId,tipo) {
       .then(data => {
         if (data.success) {
           Swal.fire('Segnalata!', data.message, 'success');
-          // Ricarica le recensioni dopo la segnalazione
           loadRecensioni();
         } else {
           Swal.fire('Errore', data.message, 'error');
@@ -136,14 +135,13 @@ function loadRecensioni() {
         })
     .then(data => {
         if (data.success) {
-            recesamiContainer.innerHTML = "<h3><b>Esami</b></h3>"; // Pulisci il contenitore prima di aggiungere le recensioni
+            recesamiContainer.innerHTML = "<h3><b>Esami</b></h3>"; 
             if (data.recensioni.length === 0) {
             const noRecensioniMessage = document.createElement("p");
             noRecensioniMessage.textContent = "Non ha ancora lasciato nessuna recensione su un esame";
             recesamiContainer.appendChild(noRecensioniMessage);
             }
 
-            // Aggiungi le card delle recensioni
             data.recensioni.forEach(recensione => {
             const card = createRecensione(recensione.id,recensione.codice,recensione.nome,recensione.dat,recensione.testo,"esami");
             recesamiContainer.appendChild(card);
@@ -165,7 +163,7 @@ function loadRecensioni() {
     })
     .then(data => {
         if (data.success) {
-            recprofessoriContainer.innerHTML = "<h3><b>Professori</b></h3>"; // Pulisci il contenitore prima di aggiungere le recensioni
+            recprofessoriContainer.innerHTML = "<h3><b>Professori</b></h3>"; 
             if (data.recensioni.length === 0) {
                 const noRecensioniMessage = document.createElement("p");
                 noRecensioniMessage.textContent = "Non ha ancora lasciato nessuna recensione su un professore";
@@ -251,7 +249,7 @@ function createFile(id,codice,nome_esame,nome_file,dat) {
 function loadFile() {
     const filesContainer = document.querySelector(".file");
     const id = getUrlParameter('id');
-    filesContainer.innerHTML = ""; // Pulisci il container
+    filesContainer.innerHTML = ""; 
 
     fetch(`/src/server/php/utente/get_file.php?id=${encodeURIComponent(id)}`)
     .then(response => { 
@@ -274,7 +272,6 @@ function loadFile() {
             filesContainer.appendChild(noFileMessage);
         }
 
-        // Aggiungi le card dei file
         data.files.forEach(file => {
           const card = createFile(file.id, file.codice, file.nome, file.nomefile, file.dat);
           filesContainer.appendChild(card);

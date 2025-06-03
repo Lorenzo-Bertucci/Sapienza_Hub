@@ -1,3 +1,4 @@
+// Gestisce le azioni selezionate dall'utente e mostra il form o la lista corrispondente
 function gestisciAzione(azione){
     const divTool=document.querySelector(".tool");
     divTool.innerHTML=`<h1>${azione}</h1>`;
@@ -168,6 +169,7 @@ function gestisciAzione(azione){
 
 }
 
+// Invia i dati del form per aggiungere o aggiornare un corso di studi
 function add_corso(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));
@@ -193,6 +195,7 @@ function add_corso(e){
     });
 }
 
+// Invia i dati del form per rimuovere un corso di studi
 function remove_corso(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));
@@ -218,6 +221,7 @@ function remove_corso(e){
     });
 }
 
+// Invia i dati del form per aggiungere o aggiornare un esame
 function add_esame(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));
@@ -243,6 +247,7 @@ function add_esame(e){
     });
 }
 
+// Invia i dati del form per rimuovere un esame
 function remove_esame(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));
@@ -268,6 +273,7 @@ function remove_esame(e){
     });
 }
 
+// Invia i dati del form per aggiungere o aggiornare un professore
 function add_professore(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));
@@ -293,6 +299,7 @@ function add_professore(e){
     });
 }
 
+// Invia i dati del form per rimuovere un professore
 function remove_professore(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));
@@ -318,6 +325,7 @@ function remove_professore(e){
     });
 }
 
+// Invia i dati del form per aggiungere un utente privilegiato
 function add_utente(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));
@@ -343,6 +351,7 @@ function add_utente(e){
     });
 }
 
+// Invia i dati del form per rimuovere un utente privilegiato
 function remove_utente(e){
     e.preventDefault();
     const formData=new FormData(document.querySelector(".form-element"));

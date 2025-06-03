@@ -18,15 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fileType = $_FILES['materiale']['type'];
 
         if ($fileType === 'application/pdf') {
-            // Definisce la cartella di destinazione relativa a src/server/database/materiale
             $uploadDir = __DIR__ . "/../../database/materiale/";
-            // Crea un nome file univoco per evitare conflitti
             $fileName = basename($_FILES['materiale']['name']);
             $uniqueName = uniqid() . "_" . $fileName;
             $destination = $uploadDir . $uniqueName;
             
             if (move_uploaded_file($fileTmpPath, $destination)) {
-                // Memorizza il percorso relativo nel database
                 $filePath = "/src/server/database/materiale/" . $uniqueName;
                 $insert_query = "INSERT INTO materiale_didattico (id_utente, materiale, nomefile, esame) VALUES ($1, $2, $3, $4)";
                 $insert_result = pg_query_params($conn, $insert_query, array($id, $filePath, $nome_file, $esame));

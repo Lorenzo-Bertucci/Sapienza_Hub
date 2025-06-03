@@ -19,16 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $check_result = pg_query_params($conn, $check_query, array($email));
 
     if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] === UPLOAD_ERR_OK) {
-        // Definisce la cartella di destinazione relativa a src/server/database/utenti
         $uploadDir = __DIR__ . "/../../database/professori/";
         
-        // Crea un nome file univoco per evitare conflitti
         $imgName = basename($_FILES['profilePic']['name']);
         $uniqueName = uniqid() . "_" . $imgName;
         $destination = $uploadDir . $uniqueName;
         
         if (move_uploaded_file($_FILES['profilePic']['tmp_name'], $destination)) {
-            // Memorizza il percorso relativo nel database (assicurati che il percorso corrisponda alla struttura del sito)
             $img_profilo = "/src/server/database/professori/" . $uniqueName;
         } else {
             echo json_encode(['success' => false, 'message' => 'Errore nel salvataggio dell\'immagine.']);

@@ -21,7 +21,6 @@ function createEsami(durata,esami) {
     const esamiContainer = document.querySelector(".esami");
 
     for (let anno = 1; anno <= durata; anno++) {
-        // Creazione del div per il primo semestre
         const annoDiv1 = document.createElement("div");
         annoDiv1.classList.add(`anno-1-semestre-1`);
         annoDiv1.innerHTML = `<h1>${anno} Anno</h1> <h2>I Semestre</h2>`;
@@ -33,7 +32,6 @@ function createEsami(durata,esami) {
         });
         esamiContainer.appendChild(annoDiv1);
 
-        // Creazione del div per il secondo semestre
         const annoDiv2 = document.createElement("div");
         annoDiv2.classList.add(`anno-2-semestre-2`);
         annoDiv2.innerHTML = `<h2>II Semestre</h2>`;
@@ -109,7 +107,6 @@ function loadCorso(codice) {
             `;
             document.getElementById("corso-nome").textContent = corso.nome;
             document.getElementById("corso-descrizione").textContent = corso.descrizione;
-            // Dopo aver ottenuto i dati del corso, imposta lo sfondo del main
             document.querySelector(".foto").style.backgroundImage = `url('${corso.foto}')`;
             document.querySelector(".foto").style.backgroundRepeat = "no-repeat";
             document.querySelector(".foto").style.backgroundPosition = "center";
@@ -146,7 +143,7 @@ function updateFavoriteState(isFavorite) {
 function favorite() {
     const favoriteBtn = document.querySelector(".favorite-btn");
     const action = favoriteBtn.classList.contains("active") ? "remove" : "add";
-    const corsoCodice = getUrlParameter("corso"); // Recupera il codice del corso dall'URL
+    const corsoCodice = getUrlParameter("corso"); 
     const corsoNome=document.getElementById("corso-nome").textContent
 
     fetch(`/src/server/php/corso/toggle_favorite.php`, {
@@ -183,7 +180,6 @@ function checkFavorite(corso){
 
 // Inizializza la pagina
 document.addEventListener("DOMContentLoaded", function () {
-    // Recupera il codice del corso di laurea dall'URL
     const corso = getUrlParameter("corso");
 
     if (!corso) {

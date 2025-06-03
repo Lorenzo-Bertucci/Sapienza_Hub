@@ -13,7 +13,6 @@ if (!isset($_GET['id']) ) {
 
 $id = pg_escape_string($conn, $_GET['id']);
 
-// Query per recuperare le informazioni del professore
 $query = "SELECT * FROM professori WHERE id = $1";
 $result = pg_query_params($conn, $query, array($id));
 

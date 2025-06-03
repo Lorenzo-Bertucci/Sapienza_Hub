@@ -29,7 +29,7 @@ function createDeleteButtonRecensione(id,tipo){
     deleteButton.classList.add("delete-button");
 
     deleteButton.addEventListener("click", (event) => {
-        event.stopPropagation(); // Impedisce il click sulla card
+        event.stopPropagation();
 
         Swal.fire({
             title: "Sei sicuro di voler eliminare la recensione?",
@@ -53,7 +53,7 @@ function createDeleteButtonRecensione(id,tipo){
                     if (data.success) {
                         Swal.fire("Eliminata!", "La recensione è stata eliminata", "success")
                     .then(() => {
-                        loadRecensioni(); // Ricarica le recensioni
+                        loadRecensioni(); 
                     });
                     }else {
                         Swal.fire("Errore", data.message, "error");
@@ -77,7 +77,7 @@ function createDeleteButtonFile(id){
     deleteButton.classList.add("delete-button");
 
     deleteButton.addEventListener("click", (event) => {
-        event.stopPropagation(); // Impedisce il click sulla card
+        event.stopPropagation();
 
         Swal.fire({
             title: "Sei sicuro di voler eliminare il file?",
@@ -101,7 +101,7 @@ function createDeleteButtonFile(id){
                     if (data.success) {
                         Swal.fire("Eliminato!", "Il file è stato eliminato", "success")
                         .then(() => {
-                            loadFile(); // Ricarica i file
+                            loadFile();
                         });
                     } else {
                         Swal.fire("Errore", data.message, "error");
@@ -185,14 +185,13 @@ function loadPreferiti() {
     })
     .then(data => {
         if (data.success) {
-            corsiContainer.innerHTML = "<h3><b>Corsi di laurea</b></h3>"; // Pulisci il contenitore prima di aggiungere i corsi
+            corsiContainer.innerHTML = "<h3><b>Corsi di laurea</b></h3>"; 
             if (data.corsi.length === 0) {
                 const noCorsiMessage = document.createElement("p");
                 noCorsiMessage.textContent = "Non hai ancora aggiunto un corso ai preferiti";
                 corsiContainer.appendChild(noCorsiMessage);
             }
 
-            // Aggiungi le card dei corsi
             data.corsi.forEach(corso => {
                 const card = createCorso(corso.codice,corso.nome);
                 corsiContainer.appendChild(card);
@@ -215,7 +214,7 @@ function loadPreferiti() {
     })
     .then(data => {
         if (data.success) {
-            esamiContainer.innerHTML = "<h3><b>Esami</b></h3>"; // Pulisci il contenitore prima di aggiungere gli esami
+            esamiContainer.innerHTML = "<h3><b>Esami</b></h3>"; 
             
             if (data.esami.length === 0) {
                 const noEsamiMessage = document.createElement("p");
@@ -223,7 +222,6 @@ function loadPreferiti() {
                 esamiContainer.appendChild(noEsamiMessage);
             }
 
-            // Aggiungi le card dei corsi
             data.esami.forEach(esame => {
                 const card = createEsame(esame.codice,esame.nome);
                 esamiContainer.appendChild(card);
@@ -251,14 +249,13 @@ function loadRecensioni() {
         })
     .then(data => {
         if (data.success) {
-            recesamiContainer.innerHTML = "<h3><b>Esami</b></h3>"; // Pulisci il contenitore prima di aggiungere le recensioni
+            recesamiContainer.innerHTML = "<h3><b>Esami</b></h3>"; 
             if (data.recensioni.length === 0) {
             const noRecensioniMessage = document.createElement("p");
             noRecensioniMessage.textContent = "Non hai ancora lasciato nessuna recensione sugli esami";
             recesamiContainer.appendChild(noRecensioniMessage);
             }
 
-            // Aggiungi le card delle recensioni
             data.recensioni.forEach(recensione => {
             const card = createRecensione(recensione.id,recensione.codice,recensione.nome,recensione.dat,recensione.testo,"esami");
             recesamiContainer.appendChild(card);
@@ -280,14 +277,13 @@ function loadRecensioni() {
     })
     .then(data => {
         if (data.success) {
-            recprofessoriContainer.innerHTML = "<h3><b>Professori</b></h3>"; // Pulisci il contenitore prima di aggiungere le recensioni
+            recprofessoriContainer.innerHTML = "<h3><b>Professori</b></h3>"; 
             if (data.recensioni.length === 0) {
                 const noRecensioniMessage = document.createElement("p");
                 noRecensioniMessage.textContent = "Non hai ancora lasciato nessuna recensione";
                 recprofessoriContainer.appendChild(noRecensioniMessage);
             }
 
-            // Aggiungi le card dei corsi
             data.recensioni.forEach(recensione => {
                 const card = createRecensione(recensione.id,recensione.id_professore,recensione.nome,recensione.dat,recensione.testo,"professori");
                 recprofessoriContainer.appendChild(card);
@@ -314,14 +310,13 @@ function loadFile() {
         })
     .then(data => {
         if (data.success) {
-            filesContainer.innerHTML = "<h2>Qui puoi trovare i file che hai caricato e condiviso</h2>"; // Pulisci il contenitore prima di aggiungere i file
+            filesContainer.innerHTML = "<h2>Qui puoi trovare i file che hai caricato e condiviso</h2>";
             if (data.files.length === 0) {
             const noFileMessage = document.createElement("p");
             noFileMessage.textContent = "Non hai ancora condiviso nessun file";
             filesContainer.appendChild(noFileMessage);
             }
 
-            // Aggiungi le card delle recensioni
             data.files.forEach(file => {
             const card = createFile(file.id,file.codice,file.nome,file.nomefile,file.dat);
             filesContainer.appendChild(card);
@@ -336,21 +331,17 @@ function loadFile() {
 }
 
 function setupButtonGroup(buttons, defaultString, sections) {
-  // Mappa tra i testi dei bottoni e i nomi delle sezioni
   const buttonToSectionMap = {
       "preferiti": "preferiti",
       "le tue recensioni": "recensioni",
       "i tuoi file": "file"
   };
 
-  // Controlla l'hash nell'URL
   if (!window.location.hash) {
-    // Se non c'è un hash, imposta quello di default
     window.location.hash = `#${defaultString}`;
   }
   const currentHash = window.location.hash.substring(1).toLowerCase();
 
-  // Imposta il bottone attivo e la sezione visibile in base all'hash
   buttons.forEach(btn => {
     const btnText = btn.textContent.trim().toLowerCase();
     if (buttonToSectionMap[btnText] === currentHash) {
@@ -364,7 +355,6 @@ function setupButtonGroup(buttons, defaultString, sections) {
       sections[condition].style.display = condition === currentHash ? 'block' : 'none';
   }
 
-  // Gestione del click: mostra la sezione corrispondente e aggiorna l'URL
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       buttons.forEach(b => b.classList.remove('active'));
@@ -374,7 +364,6 @@ function setupButtonGroup(buttons, defaultString, sections) {
         for (const condition in sections) {
           sections[condition].style.display = condition === sectionId ? 'block' : 'none';
         }
-        // Aggiorna l'URL con il nome della sezione attiva
         window.location.hash = sectionId;
     });
   });
@@ -396,11 +385,10 @@ function logout(){
     });
 }
 
-// Modifica della funzione per aggiornare l'immagine profilo con popup più grande
 function modificaFoto(){
     Swal.fire({
         title: 'Modifica Immagine Profilo',
-        width: '65%', // Popup meno largo
+        width: '65%', 
         html: `<input type="file" id="newProfilePic" accept="image/*" style="margin-top: 10px; width: 100%; font-size: 25px; padding: 4px;">
                <style>
              .swal2-actions button {
@@ -411,7 +399,7 @@ function modificaFoto(){
         showCancelButton: true,
         confirmButtonText: 'Aggiorna',
         cancelButtonText: 'Annulla',
-        confirmButtonColor: "rgb(170, 33, 33)", // Colore rosso come gli altri popup
+        confirmButtonColor: "rgb(170, 33, 33)",
         preConfirm: () => {
             const fileInput = document.getElementById('newProfilePic');
             if(fileInput.files.length === 0){
@@ -461,7 +449,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "recensioni": document.querySelector(".recensioni"),
         "file": document.querySelector(".file")
     };
-    // Imposta "professori" come default
     setupButtonGroup(filteredNavButtons, "preferiti", navSections);
 
     loadPreferiti();

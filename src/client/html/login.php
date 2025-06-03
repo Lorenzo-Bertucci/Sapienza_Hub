@@ -1,9 +1,7 @@
 <?php
 session_start();
 
-// Controlla se l'utente è loggato
 if (isset($_SESSION['logged_in'])) {
-    // Reindirizza alla pagina di login se è loggato
     header('Location: dashboard.php');
     exit;
 }

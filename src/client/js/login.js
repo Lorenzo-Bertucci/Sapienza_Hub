@@ -1,18 +1,16 @@
 // Funzione per gestire il login
 function inviaLogin(event){
-    event.preventDefault(); // Previene il comportamento predefinito del form
+    event.preventDefault();
 
-    // Recupera i dati dal form
     const form=document.getElementById("loginForm");
     const formData=new FormData(form);
  
-    // Invia i dati al server tramite fetch
     fetch('/src/server/php/auth/login.php', {
         method: 'POST',
         body: formData
     })
     .then(response => {
-        console.log('Headers:', response.headers.get('Content-Type')); // Controlla il tipo di contenuto
+        console.log('Headers:', response.headers.get('Content-Type')); 
         if (!response.ok) {
             throw new Error('Errore durante il login');
         }

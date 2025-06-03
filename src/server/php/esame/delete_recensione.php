@@ -10,9 +10,7 @@ if (!$conn) {
     exit;
 }
 
-// Recupero dell'ID utente dalla sessione
 $user_id = $_SESSION['user_id'];
-// Recupero dell'ID della recensione dall'URL
 $recensione_id = pg_escape_string($conn, $_GET['id']);
 
 $query = "DELETE FROM recensioni_esami  WHERE id_utente=$1 and id=$2 ";
@@ -25,10 +23,8 @@ if (!$result) {
     exit;
 }
 
-// Liberazione della memoria e chiusura della connessione
 pg_free_result($result);
 pg_close($conn);
 
-// Restituzione dei dati come JSON
 echo json_encode(['success' => true, 'message' => 'Recensione eliminata con successo.']);
 ?>
