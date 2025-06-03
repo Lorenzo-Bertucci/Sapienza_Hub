@@ -5,13 +5,13 @@
 }
 
 html, body {
-    height: 100%; /* Assicura che il corpo occupi l'intera altezza */
+    height: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', Arial, sans-serif;
     background-color: #f9f9f9;
-    overflow-y: auto; /* Abilita lo scrolling verticale */
+    overflow-y: auto;
 }
 
 body {
@@ -23,28 +23,27 @@ body {
 .container {
     display: grid;
     max-width: 100%;
-    min-height: 100vh; /* Usa min-height per permettere l'espansione se necessario */
-    grid-template-rows: auto ; /* Righe che si adattano automaticamente al contenuto */
+    min-height: 100vh;
+    grid-template-rows: auto;
     grid-template-columns: 1fr;
-    grid-template-areas:
-        "content";
-    background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%); 
+    grid-template-areas: "content";
+    background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
     color: black;
     padding: 30px;
-    margin: 0px;
+    margin: 0;
     justify-items: center;
     align-items: center;
     overflow-x: hidden;
-    overflow-y: auto; /* Abilita lo scrolling verticale */
-    -ms-overflow-style: none;  /* IE e Edge */
-    scrollbar-width: none;     /* Firefox */
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .container::-webkit-scrollbar {
     display: none;
 }
 
-.content{
+.content {
     text-align: center;
     grid-area: content;
     min-width: fit-content;
@@ -54,25 +53,25 @@ body {
     padding: 20px;
     border-radius: 25px;
     font-size: 30px;
-    margin: 20px auto 20px; 
-    display: flex; 
-    flex-direction: column; 
+    margin: 20px auto 20px;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
-.content p{
+.content p {
     font-size: 15px;
     margin-top: 15px;
 }
 
-.login-form .login-btn{
+.login-form .login-btn {
     margin: 10px 10px;
     padding: 20px 20px;
     font-size: 16px;
     border: none;
     background-color: white;
     color: rgba(192,54,57,1);
-    border-radius: 30px ; 
+    border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -83,13 +82,13 @@ body {
     transform: scale(1.05);
 }
 
-.login-form input{
+.login-form input {
     flex: 1;
     width: 80%;
     padding: 20px;
     font-size: 16px;
     border: 2px solid gainsboro;
-    border-radius: 20px; 
+    border-radius: 20px;
     background-color: white;
     margin-bottom: 10px;
 }
@@ -115,23 +114,21 @@ body {
 
 .login-form input:focus {
     border: 1px solid;
-    border-color: rgba(192,54,57,1);    
+    border-color: rgba(192,54,57,1);
 }
 
-.login-form select:focus{
-    border-color: rgba(192,54,57,1);   
-
+.login-form select:focus {
+    border-color: rgba(192,54,57,1);
 }
 
-
-.content a{
-    color:rgb(170, 33, 33);
+.content a {
+    color: rgb(170,33,33);
     text-decoration: none;
     font-weight: bold;
-    
 }
-.content a:visited{
-    color:rgb(170, 33, 33);
+
+.content a:visited {
+    color: rgb(170,33,33);
     text-decoration: none;
     font-weight: bold;
 }
@@ -154,57 +151,49 @@ body {
     cursor: pointer;
     transition: box-shadow 0.2s;
     flex-shrink: 0;
-    margin-right: 0; /* nessun margine a destra */
+    margin-right: 0;
 }
 
 .profile-label, .profile-desc {
     text-align: left;
     font-size: 18px;
     margin-left: 0;
-    color:black;
+    color: black;
     cursor: pointer;
     user-select: none;
 }
 
 @media (max-width: 768px) {
-
-    nav{
+    nav {
         display: none;
     }
-
-    .login-form input{
+    .login-form input {
         font-size: 15px;
     }
-
-    .content{
+    .content {
         font-size: 20px;
         margin: auto;
-        padding:60px;
+        padding: 60px;
     }
-    label span{
+    label span {
         font-size: 16px;
     }
-
 }
 
 @media (max-width: 480px) {
-
-    nav{
+    nav {
         display: none;
     }
-
-    .content{
+    .content {
         width: 80%;
         font-size: 15px;
         margin: auto;
-        padding:30px;
+        padding: 30px;
     }
-
-    .content p{
+    .content p {
         font-size: 13px;
     }
-
-    .login-form .login-btn{
+    .login-form .login-btn {
         font-size: 14px;
     }
 }

@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -9,37 +8,36 @@ html, body {
     height: 100%;
     width: 100%;
     margin: 0;
-    padding:0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', Arial, sans-serif;
-    background-color: #f9f9f9; 
+    background-color: #f9f9f9;
 }
 
 .container {
     display: grid;
     max-width: 100%;
-    min-height: 100vh; 
-    grid-template-rows: auto auto 1fr; 
+    min-height: 100vh;
+    grid-template-rows: auto auto 1fr;
     grid-template-columns: 1fr;
     grid-template-areas:
         "header"
         "main"
         "content";
-    background-color: white; 
+    background-color: white;
     color: black;
-    overflow-y: auto; 
-    -ms-overflow-style: none;  
-    scrollbar-width: none;    
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-/*nasconde la barra di scorrimento*/
 .container::-webkit-scrollbar {
     display: none;
 }
 
-.header{
-    grid-area: "header";
+.header {
+    grid-area: header;
     background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
     color: white;
     display: flex;
@@ -51,7 +49,7 @@ html, body {
     margin-bottom: 20px;
 }
 
-.h-left{
+.h-left {
     display: flex;
     align-items: center;
     margin-right: 20px;
@@ -60,15 +58,15 @@ html, body {
 .h-left h1 {
     font-size: 28px;
     font-weight: 600;
-
 }
+
 .h-left a {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
 }
 
-nav ul{
+nav ul {
     display: flex;
     align-items: center;
     list-style: none;
@@ -79,10 +77,10 @@ nav ul li {
 }
 
 nav ul li a {
-    display: inline-block;           
-    padding: 12px 20px;              
-    font-size: 16px;                 
-    border-radius: 25px;            
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 25px;
     transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 
@@ -98,8 +96,8 @@ nav ul li a:hover {
 }
 
 .auth-buttons button {
-    padding: 12px 24px;              
-    font-size: 16px;                 
+    padding: 12px 24px;
+    font-size: 16px;
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -117,7 +115,6 @@ nav ul li a:hover {
     cursor: pointer;
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    
 }
 
 .login-btn:hover {
@@ -145,39 +142,37 @@ nav ul li a:hover {
     opacity: 0.9;
 }
 
-.profile-container:hover .profile-icon{
-    transform: scale(1.1); /* Effetto di ingrandimento al passaggio del mouse */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Ombra più pronunciata */
+.profile-container:hover .profile-icon {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .profile-icon {
-    width: 80%;      /* L'immagine riempie tutto il bottone */
-    height: 80%;     /* L'immagine riempie tutto il bottone */
+    width: 80%;
+    height: 80%;
     border-radius: 50%;
-    object-fit: cover; /* Ritaglia l'immagine senza deformarla */
-    display: block; /* Adatta l'immagine senza distorcerla */
-    margin: 0px;
+    object-fit: cover;
+    display: block;
+    margin: 0;
     cursor: pointer;
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Contenitore del menu a tendina */
 .profile-container {
-    position: relative; /* Necessario per posizionare il menu a tendina */
+    position: relative;
     display: inline-block;
     align-content: center;
     justify-content: center;
-    width: 80px; /* Aumenta la larghezza del contenitore */
-    height: 80px; /* Aumenta l'altezza del contenitore */
+    width: 80px;
+    height: 80px;
     cursor: pointer;
 }
 
-/* Menu a tendina */
 .dropdown-menu {
-    display: none; /* Nascondi il menu di default */
+    display: none;
     position: absolute;
-    top: 80px; /* Posiziona il menu sotto il bottone */
+    top: 80px;
     right: 30px;
     background-color: white;
     border: 1px solid rgba(170, 33, 33, 0.2);
@@ -188,7 +183,6 @@ nav ul li a:hover {
     padding: 10px 0;
 }
 
-/* Pulsanti del menu */
 .dropdown-item {
     display: block;
     width: 100%;
@@ -208,7 +202,6 @@ nav ul li a:hover {
     color: rgba(170, 33, 33, 1);
 }
 
-/* Mostra il menu a tendina quando si passa sopra il contenitore */
 .profile-container:hover .dropdown-menu {
     display: block;
 }
@@ -288,11 +281,11 @@ nav ul li a:hover {
     align-items: left;
     margin: 0 auto 0px;
     margin-bottom: 40px;
-    border: 3px solid #aa2121; /* Bordo rosso sottile */
-    border-radius: 35px; /* Maggiore arrotondamento */
+    border: 3px solid #aa2121; 
+    border-radius: 35px; 
     width: 90%;
     height: 600px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12); /* Ombra leggermente più ampia */
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12); 
 }
 
 .scheda h1 {
@@ -346,7 +339,7 @@ nav ul li a:hover {
 }
 
 .rec:hover,.mat:hover {
-    transition: transform 0.3s ease; /* Transizione fluida */
+    transition: transform 0.3s ease; 
     cursor: pointer;
 }
 

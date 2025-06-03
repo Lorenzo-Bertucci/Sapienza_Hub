@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -9,36 +8,35 @@ html, body {
     height: 100%;
     width: 100%;
     margin: 0;
-    padding:0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', Arial, sans-serif;
-    background-color: #f9f9f9; 
+    background-color: #f9f9f9;
 }
 
 .container {
     display: grid;
     max-width: 100%;
-    min-height: 100vh; 
-    grid-template-rows: auto 1fr 1fr; 
+    min-height: 100vh;
+    grid-template-rows: auto 1fr 1fr;
     grid-template-columns: 1fr;
     grid-template-areas:
         "header"
         "main"
         "content";
-    background-color: white; 
+    background-color: white;
     color: black;
-    overflow-y: auto; 
-    -ms-overflow-style: none;  
-    scrollbar-width: none;    
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-/*nasconde la barra di scorrimento*/
 .container::-webkit-scrollbar {
     display: none;
 }
 
-.header{
+.header {
     grid-area: "header";
     background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
     color: white;
@@ -51,7 +49,7 @@ html, body {
     margin-bottom: 20px;
 }
 
-.h-left{
+.h-left {
     display: flex;
     align-items: center;
     margin-right: 20px;
@@ -60,15 +58,15 @@ html, body {
 .h-left h1 {
     font-size: 28px;
     font-weight: 600;
-
 }
+
 .h-left a {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
 }
 
-nav ul{
+nav ul {
     display: flex;
     align-items: center;
     list-style: none;
@@ -79,10 +77,10 @@ nav ul li {
 }
 
 nav ul li a {
-    display: inline-block;           
-    padding: 12px 20px;              
-    font-size: 16px;                 
-    border-radius: 25px;            
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 25px;
     transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 
@@ -98,8 +96,8 @@ nav ul li a:hover {
 }
 
 .auth-buttons button {
-    padding: 12px 24px;              
-    font-size: 16px;                 
+    padding: 12px 24px;
+    font-size: 16px;
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -117,7 +115,6 @@ nav ul li a:hover {
     cursor: pointer;
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    
 }
 
 .login-btn:hover {
@@ -145,39 +142,37 @@ nav ul li a:hover {
     opacity: 0.9;
 }
 
-.profile-container:hover .profile-icon{
-    transform: scale(1.1); /* Effetto di ingrandimento al passaggio del mouse */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Ombra più pronunciata */
+.profile-container:hover .profile-icon {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .profile-icon {
-    width: 80%;      /* L'immagine riempie tutto il bottone */
-    height: 80%;     /* L'immagine riempie tutto il bottone */
+    width: 80%;
+    height: 80%;
     border-radius: 50%;
-    object-fit: cover; /* Ritaglia l'immagine senza deformarla */
-    display: block; /* Adatta l'immagine senza distorcerla */
-    margin: 0px;
+    object-fit: cover;
+    display: block;
+    margin: 0;
     cursor: pointer;
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Contenitore del menu a tendina */
 .profile-container {
-    position: relative; /* Necessario per posizionare il menu a tendina */
+    position: relative;
     display: inline-block;
     align-content: center;
     justify-content: center;
-    width: 80px; /* Aumenta la larghezza del contenitore */
-    height: 80px; /* Aumenta l'altezza del contenitore */
+    width: 80px;
+    height: 80px;
     cursor: pointer;
 }
 
-/* Menu a tendina */
 .dropdown-menu {
-    display: none; /* Nascondi il menu di default */
+    display: none;
     position: absolute;
-    top: 80px; /* Posiziona il menu sotto il bottone */
+    top: 80px;
     right: 30px;
     background-color: white;
     border: 1px solid rgba(170, 33, 33, 0.2);
@@ -188,7 +183,6 @@ nav ul li a:hover {
     padding: 10px 0;
 }
 
-/* Pulsanti del menu */
 .dropdown-item {
     display: block;
     width: 100%;
@@ -208,7 +202,6 @@ nav ul li a:hover {
     color: rgba(170, 33, 33, 1);
 }
 
-/* Mostra il menu a tendina quando si passa sopra il contenitore */
 .profile-container:hover .dropdown-menu {
     display: block;
 }
@@ -216,12 +209,12 @@ nav ul li a:hover {
 .main {
     grid-area: main;
     display: grid;
-    grid-template-columns: auto auto ;  /* Colonna sinistra adatta al contenuto (foto e info) e colonna destra espandibile per desc */
-    grid-template-rows: auto auto;     /* Due righe: una per foto e una per info */
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
     grid-template-areas:
         "foto desc"
         "nav-bar nav-bar";
-    column-gap: 0px;
+    column-gap: 0;
     row-gap: 20px;
     align-items: start;
     margin: 0 auto 30px;
@@ -244,7 +237,6 @@ nav ul li a:hover {
     justify-content: center;
 }
 
-
 .foto img {
     width: 100%;
     height: 100%;
@@ -253,13 +245,12 @@ nav ul li a:hover {
     display: block;
 }
 
-
 .desc {
     grid-area: desc;
     color: black;
     text-align: justify;
-    padding:30px;
-    padding-left: 0px;
+    padding: 30px;
+    padding-left: 0;
     width: 100%;
     margin: 0 auto;
 }
@@ -269,6 +260,7 @@ nav ul li a:hover {
     font-size: 30px;
     font-weight: 600;
 }
+
 .desc p {
     font-size: 20px;
     line-height: 1.5;
@@ -280,35 +272,33 @@ nav ul li a:hover {
     border-top: 2px solid #ddd;
     display: flex;
     width: 100%;
-    align-items: center; 
-    height: 60px; 
+    align-items: center;
+    height: 60px;
 }
 
 .nav-bar .bottone {
     flex: 1;
     padding: 0 15px;
-    height: 100%; 
+    height: 100%;
     background: none;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 16px;
     border-radius: 15px;
-    display: flex;            
+    display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .nav-bar .bottone:hover {
     background-color: rgb(150, 30, 30);
     color: white;
- 
 }
 
 .nav-bar .bottone.active {
     background-color: rgb(150, 30, 30);
     color: white;
-   
 }
 
 .nav-bar .bottone i {
@@ -323,17 +313,17 @@ nav ul li a:hover {
 }
 
 .esami {
-    flex: 1; 
+    flex: 1;
     padding: 30px;
     padding-top: 10px;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
-    align-items:left;
-    margin: 0 auto 20px; 
+    align-items: left;
+    margin: 0 auto 20px;
     border-radius: 15px;
     width: 85%;
-    height:fit-content;
+    height: fit-content;
     border: 1px solid #ddd;
     background-color: white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -342,7 +332,7 @@ nav ul li a:hover {
 .esami h1 {
     margin-left: 50px;
     margin-top: 20px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
     font-size: 28px;
     font-weight: 600;
 }
@@ -355,16 +345,16 @@ nav ul li a:hover {
     border: 1px solid #ddd;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 90%; 
+    width: 90%;
     margin: 0 auto;
     margin-bottom: 20px;
 }
 
 .card:hover {
-    transform: translate(-5px); 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Mantiene l'ombra invariata */
+    transform: translate(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     background-color: rgb(170, 33, 33);
-    color:white;
+    color: white;
 }
 
 .card:active {
@@ -380,32 +370,33 @@ nav ul li a:hover {
     align-items: flex-start;
     text-decoration: none;
     color: inherit;
-    width: 100%; 
+    width: 100%;
     height: 100%;
-    padding: 20px; 
-    border-radius: 15px; 
+    padding: 20px;
+    border-radius: 15px;
 }
 
 .card h3 {
-    margin: 0 0 0px;
-    font-size: 20px; 
+    margin: 0 0 0;
+    font-size: 20px;
     font-weight: 500;
 }
+
 .card p {
-    margin: 0 0 0px;
+    margin: 0 0 0;
     color: #555;
     font-size: 20px;
     font-weight: 400;
     line-height: 1.5;
 }
 
-.button-row{
+.button-row {
     display: flex;
     justify-content: left;
     align-items: center;
     margin-left: 50px;
     margin-bottom: 10px;
-    gap:10px
+    gap: 10px;
 }
 
 .button-row button {
@@ -433,7 +424,7 @@ nav ul li a:hover {
     transform: scale(0.98);
 }
 
-.mat, .rec-esami{
+.mat, .rec-esami {
     background-color: white;
     margin: 0 auto 20px;
     width: 85%;
@@ -442,37 +433,33 @@ nav ul li a:hover {
     border: 1px solid #ddd;
     border-radius: 15px;
     padding: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.50);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-.rec{
+.rec {
     display: flex;
     flex-direction: column;
     align-self: center;
     flex-basis: auto;
-    align-items: flex-start; 
+    align-items: flex-start;
     width: 80%;
     margin: 15px auto;
-    
-    
 }
 
-.rec h2{
-    margin: 0px;
+.rec h2 {
+    margin: 0;
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 10px;
-    
 }
 
-.rec h3{
-    margin: 0px;
+.rec h3 {
+    margin: 0;
     font-size: 18px;
-    font-weight: 500; 
+    font-weight: 500;
 }
 
-
-.rec p{
+.rec p {
     padding-bottom: 10px;
     font-size: 17px;
     line-height: 1.3;
@@ -481,19 +468,18 @@ nav ul li a:hover {
     text-align: justify;
 }
 
-.utente{
+.utente {
     font-size: 20px;
-    color: rgba(149,30,30,1);
-
+    color: rgba(149, 30, 30, 1);
 }
 
-.mat p, .rec-esami p{
+.mat p, .rec-esami p {
     padding-bottom: 10px;
     font-size: 17px;
     border-bottom: 1px solid darkgray;
 }
 
-.mat a, .rec-esami a{
+.mat a, .rec-esami a {
     padding-top: 20px;
     padding-bottom: 20px;
     font-size: 20px;
@@ -501,13 +487,11 @@ nav ul li a:hover {
     text-decoration: none;
     text-align: center;
     color: black;
-
 }
 
-.mat h1, .rec-esami h1{
+.mat h1, .rec-esami h1 {
     text-align: center;
     color: rgba(149, 30, 30, 1);
-
 }
 
 .form-container {
@@ -526,14 +510,14 @@ nav ul li a:hover {
     margin-bottom: 15px;
 }
 
-.recensione-form{
-display: flex;
-flex-direction: column;
-gap: 15px;
+.recensione-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .recensione-form input,
-.recensione-form textarea{
+.recensione-form textarea {
     width: 100%;
     padding: 10px;
     font-size: 14px;
@@ -541,8 +525,8 @@ gap: 15px;
     border-radius: 5px;
 }
 
-.recensione-form textarea{
-    resize:none;
+.recensione-form textarea {
+    resize: none;
 }
 
 .recensione-form textarea:focus {
@@ -556,7 +540,7 @@ gap: 15px;
     font-style: italic;
 }
 
-.recensione-form button{
+.recensione-form button {
     padding: 10px;
     font-size: 16px;
     background-color: rgb(170, 33, 33);
@@ -573,33 +557,33 @@ gap: 15px;
 
 .recensione-form button:active {
     transform: scale(1.02);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.titolo{
+.titolo {
     font-size: 30px;
     text-align: center;
 }
 
-.rec{
+.rec {
     position: relative;
 }
 
 .report-btn {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  background-color: transparent;
-  border: 1px solid rgba(192,54,57,1);
-  color: rgba(192,54,57,1); 
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.2s;
-  display: none;
-  align-items: center;
-  gap: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: 1px solid rgba(192, 54, 57, 1);
+    color: rgba(192, 54, 57, 1);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.2s;
+    display: none;
+    align-items: center;
+    gap: 5px;
 }
 
 .rec:hover .report-btn {
@@ -607,20 +591,21 @@ gap: 15px;
 }
 
 .report-btn:hover {
-  background-color: rgba(192,54,57,1);
-  color: white;
-  transform: scale(1.05);
+    background-color: rgba(192, 54, 57, 1);
+    color: white;
+    transform: scale(1.05);
 }
 
 .rec:hover .delete-button {
-    display: block; /* Mostra il bottone quando si passa sopra .rec */
+    display: block;
 }
-.delete-button {    
+
+.delete-button {
     position: absolute;
     top: 10px;
     right: 10px;
     display: none;
-    padding: 0px;
+    padding: 0;
     cursor: pointer;
     border: none;
     color: rgb(150, 30, 30);
@@ -628,33 +613,27 @@ gap: 15px;
 }
 
 .delete-button:hover {
-    transform: scale(1.3); /* Leggero ingrandimento al passaggio del mouse */
+    transform: scale(1.3);
 }
 
-.navigation-mobile{
-    display:none;
+.navigation-mobile {
+    display: none;
 }
 
-/* Al di sotto di 768px, adatta la larghezza delle card e della benvenuto, e semplifica il layout della navbar */
 @media (max-width: 768px) {
-    
-    nav ul li a{
+    nav ul li a {
         font-size: 13px;
     }
-
     .register-btn {
         display: none;
     }
-
     .h-left h1 {
         margin: 0;
         font-size: 24px;
     }
-
     .register-btn {
         display: none;
     }
-
     .login-btn {
         width: 70px;
         height: 70px;
@@ -670,74 +649,56 @@ gap: 15px;
         color: white;
         border: none;
         transition: transform 0.3s ease, background-color 0.3s ease;
-        text-indent: -9999px; /* DA SISTEMARE */
+        text-indent: -9999px;
     }
-
     .login-btn:hover {
         transform: scale(1.1);
         background-color: rgb(150, 30, 30);
     }
-
     .auth-buttons {
         flex-direction: row;
         justify-content: center;
     }
-
-    .desc h1{
+    .desc h1 {
         font-size: 22px;
     }
-
-    .desc p, .desc p a{
+    .desc p, .desc p a {
         font-size: 15px;
     }
-
-    .foto img{
+    .foto img {
         width: 100px;
         height: 100px;
     }
-
-    .nav-bar{
+    .nav-bar {
         max-width: 100%;
         border-radius: 20px;
-
     }
-
-    .nav-bar .bottone{
+    .nav-bar .bottone {
         font-size: 14px;
     }
-
-    .card h3{
+    .card h3 {
         font-size: 16px;
     }
-
-    .mat h1{
+    .mat h1 {
         font-size: 20px;
     }
-
-    .recensione-form{
+    .recensione-form {
         transform: scale(0.9);
     }
-
-    .titolo{
+    .titolo {
         font-size: 20px;
     }
-
-    .utente{
+    .utente {
         font-size: 15px;
     }
-
-    .rec p{
+    .rec p {
         font-size: 13px;
     }
-
-    
 }
 
-/*sotto i 480px */
 @media (max-width: 480px) {
-
-    .container{
-        grid-template-rows: auto auto 1fr auto; /* Righe che si adattano automaticamente al contenuto */
+    .container {
+        grid-template-rows: auto auto 1fr auto;
         grid-template-columns: 1fr;
         grid-template-areas:
             "header"
@@ -745,151 +706,120 @@ gap: 15px;
             "content"
             "navigation-mobile";
     }
-
-    .content{
+    .content {
         padding-bottom: 70px;
     }
-
-    nav{
+    nav {
         display: none;
     }
-
-    .h-left{
+    .h-left {
         margin-right: 5px;
         margin-left: 0;
     }
-
     .h-left h1 {
         font-size: 14px;
     }
-
-    .header{
+    .header {
         width: 100%;
         padding: 10px;
     }
-
     .profile-icon {
         transform: scale(0.8);
     }
-
-    .main{
+    .main {
         grid-template-columns: auto;
         grid-template-rows: auto auto auto;
         grid-template-areas:
             "foto"
             "desc"
             "nav-bar";
-        
     }
-
-    .desc{
+    .desc {
         padding: 0;
         margin: 0 auto;
     }
-
-    .desc h1{
+    .desc h1 {
         font-size: 14px;
         text-align: center;
     }
-
-    .desc p, .desc p a{
+    .desc p, .desc p a {
         font-size: 10px;
-        padding: 0px 10px;
+        padding: 0 10px;
     }
-
-    .nav-bar{
+    .nav-bar {
         max-height: 80%;
         align-self: flex-end;
     }
-
-    .nav-bar .bottone{
+    .nav-bar .bottone {
         font-size: 12px;
     }
-
-    .nav-bar .bottone i{
+    .nav-bar .bottone i {
         font-size: 12px;
     }
-
-    .report-btn{
+    .report-btn {
         font-size: 0;
         margin-top: 25px;
     }
-
-    .report-btn i, .delete-button i{
+    .report-btn i, .delete-button i {
         font-size: 12px;
     }
-
-    .foto{
+    .foto {
         border-radius: 50%;
     }
-    .foto img{
+    .foto img {
         margin: 0;
     }
-
-    .img{
+    .img {
         grid-area: img;
     }
-
-    .esami{
+    .esami {
         padding-top: 0;
     }
-
-    .esami h2{
+    .esami h2 {
         font-size: 15px;
     }
-
-    .card h3{
+    .card h3 {
         font-size: 12px;
     }
-
-    .rec p{
+    .rec p {
         font-size: 11px;
     }
-    .utente{
+    .utente {
         font-size: 13px;
-    } 
-
-    .form-container h3, .titolo{
+    }
+    .form-container h3, .titolo {
         font-size: 16px;
     }
-
     .dropdown-menu {
-        right: 10px; 
+        right: 10px;
         width: 120px;
     }
-
-    .dropdown-menu button{
+    .dropdown-menu button {
         font-size: 12px;
     }
-
-    .navigation-mobile{
+    .navigation-mobile {
         grid-area: navigation-mobile;
         width: 100%;
         height: 70px;
-        position:fixed;
-        display: block;
-        bottom: 0;
+        position: fixed;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         border-top: 2px solid darkgray;
         background-color: white;
         border-radius: 10px;
-
     }
-
-    .item{
+    .item {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-content: center;
     }
-
-    .navigation-mobile .item a{
+    .navigation-mobile .item a {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center; 
+        justify-content: center;
         text-decoration: none;
         font-size: 14px;
         padding: 5px 10px;
@@ -897,12 +827,9 @@ gap: 15px;
         color: rgba(170, 33, 33, 1);
         cursor: pointer;
     }
-
-    .navigation-mobile .item a i{
+    .navigation-mobile .item a i {
         color: black;
         font-size: 12px;
         text-align: center;
     }
-    
-    
 }

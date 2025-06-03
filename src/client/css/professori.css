@@ -6,20 +6,20 @@
 
 
 html, body {
-    height: 100%; /* Assicura che il corpo occupi l'intera altezza */
+    height: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', Arial, sans-serif;
     background-color: #f9f9f9;
-    overflow-y: auto; /* Abilita lo scrolling verticale */
+    overflow-y: auto;
 }
 
 .container {
     display: grid;
     max-width: 100%;
-    min-height: 100vh; /* Usa min-height per permettere l'espansione se necessario */
-    grid-template-rows: auto auto auto 1fr; /* Righe che si adattano automaticamente al contenuto */
+    min-height: 100vh;
+    grid-template-rows: auto auto auto 1fr;
     grid-template-columns: 1fr;
     grid-template-areas:
         "header"
@@ -38,7 +38,7 @@ html, body {
     display: none;
 }
 
-.header{
+.header {
     grid-area: header;
     background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
     color: white;
@@ -50,7 +50,7 @@ html, body {
     height: 100px;
 }
 
-.h-left{
+.h-left {
     display: flex;
     align-items: center;
     margin-right: 20px;
@@ -61,15 +61,15 @@ html, body {
     font-size: 28px;
     line-height: 1;
     font-weight: 600;
-
 }
+
 .h-left a {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
 }
 
-nav ul{
+nav ul {
     display: flex;
     align-items: center;
     list-style: none;
@@ -82,15 +82,15 @@ nav ul li {
 }
 
 nav ul li a {
-    display: inline-block;           /* Permette di applicare padding e dimensioni */
-    padding: 12px 20px;              /* Ingrandisce il padding per un aspetto più robusto */
-    font-size: 16px;                 /* Aumenta la dimensione del testo */
-    border-radius: 25px;             /* Arrotonda i bordi */
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 25px;
     transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 
 nav ul li a:hover {
-    background-color: rgb(170, 33, 33); /* Stesso rosso del pulsante della barra di ricerca */
+    background-color: rgb(170, 33, 33);
     color: white;
     transform: scale(1.05);
 }
@@ -101,8 +101,8 @@ nav ul li a:hover {
 }
 
 .auth-buttons button {
-    padding: 12px 24px;              /* Ingrandisce i pulsanti con più padding */
-    font-size: 16px;                 /* Aumenta la dimensione del testo */
+    padding: 12px 24px;
+    font-size: 16px;
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -120,7 +120,6 @@ nav ul li a:hover {
     cursor: pointer;
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    
 }
 
 .login-btn:hover {
@@ -129,6 +128,7 @@ nav ul li a:hover {
     transform: scale(1.05);
     opacity: 0.9;
 }
+
 .register-btn {
     background-color: rgb(170, 33, 33);
     color: white;
@@ -140,47 +140,44 @@ nav ul li a:hover {
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 .register-btn:hover {
     background-color: rgb(150, 30, 30);
     transform: scale(1.05);
     opacity: 0.9;
 }
 
-
-
-.profile-container:hover .profile-icon{
-    transform: scale(1.1); /* Effetto di ingrandimento al passaggio del mouse */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Ombra più pronunciata */
+.profile-container:hover .profile-icon {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .profile-icon {
-    width: 80%;      /* L'immagine riempie tutto il bottone */
-    height: 80%;     /* L'immagine riempie tutto il bottone */
+    width: 80%;
+    height: 80%;
     border-radius: 50%;
-    object-fit: cover; /* Ritaglia l'immagine senza deformarla */
-    display: block; /* Adatta l'immagine senza distorcerla */
-    margin: 0px;
+    object-fit: cover;
+    display: block;
+    margin: 0;
     cursor: pointer;
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Contenitore del menu a tendina */
 .profile-container {
-    position: relative; /* Necessario per posizionare il menu a tendina */
+    position: relative;
     display: inline-block;
     align-content: center;
     justify-content: center;
-    width: 80px; /* Aumenta la larghezza del contenitore */
-    height: 80px; /* Aumenta l'altezza del contenitore */
+    width: 80px;
+    height: 80px;
     cursor: pointer;
 }
 
-/* Menu a tendina */
 .dropdown-menu {
-    display: none; /* Nascondi il menu di default */
+    display: none;
     position: absolute;
-    top: 80px; /* Posiziona il menu sotto il bottone */
+    top: 80px;
     right: 30px;
     background-color: white;
     border: 1px solid rgba(170, 33, 33, 0.2);
@@ -191,7 +188,6 @@ nav ul li a:hover {
     padding: 10px 0;
 }
 
-/* Pulsanti del menu */
 .dropdown-item {
     display: block;
     width: 100%;
@@ -211,27 +207,28 @@ nav ul li a:hover {
     color: rgba(170, 33, 33, 1);
 }
 
-/* Mostra il menu a tendina quando si passa sopra il contenitore */
 .profile-container:hover .dropdown-menu {
     display: block;
 }
+
 .hero h2 {
-    font-size: 25px; /* Riduce leggermente la dimensione del testo */
-    font-weight: 700; /* Rende il testo più bold */
-    margin: 0; /* Rimuove margini extra */
+    font-size: 25px;
+    font-weight: 700;
+    margin: 0;
     color: black;
-    display: flex; /* Mantiene il colore nero */
-    padding-left: 100px; /* Allinea il testo con la barra di ricerca */
+    display: flex;
+    padding-left: 100px;
 }
+
 .search-bar {
     grid-area: search-bar;
-    margin: 10px auto; /* Centra la barra orizzontalmente */
+    margin: 10px auto;
     border: 3px solid rgba(192,54,57,1);
     width: 90%;
     display: flex;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     background-color: white;
-    padding: 10px; 
+    padding: 10px;
     border-radius: 30px;
 }
 
@@ -240,7 +237,7 @@ nav ul li a:hover {
     padding: 20px;
     font-size: 16px;
     border: none;
-    border-radius: 30px 0 0 30px; /* Arrotonda i bordi sinistri */
+    border-radius: 30px 0 0 30px;
     outline: none;
     background-color: white;
 }
@@ -251,7 +248,7 @@ nav ul li a:hover {
     border: none;
     background-color: white;
     color: rgba(192,54,57,1);
-    border-radius:  30px ; /* Arrotonda i bordi  */
+    border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -262,21 +259,21 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 
-.search{
-    width: 48px; 
+.search {
+    width: 48px;
     height: 48px;
     margin: 5px;
-    display: block; 
+    display: block;
 }
 
 .content {
     grid-area: content;
-    flex: 1; 
+    flex: 1;
     background-color: white;
-    padding: 20px; 
-    margin-top: 10px; 
-    display: flex; 
-    flex-direction: column; 
+    padding: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
@@ -291,12 +288,12 @@ nav ul li a:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 75%;
     margin: 5px auto;
-    
 }
+
 .card:hover {
     transform: translate(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); 
-    background-color:rgb(170, 33, 33);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    background-color: rgb(170, 33, 33);
     color: white;
 }
 
@@ -308,37 +305,34 @@ nav ul li a:hover {
 
 .card h3 {
     margin: 0 0 0px;
-    font-size: 20px; 
+    font-size: 20px;
     font-weight: 500;
 }
 
 .card a {
-    display: flex; /* Imposta il layout Flexbox per il contenuto */
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start; /* Allinea il contenuto a sinistra */
-    text-decoration: none; /* Rimuove la sottolineatura del link */
-    color: inherit; /* Mantiene il colore del testo */
-    width: 100%; /* Occupa tutta la larghezza della card */
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
     height: 100%;
-    padding: 20px; /* Occupa tutta l'altezza della card */ /* Mantiene il padding interno */
-    border-radius: 15px; /* Mantiene gli angoli arrotondati */
+    padding: 20px;
+    border-radius: 15px;
 }
 
-
-/* Imposta lo sfondo con l'immagine 'corsi.png' e aggiunge un overlay */
 .foto {
-    position: relative;  /* Necessario per il posizionamento assoluto dei figli */
+    position: relative;
     width: 100%;
-    height: 380px; /* Altezza desiderata */
+    height: 380px;
     margin: 0 auto 20px;
     overflow: hidden;
     background: url('../assets/professori.jpg') no-repeat center 45%;
     background-color: white;
-    background-size: cover; /* Mostra l'immagine interamente e meno zoomata */
+    background-size: cover;
 }
 
-/* Overlay semi-trasparente sopra l'immagine */
 .foto::before {
     content: "";
     position: absolute;
@@ -346,40 +340,36 @@ nav ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Regola la trasparenza */
+    background: rgba(0, 0, 0, 0.4);
     z-index: 1;
 }
-.foto h3{
+
+.foto h3 {
     position: absolute;
-    bottom: 20px;   /* distanza dal fondo */
-    left: 100px;     /* distanza dal lato sinistro */
+    bottom: 20px;
+    left: 100px;
     color: white;
     font-size: 40px;
     font-weight: 800;
     margin: 0;
-    z-index: 2;     /* sopra l'overlay */
+    z-index: 2;
 }
 
-.navigation-mobile{
-    display:none;
+.navigation-mobile {
+    display: none;
 }
-
 
 @media (max-width: 768px) {
-    
-    nav ul li a{
+    nav ul li a {
         font-size: 13px;
     }
-
     .register-btn {
         display: none;
     }
-
     .h-left h1 {
         margin: 0;
         font-size: 24px;
     }
-
     .login-btn {
         width: 70px;
         height: 70px;
@@ -395,52 +385,41 @@ nav ul li a:hover {
         color: white;
         border: none;
         transition: transform 0.3s ease, background-color 0.3s ease;
-        text-indent: -9999px; /* DA SISTEMARE */
+        text-indent: -9999px;
     }
-
     .login-btn:hover {
         transform: scale(1.1);
         background-color: rgb(150, 30, 30);
     }
-
-    .card{
+    .card {
         width: 80%;
         align-self: center;
     }
-
     .card h3 {
         font-size: 15px;
     }
-
-
-    .foto h3{
+    .foto h3 {
         font-size: 30px;
         left: 75px;
     }
-
     .search-bar {
         width: 85%;
         margin: 0 auto;
         border-radius: 20px;
     }
-    .search-bar input, .search-bar button{
+    .search-bar input, .search-bar button {
         font-size: 13px;
-        padding:10px;
-   }
-
-    .search-bar img{
+        padding: 10px;
+    }
+    .search-bar img {
         width: 30px;
         height: 30px;
     }
-
-
 }
 
-/*sotto i 480px */
 @media (max-width: 480px) {
-
-    .container{
-        grid-template-rows: auto auto auto 1fr auto; /* Righe che si adattano automaticamente al contenuto */
+    .container {
+        grid-template-rows: auto auto auto 1fr auto;
         grid-template-columns: 1fr;
         grid-template-areas:
             "header"
@@ -449,104 +428,83 @@ nav ul li a:hover {
             "content"
             "navigation-mobile";
     }
-
-    .content{
+    .content {
         padding-bottom: 70px;
     }
-
-    .foto{
+    .foto {
         height: 200px;
     }
-
-    nav{
+    nav {
         display: none;
     }
-
-    .h-left{
+    .h-left {
         margin-right: 5px;
         margin-left: 0;
     }
-
-    .header{
+    .header {
         width: 100%;
         padding: 10px;
     }
-
-
-    .card{
+    .card {
         flex-direction: column;
         margin: 10px auto 10px;
     }
-
     .card h3 {
         font-size: 11px;
     }
-
-    .profile-icon{
+    .profile-icon {
         transform: scale(0.8);
     }
-
     .dropdown-menu {
-        right: 10px; 
+        right: 10px;
         width: 120px;
     }
-
-    .dropdown-menu button{
+    .dropdown-menu button {
         font-size: 12px;
     }
-
     .h-left h1 {
         font-size: 14px;
     }
-
-    .foto h3{
+    .foto h3 {
         font-size: 25px;
         left: 50;
     }
-
     .search-bar {
         width: 85%;
         margin: 0 auto;
         border-radius: 20px;
     }
-    .search-bar input, .search-bar button{
+    .search-bar input, .search-bar button {
         font-size: 11px;
-        padding:5px;
-   }
-
-    .search-bar img{
+        padding: 5px;
+    }
+    .search-bar img {
         width: 15px;
         height: 15px;
     }
-
-    .navigation-mobile{
+    .navigation-mobile {
         grid-area: navigation-mobile;
         width: 100%;
         height: 70px;
-        position:fixed;
-        display: block;
-        bottom: 0;
+        position: fixed;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         border-top: 2px solid darkgray;
         background-color: white;
         border-radius: 10px;
-
     }
-
-    .item{
+    .item {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-content: center;
     }
-
-    .navigation-mobile .item a{
+    .navigation-mobile .item a {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center; 
+        justify-content: center;
         text-decoration: none;
         font-size: 14px;
         padding: 5px 10px;
@@ -554,12 +512,9 @@ nav ul li a:hover {
         color: rgba(170, 33, 33, 1);
         cursor: pointer;
     }
-
-    .navigation-mobile .item a i{
+    .navigation-mobile .item a i {
         color: black;
         font-size: 12px;
         text-align: center;
     }
-
-
 }

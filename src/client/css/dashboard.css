@@ -50,7 +50,7 @@ body {
     background-color: #f9f9f9;
 }
 
-.header{
+.header {
     grid-area: header;
     background-image: linear-gradient(180deg, rgba(88, 14, 14, 1) 0%, rgba(149, 30, 30, 1) 40%);
     color: white;
@@ -64,7 +64,7 @@ body {
     margin-bottom: 0px;
 }
 
-.h-left{
+.h-left {
     display: flex;
     align-items: center;
     margin-right: 20px;
@@ -75,15 +75,15 @@ body {
     font-size: 28px;
     line-height: 1;
     font-weight: 600;
-
 }
+
 .h-left a {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
 }
 
-nav ul{
+nav ul {
     display: flex;
     align-items: center;
     list-style: none;
@@ -96,15 +96,15 @@ nav ul li {
 }
 
 nav ul li a {
-    display: inline-block;           /* Permette di applicare padding e dimensioni */
-    padding: 12px 20px;              /* Ingrandisce il padding per un aspetto più robusto */
-    font-size: 16px;                 /* Aumenta la dimensione del testo */
-    border-radius: 25px;             /* Arrotonda i bordi */
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 25px;
     transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 
 nav ul li a:hover {
-    background-color: rgb(170, 33, 33); /* Stesso rosso del pulsante della barra di ricerca */
+    background-color: rgb(170, 33, 33);
     color: white;
     transform: scale(1.05);
 }
@@ -115,8 +115,8 @@ nav ul li a:hover {
 }
 
 .auth-buttons button {
-    padding: 12px 24px;              
-    font-size: 16px;               
+    padding: 12px 24px;
+    font-size: 16px;
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -124,10 +124,9 @@ nav ul li a:hover {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-
-.profile-container:hover .profile-icon{
-    transform: scale(1.1); /* Effetto di ingrandimento al passaggio del mouse */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Ombra più pronunciata */
+.profile-container:hover .profile-icon {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -141,28 +140,26 @@ nav ul li a:hover {
     margin: 0px;
     cursor: pointer;
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    max-width: 180px;      /* Aumenta la dimensione massima */
+    max-width: 180px;
     max-height: 180px;
-    min-width: 100px;      /* Aumenta la dimensione minima */
+    min-width: 100px;
     min-height: 100px;
 }
 
-/* Contenitore del menu a tendina */
 .profile-container {
-    position: relative; /* Necessario per posizionare il menu a tendina */
+    position: relative;
     display: inline-block;
     align-content: center;
     justify-content: center;
-    width: 80px; /* Aumenta la larghezza del contenitore */
-    height: 80px; /* Aumenta l'altezza del contenitore */
+    width: 80px;
+    height: 80px;
     cursor: pointer;
 }
 
-/* Menu a tendina */
 .dropdown-menu {
-    display: none; /* Nascondi il menu di default */
+    display: none;
     position: absolute;
-    top: 80px; /* Posiziona il menu sotto il bottone */
+    top: 80px;
     right: 30px;
     background-color: white;
     border: 1px solid rgba(170, 33, 33, 0.2);
@@ -173,7 +170,6 @@ nav ul li a:hover {
     padding: 10px 0;
 }
 
-/* Pulsanti del menu */
 .dropdown-item {
     display: block;
     width: 100%;
@@ -193,28 +189,26 @@ nav ul li a:hover {
     color: rgba(170, 33, 33, 1);
 }
 
-/* Mostra il menu a tendina quando si passa sopra il contenitore */
 .profile-container:hover .dropdown-menu {
     display: block;
 }
+
 .side-bar {
     grid-area: side-bar;
-    color:white;
-    border-right: 4px solid rgba(170, 33, 33, 0.5);  /* separazione più spessa e trasparente */
+    color: white;
+    border-right: 4px solid rgba(170, 33, 33, 0.5);
     padding: 30px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* tutto allineato a sinistra */
+    align-items: flex-start;
     min-width: fit-content;
     width: 100%;
     min-height: 100%;
-    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.15); /* ombra che evidenzia la separazione */
-    margin-right: 20px;  /* spazio extra a destra della sidebar */
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.15);
+    margin-right: 20px;
     overflow-y: auto;
-
 }
 
-/* Sezione dei dati utente ("desc") presente nella sidebar */
 .desc {
     width: 100%;
     text-align: left;
@@ -240,7 +234,6 @@ nav ul li a:hover {
     color: #333;
 }
 
-/* Sezione di navigazione (i pulsanti per le varie sezioni) */
 .nav-bar {
     width: 100%;
     display: flex;
@@ -256,7 +249,7 @@ nav ul li a:hover {
     font-size: 22px;
     text-align: left;
     border: none;
-    border-radius: 20px;  /* aumenta l'arrotondamento */
+    border-radius: 20px;
     background: #f2f2f2;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -281,21 +274,19 @@ nav ul li a:hover {
     color: #fff;
 }
 
-.main{
+.main {
     grid-area: main;
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
-    overflow-y: auto; 
+    overflow-y: auto;
     text-align: center;
 }
-
 
 .main h1 {
     font-size: 40px;
     margin-top: 30px;
-
 }
 
 .content {
@@ -305,7 +296,7 @@ nav ul li a:hover {
     align-items: center;
     margin: 0 auto 15px;
     border-radius: 35px;
-    padding:20px;
+    padding: 20px;
     width: 90%;
     height: fit-content;
     border: 1px solid #ddd;
@@ -314,7 +305,7 @@ nav ul li a:hover {
 }
 
 .content h2 {
-    margin: 0px;
+    margin: 0;
     font-size: 28px;
     margin-bottom: 20px;
     line-height: 1.2;
@@ -323,7 +314,7 @@ nav ul li a:hover {
 }
 
 .content h3 {
-    margin: 0px;
+    margin: 0;
     font-size: 25px;
     margin-bottom: 20px;
     margin-left: 50px;
@@ -332,18 +323,19 @@ nav ul li a:hover {
     text-align: left;
 }
 
-.content p, .recensioni p {
-    margin: 0px;
+.content p,
+.recensioni p {
+    margin: 0;
     font-size: 24px;
     line-height: 1.2;
     text-align: center;
 }
 
-.preferiti, .file,.recensioni{
+.preferiti, .file, .recensioni {
     width: 100%;
 }
 
-.corsi{
+.corsi {
     margin-bottom: 20px;
     justify-items: left;
 }
@@ -355,83 +347,82 @@ nav ul li a:hover {
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 15px;
-    padding: 0px;
+    padding: 0;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 70%; 
+    width: 70%;
     margin: 0 auto;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
+
 .card:hover {
-    transform: translate(-5px); 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-    background-color:rgb(170, 33, 33);
+    transform: translate(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(170, 33, 33);
     color: white;
 }
 
 .card a {
-    display: flex; 
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start; 
-    text-decoration: none; 
-    color: inherit; 
-    width: 100%; /* Occupa tutta la larghezza della card */
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
     height: 100%;
-    padding: 20px; /* Occupa tutta l'altezza della card */ /* Mantiene il padding interno */
-    border-radius: 15px; /* Mantiene gli angoli arrotondati */
+    padding: 20px;
+    border-radius: 15px;
 }
 
 .card h3 {
-    margin: 0 0 0px;
-    font-size: 24px; /* Aumenta la dimensione del titolo */
+    margin: 0 0 0;
+    font-size: 24px;
     font-weight: 500;
 }
+
 .card p {
-    margin: 0 0 0;
+    margin: 0;
     color: #555;
     font-size: 20px;
     font-weight: 400;
     line-height: 1.5;
 }
 
-.rec-esami{
+.rec-esami {
     margin-bottom: 10px;
 }
 
-.rec{
+.rec {
     display: flex;
     flex-direction: column;
     align-self: center;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: auto;
-    align-items: flex-start; 
+    align-items: flex-start;
     width: 80%;
     margin: 15px auto;
-    
 }
 
 .rec:hover {
-    transition: transform 0.3s ease; /* Transizione fluida */
+    transition: transform 0.3s ease;
     cursor: pointer;
 }
 
-.rec h2{
-    margin: 0px;
+.rec h2 {
+    margin: 0;
     font-size: 22px;
     font-weight: 500;
     margin-bottom: 10px;
-    
 }
 
-.rec h3{
-    margin: 0px;
+.rec h3 {
+    margin: 0;
     font-size: 20px;
-    font-weight: 500; 
+    font-weight: 500;
 }
 
-
-.rec p{
+.rec p {
     padding-bottom: 10px;
     font-size: 22px;
     line-height: 1.3;
@@ -440,35 +431,36 @@ nav ul li a:hover {
     text-align: justify;
 }
 
-
 .rec:hover .delete-button {
-    display: block; /* Mostra il bottone quando si passa sopra .rec */
+    display: block;
 }
-.delete-button {    
+
+.delete-button {
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
     display: none;
-    padding: 0px;
+    padding: 0;
     cursor: pointer;
     border: none;
     color: rgb(150, 30, 30);
     background-color: white;
 }
+
 .rec {
     position: relative;
 }
 
 .delete-button:hover {
-    transform: scale(1.3); /* Leggero ingrandimento al passaggio del mouse */
+    transform: scale(1.3);
 }
 
 /* Aumenta il bottone per modificare l'immagine profilo */
 .change-profile-btn {
     display: block;
     margin: 10px auto 0;
-    padding: 12px 16px; /* Ingrandito */
-    font-size: 18px;    /* Font più grande */
+    padding: 12px 16px;
+    font-size: 18px;
     border: none;
     border-radius: 10px;
     background-color: #f2f2f2;
@@ -491,7 +483,7 @@ input[type="file"]::-webkit-file-upload-button {
     background: #a92121;
     border: none;
     border-radius: 25px;
-    box-shadow: 0 2px 8px rgba(170, 33, 33, 0.10);
+    box-shadow: 0 2px 8px rgba(170, 33, 33, 0.1);
     cursor: pointer;
     transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
     outline: none;
@@ -506,80 +498,62 @@ input[type="file"]:hover::-webkit-file-upload-button {
 
 input[type="file"]:active::-webkit-file-upload-button {
     transform: scale(0.97);
-    box-shadow: 0 1px 4px rgba(170, 33, 33, 0.10);
+    box-shadow: 0 1px 4px rgba(170, 33, 33, 0.1);
 }
 
-.navigation-mobile{
+.navigation-mobile {
     display: none;
 }
 
-
 @media (max-width: 768px) {
-    
     nav {
         display: none;
     }
-
-    .h-left{
+    .h-left {
         margin-right: 5px;
         margin-left: 0;
     }
-    
-
-    .header{
+    .header {
         width: 100%;
         padding: 10px;
     }
-
-    .profile-icon{
+    .profile-icon {
         max-width: 100px;
         max-height: 100px;
         min-width: 60px;
         min-height: 60px;
     }
-
-    .side-bar{
+    .side-bar {
         padding: 10px;
     }
-
-    .desc h2, .desc p{
+    .desc h2, .desc p {
         font-size: 14px;
     }
-
-    .change-profile-btn{
+    .change-profile-btn {
         padding: 10px;
         font-size: 16px;
     }
-
-    .nav-bar .bottone{
+    .nav-bar .bottone {
         font-size: 13px;
         padding: 12px 15px;
         border-radius: 12px;
     }
-
-    .main h1, .preferiti h2, .corsi h3, .esami h3, .recensioni h2, .rec-professori p,
-    .rec-esami h3, .file h2, .rec-professori h3, .file p, .corsi p, .esami p, .rec-esami p{
+    .main h1, .preferiti h2, .corsi h3, .esami h3, .recensioni h2, .rec-professori p, .rec-esami h3, .file h2, .rec-professori h3, .file p, .corsi p, .esami p, .rec-esami p {
         font-size: 20px;
     }
-
-    .card h3{
+    .card h3 {
         font-size: 14px;
     }
-
-    .rec h2{
+    .rec h2 {
         font-size: 15px;
     }
-
-    .rec p{
+    .rec p {
         font-size: 14px;
     }
-
 }
 
-/*sotto i 480px */
 @media (max-width: 480px) {
-
-    .container{
+    .container {
         grid-template-rows: auto auto 1fr auto;
         grid-template-columns: 1fr;
         grid-template-areas:
@@ -588,106 +562,83 @@ input[type="file"]:active::-webkit-file-upload-button {
             "main"
             "navigation-mobile";
     }
-
-    .main{
+    .main {
         padding-bottom: 70px;
     }
-
-    
-
-    .header{
+    .header {
         width: 100%;
         padding: 10px;
     }
-
-    .nav-bar{
+    .nav-bar {
         flex-direction: row;
-        gap:0;
+        gap: 0;
     }
-
-    .profile-icon{
+    .profile-icon {
         max-width: 80px;
         max-height: 80px;
         min-width: 40px;
         min-height: 40px;
     }
-
     .h-left h1 {
         font-size: 14px;
     }
-
-    .side-bar{
+    .side-bar {
         padding: 8px;
         min-height: 100%;
         margin-right: 0;
         border-right: 0;
     }
-
-    .desc{
+    .desc {
         padding-bottom: 0;
         margin-bottom: 10px;
-
     }
-
-    .desc h2, .desc p{
+    .desc h2, .desc p {
         font-size: 12px;
     }
-
-    .change-profile-btn{
+    .change-profile-btn {
         padding: 6px;
         font-size: 12px;
     }
-
-    .nav-bar .bottone{
+    .nav-bar .bottone {
         font-size: 11px;
         padding: 6px 12px;
         border-radius: 10px;
     }
-
     .nav-bar .bottone i {
         margin-right: 2px;
         font-size: 12px;
         color: rgba(170, 33, 33, 1);
     }
-
-    .main h1{
+    .main h1 {
         font-size: 15px;
         margin-top: 10px;
     }
-
-    .corsi h3, .esami h3, .rec-professori p,
-    .rec-esami h3, .file h2, .rec-professori h3, .file p, .corsi p, .esami p, .rec-esami p{
+    .corsi h3, .esami h3, .rec-professori p, .rec-esami h3, .file h2, .rec-professori h3, .file p, .corsi p, .esami p, .rec-esami p {
         font-size: 15px;
         text-align: left;
-        margin-left: 0px;
+        margin-left: 0;
     }
-
-    .rec-esami{
+    .rec-esami {
         width: 100%;
     }
-
-    .recensioni h2,.preferiti h2{
+    .recensioni h2, .preferiti h2 {
         font-size: 15px;
     }
-
-    .card h3{
+    .card h3 {
         font-size: 10px;
     }
-
-    .rec h2{
+    .rec h2 {
         font-size: 10px;
         text-align: left;
     }
-
-    .rec p{
+    .rec p {
         font-size: 10px;
     }
-
-    .navigation-mobile{
+    .navigation-mobile {
         grid-area: navigation-mobile;
         width: 100%;
         height: 70px;
-        position:fixed;
+        position: fixed;
         display: block;
         bottom: 0;
         display: flex;
@@ -696,21 +647,18 @@ input[type="file"]:active::-webkit-file-upload-button {
         border-top: 2px solid darkgray;
         background-color: white;
         border-radius: 10px;
-
     }
-
-    .item{
+    .item {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-content: center;
     }
-
-    .navigation-mobile .item a{
+    .navigation-mobile .item a {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center; 
+        justify-content: center;
         text-decoration: none;
         font-size: 14px;
         padding: 5px 10px;
@@ -718,12 +666,9 @@ input[type="file"]:active::-webkit-file-upload-button {
         color: rgba(170, 33, 33, 1);
         cursor: pointer;
     }
-
-    .navigation-mobile .item a i{
+    .navigation-mobile .item a i {
         color: black;
         font-size: 12px;
         text-align: center;
     }
-
-
 }
