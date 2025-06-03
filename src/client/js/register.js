@@ -1,17 +1,15 @@
 // Funzione per gestire la registrazione
 function inviaReg(event){
-  event.preventDefault(); // Previene il comportamento predefinito del form
+  event.preventDefault(); 
 
   const selectElem = document.getElementById("corso");
   console.log("Valore select:", selectElem.value);
 
-  // Recupera i dati dal form
   const form=document.getElementById("registerForm");
   const formData=new FormData(form);
 
   console.log("CORSO:" ,formData.get("inputCorso"));
 
-  // Controlla il formato dell'email
   const email = formData.get('inputEmail');
   const cognome = formData.get('inputCognome');
   const emailCognome = email.split('.')[0];
@@ -26,7 +24,6 @@ function inviaReg(event){
     return;
   }
 
-  // Invia i dati al server tramite fetch
   fetch('/src/server/php/auth/register.php', {
     method: 'POST',
     body: formData
@@ -92,13 +89,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const preview = document.getElementById("preview");
     const defaultImg = "assets/utente.png";
 
-    // Clicca sulla preview per aprire il file picker
     preview.addEventListener("click", () => input.click());
     preview.addEventListener("keypress", (e) => {
         if (e.key === "Enter" || e.key === " ") input.click();
     });
 
-    // Mostra la preview dell'immagine scelta
     input.addEventListener("change", function() {
         const file = this.files[0];
         if (file) {
@@ -112,7 +107,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Se la preview viene rimossa, torna all'immagine di default
     preview.onerror = function() {
         preview.src = defaultImg;
     };

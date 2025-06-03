@@ -1,7 +1,6 @@
 <?php
 header('Content-Type: application/json');
 
-// Connessione al database PostgreSQL
 $conn = pg_connect("host=localhost port=5433 dbname=sapienzhub user=postgres password=Postgre*1");
 
 if (!$conn) {
@@ -9,10 +8,8 @@ if (!$conn) {
     exit;
 }
 
-// Sanitizza il codice del corso per prevenire SQL injection
 $corso = pg_escape_string($conn, $_GET['corso']);
 
-// Query per recuperare gli esami associati al corso
 $query = "SELECT codice,nome,anno,semestre FROM esami WHERE corso = $1";
 $result = pg_query_params($conn, $query, array($corso));
 
@@ -21,16 +18,13 @@ if (!$result) {
     exit;
 }
 
-// Creazione dell'array degli esami
 $esami = [];
 while ($row = pg_fetch_assoc($result)) {
     $esami[] = $row;
 }
 
-// Liberazione della memoria e chiusura della connessione
 pg_free_result($result);
 pg_close($conn);
 
-// Restituzione dei dati come JSON
 echo json_encode(['success' => true, 'esami' => $esami]);
 ?>

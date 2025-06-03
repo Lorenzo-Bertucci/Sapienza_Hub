@@ -25,7 +25,6 @@
             <button class="back" onclick="window.location.href='/src/client/html/index.php'">Torna alla Home</button>
         </div>
         <div class="tool">
-            <!-- Qui viene caricato il form per la gestione scelto -->
             <h2>Seleziona un'azione dalla lista</h2>
         </div>
     </div>

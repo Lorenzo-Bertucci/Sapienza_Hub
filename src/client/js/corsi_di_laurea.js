@@ -17,9 +17,9 @@ function filterCourses(query) {
     cards.forEach(card => {
         const courseName = card.querySelector("h3").textContent.toLowerCase();
         if (courseName.includes(query)) {
-            card.style.display = "flex"; // Mostra la card
+            card.style.display = "flex";
         } else {
-            card.style.display = "none"; // Nasconde la card
+            card.style.display = "none"; 
         }
     });    
 }
@@ -56,16 +56,12 @@ function loadCorsi(searchQuery) {
         })
         .then(data => {
             if (data.success) {
-                // Aggiungi le card dei corsi
                 data.corsi.forEach(corso => {
                     const card = createCard(corso.codice,corso.nome,corso.tipo);
                     cardsContainer.appendChild(card);
                 });
-                // Ricollega gli eventi di ricerca
                 addSearchFunctionality();
-                // Imposta il valore della barra di ricerca
                 searchInput.value = searchQuery;
-                // Filtra i corsi in base al termine di ricerca
                 filterCourses(searchQuery);
             } else {
                 console.error("Errore:",data.message);
@@ -82,7 +78,6 @@ function loadCorsi(searchQuery) {
 // Inizializza la pagina
 // Carica i corsi e aggiungi la funzionalità di ricerca
 document.addEventListener("DOMContentLoaded", function () {
-    // Recupera il termine di ricerca dall'URL
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get("search") || "";
 

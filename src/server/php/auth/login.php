@@ -9,7 +9,7 @@ if (!$conn) {
     exit;
 }
 
-// Recupera i dati dal form
+
 $email = pg_escape_string($conn,$_POST['inputEmail']);
 $password = pg_escape_string($conn,$_POST['inputPassword']);
 
@@ -27,7 +27,6 @@ if ($utente) {
 }
 
 
-// Controlla se l'email esiste
 $q1 = "SELECT u.id, u.nome, c.nome AS corso,u.foto,u.password FROM utenti u JOIN corsi c ON u.studia=c.codice WHERE email=$1";
 $result = pg_query_params($conn, $q1, array($email));
 $tuple = pg_fetch_array($result, null, PGSQL_ASSOC);
@@ -36,13 +35,12 @@ if (!$tuple) {
     exit;
 }
 
-// Verifica la password
+
 if (!password_verify($password, $tuple['password'])) {
     echo json_encode(['success' => false, 'message' => 'Password errata.', 'gestione' => false]);
     exit;
 }
 
-// Login riuscito
 $_SESSION['logged_in'] = true;
 $_SESSION['user_id'] = $tuple['id'];
 $_SESSION['user_email'] = $email;
@@ -51,14 +49,14 @@ $_SESSION['user_nome'] = $nome;
 $_SESSION['user_cognome'] = $cognome;
 $_SESSION['studia'] = $tuple['corso'];
 
-// Salva l'immagine profilo in sessione (base64 se presente, altrimenti percorso default)
+
 if (!empty($tuple['foto'])) {
     $_SESSION['profile_img'] = $tuple['foto'];
 } else {
     $_SESSION['profile_img'] = 'assets/utente.png';
 }
 
-// Liberazione della memoria e chiusura della connessione
+
 pg_free_result($result);
 pg_close($conn);
 

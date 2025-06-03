@@ -13,7 +13,7 @@ function reportReview(reviewId) {
     showCancelButton: true,
     confirmButtonText: 'Segnala',
     cancelButtonText: 'Annulla',
-    confirmButtonColor: 'rgb(170, 33, 33)', // rosso come da altri Swal
+    confirmButtonColor: 'rgb(170, 33, 33)', 
     cancelButtonColor: '#3085d6'
   }).then((result) => {
     if (result.isConfirmed) {
@@ -28,7 +28,6 @@ function reportReview(reviewId) {
       .then(data => {
         if (data.success) {
           Swal.fire('Segnalata!', data.message, 'success');
-          // Ricarica le recensioni dopo la segnalazione
           openRec();
         } else {
           Swal.fire('Errore', data.message, 'error');
@@ -49,7 +48,7 @@ function createDeleteButtonRecensione(id){
     deleteButton.classList.add("delete-button");
 
     deleteButton.addEventListener("click", (event) => {
-        event.stopPropagation(); // Impedisce il click sulla card
+        event.stopPropagation(); 
 
         Swal.fire({
             title: "Sei sicuro di voler eliminare la recensione?",
@@ -73,7 +72,7 @@ function createDeleteButtonRecensione(id){
                     if (data.success) {
                         Swal.fire("Eliminata!", "La recensione è stata eliminata", "success")
                     .then(() => {
-                        openRec(); // Ricarica le recensioni
+                        openRec(); 
                     });
                     }else {
                         Swal.fire("Errore", data.message, "error");
@@ -100,7 +99,6 @@ function createRec(id,utente,data,testo,foto,id_utente){
     year: "numeric"
   });
   const profileImage = foto && foto.trim() !== "" ? foto : '/src/client/assets/utente.png';
-  // Recupera l'user_id dalla sessione (localStorage)
   let currentUserId = null;
   try {
     currentUserId = localStorage.getItem('user_id');
@@ -276,20 +274,16 @@ function loadEsami(){
 
 // Funzione per gestire il gruppo di bottoni e le sezioni
 function setupButtonGroup(buttons, defaultString, sections) {
-  // Mappa tra i testi dei bottoni e i nomi delle sezioni
   const buttonToSectionMap = {
       "esami": "esami",
       "recensioni": "recensioni"
   };
 
-  // Controlla l'hash nell'URL
   if (!window.location.hash) {
-      // Se non c'è un hash, imposta quello di default
       window.location.hash = `#${defaultString}`;
   }
   const currentHash = window.location.hash.substring(1).toLowerCase();
 
-  // Imposta il bottone attivo e la sezione visibile in base all'hash
   buttons.forEach(btn => {
     const btnText = btn.textContent.trim().toLowerCase();
     if (buttonToSectionMap[btnText] === currentHash) {
@@ -303,7 +297,6 @@ function setupButtonGroup(buttons, defaultString, sections) {
     sections[condition].style.display = condition === currentHash ? 'block' : 'none';
   }
 
-  // Gestione del click: mostra la sezione corrispondente e aggiorna l'URL
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       buttons.forEach(b => b.classList.remove('active'));
@@ -313,7 +306,6 @@ function setupButtonGroup(buttons, defaultString, sections) {
       for (const condition in sections) {
         sections[condition].style.display = condition === sectionId ? 'block' : 'none';
       }
-      // Aggiorna l'URL con il nome della sezione attiva
       window.location.hash = sectionId;
     });
   });
@@ -323,11 +315,9 @@ function setupButtonGroup(buttons, defaultString, sections) {
 function inviaRecensione(event) {
   event.preventDefault();
   
-  // Recupera il testo della recensione (assicurati che il textarea abbia name="recensione")
   const recensioneInput = document.querySelector(".recensione-form textarea[name='testo']");
   const reviewText = recensioneInput.value.toLowerCase();
   
-  // Lista di parole proibite
   const forbiddenWords = [
     "allupato",
     "ammucchiata",
@@ -499,7 +489,6 @@ function inviaRecensione(event) {
     "zoccola"
   ];
   
-  // Verifica se il testo contiene una delle parole proibite
   const containsForbidden = forbiddenWords.some(word => reviewText.includes(word));
   if (containsForbidden) {
     Swal.fire({
@@ -511,7 +500,6 @@ function inviaRecensione(event) {
     return;
   }
   
-  // Se il controllo va a buon fine, chiedi conferma all'utente
   Swal.fire({
     title: 'Conferma invio',
     text: "Sei sicuro di voler inviare questa recensione?",
@@ -555,7 +543,6 @@ function inviaRecensione(event) {
 
 // Funzione principale per inizializzare la pagina
 document.addEventListener("DOMContentLoaded", function() {    
-  // Imposta per i bottoni della nav-bar
   const navButtons = document.querySelectorAll('.nav-bar .bottone');
   const navSections = {
     "esami": document.querySelector(".esami"),

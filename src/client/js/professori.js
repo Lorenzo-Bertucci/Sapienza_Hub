@@ -15,9 +15,9 @@ function filterProfessors(query) {
     cards.forEach(card => {
         const professorName = card.querySelector("h3").textContent.toLowerCase();
         if (professorName.includes(query)) {
-            card.style.display = "flex"; // Mostra la card
+            card.style.display = "flex"; 
         } else {
-            card.style.display = "none"; // Nasconde la card
+            card.style.display = "none";
         }
     });    
 }
@@ -57,7 +57,6 @@ function loadProfessori(){
                 const card=createCard(prof.id,prof.nome);
                 cardsContainer.appendChild(card);
             });
-            // Ricollega gli eventi di ricerca
             addSearchFunctionality();
         }
         else{
@@ -72,7 +71,6 @@ function loadProfessori(){
 }
 
 // Inizializza la pagina
-// Carica i professori e aggiungi la funzionalità di ricerca
 document.addEventListener("DOMContentLoaded", function () {
     loadProfessori();
 });

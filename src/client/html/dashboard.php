@@ -1,14 +1,11 @@
 <?php
 session_start();
 
-// Controlla se l'utente è loggato
 if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
-    // Reindirizza alla pagina di login se non è loggato
     header('Location: login.php');
     exit;
 }
 
-// Recupera le informazioni dell'utente dalla sessione
 $user_email = $_SESSION['user_email'] ?? 'Email non disponibile';
 $user_nome = $_SESSION['user_nome'] ?? 'Nome non disponibile';
 $user_cognome = $_SESSION['user_cognome'] ?? 'Cognome non disponibile';
