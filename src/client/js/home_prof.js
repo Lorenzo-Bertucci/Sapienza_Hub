@@ -186,7 +186,7 @@ function openRec(){
 function getInfo(){
   const infoDiv=document.querySelector(".desc");
   const prof_id=getUrlParameter('id');
-  fetch(`/src/server/php/professori/get_dati_prof.php?id=${encodeURIComponent(prof_id)}`)
+  fetch(`/src/server/php/home_prof/get_dati_prof.php?id=${encodeURIComponent(prof_id)}`)
   .then(response => {
         if (!response.ok) {
           throw new Error("Errore nel caricamento delle recensioni.");
@@ -265,7 +265,7 @@ function loadEsami(){
     }
     else{
       console.error(data.message);
-      divEsame.innerHTML = "<p class='errore'>Errore durante il caricamento dei dati.</p>";
+      divEsame.innerHTML = `<h3 class='errore'>${data.message}</h3>`;
     }    
   })
   .catch(error => {

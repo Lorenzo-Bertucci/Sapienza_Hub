@@ -22,7 +22,7 @@ $query = "SELECT ins.nome_esame as nome, es.corso as corso, es.codice as codice 
 $result = pg_query_params($conn, $query, array($id));
 
 if (!$result || pg_num_rows($result) === 0) {
-    echo json_encode(['success' => false, 'message' => 'Esami non trovati.']);
+    echo json_encode(['success' => false, 'message' => 'Nessun esame trovato per questo professore']);
     exit;
 }
 
